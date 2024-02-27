@@ -1,0 +1,55 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+format: jb-book
+root: index
+parts:
+- caption: はじめに
+  numbered: True
+  chapters:
+    - file: content/introduction.ipynb
+- caption: データベースの概念
+  numbered: True
+  chapters:
+    - file: content/concept-of-database.ipynb
+- caption: データモデル
+  numbered: True
+  chapters:
+    - file: content/data-model/01.ipynb
+- caption: SQL
+  numbered: True
+  chapters:
+    - file: content/sql/01.ipynb
+    - file: content/sql/02.ipynb
+    - file: content/sql/03.ipynb
+- caption: 中間試験
+  numbered: True
+  chapters:
+    - file: content/midterm-exam.ipynb
+- caption: 関係モデルの操作体系
+  numbered: True
+  chapters:
+    - file: content/relational-algebra/01.ipynb
+- caption: 実体関連モデル
+  numbered: True
+  chapters:
+    - file: content/er-model/01.ipynb
+    - file: content/er-model/02.ipynb
+    - file: content/er-model/03.ipynb
+- caption: 関係データベースの設計
+  numbered: True
+  chapters:
+    - file: content/rdb-design/01.ipynb
+    - file: content/rdb-design/02.ipynb
+- caption: 索引づけ & トランザクション
+  numbered: True
+  chapters:
+    - file: content/indexing-and-transaction.ipynb    
+- caption: ビッグデータ時代のデータベース
+  numbered: True
+  chapters:
+    - file: content/nosql.ipynb
+- caption: 付録
+  numbered: False
+  chapters:
+    - file: content/misc/drawio.md
+    - file: content/reference.md
