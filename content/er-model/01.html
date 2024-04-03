@@ -165,7 +165,7 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">はじめに</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. “データベース”を使わない世界</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/01.html">1. “データベース”を使わない世界</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">データベースとは</span></p>
 <ul class="nav bd-sidenav">
@@ -199,11 +199,11 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">索引づけ &amp; トランザクション</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../indexing-and-transaction.html">14. B木</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../indexing-and-transaction/01.html">14. B木</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ビッグデータ時代のデータベース</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../nosql.html">15. NoSQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nosql/01.html">15. NoSQL</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">付録</span></p>
 <ul class="nav bd-sidenav">
@@ -366,9 +366,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -384,20 +382,6 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">9.1. データモデリングの流れ</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">9.2. 実体関連モデル</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">9.2.1. 実体</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">9.2.2. 関連</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">9.2.3. 役割の明示</a></li>
-</ul>
-</li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -409,159 +393,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">9. </span>実体関連モデルとは<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<section id="id2">
-<h2><span class="section-number">9.1. </span>データモデリングの流れ<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>関係データベースを設計するにあたり，いきなり完全無欠な複数の関係表（テーブル）を設計することは難しい．
-これまでの解説で扱ってきたテーブルは高々数個であった．
-しかし，実際のデータ管理の現場ではテーブル数が数十，数百になることはめずらしくない．
-そのため，どれほど経験があるデータエンジニアであっても</p>
-<ul class="simple">
-<li><p>データの冗長性がない</p></li>
-<li><p>一貫性制約の保持が容易</p></li>
-</ul>
-<p>な関係データベースを設計するためには，対象とする事象やその中に存在するルール等の理解を深めた上で，体系的にデータモデルを構築する必要がある．</p>
-<p>以下の図に示すように，一般にデータモデリングは概念モデリング，論理モデリングの順で行われる．</p>
-<p><img alt="モデリング手順" src="../../_images/model-transform.png" /></p>
-<p><strong>概念モデリング</strong>は，最終的にどのようなデータベース技術が利用されるかとは関係なく，扱おうとするデータ対象がどのようなものであるか（どのような意味を持つか）を記述する過程である．
-概念モデリングにおいては，しばしば実体関連モデルが用いられる．</p>
-<p><strong>論理モデリング</strong>の過程では，概念モデリングで設計された概念モデルをデータベース管理システムが扱えるように変換する．
-例えば，データベース管理システムが関係データベースの管理システムであれば，あらかじめ設計された概念モデルを関係データモデルに変換する．</p>
-<p>以降では，代表的な概念モデルである実体関連モデルを解説した後，実体関連モデルを関係データモデルに変換する方法について述べる．</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<h3 class="rubric" id="id3">データモデリングは難しい!?</h3>
-<p>本章を含め，「データベース設計」の章で学ぶ概念はそれほど多くない．
-しかしながら，実際にデータベース設計ができるようになるのは時間がかかる．
-設計は知識よりも経験がものを言うからである．</p>
-<p>本章で学ぶ実体関連モデルも学習内容は多くないし，その内容も一見すると大したことがないように見える．
-しかし，自分で実体関連モデルを作ろうとすると，何をどうすればよいのか困る．
-モデルを作ってみても，それが合ってるのか不安になるだろう．</p>
-<p>データモデリングを含め，抽象的な思考はとにかく「やってみては間違えるを繰り返す」しかない．</p>
-</div>
-</section>
-<section id="id4">
-<h2><span class="section-number">9.2. </span>実体関連モデル<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p><strong>実体関連モデル(entity-relationship model; ERモデル)</strong> は，<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%83%94%E3%83%BC%E3%82%BF%E3%83%BC%E3%83%BB%E3%83%81%E3%82%A7%E3%83%B3">Peter Chen</a>により提唱された概念モデリング用のデータモデルである．
-実体関連モデルでは，<strong>実世界のデータのすべてを「実体」と「関連」の2種類で分類・記述</strong>する．
-実体関連モデルを図として表現したものを<strong>実体関連図（entity-relationship diagram; ER図）</strong> と呼ぶ．</p>
-<p>実体関連モデルおよび実体関連図には様々な拡張・記法が存在するが，本講義ではPeter Chenの記法に従い説明を行う．</p>
-<section id="id5">
-<h3><span class="section-number">9.2.1. </span>実体<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
-<p><strong>実体（entity）</strong> とは，データ対象をモデル化しようとしたときに，独立した存在として認識される物体や事象である．
-例えば，ショッピングサイトの購買履歴を扱うデータベースを考える場合，そこに登場する（であろう）個々の</p>
-<ul class="simple">
-<li><p>ユーザ</p></li>
-<li><p>商品</p></li>
-<li><p>販売者</p></li>
-<li><p>商品レビュー</p></li>
-</ul>
-<p>などは実体と見なすことができる．
-なお，商品レビューは物理的に存在するものではないが，概念的には独立した存在として認識できる事象であるため実体となりえる．</p>
-<p>同じ種類の実体の集合を<strong>実体集合</strong>と呼ぶ．
-実体集合と実体は「集合とその要素（インスタンス）」の関係になる．
-例えば，実体集合「商品」の要素としては，「はーいお茶」「午前の紅茶」「健康麦茶」などが考えられる．</p>
-<p>実体集合の属性や一貫性制約を定めたものを<strong>実体型（entity type）</strong> と呼ぶ．</p>
-<p>実体型は必ず1つ以上の<strong>属性（attribute）</strong> を持つ．
-属性とは実体の性質を表すものである．
-例えば，実体集合「商品」の属性としては「商品ID」「商品名」「価格」「発売日」などがあげられる．
-関係データモデルと同様，実体集合の実体（要素）を一意に特定するための極小な属性集合を<strong>キー</strong> と呼ぶ．
-キーのうち，管理上最適と考えられるものを<strong>主キー</strong> と呼ぶ．</p>
-<p>（Peter Chenの記法では）実体関連図において，</p>
-<ul class="simple">
-<li><p>実体型は矩形</p></li>
-<li><p>属性は楕円</p></li>
-</ul>
-<p>で表現される．
-なお，主キーとなる属性には<strong>下線を引く</strong>．
-実体型とその属性は線で結ぶ．</p>
-<p>下の図は，実体型「商品」を実体関連図として表現したものである．</p>
-<p><img alt="実体-商品" src="../../_images/product-entity.png" /></p>
-</section>
-<section id="id6">
-<h3><span class="section-number">9.2.2. </span>関連<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
-<p><strong>関連（relationship）</strong> <a class="footnote-reference brackets" href="#id10" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>とは，複数の実体間のつながりを表す．
-例えば，ショッピングサイトにおける実体「ユーザ」と実体「商品」には，「購買」という関連が考えられる．
-先の実体の定義において，実体とは「独立した存在として認識される」と述べたが，関連はつながる実体の存在がなければ自身の存在を規定できない．
-例えば「購買」の例では，ある購買という行為は行為主体であるユーザと行為対象である商品が揃って初めて定義できる．</p>
-<p>同じ種類の関連の集合を<strong>関連集合（relationship set）</strong> と呼ぶ．
-例えば，先の「購買」の例では，ユーザAが商品Xを購入したこと，ユーザBが商品Yを購入したことなど，個々のユーザが何かを購入した行為の集合が関連集合「購買」となる．
-関連集合内の各関連は，それとつながっている実体によって一意に特定される．</p>
-<p>関連型も属性を持つ場合がある（すわなち，属性がないこともある）．
-例えば，先の関連型「購買」の例であれば，「購入個数」「購入日」などが属性として考えられる．</p>
-<p>（Peter Chenの記法では）実体関連図において，</p>
-<ul class="simple">
-<li><p>関連型はひし形</p></li>
-<li><p>その属性は楕円</p></li>
-</ul>
-<p>で表現される．
-関連型とその属性は線で結ぶ．
-また，関連型はつながりのある実体型と線で結ぶ．</p>
-<p>以下の図は，実体型「ユーザ」「商品」，および関連型「購買」を実体関連図として表現したものである．</p>
-<p><img alt="関連-購買" src="../../_images/purchase-relationship.png" /></p>
-<p>また，以下の図は，上の実体関連図に示したモデルの実体，関連（つまり実体集合および関連集合の要素）の例を図示したものである．
-スペースの都合上，実体および関連が持つ属性のうち，主キーの値のみを図示している．
-関連の下に書かれた値は，各関連につながる実体の主キーを記している．</p>
-<p><img alt="ERモデル要素例" src="../../_images/er-model-elements.png" /></p>
-</section>
-<section id="id8">
-<h3><span class="section-number">9.2.3. </span>役割の明示<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
-<p>ある大学ではデータベースで学生情報を管理することを検討しているとしよう．
-さて，この大学ではどの学生も</p>
-<ul class="simple">
-<li><p>自分の面倒を見てくれる「先輩」学生</p></li>
-<li><p>面倒を見てあげる必要のある「後輩」学生</p></li>
-</ul>
-<p>が割り当てられているとしよう．
-このような状況を実体関連モデルで表現したい．</p>
-<p>さて，与えられた条件をふまえて</p>
-<ul class="simple">
-<li><p>実体として「先輩学生」と「後輩学生」，</p></li>
-<li><p>先輩学生と後輩学生とのつながりを表す関連として「世話」</p></li>
-</ul>
-<p>を定義したとしよう．
-この定義に従ってデータを管理しようとすると，面倒なことが起きる．
-例えば，学生「山畑滝子」さんには「川澄桜子」さんという先輩と「田辺通」さんという後輩がいたとしよう．
-この状況を先に定義した実体関連モデルで考えてみると，以下の図のように「山畑滝子」という唯一無二の実体が実体集合「先輩学生」と実体集合「後輩学生」のそれぞれの要素に現れてしまう．
-検討しているデータベースでは学生情報を管理したいので，2つの実体集合に同じ情報が二重に登場するのはよろしくない．
-学生は実体型「学生」だけで表現するのが望ましい．
-先の実体関連モデリングは適切ではなかったのである．</p>
-<p><img alt="役割づけなしモデル" src="../../_images/er-model-without-role.png" /></p>
-<p>実体型「学生」とその他の関連型のみで学生間の先輩後輩関係を表現できないだろうか．
-これを実現するには，以下の実体関連図のように，実体型「学生」と関連「世話」の間に</p>
-<ul class="simple">
-<li><p>先輩関係を表す直線</p></li>
-<li><p>後輩関係を表す直線</p></li>
-</ul>
-<p>を別々に引き，直線が意味する<strong>役割</strong>を明示すればよい（つまり2本の線を引く）．
-このようにすることで，学生の概念を実体型「学生」だけに集約ができ，かつ先輩後輩の関係を表現できる．
-今回の例のように，同一の実体型感に関連型が存在するケースでは，枝の上に役割を明示することで対応する．</p>
-<p><img alt="役割づけありモデル" src="../../_images/er-model-with-role.png" /></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<h3 class="rubric" id="id9">実体，関連，属性を見分ける経験則</h3>
-<p>何を実体として何を関連として見なすか，どれを属性として見なすか，迷うことがあるだろう．
-実体関連モデルを提唱したPeter Chenは自身が発表した論文<a class="reference external" href="https://bit.csc.lsu.edu/~chen/pdf/ER_C.pdf">”English, Chinese and ER diagrams”</a>において，以下のような経験則を提案した．</p>
-<ul class="simple">
-<li><p>普通名詞: 実体型</p></li>
-<li><p>固有名詞: 実体</p></li>
-<li><p>他動詞: 関連型</p></li>
-<li><p>自動詞: 属性</p></li>
-<li><p>形容詞: 実体の属性</p></li>
-<li><p>副詞: 関連の属性</p></li>
-</ul>
-<p>以上の経験則は当てはまらないこともあるが，目安にはなるので初学者は参考するとよい．</p>
-</div>
-<hr class="footnotes docutils" />
-<aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id10" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">1</a><span class="fn-bracket">]</span></span>
-<p>関係データベースの話題において，関係と関連を混同しがちである．
-関係（relation）は関係データモデル上の用語で直積集合の部分集合（タプル集合）．
-関連は実体関連モデル上の用語である．</p>
-</aside>
-</aside>
-</section>
-</section>
+<p>後日公開予定</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -619,26 +451,7 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">9.1. データモデリングの流れ</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">9.2. 実体関連モデル</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">9.2.1. 実体</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">9.2.2. 関連</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">9.2.3. 役割の明示</a></li>
-</ul>
-</li>
-</ul>
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>

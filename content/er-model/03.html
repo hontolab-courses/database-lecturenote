@@ -58,8 +58,6 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/er-model/03';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -167,7 +165,7 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">はじめに</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. “データベース”を使わない世界</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/01.html">1. “データベース”を使わない世界</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">データベースとは</span></p>
 <ul class="nav bd-sidenav">
@@ -201,11 +199,11 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">索引づけ &amp; トランザクション</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../indexing-and-transaction.html">14. B木</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../indexing-and-transaction/01.html">14. B木</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ビッグデータ時代のデータベース</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../nosql.html">15. NoSQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nosql/01.html">15. NoSQL</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">付録</span></p>
 <ul class="nav bd-sidenav">
@@ -368,9 +366,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -386,16 +382,6 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isa">11.1. 汎化・継承（ISA関連）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">11.2. n項関連</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">11.3. 確認問題</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -407,67 +393,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="n">
 <h1><span class="section-number">11. </span>拡張実体関連モデル &amp; n項関連<a class="headerlink" href="#n" title="Link to this heading">#</a></h1>
-<section id="isa">
-<h2><span class="section-number">11.1. </span>汎化・継承（ISA関連）<a class="headerlink" href="#isa" title="Link to this heading">#</a></h2>
-<p>実体関連モデルに対して，いつかの拡張概念が提案・導入されている．
-そのうちのひとつが，<strong>汎化・継承</strong> の概念である．</p>
-<p>実世界を実体関連モデルで表現する際，実体集合間にある種の包含関係（階層関係）が想定されることがしばしばある．
-例えば，実体型「大学構成員」「学生」「教員」を考えてみよう．
-学生も教員も大学を構成するメンバーであるから，「大学構成員」と「学生」「教員」の間には包含関係があると見なせる．</p>
-<p>今，ある大学のデータ管理者は，大学構成員の情報を管理する上で，</p>
-<ul class="simple">
-<li><p>学生には「大学ID」「氏名」「生年月日」「性別」「所属」と「入学年」</p></li>
-<li><p>教員には「大学ID」「氏名」「生年月日」「性別」「所属」と「研究者ID」「職階」</p></li>
-</ul>
-<p>の情報を持たせたいと考えているとする．</p>
-<p>さて，実体関連モデルで実体型「学生」「教員」を定義しよう．
-あらかじめ，属性として「大学ID」「氏名」「生年月日」「性別」「所属」をもつ実体型「大学構成員」が定義されているとする．
-このとき，</p>
-<blockquote>
-<div><p>実体型「学生」は属性「大学ID」「氏名」「生年月日」「性別」「所属」「入学年」を持つ実体型である</p>
-</div></blockquote>
-<p>と定義するよりも，</p>
-<blockquote>
-<div><p>実体型「学生」は実体型「大学構成員」に属性「入学年」を加えた実体型である</p>
-</div></blockquote>
-<p>と定義したほうが明らかに無駄が少ない．また自然である．
-実体型「教員」の定義においても同様である．</p>
-<p>このように，ある実体型<span class="math notranslate nohighlight">\(E_1\)</span>の属性をすべて持つと考え，新たに実体型<span class="math notranslate nohighlight">\(E_2\)</span>を定義するとき，<span class="math notranslate nohighlight">\(E_2\)</span>は<span class="math notranslate nohighlight">\(E_1\)</span>を<strong>継承（inherit）</strong> したという（「<span class="math notranslate nohighlight">\(E_1\)</span>は<span class="math notranslate nohighlight">\(E_2\)</span>を<strong>汎化（generalize）</strong> した実体型である」と称することもある）．
-継承を用いて実体型を表現したとき，その実体集合（下位の集合）は継承元（上位）の実体集合にすべて包含される．</p>
-<p>実体関連図において，継承元となる上位の実体型と継承先となる下位の実体型の間には，汎化・継承関係があることを示す「IsA」と記した三角の特別な関連記号を置く．
-以下は，先の実体型「大学構成員」「学生」「教員」を実体関連図で表現したものである．</p>
-<p><img alt="継承・汎化を用いたER図" src="../../_images/inheritance.png" /></p>
-</section>
-<section id="id1">
-<h2><span class="section-number">11.2. </span>n項関連<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>これまでの説明では扱ってきた関連型は，2つの実体型とのつながりを表現したもの（2項関連）に限定されていたが，3つ以上の実体型とつながりがあってもよい．
-n個の実体型をつなぐ関連を<strong>n項関連</strong>は呼ばれる．
-2項関連と同様に，n項関連においても参加制約や多重度制約を考えることができる．</p>
-<p><img alt="すべて1対n関連の3項関連" src="../../_images/3-ary-relationship1.png" /></p>
-<p>上の図は，学生がどこの教室でどの教員の指導をうけるかを実体関連図で表現した図（左）および各実体集合，関連集合の要素を示した図（右）である．
-上図では，関連型「研究室配属」は「学生」「部屋」「教員」の3項関連となっている．
-また，実体関連図が示しているように，関連型「研究室配属」において，</p>
-<ul class="simple">
-<li><p>「学生」と「教員」は多対1の関連</p></li>
-<li><p>「学生」と「部屋」は多対1の関連</p></li>
-</ul>
-<p>となっている．
-つまり，学生は指導教員を必ず1名しか割り当てられず，部屋も必ず1つしか割り当てられない．</p>
-<p><img alt="多対多関連を含む3項関連" src="../../_images/3-ary-relationship2.png" /></p>
-<p>一方，上の図は学生がどこの教室でどの教員の指導をうけるかを表した実体関連図および各実体集合，関連集合の要素を示した図ではあるが，実体関連図で表現されている内容が異なる．
-上の実体関連図においては，</p>
-<ul class="simple">
-<li><p>「学生」と「教員」は多対多の関連</p></li>
-<li><p>「学生」と「部屋」は多対1の関連</p></li>
-</ul>
-<p>となっている．
-つまり，学生は必ず1つしか部屋が割り当てられないが，2名以上の教員を指導教員として割り当てることができる，と読み取れる．
-上の右図を見ると，学生Bの割り当て部屋は8601号室であるが，指導教員として桜山先生と山畑先生の2名が割り当てられていることが分かる．</p>
-</section>
-<hr class="docutils" />
-<section id="id2">
-<h2><span class="section-number">11.3. </span>確認問題<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-</section>
+<p>後日公開予定</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -525,22 +451,7 @@ n個の実体型をつなぐ関連を<strong>n項関連</strong>は呼ばれる�
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isa">11.1. 汎化・継承（ISA関連）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">11.2. n項関連</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">11.3. 確認問題</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>
