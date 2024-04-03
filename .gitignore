@@ -160,3 +160,6 @@ _build/
 fake_data
 planetscale
 tmp
+
+*_local.ipynb
+*_local.md

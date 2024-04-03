@@ -6,7 +6,7 @@ parts:
 - caption: はじめに
   numbered: True
   chapters:
-    - file: content/introduction.ipynb
+    - file: content/introduction/01.ipynb
 - caption: データベースとは
   numbered: True
   chapters:
@@ -40,11 +40,11 @@ parts:
 - caption: 索引づけ & トランザクション
   numbered: True
   chapters:
-    - file: content/indexing-and-transaction.ipynb
+    - file: content/indexing-and-transaction/01.ipynb
 - caption: ビッグデータ時代のデータベース
   numbered: True
   chapters:
-    - file: content/nosql.ipynb
+    - file: content/nosql/01.ipynb
 - caption: 付録
   numbered: False
   chapters:
