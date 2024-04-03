@@ -153,8 +153,10 @@ dmypy.json
 cython_debug/
 
 
-fake_data/*
-planetscale/*
-
 # Jupyter Book.
 _build/
+
+# My ignore files
+fake_data
+planetscale
+tmp
