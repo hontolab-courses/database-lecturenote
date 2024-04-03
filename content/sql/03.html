@@ -1,0 +1,1321 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>6. 副問い合わせ &amp; テーブルの定義と更新 &#8212; データベース</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/base.css?v=d4abcab6" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/sql/03';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="7. 中間試験" href="../midterm-exam.html" />
+    <link rel="prev" title="5. 結合質問（集合演算を含む）" href="02.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">データベース</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">はじめに</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. “データベース”を使わない世界</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">データベースとは</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../concept-of-database/01.html">2. データベースの概念</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">データモデル</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../relational-data-model/01.html">3. 関係データモデル</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SQL</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01.html">4. 単純質問</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02.html">5. 結合質問（集合演算を含む）</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. 副問い合わせ &amp; テーブルの定義と更新</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">中間試験</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../midterm-exam.html">7. 中間試験</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">関係モデルの操作体系</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../relational-algebra/01.html">8. 関係代数</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">データベース設計</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../er-model/01.html">9. 実体関連モデルとは</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../er-model/02.html">10. 実体関連モデル上の一貫性制約</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../er-model/03.html">11. 拡張実体関連モデル &amp; n項関連</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">12. 正規形</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">索引づけ &amp; トランザクション</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../indexing-and-transaction.html">13. B木</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ビッグデータ時代のデータベース</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nosql.html">14. NoSQL</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">付録</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../misc/math.html">集合と写像</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/drawio.html">draw.io の使い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">参考文献</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/main/docs/content/sql/03.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcontent/sql/03.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/sql/03.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>副問い合わせ & テーブルの定義と更新</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.1. 副問い合わせ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.2. テーブルの定義と更新</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.2.1. テーブルの定義</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.2.2. レコードの追加</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.2.3. レコードの削除</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">6.2.4. レコードの更新</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">6.3. 確認問題</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">6. </span>副問い合わせ &amp; テーブルの定義と更新<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>jupysql
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+<span class="o">%</span><span class="k">config</span> SqlMagic.feedback = 0
+<span class="o">%</span><span class="k">config</span> SqlMagic.displaylimit = 50
+<span class="o">%</span><span class="k">sql</span> sqlite:///data/SSDSE.db
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>前章，前々章同様，本章ではSQLの説明のために独立行政法人統計センターが公開している教育用標準データセット（SSDSE）の<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-E">基本素材SSDSE-E</a>（データの解説は<a class="reference external" href="https://www.nstac.go.jp/sys/files/kaisetsu-E-2023.pdf">こちら</a>）から抜粋・加工したデータ（<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブル）を用いる．
+<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルには，47ある各都道府県に関する総人口，小学校児童数，中学校生徒数，高等学校生徒数，大学学生数のデータが2021年度，2020年度分入っている．
+このテーブルが格納された関係データベースが手元にあると想定して，SQLの使い方を説明する．</p>
+<section id="id2">
+<h2><span class="section-number">6.1. </span>副問い合わせ<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>関係データベースへの問い合わせが複雑になってくると，SQLによる問い合わせ結果を使ってさらにSQL文を書きたいケースも発生する．
+このようなケースで役に立つのが<strong>副問い合わせ（サブクエリ; subqueryと呼ぶことも）</strong> である．
+副問い合わせを用いると，<code class="docutils literal notranslate"><span class="pre">FROM</span></code>句や<code class="docutils literal notranslate"><span class="pre">WHERE</span></code>句の中で<code class="docutils literal notranslate"><span class="pre">SELECT</span></code>文を書くことができ，SQL文の中で別のSQL文の実行結果を参照することができる．</p>
+<p>例題を通して副問い合わせの使い方を確認しよう．
+<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルを用いて</p>
+<ol class="arabic simple">
+<li><p>2021年度と2020年度の大学学生数の平均値を都道府県別に算出し，</p></li>
+<li><p>平均大学生数の上位10の都道府県を表示する</p></li>
+</ol>
+<p>SQL文について考えたい．
+上記ステップ1だけを行うSQL文であれば，以下のようになる．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="cm">/* ステップ1だけを行うSQL文 */</span>
+<span class="k">SELECT</span>
+<span class="w">  </span><span class="err">地域コード</span><span class="p">,</span>
+<span class="w">  </span><span class="err">都道府県</span><span class="p">,</span>
+<span class="w">  </span><span class="k">AVG</span><span class="p">(</span><span class="err">大学学生数</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="err">平均大学生数</span><span class="w"> </span><span class="c1">--- 列名に名前をつける</span>
+<span class="k">FROM</span>
+<span class="w">  </span><span class="n">population</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span>
+<span class="w">  </span><span class="err">都道府県</span><span class="p">;</span><span class="w"> </span>
+</pre></div>
+</div>
+<div class="cell tag_scroll-output tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>地域コード</th>
+            <th>都道府県</th>
+            <th>平均大学生数</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R24000</td>
+            <td>三重県</td>
+            <td>14063.0</td>
+        </tr>
+        <tr>
+            <td>R26000</td>
+            <td>京都府</td>
+            <td>142482.5</td>
+        </tr>
+        <tr>
+            <td>R41000</td>
+            <td>佐賀県</td>
+            <td>7758.5</td>
+        </tr>
+        <tr>
+            <td>R28000</td>
+            <td>兵庫県</td>
+            <td>115917.5</td>
+        </tr>
+        <tr>
+            <td>R01000</td>
+            <td>北海道</td>
+            <td>79569.0</td>
+        </tr>
+        <tr>
+            <td>R12000</td>
+            <td>千葉県</td>
+            <td>105451.5</td>
+        </tr>
+        <tr>
+            <td>R30000</td>
+            <td>和歌山県</td>
+            <td>7707.5</td>
+        </tr>
+        <tr>
+            <td>R11000</td>
+            <td>埼玉県</td>
+            <td>110676.0</td>
+        </tr>
+        <tr>
+            <td>R44000</td>
+            <td>大分県</td>
+            <td>15233.5</td>
+        </tr>
+        <tr>
+            <td>R27000</td>
+            <td>大阪府</td>
+            <td>227323.0</td>
+        </tr>
+        <tr>
+            <td>R29000</td>
+            <td>奈良県</td>
+            <td>20583.5</td>
+        </tr>
+        <tr>
+            <td>R04000</td>
+            <td>宮城県</td>
+            <td>49495.0</td>
+        </tr>
+        <tr>
+            <td>R45000</td>
+            <td>宮崎県</td>
+            <td>9830.0</td>
+        </tr>
+        <tr>
+            <td>R16000</td>
+            <td>富山県</td>
+            <td>10798.0</td>
+        </tr>
+        <tr>
+            <td>R35000</td>
+            <td>山口県</td>
+            <td>18486.5</td>
+        </tr>
+        <tr>
+            <td>R06000</td>
+            <td>山形県</td>
+            <td>11762.0</td>
+        </tr>
+        <tr>
+            <td>R19000</td>
+            <td>山梨県</td>
+            <td>16111.5</td>
+        </tr>
+        <tr>
+            <td>R21000</td>
+            <td>岐阜県</td>
+            <td>20006.0</td>
+        </tr>
+        <tr>
+            <td>R33000</td>
+            <td>岡山県</td>
+            <td>39209.0</td>
+        </tr>
+        <tr>
+            <td>R03000</td>
+            <td>岩手県</td>
+            <td>11414.5</td>
+        </tr>
+        <tr>
+            <td>R32000</td>
+            <td>島根県</td>
+            <td>7180.5</td>
+        </tr>
+        <tr>
+            <td>R34000</td>
+            <td>広島県</td>
+            <td>55569.5</td>
+        </tr>
+        <tr>
+            <td>R36000</td>
+            <td>徳島県</td>
+            <td>11814.0</td>
+        </tr>
+        <tr>
+            <td>R38000</td>
+            <td>愛媛県</td>
+            <td>16287.5</td>
+        </tr>
+        <tr>
+            <td>R23000</td>
+            <td>愛知県</td>
+            <td>177051.0</td>
+        </tr>
+        <tr>
+            <td>R15000</td>
+            <td>新潟県</td>
+            <td>27349.5</td>
+        </tr>
+        <tr>
+            <td>R13000</td>
+            <td>東京都</td>
+            <td>675323.5</td>
+        </tr>
+        <tr>
+            <td>R09000</td>
+            <td>栃木県</td>
+            <td>20442.0</td>
+        </tr>
+        <tr>
+            <td>R47000</td>
+            <td>沖縄県</td>
+            <td>17907.0</td>
+        </tr>
+        <tr>
+            <td>R25000</td>
+            <td>滋賀県</td>
+            <td>31171.0</td>
+        </tr>
+        <tr>
+            <td>R43000</td>
+            <td>熊本県</td>
+            <td>24675.5</td>
+        </tr>
+        <tr>
+            <td>R17000</td>
+            <td>石川県</td>
+            <td>27498.0</td>
+        </tr>
+        <tr>
+            <td>R14000</td>
+            <td>神奈川県</td>
+            <td>172937.0</td>
+        </tr>
+        <tr>
+            <td>R18000</td>
+            <td>福井県</td>
+            <td>10066.5</td>
+        </tr>
+        <tr>
+            <td>R40000</td>
+            <td>福岡県</td>
+            <td>110008.0</td>
+        </tr>
+        <tr>
+            <td>R07000</td>
+            <td>福島県</td>
+            <td>14336.5</td>
+        </tr>
+        <tr>
+            <td>R05000</td>
+            <td>秋田県</td>
+            <td>8894.0</td>
+        </tr>
+        <tr>
+            <td>R10000</td>
+            <td>群馬県</td>
+            <td>28542.0</td>
+        </tr>
+        <tr>
+            <td>R08000</td>
+            <td>茨城県</td>
+            <td>30202.5</td>
+        </tr>
+        <tr>
+            <td>R42000</td>
+            <td>長崎県</td>
+            <td>17105.5</td>
+        </tr>
+        <tr>
+            <td>R20000</td>
+            <td>長野県</td>
+            <td>16710.0</td>
+        </tr>
+        <tr>
+            <td>R02000</td>
+            <td>青森県</td>
+            <td>15409.5</td>
+        </tr>
+        <tr>
+            <td>R22000</td>
+            <td>静岡県</td>
+            <td>33793.5</td>
+        </tr>
+        <tr>
+            <td>R37000</td>
+            <td>香川県</td>
+            <td>9123.5</td>
+        </tr>
+        <tr>
+            <td>R39000</td>
+            <td>高知県</td>
+            <td>9171.5</td>
+        </tr>
+        <tr>
+            <td>R31000</td>
+            <td>鳥取県</td>
+            <td>6728.5</td>
+        </tr>
+        <tr>
+            <td>R46000</td>
+            <td>鹿児島県</td>
+            <td>15454.5</td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>今やりたいことは，この結果テーブルを平均大学生数で大きい順に並べ替えて，上位10件の都道府県レコードのみを出力することである．
+仮に上記結果テーブルが<code class="docutils literal notranslate"><span class="pre">population_avg</span></code>という名で存在していれば，以下のようなSQL文を書くことで目的を達成できる．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">--- これは仮のSQL文</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">population_avg</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="err">平均大学生数</span><span class="w"> </span><span class="k">DESC</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>上記のようなことは，ステップ1のSQL文を「副問い合わせ指定」することで実現できる．
+具体的には，上記仮のSQL文の<code class="docutils literal notranslate"><span class="pre">FROM</span></code>句にある<code class="docutils literal notranslate"><span class="pre">population_avg</span></code>の箇所について，下記のSQL文のようにカッコで囲んだ「ステップ1だけを行う」<code class="docutils literal notranslate"><span class="pre">SELECT</span></code>文で置き換える．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
+<span class="w">  </span><span class="o">*</span>
+<span class="k">FROM</span>
+<span class="w">  </span><span class="p">(</span>
+<span class="w">    </span><span class="k">SELECT</span>
+<span class="w">      </span><span class="err">地域コード</span><span class="p">,</span>
+<span class="w">      </span><span class="err">都道府県</span><span class="p">,</span>
+<span class="w">      </span><span class="k">AVG</span><span class="p">(</span><span class="err">大学学生数</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="err">平均大学生数</span>
+<span class="w">    </span><span class="k">FROM</span>
+<span class="w">      </span><span class="n">population</span>
+<span class="w">    </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span>
+<span class="w">      </span><span class="err">都道府県</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span>
+<span class="w">  </span><span class="n">population_avg</span><span class="p">.</span><span class="err">平均大学生数</span><span class="w"> </span><span class="k">DESC</span>
+<span class="k">LIMIT</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>地域コード</th>
+            <th>都道府県</th>
+            <th>平均大学生数</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R13000</td>
+            <td>東京都</td>
+            <td>675323.5</td>
+        </tr>
+        <tr>
+            <td>R27000</td>
+            <td>大阪府</td>
+            <td>227323.0</td>
+        </tr>
+        <tr>
+            <td>R23000</td>
+            <td>愛知県</td>
+            <td>177051.0</td>
+        </tr>
+        <tr>
+            <td>R14000</td>
+            <td>神奈川県</td>
+            <td>172937.0</td>
+        </tr>
+        <tr>
+            <td>R26000</td>
+            <td>京都府</td>
+            <td>142482.5</td>
+        </tr>
+        <tr>
+            <td>R28000</td>
+            <td>兵庫県</td>
+            <td>115917.5</td>
+        </tr>
+        <tr>
+            <td>R11000</td>
+            <td>埼玉県</td>
+            <td>110676.0</td>
+        </tr>
+        <tr>
+            <td>R40000</td>
+            <td>福岡県</td>
+            <td>110008.0</td>
+        </tr>
+        <tr>
+            <td>R12000</td>
+            <td>千葉県</td>
+            <td>105451.5</td>
+        </tr>
+        <tr>
+            <td>R01000</td>
+            <td>北海道</td>
+            <td>79569.0</td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>副問い合わせを用いることで，SQL文の実行結果を別のSQL文の中で参照することができる．
+なお，副問い合わせはSQL文が複雑で読みにくくなる．
+そのため，少しでもわかりやすくするために，副問い合わせ箇所に<code class="docutils literal notranslate"><span class="pre">AS</span></code>修飾句で名前をつけたり，<code class="docutils literal notranslate"><span class="pre">WITH</span></code>句を使って副問い合わせ箇所を外出しすることができる．</p>
+<p>以下のSQL文は，上記SQL文を<code class="docutils literal notranslate"><span class="pre">AS</span></code>修飾句や<code class="docutils literal notranslate"><span class="pre">WITH</span></code>句を使ってわかりやすく書き換えたものである．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="cm">/* 分かりやすく書き換えたSQL1 */</span>
+<span class="k">SELECT</span>
+<span class="w">  </span><span class="o">*</span>
+<span class="k">FROM</span>
+<span class="w">  </span><span class="p">(</span>
+<span class="w">    </span><span class="k">SELECT</span>
+<span class="w">      </span><span class="err">地域コード</span><span class="p">,</span>
+<span class="w">      </span><span class="err">都道府県</span><span class="p">,</span>
+<span class="w">      </span><span class="k">AVG</span><span class="p">(</span><span class="err">大学学生数</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="err">平均大学生数</span>
+<span class="w">    </span><span class="k">FROM</span>
+<span class="w">      </span><span class="n">population</span>
+<span class="w">    </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span>
+<span class="w">      </span><span class="err">都道府県</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">population_avg</span><span class="w"> </span><span class="c1">-- AS修飾句を使って，副問い合わせの結果テーブルに名前をつける</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span>
+<span class="w">  </span><span class="n">population_avg</span><span class="p">.</span><span class="err">平均大学生数</span><span class="w"> </span><span class="k">DESC</span>
+<span class="k">LIMIT</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="cm">/* 分かりやすく書き換えたSQL2 */</span>
+<span class="cm">/* WITH句を使って，副問い合わせ箇所をメインのSQL文の外に出している */</span>
+<span class="k">WITH</span><span class="w"> </span><span class="n">population_avg</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="k">SELECT</span>
+<span class="w">      </span><span class="err">地域コード</span><span class="p">,</span>
+<span class="w">      </span><span class="err">都道府県</span><span class="p">,</span>
+<span class="w">      </span><span class="k">AVG</span><span class="p">(</span><span class="err">大学学生数</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="err">平均大学生数</span>
+<span class="w">    </span><span class="k">FROM</span>
+<span class="w">      </span><span class="n">population</span>
+<span class="w">    </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span>
+<span class="w">      </span><span class="err">都道府県</span><span class="w">    </span>
+<span class="p">)</span>
+<span class="k">SELECT</span>
+<span class="w">  </span><span class="o">*</span>
+<span class="k">FROM</span>
+<span class="w">  </span><span class="n">population_avg</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span>
+<span class="w">  </span><span class="n">population_avg</span><span class="p">.</span><span class="err">平均大学生数</span><span class="w"> </span><span class="k">DESC</span>
+<span class="k">LIMIT</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span>
+</pre></div>
+</div>
+<p>上の例では<code class="docutils literal notranslate"><span class="pre">FROM</span></code>句内で副問い合わせ指定を行っていたが，<code class="docutils literal notranslate"><span class="pre">WHERE</span></code>句においても副問い合わせを用いることができる．
+例えば，<a class="reference internal" href="#"><span class="xref myst">前章</span></a>の例題で用いた</p>
+<ul class="simple">
+<li><p>65歳以上人口数の上位10都道府県のリストが格納された<code class="docutils literal notranslate"><span class="pre">elderly_population_top10</span></code>テーブル</p></li>
+<li><p>「学習・自己啓発・訓練」「スポーツ」「趣味・娯楽」「ボランティア」「旅行・行楽」について過去1年以内に活動したことのある人の割合（％）について，都道府県別にまとめた<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブル</p></li>
+</ul>
+<p>の2つを用いて，</p>
+<blockquote>
+<div><p>65歳以上人口数の上位10件に「入っていない」都道府県について，過去1年以内に「旅行・行楽」活動をしたことのある人の割合が5割を超える場合のみ，その割合を地域コード，都道府県名とともに表示する</p>
+</div></blockquote>
+<p>ためのSQL文を考えてみよう．
+ちなみに，</p>
+<blockquote>
+<div><p>65歳以上人口数の上位10件に「<strong>入っている</strong>」都道府県について，過去1年以内に「旅行・行楽」活動をしたことのある人の割合が5割を超える場合のみ，その割合を地域コード，都道府県名とともに表示する</p>
+</div></blockquote>
+<p>のであれば，以下のようなSQL文になる．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
+<span class="w">  </span><span class="n">activity</span><span class="p">.</span><span class="err">地域コード</span><span class="p">,</span>
+<span class="w">  </span><span class="n">activity</span><span class="p">.</span><span class="err">都道府県</span><span class="p">,</span>
+<span class="w">  </span><span class="n">activity</span><span class="p">.</span><span class="err">旅行・行楽</span>
+<span class="k">FROM</span>
+<span class="w">  </span><span class="n">activity</span>
+<span class="w">  </span><span class="k">JOIN</span>
+<span class="w">    </span><span class="n">elderly_population_top10</span>
+<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">activity</span><span class="p">.</span><span class="err">都道府県</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">elderly_population_top10</span><span class="p">.</span><span class="err">都道府県</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">activity</span><span class="p">.</span><span class="err">旅行・行楽</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>地域コード</th>
+            <th>都道府県</th>
+            <th>旅行・行楽</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R01000</td>
+            <td>北海道</td>
+            <td>51.0</td>
+        </tr>
+        <tr>
+            <td>R11000</td>
+            <td>埼玉県</td>
+            <td>51.5</td>
+        </tr>
+        <tr>
+            <td>R13000</td>
+            <td>東京都</td>
+            <td>55.5</td>
+        </tr>
+        <tr>
+            <td>R14000</td>
+            <td>神奈川県</td>
+            <td>54.5</td>
+        </tr>
+        <tr>
+            <td>R23000</td>
+            <td>愛知県</td>
+            <td>57.6</td>
+        </tr>
+        <tr>
+            <td>R27000</td>
+            <td>大阪府</td>
+            <td>51.9</td>
+        </tr>
+        <tr>
+            <td>R28000</td>
+            <td>兵庫県</td>
+            <td>51.6</td>
+        </tr>
+        <tr>
+            <td>R40000</td>
+            <td>福岡県</td>
+            <td>52.3</td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>65歳以上人口数の上位10件に「入っている」都道府県のケースとは違って，65歳以上人口数の上位10件に「入っていない」都道府県のケースの場合，</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブル内の各都道府県について，<code class="docutils literal notranslate"><span class="pre">elderly_population_top</span></code>テーブル内にあるか否かを判定し，</p></li>
+<li><p>ない場合のみ，その都道府県の「旅行・行楽」の値を見る</p></li>
+<li><p>「旅行・行楽」の値が50を超えるものだけ，地域コード，都道府県名とともに表示する</p></li>
+</ol>
+<p>という流れになる．
+上記ステップ1では「別のテーブルを活用した対象レコードの存在判定」を行っているが，存在判定は <strong><code class="docutils literal notranslate"><span class="pre">EXISTS</span></code>述語</strong> を使った副問い合わせで対応することができる．
+上記例の場合，以下のようなSQL文になる．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
+<span class="w">  </span><span class="n">activity</span><span class="p">.</span><span class="err">地域コード</span><span class="p">,</span>
+<span class="w">  </span><span class="n">activity</span><span class="p">.</span><span class="err">都道府県</span><span class="p">,</span>
+<span class="w">  </span><span class="n">activity</span><span class="p">.</span><span class="err">旅行・行楽</span>
+<span class="k">FROM</span>
+<span class="w">  </span><span class="n">activity</span>
+<span class="k">WHERE</span>
+<span class="w">　</span><span class="c1">--- NOT EXISTSは存在しない場合Trueを，存在する場合はFalseを返す</span>
+<span class="w">  </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="p">(</span><span class="w">　</span>
+<span class="w">    </span><span class="k">SELECT</span>
+<span class="w">      </span><span class="o">*</span>
+<span class="w">    </span><span class="k">FROM</span>
+<span class="w">      </span><span class="n">elderly_population_top10</span>
+<span class="w">    </span><span class="k">WHERE</span>
+<span class="w">      </span><span class="n">elderly_population_top10</span><span class="p">.</span><span class="err">都道府県</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">activity</span><span class="p">.</span><span class="err">都道府県</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">activity</span><span class="p">.</span><span class="err">旅行・行楽</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span><span class="w"> </span>
+</pre></div>
+</div>
+<div class="cell tag_scroll-output tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>地域コード</th>
+            <th>都道府県</th>
+            <th>旅行・行楽</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R04000</td>
+            <td>宮城県</td>
+            <td>52.2</td>
+        </tr>
+        <tr>
+            <td>R10000</td>
+            <td>群馬県</td>
+            <td>50.8</td>
+        </tr>
+        <tr>
+            <td>R25000</td>
+            <td>滋賀県</td>
+            <td>52.2</td>
+        </tr>
+        <tr>
+            <td>R29000</td>
+            <td>奈良県</td>
+            <td>50.4</td>
+        </tr>
+        <tr>
+            <td>R43000</td>
+            <td>熊本県</td>
+            <td>50.5</td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">WHERE</span></code>句内で<code class="docutils literal notranslate"><span class="pre">EXISTS</span></code>が用いられた場合，<code class="docutils literal notranslate"><span class="pre">FROM</span></code>句で指定されたテーブルの各レコードについて，</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EXISTS</span></code>以下の副問い合わせ内容を満たすものが<strong>1つでも</strong>存在すれば<code class="docutils literal notranslate"><span class="pre">True（真）</span></code>，</p></li>
+<li><p>存在しなければ<code class="docutils literal notranslate"><span class="pre">False（偽）</span></code></p></li>
+</ul>
+<p>の値を返す．
+<code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">EXISTS</span></code>を用いた場合は逆の振る舞いになる．すなわち，</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">EXISTS</span></code>以下の副問い合わせ内容を満たすものが<strong>1つでも</strong>存在すれば<code class="docutils literal notranslate"><span class="pre">False（偽）</span></code>，</p></li>
+<li><p>1つも存在しなければ<code class="docutils literal notranslate"><span class="pre">True（真）</span></code></p></li>
+</ul>
+<p>の値を返す．
+<code class="docutils literal notranslate"><span class="pre">EXISTS</span></code>の振る舞いは少しややこしいが，副問い合わせを用いたSQL文では比較的よく用いられるので頭に入れておこう．</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<h4 class="rubric" id="in">IN述語</h4>
+<p><code class="docutils literal notranslate"><span class="pre">EXISTS</span></code>述語と似たようなものに<code class="docutils literal notranslate"><span class="pre">IN</span></code>述語がある．
+<code class="docutils literal notranslate"><span class="pre">IN</span></code>述語は<code class="docutils literal notranslate"><span class="pre">WHERE</span></code>句内で<code class="docutils literal notranslate"><span class="pre">列名</span> <span class="pre">IN</span> <span class="pre">リスト</span></code>と書くと，あるレコードの列の値が<code class="docutils literal notranslate"><span class="pre">リスト</span></code>内にあるかどうかをTrue or Falseで返す．
+なお，<code class="docutils literal notranslate"><span class="pre">リスト</span></code>と書かれたところは<code class="docutils literal notranslate"><span class="pre">(値,</span> <span class="pre">値,</span> <span class="pre">値)</span></code>のようにベタ書きで指定してもよいし，副問い合わせでも指定してもよい．</p>
+<p>例えば，<code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">EXISTS</span></code>述語を用いた先の例のSQL文は<code class="docutils literal notranslate"><span class="pre">IN</span></code>述語を使って以下のように書き換えられる．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
+<span class="w">  </span><span class="n">activity</span><span class="p">.</span><span class="err">地域コード</span><span class="p">,</span>
+<span class="w">  </span><span class="n">activity</span><span class="p">.</span><span class="err">都道府県</span><span class="p">,</span>
+<span class="w">  </span><span class="n">activity</span><span class="p">.</span><span class="err">旅行・行楽</span>
+<span class="k">FROM</span>
+<span class="w">  </span><span class="n">activity</span>
+<span class="k">WHERE</span>
+<span class="w">　</span><span class="c1">--- activity.都道府県の値がelderly_population_top10.都道府県のリストになければTrueを返す</span>
+<span class="w">  </span><span class="n">activity</span><span class="p">.</span><span class="err">都道府県</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="k">SELECT</span>
+<span class="w">      </span><span class="n">elderly_population_top10</span><span class="p">.</span><span class="err">都道府県</span>
+<span class="w">    </span><span class="k">FROM</span>
+<span class="w">      </span><span class="n">elderly_population_top10</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">activity</span><span class="p">.</span><span class="err">旅行・行楽</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span><span class="w"> </span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">EXISTS</span></code>述語よりも<code class="docutils literal notranslate"><span class="pre">IN</span></code>述語の方が挙動が分かりやすいが，実行速度は<code class="docutils literal notranslate"><span class="pre">EXISTS</span></code>述語の方が速い．
+<code class="docutils literal notranslate"><span class="pre">IN</span></code>を用いた場合，副問い合わせのSQL文は条件に当てはまるレコードをすべて列挙する．
+それに対して<code class="docutils literal notranslate"><span class="pre">EXISTS</span></code>を用いた場合は，条件に当てはまるレコードが1つでも見つかれば処理を終了して次の処理に移るので速い．</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<h4 class="rubric" id="sql">問い合わせのための発展的なSQL</h4>
+<p>これまでに述べてきたSQLは，関係データベースから所望のレコードを引っ張ってくるためのあくまで基礎である．
+解説していないSQLは他にも色々ある．
+例えば，</p>
+<ul class="simple">
+<li><p>条件分岐をするための<code class="docutils literal notranslate"><span class="pre">CASE</span></code>句</p></li>
+<li><p>数値，文字列処理のための様々な関数</p></li>
+<li><p>より高度な集約演算を行うためのWindow関数</p></li>
+</ul>
+<p>などがある．
+興味のある方は</p>
+<ul class="simple">
+<li><p>本橋智光（著）. 2018. <a class="reference external" href="https://gihyo.jp/book/2018/978-4-7741-9647-3">前処理大全-データ分析のためのSQL/R/Python実践テクニック</a>. 技術評論社</p></li>
+<li><p>加嵜長門, 田宮直人（著）. 2017. <a class="reference external" href="https://book.mynavi.jp/ec/products/detail/id=65863">ビッグデータ分析・活用のためのSQLレシピ</a>. マイナビ出版</p></li>
+</ul>
+<p>など，実践的かつ面白い書籍があるので探して読んでみるとよい．</p>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">6.2. </span>テーブルの定義と更新<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>SQLの締めくくりとして，関係データベースにおけるテーブルの定義と更新操作（挿入．削除．更新）について説明する．</p>
+<section id="id4">
+<h3><span class="section-number">6.2.1. </span>テーブルの定義<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>SQLでテーブルの定義を行うには<code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span></code>文を用いる．
+テーブル定義では</p>
+<ul class="simple">
+<li><p>テーブル名</p></li>
+<li><p>テーブルが持つ列名</p></li>
+<li><p>各列のデータ型</p></li>
+<li><p>（必要なら）主キー，外部キー</p></li>
+<li><p>（必要なら）整合性制約</p></li>
+</ul>
+<p>を指定する．</p>
+<p>データ型は<a class="reference internal" href="#"><span class="xref myst">関係データモデル</span></a>の章で説明した<strong>定義域（domain）</strong> に対応するものである．
+関係データベースで扱える代表的なデータ型は以下の通りである．</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">VARCHAR(n)</span></code>: n文字まで扱える可変長の文字列型．通常文字列を扱うときはこれを指定する．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INT</span></code>: 整数型</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code>: 浮動小数点型</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code>: 真偽値型（TRUEもしくはFALSEの値をもつ）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATETIME</span></code>: 時刻を併せ持つ日付型</p></li>
+</ul>
+<p>例えば，例題で用いてきた<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルをゼロから定義する場合，以下のようなSQL文となる．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">population</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="c1">--- TABLEの横にテーブル名を書く</span>
+<span class="w">    </span><span class="err">地域コード</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="w">　</span><span class="c1">--- 10文字あれば地域コードを網羅的に表現できるので10を指定</span>
+<span class="w">    </span><span class="err">都道府県</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="c1">--- 5文字あれば都道府県を網羅的に表現できるので5を指定</span>
+<span class="w">    </span><span class="err">調査年度</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">    </span><span class="err">総人口</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">    </span><span class="err">小学校児童数</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">    </span><span class="err">中学校生徒数</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">    </span><span class="err">高等学校生徒数</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">    </span><span class="err">大学学生数</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="err">地域コード</span><span class="p">,</span><span class="w"> </span><span class="err">調査年度</span><span class="p">)</span><span class="w">　 </span><span class="c1">--- 主キーとして地域コードを指定</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>なお，上記は最低限の説明である．
+実際にSQL文を使ってテーブル定義をする際には，初期値や外部キー制約，<a class="reference internal" href="#"><span class="xref myst">インデックス</span></a>など，想定するアプリケーションに応じて様々な設定を行うことになる．
+使用する関係データベース管理システムによって微妙に設定方法が異なるので，RDBMSに対応したドキュメントを適宜参照すること．</p>
+</section>
+<section id="id5">
+<h3><span class="section-number">6.2.2. </span>レコードの追加<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>レコードの追加には<code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span></code>文を用いる．
+以下は，<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルに2つのレコードを追加するSQL文の例である．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span>
+<span class="w">  </span><span class="n">population</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="c1">--- ここに並べた列名に対応した値をVALUES以下のカッコ内に書く．</span>
+<span class="w">    </span><span class="err">地域コード</span><span class="p">,</span>
+<span class="w">    </span><span class="err">都道府県</span><span class="p">,</span>
+<span class="w">    </span><span class="err">調査年度</span><span class="p">,</span>
+<span class="w">    </span><span class="err">総人口</span><span class="p">,</span>
+<span class="w">    </span><span class="err">小学校児童数</span><span class="p">,</span>
+<span class="w">    </span><span class="err">中学校生徒数</span><span class="p">,</span>
+<span class="w">    </span><span class="err">高等学校生徒数</span><span class="p">,</span>
+<span class="w">    </span><span class="err">大学学生数</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="k">VALUES</span><span class="w"> </span>
+<span class="c1">--- VALUES以下に追加したいレコード数分だけ値をカッコで並べる．カッコ内の順番は列名の順序に対応</span>
+<span class="c1">--- xxxは適当な値</span>
+<span class="w">  </span><span class="p">(</span><span class="s1">&#39;R01000&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北海道&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2022&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">xxx</span><span class="p">,</span><span class="w"> </span><span class="n">xxx</span><span class="p">,</span><span class="w"> </span><span class="n">xxx</span><span class="p">,</span><span class="w"> </span><span class="n">xxx</span><span class="p">,</span><span class="w"> </span><span class="n">xxx</span><span class="p">),</span>
+<span class="w">  </span><span class="p">(</span><span class="s1">&#39;R01000&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北海道&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2023&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">xxx</span><span class="p">,</span><span class="w"> </span><span class="n">xxx</span><span class="p">,</span><span class="w"> </span><span class="n">xxx</span><span class="p">,</span><span class="w"> </span><span class="n">xxx</span><span class="p">,</span><span class="w"> </span><span class="n">xxx</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3><span class="section-number">6.2.3. </span>レコードの削除<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>レコードの削除には<code class="docutils literal notranslate"><span class="pre">DELETE</span></code>文を用いる．
+以下は，<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルから調査年度が2022もしくは2023のレコードを削除するSQL文の例である．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span>
+<span class="w">  </span><span class="n">population</span>
+<span class="k">WHERE</span>
+<span class="w">  </span><span class="err">調査年度</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2022</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="err">調査年度</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2023</span><span class="p">;</span><span class="w"> </span><span class="c1">-- SELECT分と同様に`WHERE`句で条件を指定できる</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h3><span class="section-number">6.2.4. </span>レコードの更新<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>レコードの更新には<code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>文を用いる．
+以下は，<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルから調査年度が2022のレコードについて，総人口の値更新前の総人口から100増やしたものに更新するSQL文である．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span><span class="w"> </span>
+<span class="w">  </span><span class="n">population</span>
+<span class="k">SET</span>
+<span class="w">  </span><span class="err">総人口</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">総人口</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span>
+<span class="k">WHERE</span>
+<span class="w">  </span><span class="err">調査年度</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2022</span><span class="p">;</span><span class="w"> </span><span class="c1">-- SELECT分と同様に`WHERE`句で条件を指定できる</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id8">
+<h2><span class="section-number">6.3. </span>確認問題<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/sql"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>結合質問（集合演算を含む）</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../midterm-exam.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>中間試験</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.1. 副問い合わせ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.2. テーブルの定義と更新</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.2.1. テーブルの定義</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.2.2. レコードの追加</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.2.3. レコードの削除</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">6.2.4. レコードの更新</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">6.3. 確認問題</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

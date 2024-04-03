@@ -1,0 +1,713 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>10. 実体関連モデル上の一貫性制約 &#8212; データベース</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/base.css?v=d4abcab6" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/er-model/02';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="11. 拡張実体関連モデル &amp; n項関連" href="03.html" />
+    <link rel="prev" title="9. 実体関連モデルとは" href="01.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">データベース</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">はじめに</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. “データベース”を使わない世界</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">データベースとは</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../concept-of-database/01.html">2. データベースの概念</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">データモデル</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../relational-data-model/01.html">3. 関係データモデル</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SQL</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sql/01.html">4. 単純質問</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql/02.html">5. 結合質問（集合演算を含む）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql/03.html">6. 副問い合わせ &amp; テーブルの定義と更新</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">中間試験</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../midterm-exam.html">7. 中間試験</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">関係モデルの操作体系</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../relational-algebra/01.html">8. 関係代数</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">データベース設計</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01.html">9. 実体関連モデルとは</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. 実体関連モデル上の一貫性制約</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03.html">11. 拡張実体関連モデル &amp; n項関連</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">12. 正規形</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">索引づけ &amp; トランザクション</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../indexing-and-transaction.html">13. B木</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ビッグデータ時代のデータベース</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nosql.html">14. NoSQL</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">付録</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../misc/math.html">集合と写像</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/drawio.html">draw.io の使い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">参考文献</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/main/docs/content/er-model/02.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcontent/er-model/02.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/er-model/02.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>実体関連モデル上の一貫性制約</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.1. 参加制約</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">10.2. 多重度制約</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">10.3. キー制約</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">10.3.1. 弱実体と部分キー</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">10.4. 確認問題</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">10. </span>実体関連モデル上の一貫性制約<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>関係データモデルでは，対象となるデータが持つべき条件としてドメイン制約やキー制約といった一貫性制約を定義する．
+実体関連モデルにおいても，データが持つべき一貫性制約を表現・設定する方法がいくつか用意されている．
+以下，参加制約，多重度制約，キー制約について説明する．</p>
+<section id="id2">
+<h2><span class="section-number">10.1. </span>参加制約<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p><img alt="ERモデル要素例" src="../../_images/er-model-elements.png" /></p>
+<p>上の図は，前章で用いたあるショッピングサイトにおける商品の購買履歴に関する実体型および関連型の要素を示したものである．
+上図の実体型「商品」に注目すると，どの実体「ユーザ」とも関連を持たない実体「商品」P5が存在することが分かる．
+これは，商品P5が誰にも購入されていないことを示している．</p>
+<p>実体関連図上で実体型<span class="math notranslate nohighlight">\(E_1\)</span>と実体型<span class="math notranslate nohighlight">\(E_2\)</span>が関連型<span class="math notranslate nohighlight">\(R\)</span>でつながっているときに，データ管理の対象としている問題によっては，実体型<span class="math notranslate nohighlight">\(E_1\)</span>のすべての要素が関連型<span class="math notranslate nohighlight">\(R\)</span>の要素とつながっている必要がある場合がある．
+このようなケースを，<span class="math notranslate nohighlight">\(E_1\)</span>の<span class="math notranslate nohighlight">\(R\)</span>への参加は<strong>全体的</strong>であると呼ぶ．
+逆に<span class="math notranslate nohighlight">\(E_1\)</span>の集合内の全要素が関連型<span class="math notranslate nohighlight">\(R\)</span>の集合の全要素とつながっている必要がない場合，<span class="math notranslate nohighlight">\(E_1\)</span>の<span class="math notranslate nohighlight">\(R\)</span>への参加は<strong>部分的</strong>であると呼ぶ．
+例えば，上のショッピングサイトの図のケースの場合，実体型「商品」は関連型「購買」への参加が部分的である．
+このように，ある実体型のある関連型への参加（つながり）が全体的か部分的かを定める制約を<strong>参加制約（participation constraint）</strong> と呼ぶ．</p>
+<p>実体型<span class="math notranslate nohighlight">\(E\)</span>の関連型<span class="math notranslate nohighlight">\(R\)</span>への参加が全体的であるとき，実体関連図上では<span class="math notranslate nohighlight">\(E\)</span>と<span class="math notranslate nohighlight">\(R\)</span>の間の直線を<strong>太線</strong>にする．
+例えば，先のショッピングサイトの例において，実体型「商品」の関連型「購買」への参加が全体的であるとするときは，以下のような実体関連図にする．</p>
+<p><img alt="全体的な参加制約" src="../../_images/participation-constraint.png" /></p>
+<p>上の図のように定義することで，どの実体「商品」も必ずいずれかの関連「購買」とつながっていなければならなくなる
+（上の図からは，実体「ユーザ」の中には関連「購買」とつながっていないもののある，つまり購買実績がないユーザが存在することを許す，ということも読み取れる）．</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">10.2. </span>多重度制約<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>再びショッピングサイトの例に戻ろう．
+以下の図は，購買履歴に加えて，各商品がどのメーカーによって製造されたかも管理するための実体関連モデルを設計し，それに基づき実体集合「ユーザ」「商品」「メーカー」および関連集合「購買」「製造」の要素を図示したものである．</p>
+<p><img alt="実体関連モデルに基づくインスタンス例2" src="../../_images/er-model-elements2.png" /></p>
+<p>（図が物語っていることがすべてであるとすると）この図からは，以下のことが分かる</p>
+<ol class="arabic simple">
+<li><p>ユーザは複数の商品を購入できる</p></li>
+<li><p>商品は複数のユーザから購入されてもよい</p></li>
+<li><p>ユーザの中には商品を購入しない者がいてもよい</p></li>
+<li><p>どの商品も必ずいずれかのメーカー，いずれかのユーザとつながっている</p></li>
+<li><p>商品は必ず1つのメーカーによって製造される（複数のメーカーが合同で1つの商品を製造することはない）</p></li>
+<li><p>メーカーは複数の商品を製造できる</p></li>
+<li><p>どのメーカーも必ず何かの商品を製造している</p></li>
+</ol>
+<p>さて，これらのことを実体関連図として表現してみよう．
+上記項目のうち，項目3，4，7については参加制約に関する事柄である．
+すなわち，</p>
+<ul class="simple">
+<li><p>項目3については，実体型「ユーザ」の関連型「購買」への参加制約を「部分的」</p></li>
+<li><p>項目4については，実体型「商品」の関連型「購買」および「製造」への参加制約を「全体的」</p></li>
+<li><p>項目7については，実体型「メーカー」の関連型「製造」への参加制約を「全体的」</p></li>
+</ul>
+<p>とすればよい．</p>
+<p>一方，項目1，2，5，6は，ある実体（要素）から見たときに，ある関連を通じて別のいくつの実体（要素）とつながることが許されるかという制約を示している．
+このように，ある関連型における対応する実体の数を<strong>多重度（cardinarity）</strong> <a class="footnote-reference brackets" href="#id10" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>と呼び，多重度に関する制約を<strong>多重度制約（cardinarity constraint）</strong> と呼ぶ．
+実体間の関連は「1対1」「1対多」「多対多」のいずれかとなる．
+例えば，上記図においては</p>
+<ul class="simple">
+<li><p>関連型「購買」はユーザと商品のの「多対多」関連（項目1および2）</p></li>
+<li><p>関連型「製造」はメーカーと商品の「1体多」関連（項目5および6）</p></li>
+</ul>
+<p>と見なせる．</p>
+<p>実体関連図において，多重度は以下のように表現する．</p>
+<ul class="simple">
+<li><p>1対1関連: 関連型から実体型に引かれた線をすべて矢印線にする</p></li>
+<li><p>1対多関連: 関連型から「1」に対応する実体型に引かれた線のみを矢印線にする</p></li>
+<li><p>多対多関連: 関連型から実体型に引かれた線をすべて直線にする（矢印は加えず，そのままにする）</p></li>
+</ul>
+<p>例えば，上の図の内容を踏まえて実体関連図を設計すると，以下のような図になる．
+関連型「製造」から実体型「メーカー」への線が矢印線になっていることが分かる．</p>
+<p><img alt="多重度制約を表現した実体関連図" src="../../_images/cardinality-constraint.png" /></p>
+</section>
+<section id="id5">
+<h2><span class="section-number">10.3. </span>キー制約<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>実体関連モデルにおける<strong>キー制約（key constraint）</strong> とは，キーとして指定された属性はキーとしての役割を必ず果たす必要があるという制約である．
+例えば，実体型「学生」の属性「学籍番号」が主キーとして設定された場合，学籍番号を指定することにより実体「学生」は一意に特定できなければならない．
+また，学籍番号に重複は許されない．</p>
+<section id="id6">
+<h3><span class="section-number">10.3.1. </span>弱実体と部分キー<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>ショッピングサイトの例に戻ろう．
+ショッピングサイトを利用する際，ある人が自分のユーザ名を使ってログインをしているのだが，購入した商品の送り先を同居する家族にしたいケースが存在する．
+このようなケースに対応するために，サイト運営者は先ほど示した実体関連図を改善して，</p>
+<ul class="simple">
+<li><p>実体型「家族」を追加</p></li>
+<li><p>実体「ユーザ」と実体「家族」が同居関係にあることを示すために，関連型「同居」も追加</p></li>
+</ul>
+<p>すること検討しているとしよう．
+なお，「家族」にはユーザ名は割り振られず，家族の誰かに商品を送るときは，その家族のユーザがサイトにログインをして手続きをすることを想定している．</p>
+<p>このような条件で実体関連図を作成すると，拡張した箇所は以下の図のようになる．
+図中では，実体型「家族」は「氏名」「続柄」のみを属性として持っている．
+このとき，「氏名」は実体型「家族」の主キーではない．
+そのため，あるユーザを特定したとき，そのユーザに「同居」関連で紐付いている実体「家族」については，その「氏名」によって特定は可能であるものの，「氏名」だけですべての「家族」実体集合の中である実体「家族」を特定することはできない．
+これは，実体集合「家族」は自身がもつ属性だけでは主キーを構成できないことを意味する．</p>
+<p><img alt="弱実体" src="../../_images/weak-entity.png" /></p>
+<p>このように，自身がもつ属性だけでは主キーを構成できない実体集合を<strong>弱実体集合（weak entity set）</strong> と呼ぶ．
+弱実体集合のある弱実体を一意に特定するためには，</p>
+<ul class="simple">
+<li><p>それとなんらかの関連でつながっている実体の主キー，および</p></li>
+<li><p>関連する実体が固定されたときにのみ，それと関連する弱実体の特定に有効な属性</p></li>
+</ul>
+<p>をセットで指定する必要がある．</p>
+<p>弱実体を特定する上で，それと関連している実体のことを<strong>所有実体（owner entity）</strong> と呼ぶ．
+弱実体と所有実体をつなげる関連を<strong>弱関連（weak relationship）</strong> と呼ぶ．
+また，弱実体を一意に特定するために，所有実体の主キーとセットにして使われる弱実体の属性を<strong>部分キー（partial key）</strong> と呼ぶ．
+実体関連図において，弱実体型は太字の矩形，弱関連型は太字のひし形で記される<a class="footnote-reference brackets" href="#id11" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>．
+また，部分キーには点線をつける．</p>
+<p>上の図の例においては，</p>
+<ul class="simple">
+<li><p>実体「家族」が弱実体（「氏名」が部分キー）</p></li>
+<li><p>実体「ユーザ」が（弱実体「家族」に対する）所有実体</p></li>
+<li><p>関連「同居」が弱関連</p></li>
+</ul>
+<p>となる．</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<h3 class="rubric" id="id8">弱実体はなぜ「弱」いのか？</h3>
+<p>上の実体関連図の例において，実体「家族」が弱実体とされていた．
+読者によっては，実体「家族」にも主キーを持たせて，所有実体「ユーザ」の主キーがなくても一意に特定できるようにすればよいのでは，と考えた方がいるかもしれない．
+そのようにすることも理屈上可能であるが，「家族」をあえて弱実体にしているのは対象としているショッピングサイトの運用指針にも関係している．</p>
+<p>例に挙げているショッピングサイトにおいては，あくまでユーザIDをもつ「ユーザ」が販売活動の中心となる．
+あるユーザの「家族」に商品を送るというのは，その家族がユーザのIDを借りて商品を買っているようなことである．
+その家族もユーザIDを持つユーザが家族にいなければ，商品を送ってもらえない．
+つまり，弱実体「家族」は実体「ユーザ」が存在しなければ，存在できない「弱い存在」なのである．</p>
+<p>弱実体の定義は「それと関連する実体の主キーと自身の部分キーをもって，はじめて自身を特定できる実体」と定義していたが，個人的には</p>
+<blockquote>
+<div><p>関連する実体がなくなってしまうと，自分自身も消えてしまう（登録抹消されてしまう）ような実体が弱実体</p>
+</div></blockquote>
+<p>と考えている．</p>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id9">
+<h2><span class="section-number">10.4. </span>確認問題<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id10" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">1</a><span class="fn-bracket">]</span></span>
+<p>Cardinarityは多重度と呼ばれることもあるが，語源からすると「濃度」が正しい訳語とする説がある．</p>
+</aside>
+<aside class="footnote brackets" id="id11" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">2</a><span class="fn-bracket">]</span></span>
+<p>弱実体と弱関連は太字でなく，二重線で表現されることもある．</p>
+</aside>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/er-model"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>実体関連モデルとは</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>拡張実体関連モデル &amp; n項関連</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.1. 参加制約</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">10.2. 多重度制約</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">10.3. キー制約</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">10.3.1. 弱実体と部分キー</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">10.4. 確認問題</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
