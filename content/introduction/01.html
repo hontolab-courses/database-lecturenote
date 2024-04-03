@@ -366,7 +366,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -382,6 +384,17 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1. ケース1: 販売履歴の記録をはじめる</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.1.1. 演習1-1</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -393,7 +406,51 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">1. </span>“データベース”を使わない世界<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>後日公開予定</p>
+<p>データベースと聞いて何を思い浮かべるだろうか．
+大抵の人は，データベースといえば「大きなデータの集まり」を思い浮かべる．
+このイメージはあながち間違いではないのだが，本講義のようにわざわざ科目を立ててまで，データベースについて学ぶことはあるのだろうか？</p>
+<p>結論としては，大規模データに携わるITエンジニアやデータ分析者を目指す人であれば「大いにあり」である．
+1960年代から今日に至るまで，データベース技術は盛んに研究開発されてきた．
+大きなデータの集まりを扱おうとすると，考えなければならないことがたくさんあるのである．</p>
+<p>これから本講義では10数回にわたってデータベース技術について学ぶ予定であるが，初回授業ではデータベースのことはいったん横に置いておいておく．
+（割と）大きなデータを扱うときに遭遇する問題について考えてみよう．</p>
+<section id="id2">
+<h2><span class="section-number">1.1. </span>ケース1: 販売履歴の記録をはじめる<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>以下は，山畑さんという架空の人物のお話である．</p>
+<blockquote>
+山畑さんは家族で小さな小売店を営んでいる．
+個人経営ながら山畑さんのお店は繁盛している．
+とはいえ，街には大手チェーン小売店が進出してきており，このまま順調に経営を続けられるかは不安だ．
+何か手を打たなければならない．
+<p>2020年の4月，山畑さんは念願のショッピングサイトを立ち上げた．
+言うまでもない．ショッピングサイトを立ち上げたのは，オンラインにも顧客獲得の機会を求めるためだ．
+サイトは順調に立ち上がり，注文もポツポツ入ってきている．</p>
+<p>ところで，最近世の中では「データサイエンス」なるものが注目を集めているらしい．
+データを活かせばビジネスチャンスが広がる，とのことだ．
+山畑さんは，Excelシートに入力しつつあった販売履歴を分析してみようと思い立った．</p>
+<p>山畑さんが使っているExcelシート（purchase.xlsx）には，</p>
+<ul class="simple">
+<li><p>いつ（purchased_at列）</p></li>
+<li><p>誰が（customer列）</p></li>
+<li><p>何を（product列）</p></li>
+<li><p>いくらで（sale列）</p></li>
+</ul>
+<p>購入したかの情報が記録されている．</p>
+<p>ショッピングサイトは立ち上がったばかりであるため，Excelシートには200行しかデータが入っていないが，これからデータが貯まっていけば，売り上げを増やすための課題が見えるかもしれない．
+いずれがっつりとデータ分析をやるためにも，山畑さんは手持ちのデータで分析の練習をしてみることにした．</p>
+</blockquote><section id="id3">
+<h3><span class="section-number">1.1.1. </span>演習1-1<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p><a class="reference download internal" download="" href="../../_downloads/c20d01eadea6c4812365aabc405096dc/purchase_small.xlsx"><span class="xref download myst">コチラ</span></a>をクリックして，上のケース1で山畑さんが使っていたExcelファイル<code class="docutils literal notranslate"><span class="pre">purchase_small.xlsx</span></code>をダウンロードしなさい．</p>
+<p>データベースを使わないと</p>
+<ul class="simple">
+<li><p>予想していないデータが混入する（ドメイン制約）</p></li>
+<li><p>特に更新時にデータの不整合が起きる（更新不整合）</p></li>
+<li><p>同時に書き込みがあるとおかしな古都が起きる（トランザクション）</p></li>
+<li><p>計算が遅い（インデックス）</p></li>
+<li><p>アプリケーションの寿命が短くなる（データの永続化）</p></li>
+</ul>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -451,7 +508,23 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1. ケース1: 販売履歴の記録をはじめる</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.1.1. 演習1-1</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
