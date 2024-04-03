@@ -27,6 +27,10 @@ $ jb build --all .
 
 `jb build .`のように`--all`オプションを入れない場合，変更・追加したページしか更新されない．目次を含めてビルドしたい場合は，更新していないページから追加したページへのリンクも更新する必要がある．そのため，`--all`オプションを入れてJupyter Book全体を再構成するようにする．
 
+### GitHub Pagesの作成
+```
+$ ghp-import -n -p -f _build/html
+```
 
 ### MyST Markdown
 使用頻度の高いのは[Directives](https://qiita.com/magolors/items/620860558661b527f267)（コンテンツブロック作成機能）．
