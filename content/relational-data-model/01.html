@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="ja" data-content_root="../../" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
@@ -42,7 +42,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../../_static/documentation_options.js?v=1cf7f4d9"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -52,7 +52,6 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="../../_static/translations.js?v=4dbe4bdc"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -62,12 +61,12 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/relational-data-model/01';</script>
-    <link rel="index" title="索引" href="../../genindex.html" />
-    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="4. 単純質問" href="../sql/01.html" />
     <link rel="prev" title="2. データベースの概念" href="../concept-of-database/01.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="ja"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -157,9 +156,9 @@
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">検索</span>
+    <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
    </button>
  `);
@@ -168,7 +167,7 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">はじめに</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../introduction/01.html">1. "データベース"を使わない世界</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/01.html">1. “データベース”を使わない世界</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">データベースとは</span></p>
 <ul class="nav bd-sidenav">
@@ -291,7 +290,7 @@
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="このページをダウンロード">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -300,7 +299,7 @@
       
       <li><a href="../../_sources/content/relational-data-model/01.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="ソースファイルをダウンロード"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -318,7 +317,7 @@
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="PDFに印刷"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -338,7 +337,7 @@
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="全画面モード"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -364,7 +363,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -388,7 +387,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> 目次 </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -405,6 +404,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">3.3.4. データ従属性</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">3.4. クイズ</a></li>
 </ul>
             </nav>
         </div>
@@ -426,7 +426,7 @@ document.write(`
 なお，本章では数学における「集合と写像」の知識を使う．
 最低限の知識を<a class="reference internal" href="../misc/math.html"><span class="std std-doc">コチラ</span></a>にまとめたので，不安がある方はそちらを参照しながら本章を読むこと．</p>
 <div class="admonition note">
-<p class="admonition-title">注釈</p>
+<p class="admonition-title">Note</p>
 <h3 class="rubric" id="id2">計算機科学とは抽象化の学問</h3>
 <p>計算機科学（あるいは情報科学）というと「プログラミングでしょ」と考える学生は多いのであるが，それは間違いである．
 計算機科学の本質は，<strong>物事を計算可能な状態にする（抽象化）し，計算機の上で処理・分析</strong>することにある．
@@ -443,7 +443,7 @@ document.write(`
 各見出しのことを<strong>属性（attribute）</strong>，各タプルにおけるある属性の値を<strong>属性値</strong>と呼ぶ．
 例えば，表中の2行目のタプルは</p>
 <blockquote>
-<div><p>(&quot;P1&quot;, &quot;はーいお茶&quot;, 130, &quot;2020/07/15&quot;)</p>
+<div><p>(“P1”, “はーいお茶”, 130, “2020/07/15”)</p>
 </div></blockquote>
 <p>であるが，このタプルの属性「単価」の属性値は<code class="docutils literal notranslate"><span class="pre">130</span></code>となる．</p>
 <p><img alt="ある小売店の商品テーブル" src="../../_images/correct-table.png" /></p>
@@ -539,13 +539,13 @@ document.write(`
 <p>のようにあらゆる文字列を取り得る．
 各属性の直積<span class="math notranslate nohighlight">\(Dom(商品ID) \times Dom(名称) \times Dom(単価) \times Dom(登録日)\)</span>の要素には，</p>
 <blockquote>
-<div><p>(&quot;P001&quot;, &quot;こんな商品はありません&quot;, 100兆, &quot;2020/01/01&quot;)</p>
+<div><p>(“P001”, “こんな商品はありません”, 100兆, “2020/01/01”)</p>
 </div></blockquote>
 <p>のように，実際に商品としてありえないタプルも含めて，様々なタプルが入っている．
 なぜなら，直積とは集合（ドメイン）の要素のすべての組み合わせであるためである．
 インスタンスがドメインの直積の部分集合であることは，取り得るタプルの候補から実際にデータとして扱われるタプルの集合に注目していることを意味する．</p>
 <div class="admonition warning">
-<p class="admonition-title">警告</p>
+<p class="admonition-title">Warning</p>
 <h3 class="rubric" id="id6">タプルは重複が許されない</h3>
 <p>一般的に使われる表には同じ内容を表す行が複数あっても許される．
 一方，関係データモデルに基づく表は行，すなわちタプルの重複は許されない．
@@ -560,7 +560,7 @@ document.write(`
 逆に原子値で「ない」例としては，タプルや集合，関係などが挙げられる．
 ドメインとして原子値以外の値をとることを許す関係を<strong>非正規関係（unnormalized relation）</strong> と呼ぶ（ドメインに原子値しか許さない関係は<strong>正規関係</strong>）．
 逆に，ドメインとして原子値しかとらない関係を<strong>第1正規形（first normal form; 1NF）</strong> と呼ぶ．</p>
-<p>例えば，以下の図の表(a)(b)はともに商品の購買履歴を表しているが，表(a)は属性「購入品目」に集合要素が入ってしまっている（例えば，{&quot;はーいお茶&quot;, &quot;きのこの里&quot;, &quot;のど飴&quot;}）．
+<p>例えば，以下の図の表(a)(b)はともに商品の購買履歴を表しているが，表(a)は属性「購入品目」に集合要素が入ってしまっている（例えば，{“はーいお茶”, “きのこの里”, “のど飴”}）．
 表(a)の属性「購入品目」のドメインが原子値以外の値（つまり文字列の集合）を許してしまっており，表(a)は非正規関係と見なせる．</p>
 <p>一方，表(b)は表(a)の購買品目の値が原子値（文字列の集合ではなく文字列）になるようにモデル化されているため，第1正規形と見なせる．
 表(a)では1行で表現できていた1回分の購買データが，表(b)では複数行を使って表現されている．
@@ -598,7 +598,7 @@ document.write(`
 <li><p>「登録日」属性の値は<strong>必ず</strong>西暦表記の年月日集合</p></li>
 </ul>
 <p>にならなければならない．
-よって，以下の関係「商品'」は関係<span class="math notranslate nohighlight">\(商品（商品ID, 名称, 単価, 登録日）\)</span>のインスタンスには<strong>なれない</strong>．
+よって，以下の関係「商品’」は関係<span class="math notranslate nohighlight">\(商品（商品ID, 名称, 単価, 登録日）\)</span>のインスタンスには<strong>なれない</strong>．
 なぜなら，</p>
 <ul class="simple">
 <li><p>商品IDがP1の商品の登録日は年月はあるが日が抜けている</p></li>
@@ -638,8 +638,8 @@ document.write(`
 <p>例えば，上の表は，学生が履修した科目の成績をあらわす関係「履修」を表にしたものである．
 この表においては，科目IDあるいは学生IDだけでは成績が特定できないが，科目IDと学生IDが決まればある学生のある科目の成績が特定される．
 それゆえ，関係「履修」においては<code class="docutils literal notranslate"><span class="pre">{科目ID,</span> <span class="pre">学生ID}</span></code>の属性ペアが主キーとなる．</p>
-<p>関係表と主キー，候補キー，超キーの関係は，以下の図のようにまとめることができる．
-<img alt="キーの整理" src="../../_images/key-mapping.png" /></p>
+<p>関係表と主キー，候補キー，超キーの関係は，以下の図のようにまとめることができる．</p>
+<p><img alt="キーの整理" src="../../_images/key-mapping.png" /></p>
 <p>ここまで，超キー，候補キー，主キーの説明を行ったが，最後に本節の主題であるキー制約について述べる．
 <strong>キー制約（key constraint）</strong> は，関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>の関係スキーマに対して主キーが設定されたとき，<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>のインスタンスにおいては</p>
 <ul class="simple">
@@ -658,7 +658,7 @@ document.write(`
 <div><p><span class="math notranslate nohighlight">\(連絡先(\underline{学生ID}, 名前, 学年, 大学email, 自宅住所)\)</span></p>
 </div></blockquote>
 <div class="admonition important">
-<p class="admonition-title">重要</p>
+<p class="admonition-title">Important</p>
 <h3 class="rubric" id="id11">キーは関係スキーマに対して設定される</h3>
 <p>キーは，関係データベース内にあるタプル（行）だけを見て決めてはいけない．
 例えば上の例の関係「連絡先」の場合，表の見えているところだけに注目すると，属性「名前」もキーに見える．
@@ -736,6 +736,10 @@ document.write(`
 それゆえ，特に関数従属性および多値従属性については，別章で取り上げる．</p>
 </section>
 </section>
+<hr class="docutils" />
+<section id="id14">
+<h2><span class="section-number">3.4. </span>クイズ<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -773,7 +777,7 @@ document.write(`
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">前へ</p>
+        <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title"><span class="section-number">2. </span>データベースの概念</p>
       </div>
     </a>
@@ -781,7 +785,7 @@ document.write(`
        href="../sql/01.html"
        title="next page">
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">次へ</p>
+        <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">4. </span>単純質問</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
@@ -798,7 +802,7 @@ document.write(`
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> 目次
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -815,6 +819,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">3.3.4. データ従属性</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">3.4. クイズ</a></li>
 </ul>
   </nav></div>
 
