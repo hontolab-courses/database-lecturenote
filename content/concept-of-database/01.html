@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="ja" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
@@ -42,7 +42,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/documentation_options.js?v=1cf7f4d9"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -52,6 +52,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/translations.js?v=4dbe4bdc"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -59,12 +60,12 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/concept-of-database/01';</script>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
     <link rel="next" title="3. 関係データモデル" href="../relational-data-model/01.html" />
-    <link rel="prev" title="1. “データベース”を使わない世界" href="../introduction/01.html" />
+    <link rel="prev" title="1. &#34;データベース&#34;を使わない世界" href="../introduction/01.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="ja"/>
   </head>
   
   
@@ -154,9 +155,9 @@
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn navbar-btn search-button-field search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
+    <span class="search-button__default-text">検索</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
    </button>
  `);
@@ -165,7 +166,7 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">はじめに</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../introduction/01.html">1. “データベース”を使わない世界</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/01.html">1. "データベース"を使わない世界</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">データベースとは</span></p>
 <ul class="current nav bd-sidenav">
@@ -288,7 +289,7 @@
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="このページをダウンロード">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -297,7 +298,7 @@
       
       <li><a href="../../_sources/content/concept-of-database/01.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
+   title="ソースファイルをダウンロード"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -315,7 +316,7 @@
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
+  title="PDFに印刷"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -335,7 +336,7 @@
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
+  title="全画面モード"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -361,12 +362,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -382,6 +385,39 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> 目次 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.1. データベースとは</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.1.1. データ処理の際に求められる機能</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.1.1.1. 多様かつ大規模なデータの管理</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.1.1.2. データの正しさの保証</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.1.1.3. 高速で効率的なデータ処理</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.1.1.4. 同時実行（並列処理）</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.1.1.5. アクセス権限のコントロール</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.1.2. データベースを用いるメリット</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datamodeling">2.2. "データ"のモデリング</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.2.1. モデリングとは？</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">2.2.2. データモデリング</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2.2.3. 関係データモデル（導入）</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">2.3. クイズ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">2.3.1. Q1. メジャーなデータベース管理システム</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">2.3.2. Q2. 線形探索</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3">2.3.3. Q3. データベース管理システムの利用例</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-csv-tsv">2.3.4. Q4. CSV/TSVファイル</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5">2.3.5. Q5. チューリング賞</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -393,7 +429,261 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">2. </span>データベースの概念<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>後日公開予定</p>
+<p>今日，データベースは様々な業務やアプリケーションに利用されている．
+例えば，<a class="reference external" href="https://www.amazon.co.jp/">Amazon</a>や<a class="reference external" href="https://www.rakuten.co.jp/">楽天市場</a>といったオンラインショッピングサイトにおいては，購買管理や在庫管理を行うためにデータベースが用いられている．
+<a class="reference external" href="https://www.instagram.com/">Instagram</a>や<a class="reference external" href="https://www.tiktok.com/">Tiktok</a>といった，多数のユーザがコンテンツを投稿するソーシャルメディアでもデータベースは欠かせない．
+個人用ブログのような比較的小規模なアプリケーションにおいても，記事データを管理するためにデータベースが用いられる（例: <a class="reference external" href="https://ja.wordpress.org/">WordPress</a>）．
+データを語る上で，データベースはなくてはならないものである（<a class="reference internal" href="#q1"><span class="std std-ref">★Quiz 1★</span></a>）．</p>
+<p>本章では，データベースの概念を説明した後，最も代表的なデータベースであり，かつ本講義の主要テーマである<strong>関係データベース</strong> の概要について説明する．</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<h3 class="rubric" id="id2">データベースを学ばないデータサイエンティスト</h3>
+<p>データサイエンティストになりたいという学生が増えている．
+最近はデータサイエンスに関する書籍もたくさん出版されている．
+インターネット上にも有益な学習コンテンツが無料で公開されているし，<a class="reference external" href="https://www.kaggle.com/">Kaggle</a>のような学習者のモチベーションをくすぐるデータ分析のコンペティションプラットフォームもある．</p>
+<p>そういったものを活用してデータ分析技術について学習している学生の中には，機械学習や統計モデリング等の分析技術はよく知っていても，データベースのことを分かっていない学生がちらほら見かける．
+こういった人は，大規模なデータを自分で収集・整形したりすることができない．</p>
+<p>それが何が悪いのか？
+データを管理している人がきれいなデータを用意してくれればよく，データサイエンティストはデータの分析技術を極めればよいのではと思った方もいるかもしれない．
+たしかに，データ分析チームに必要なデータを用意してくれる専門家がいれば問題ない．
+しかし，データ分析基盤を用意する専門家であるデータエンジニアがチームにいるのは，データ利活用文化が浸透している先端的な組織くらいである．
+そのため，企業内にあるデータベースに格納されたデータを分析者自らが収集する必要がある．</p>
+<p>データを管理する人材が乏しくても，企業内でデータベースがきちんと整備されている場合はマシである．
+しかしながら，データ分析プロジェクトが立ち上がったものの，</p>
+<ul class="simple">
+<li><p>データ分析基盤は用意されていない</p></li>
+<li><p>分析対象となるデータも分析可能な形で整備されいない</p></li>
+</ul>
+<p>といったケースが，特に非IT企業や中小規模の組織では起こりえる（参考: 「<a class="reference external" href="https://www.kyoritsu-pub.co.jp/book/b10032587.html">データ分析失敗事例集</a>」「<a class="reference external" href="https://gihyo.jp/book/2021/978-4-297-12445-8">実践的データ基盤への処方箋</a>」）．
+データ活用人材が不足する業界においては，こういった事態を打開することが「データサイエンティスト」には（暗に）期待されている．</p>
+<p>上記のような理由から，データ分析を学ぶ学生にとって<strong>データベースを学ぶことは大い重要</strong>である．</p>
+</div>
+<section id="id3">
+<h2><span class="section-number">2.1. </span>データベースとは<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>データを収集・利用する文化が根付いてきたこともあり，データベースという言葉が市民権を得つつある．
+しかし，それが意味するものは一般人とIT屋とは大いに異なる．
+一般人にとってのデータベースとは「データの集まり」くらいの意味である．
+一方，IT屋にとってのデータベースは</p>
+<blockquote>
+<div><p>複数の応用目的での共有を意図して，組織的にかつ永続的に格納されたデータ群（<a class="reference external" href="https://www.ohmsha.co.jp/book/9784274225161/">北川博之著「データベースシステム」</a>より）</p>
+</div></blockquote>
+<p>あるいは</p>
+<blockquote>
+<div><p>データの正しさを管理する主体によって体系的に整理され，計算機によって永続的に格納されたデータの集まり（<a class="reference external" href="https://www.ohmsha.co.jp/book/9784274223730/">吉川正俊著「データベースの基礎」</a>より）</p>
+</div></blockquote>
+<p>を指す．
+特に「データの正しさを組織的に管理する」という概念が重要である．</p>
+<p>データベースを扱うためのシステムは，<strong>データベース管理システム（database management system, DBMS）</strong> と呼ばれる．
+本来データベースとはDBMSによって管理されるデータ群を指すが，DBMS（あるいはDBMSとそれによって管理されるデータ群）のことをデータベース（DB）と呼ぶこともある．</p>
+<p>増え続ける多様かつ大量のデータと付き合っていくためには，データのうまい管理・処理方法が必要になる．
+適当にデータを作ってはExcelシートやフォルダ（ディレクトリ）に突っ込んでおくというやり方は，扱うデータが増え，データを使う人やアプリが増えると破綻する．
+IT屋が考えるデータベースは，こういった事態を防ぐための強力なツールである．</p>
+<section id="id4">
+<h3><span class="section-number">2.1.1. </span>データ処理の際に求められる機能<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>日々発生する大量のデータをやりとりをうまく処理するために，以下のような要件が求められる．</p>
+<section id="id5">
+<h4><span class="section-number">2.1.1.1. </span>多様かつ大規模なデータの管理<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+<p>ビジネス等の現場では，多種多様で大量のデータが時々刻々と発生している．
+例えば，2020年12月31日までの12か月間に，Amazon.co.jpで購買された商品の数は5億点以上とされている（<a class="reference external" href="https://sell.amazon.co.jp/learn/what-is-ecommerce">出典</a>）．
+小規模な表データならExcelでも十分かもしれない．
+しかし，データの規模が大規模になり，かつ表データの登録・更新の担当者の数が増えていくと… データの管理が破綻するのは想像に難くない
+（そもそもExcelは1つの表につき100万行までしか扱えない）．
+Excelのようなスプレッドシートでは，購買データのように多様かつ大規模なデータを効率よく集積，管理するのは，到底無理である．</p>
+<p><img alt="破綻するExcel" src="../../_images/2-1.png" /></p>
+</section>
+<section id="id6">
+<h4><span class="section-number">2.1.1.2. </span>データの正しさの保証<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+<p>管理するデータが大量かつ多様になってくると，データの正しさを保つことが難しくなってくる．
+管理対象となるデータに誤りのあるデータが混入すると，大変なことになる．
+例えば，下の図のように購買データの中に</p>
+<ul class="simple">
+<li><p>あり得ない売り上げ金額が入っている</p></li>
+<li><p>入力形式が異なる日付が入っている</p></li>
+<li><p>キャンセルされたにもかかわらず，購買履歴には「購買済み」として記録が残っている</p></li>
+</ul>
+<p>といったことが起きると，オンラインショッピング事業においては一大事である．
+このようにデータ管理においては，格納されるデータの正しさ，データ間の矛盾のなさを保証する機能が求められる．</p>
+<p><img alt="あり得ないデータ" src="../../_images/2-2.png" /></p>
+</section>
+<section id="id7">
+<h4><span class="section-number">2.1.1.3. </span>高速で効率的なデータ処理<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<p>データが大量に格納できたとしても，対象となるデータを高速に処理できなければ使い物にならない．
+数百万件の書籍の情報を格納したシステムがあっても，ニーズを満たす書籍リストの検索結果を出力するのに何分もかかるシステムは使われない．
+ユーザが増えるほどシステムに対する負荷は増える．
+例えば，Amazon.co.jpでは毎分平均900個以上の商品取引が行われている（<a class="reference external" href="https://amazon-press.jp/Top-Navi/RSS/Presse-release/amazon/jp/SMB/20211005_SMB-numbers/?initialSessionID=357-7144082-6478660&amp;amp;ld=NSGoogle&amp;amp;ldStackingCodes=NSGoogle">出典</a>）．
+このように大量のデータのやりとりが発生するケースでは，データは高速に処理されることが望ましい（<a class="reference internal" href="#q2"><span class="std std-ref">★Quiz 2★</span></a>）．</p>
+<p><img alt="線形探索は大変" src="../../_images/2-3.png" /></p>
+</section>
+<section id="id8">
+<h4><span class="section-number">2.1.1.4. </span>同時実行（並列処理）<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
+<p>関連して，大勢の人が同時にデータを検索，追加，更新，削除しても，問題なく動作することも重要である．
+例えば，Xさん，Aさん，Bさんはとあるネット銀行の口座を利用しているとしよう．
+Xさんの預金額は100万円だとする．
+さて，振り込みがあった際，振込先口座の残高の計算は</p>
+<blockquote>
+<div><p>残高 = 振り込み時の「振込先口座」の残高 + 振込額</p>
+</div></blockquote>
+<p>振込元口座の残高の計算は</p>
+<blockquote>
+<div><p>残高 = 振り込み時の「振込元口座」の残高 - 振込額</p>
+</div></blockquote>
+<p>となる．当たり前の計算であるが，次のような状況を考えてみよう．
+ある日，AさんとBさんがXさんの口座に「<strong>まったく同時</strong>」に10万円送金したとする．
+この際，先の計算式をそのまま適用すると，以下の図のような処理になる．</p>
+<p><img alt="排他制御ができていない" src="../../_images/2-4.png" /></p>
+<p>2名の振り込み後のXさんの口座の残高は110万円．こんなことが起きたら大変である．
+上の処理のまずかった点は，たとえ全く同時に行われたとしても，Aさんの振り込み処理を待ってからBさんの処理を行うべきだったという点である．</p>
+<p>このようにデータ処理の種類によっては，別の処理が完了したことを保証した後に処理をすすめなければ，大惨事になる
+もし処理の途中で何らかのエラーが起きた場合は，すべての処理をキャンセルして最初の状態に戻すことが求められる．
+同時にアクセスがあった場合でも，安全にデータを処理できることも重要な要素である．</p>
+</section>
+<section id="id9">
+<h4><span class="section-number">2.1.1.5. </span>アクセス権限のコントロール<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
+<p>データによっては，誰でも閲覧してよいものもあれば，特定の立場のユーザしかアクセスできないようにすべきデータがある．
+多種多様なデータのやりとりが発生するケースでは，ユーザの種別ごとにデータの閲覧，作成，更新，削除といったアクセス権限を管理する機能が必要となる．</p>
+</section>
+</section>
+<section id="id10">
+<h3><span class="section-number">2.1.2. </span>データベースを用いるメリット<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p>一人で扱えるほどデータが小規模であれば，Excelなどのソフトウェアでデータ管理しても間に合う．
+しかし，扱うデータが多様かつ大規模になると，データ処理の質が変わるため，データ処理の方法を変える必要がある．</p>
+<p>本稿で学ぶデータベースを用いれば，<strong>データを一元管理</strong>が可能になり，データ管理・データ利活用における様々な恩恵を受けられる．
+具体的には，データベースが備える以下のような性質あるいは関連技術を用いることで，前節で述べた「データ処理に求められる要件」をクリアすることができる（<a class="reference internal" href="#q3"><span class="std std-ref">★Quiz 3★</span></a>，<a class="reference internal" href="#q4"><span class="std std-ref">★Quiz 4★</span></a>）．</p>
+<ul class="simple">
+<li><p>大規模データ管理：「<strong>物理的データ格納方式</strong>」の工夫によって対応</p></li>
+<li><p>データの正しさの管理：「<strong>一貫性制約</strong>」によって対応</p></li>
+<li><p>アクセス権限のコントロール：「<strong>ロール管理</strong>」によって対応</p></li>
+<li><p>高速で効率的なデータ処理：「<strong>インデックス</strong>」「<strong>問い合わせ最適化</strong>」などで対応</p></li>
+<li><p>同時実行，データの共同利用：「<strong>トランザクション</strong>」などで対応</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<h3 class="rubric" id="id11">データ独立化：データとアプリを切り離す</h3>
+<p>データを処理する何らかのアプリケーション（以下，アプリ）を開発する場合，データベースを使わなくても</p>
+<ul class="simple">
+<li><p>ファイルにデータを書き込むこと</p></li>
+<li><p>アプリのコードの中にデータやデータの定義，データ処理方法を埋め込むこと</p></li>
+</ul>
+<p>も考えられる．
+このようなアプローチはアプリ開発やデータ分析の初心者が陥りやすい発想である．
+処理するデータが小規模であったり，ユーザがアプリをインストールしている計算機の所有者に限定されるなどの場合は上記のような対応でもなんとかなる．
+しかし，わたし自身も経験があるが，</p>
+<ul class="simple">
+<li><p>複数のユーザに同時に利用してもらうアプリを開発する場合</p></li>
+<li><p>蓄積したデータを複数のアプリケーションで共有して使い回す場合（例：ユーザ情報をショッピングサイトやメールサイトで使い回す）</p></li>
+</ul>
+<p>データをファイルで管理したり，プログラムコードの中に埋め込む形式では，「データ処理の際に求められる機能」で述べたような不都合が生じることに気づく．</p>
+<p><img alt="DBを使ってデータとアプリを切り離す" src="../../_images/2-5.png" /></p>
+<p>データベースを使うと，アプリケーションからデータを切り離すことができる．
+データベースは<strong>データの処理・管理方法を一元化</strong>する（データの形式や処理の部分を一手に引き受ける）ことで，アプリケーションやデータ分析のコードから冗長な箇所を排除することができ，</p>
+<ul class="simple">
+<li><p>ソフトウェア開発者はアプリケーションの開発，</p></li>
+<li><p>データ分析者はデータの分析処理</p></li>
+</ul>
+<p>に集中することが可能となる．
+また，同じデータが何度も作られる，正しくないデータが作られるということも減るので，データそのものの寿命も延び，データベースの価値も高まるのである．</p>
+</div>
+</section>
+</section>
+<section id="datamodeling">
+<span id="id12"></span><h2><span class="section-number">2.2. </span>&quot;データ&quot;のモデリング<a class="headerlink" href="#datamodeling" title="Link to this heading">#</a></h2>
+<section id="id13">
+<h3><span class="section-number">2.2.1. </span>モデリングとは？<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<p>科学やビジネスの世界では，モデルあるいはモデリングという用語がしばしば登場する．
+ビジネスプロセスモデル，物理モデル，統計モデルなど，世の中には様々なモデルが存在する．
+モデルとは，複雑な仕組みや現象，状態などを表現・分析・操作しやすくするために，それらから興味のあるところ以外をそぎ落とし抽象化したものである．
+<strong>モデリング</strong>とはモデル化，つまりモデルを作る行為である．</p>
+</section>
+<section id="id14">
+<h3><span class="section-number">2.2.2. </span>データモデリング<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<p>データベースで何らかのデータを扱う際には，データをモデリングする．
+世の中に存在するデータは多種多様であり，データを統一的に整理し計算機で処理しやすい形に抽象化（モデリング）する必要がある．
+<strong>データモデリング</strong>とは，データベース化すべき情報を取捨選択し，対象データとそれに対する操作に関する枠組み（<strong>データモデル; data model</strong>）を設計する行為である．
+対象とする事象やアプリケーションに応じて適切なデータモデルを設計できれば，データモデルに従って実データを格納，操作していくことになる．</p>
+<p>一般に，データモデルは以下の要素をもつ：</p>
+<ul class="simple">
+<li><p>データの構造</p></li>
+<li><p>データの制約条件</p></li>
+<li><p>データの操作</p></li>
+</ul>
+<p>本講義の主要テーマである<strong>関係データベース</strong>は，<strong>関係データモデル（relational data model）</strong> <a class="footnote-reference brackets" href="#id23" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>にもとづいて設計されたデータベースである．
+関係データモデルの詳細については，次章以降で述べる．</p>
+<p>データベース管理システムで扱われるデータモデルとしては，関係データモデル以外にも</p>
+<ul class="simple">
+<li><p>ネットワークモデル</p></li>
+<li><p>階層型データモデル</p></li>
+<li><p>オブジェクト指向モデル</p></li>
+<li><p>キーバリュー（key-value）モデル</p></li>
+<li><p>グラフデータモデル</p></li>
+</ul>
+<p>などがある．</p>
+</section>
+<section id="id16">
+<h3><span class="section-number">2.2.3. </span>関係データモデル（導入）<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
+<p>関係データモデルは，最も代表的なデータモデルである．
+<a class="reference external" href="https://www.seas.upenn.edu/~zives/03f/cis550/codd.pdf">1970年</a>に<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%89%E3%82%AC%E3%83%BC%E3%83%BBF%E3%83%BB%E3%82%B3%E3%83%83%E3%83%89">Edgar F. Codd</a>により提案されたもので，単純ながらその背後に強力な数学的基盤をもつ（<a class="reference internal" href="#q5"><span class="std std-ref">★Quiz 5★</span></a>）．
+関係データモデルでは，あらゆるのデータを<strong>表</strong>としてモデル化する．</p>
+<p>以下の図は，関係データモデルを用いて作られた授業の履修状況・成績を管理する関係データベースの例である．
+この関係データベースには以下の3つの表<a class="footnote-reference brackets" href="#id24" id="id17" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>が存在する．</p>
+<ul class="simple">
+<li><p>学生テーブル：学籍番号，氏名，入学年度，所属といった学生に関する情報を格納</p></li>
+<li><p>科目テーブル：科目IDや科目名，開講年度といった科目に関する情報を格納</p></li>
+<li><p>履修テーブル：どの学生が何の科目を履修し，どんな成績だったかの情報を格納</p></li>
+</ul>
+<p><img alt="関係データベースの例" src="../../_images/2-6.png" /></p>
+<p>この例だけ見ると「なんだ，関係データモデルとはただの表か」と思われたかもしれないが，<strong>ただの表とは大きく異なる</strong>．
+関係データモデルで表現された（表）データは，あらかじめ定義された「データの構造」「データの制約」「データの操作」の規則に従ってデータが作られ，関係データベース内に格納される．
+例えば，規則として以下のようなものが考えられる：</p>
+<ul class="simple">
+<li><p>学生テーブルは「学生ID」「姓」「名」「入学年度」「所属」という見出しをもつ</p></li>
+<li><p>履修テーブルには，科目名，学生の氏名を格納しない</p></li>
+<li><p>履修テーブルの成績には「優」「良」「可」「不可」のいずれかしか登録できない</p></li>
+<li><p>履修テーブルに現れる科目IDおよび学生IDは，必ず学生テーブル，科目テーブルに存在する</p></li>
+<li><p>学生テーブル，科目テーブルの各テーブルには同じ科目IDは存在しない</p></li>
+</ul>
+<p>このような規則に従って，授業の履修状況や成績を管理するためのデータが複数のテーブルに分割され格納される．</p>
+<p>次章以降では，このような規則（すなわち関係データモデル）をどう設計するのか，ただの表にしか見えない関係データモデルがどのように数学的に定式化されているか，なぜ関係データモデルを用いると大規模データの管理が効率的になるか，などについて詳しく述べていく．</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id18">
+<h2><span class="section-number">2.3. </span>クイズ<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
+<section id="q1">
+<span id="id19"></span><h3><span class="section-number">2.3.1. </span>Q1. メジャーなデータベース管理システム<a class="headerlink" href="#q1" title="Link to this heading">#</a></h3>
+<p>ウェブ検索エンジンを用いて，世の中にあるメジャーなデータベース管理システムを調べよ．
+また，調べたデータベース管理システムを「関係データベースを扱うもの」とそうでないものに分類せよ．</p>
+</section>
+<section id="q2">
+<span id="id20"></span><h3><span class="section-number">2.3.2. </span>Q2. 線形探索<a class="headerlink" href="#q2" title="Link to this heading">#</a></h3>
+<p>100万個ある商品リストの中に特定の商品が含まれているかを確認したい．
+商品リストの先頭から末尾まで順に商品名を確認するとき，平均で何回（何個）の確認で商品の有無を確認できるか？</p>
+</section>
+<section id="q3">
+<span id="id21"></span><h3><span class="section-number">2.3.3. </span>Q3. データベース管理システムの利用例<a class="headerlink" href="#q3" title="Link to this heading">#</a></h3>
+<p>普段利用しているサービスのうち，データベース管理システムを用いていると思われるものを3つピックアップせよ．</p>
+</section>
+<section id="q4-csv-tsv">
+<span id="q4"></span><h3><span class="section-number">2.3.4. </span>Q4. CSV/TSVファイル<a class="headerlink" href="#q4-csv-tsv" title="Link to this heading">#</a></h3>
+<p>CSVファイルおよびTSVファイルとは何かを調べよ．
+また，（データベースと比較して）CSV/TSVファイルに存在する欠点を挙げよ．</p>
+</section>
+<section id="q5">
+<span id="id22"></span><h3><span class="section-number">2.3.5. </span>Q5. チューリング賞<a class="headerlink" href="#q5" title="Link to this heading">#</a></h3>
+<p>関係データモデルを提唱したEdgar F. Codd氏は，計算機科学分野のノーベル賞に該当するチューリング賞の受賞者である．
+Codd氏以外で，データベースに関する功績でチューリング賞を受賞した人をピックアップせよ．</p>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id23" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id15">1</a><span class="fn-bracket">]</span></span>
+<p>関係モデル（relational model）と呼ぶこともある</p>
+</aside>
+<aside class="footnote brackets" id="id24" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id17">2</a><span class="fn-bracket">]</span></span>
+<p>テーブルと呼ぶこともある</p>
+</aside>
+</aside>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -431,15 +721,15 @@ document.write(`
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>“データベース”を使わない世界</p>
+        <p class="prev-next-subtitle">前へ</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>&quot;データベース&quot;を使わない世界</p>
       </div>
     </a>
     <a class="right-next"
        href="../relational-data-model/01.html"
        title="next page">
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-subtitle">次へ</p>
         <p class="prev-next-title"><span class="section-number">3. </span>関係データモデル</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
@@ -451,7 +741,45 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目次
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.1. データベースとは</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.1.1. データ処理の際に求められる機能</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.1.1.1. 多様かつ大規模なデータの管理</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.1.1.2. データの正しさの保証</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.1.1.3. 高速で効率的なデータ処理</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.1.1.4. 同時実行（並列処理）</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.1.1.5. アクセス権限のコントロール</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.1.2. データベースを用いるメリット</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datamodeling">2.2. "データ"のモデリング</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.2.1. モデリングとは？</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">2.2.2. データモデリング</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2.2.3. 関係データモデル（導入）</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">2.3. クイズ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">2.3.1. Q1. メジャーなデータベース管理システム</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">2.3.2. Q2. 線形探索</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3">2.3.3. Q3. データベース管理システムの利用例</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-csv-tsv">2.3.4. Q4. CSV/TSVファイル</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5">2.3.5. Q5. チューリング賞</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
