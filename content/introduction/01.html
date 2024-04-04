@@ -390,9 +390,21 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1. ケース1: 販売履歴の記録をはじめる</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.1.1. 演習1-1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.1.1. 演習</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.1.1.1. データの確認</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.1.1.2. あの人は何回買い物をしている？</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#x">1.1.1.3. 商品Xを購入しているのは誰？</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.1.1.4. 総売上金額</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.1.1.5. 最も売れた商品は？</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1.2. ケース2: 認知度向上につき，得られるデータも膨大に!?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">1.2.1. 演習2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">1.3. おわりに</a></li>
 </ul>
             </nav>
         </div>
@@ -428,28 +440,95 @@ document.write(`
 <p>ところで，最近世の中では「データサイエンス」なるものが注目を集めているらしい．
 データを活かせばビジネスチャンスが広がる，とのことだ．
 山畑さんは，Excelシートに入力しつつあった販売履歴を分析してみようと思い立った．</p>
-<p>山畑さんが使っているExcelシート（purchase.xlsx）には，</p>
-<ul class="simple">
-<li><p>いつ（purchased_at列）</p></li>
-<li><p>誰が（customer列）</p></li>
-<li><p>何を（product列）</p></li>
-<li><p>いくらで（sale列）</p></li>
-</ul>
-<p>購入したかの情報が記録されている．</p>
-<p>ショッピングサイトは立ち上がったばかりであるため，Excelシートには200行しかデータが入っていないが，これからデータが貯まっていけば，売り上げを増やすための課題が見えるかもしれない．
+<p>山畑さんが使っているExcelシートには，いつ，誰が，何を，いくらで購入したかの情報が記録されている．
+ショッピングサイトは立ち上がったばかりであるため，Excelシートには200行しかデータが入っていないが，これからデータが貯まっていけば，売り上げを増やすための課題が見えるかもしれない．
 いずれがっつりとデータ分析をやるためにも，山畑さんは手持ちのデータで分析の練習をしてみることにした．</p>
 </blockquote><section id="id3">
-<h3><span class="section-number">1.1.1. </span>演習1-1<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<p><a class="reference download internal" download="" href="../../_downloads/c20d01eadea6c4812365aabc405096dc/purchase_small.xlsx"><span class="xref download myst">コチラ</span></a>をクリックして，上のケース1で山畑さんが使っていたExcelファイル<code class="docutils literal notranslate"><span class="pre">purchase_small.xlsx</span></code>をダウンロードしなさい．</p>
-<p>データベースを使わないと</p>
+<h3><span class="section-number">1.1.1. </span>演習<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<section id="id4">
+<h4><span class="section-number">1.1.1.1. </span>データの確認<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<p><a class="reference download internal" download="" href="../../_downloads/c20d01eadea6c4812365aabc405096dc/purchase_small.xlsx"><span class="xref download myst">コチラ</span></a>をクリックして，上のケース1で山畑さんが使っていたExcelファイル（<code class="docutils literal notranslate"><span class="pre">purchase_small.xlsx</span></code>）をダウンロードし，中身を確認せよ．</p>
+<p>なお，Excelシートの各列の意味は以下の通り：</p>
 <ul class="simple">
-<li><p>予想していないデータが混入する（ドメイン制約）</p></li>
-<li><p>特に更新時にデータの不整合が起きる（更新不整合）</p></li>
-<li><p>同時に書き込みがあるとおかしな古都が起きる（トランザクション）</p></li>
-<li><p>計算が遅い（インデックス）</p></li>
-<li><p>アプリケーションの寿命が短くなる（データの永続化）</p></li>
+<li><p>purchased_at: 購買（販売）日時</p></li>
+<li><p>customer: 商品を購入した人物の氏名</p></li>
+<li><p>gender: 商品を購入した人物の性別</p></li>
+<li><p>product: 購入された商品名</p></li>
+<li><p>sale: 販売価格</p></li>
 </ul>
 </section>
+<section id="id5">
+<h4><span class="section-number">1.1.1.2. </span>あの人は何回買い物をしている？<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+<p>「岡田 真綾」という人物が何回買い物をしていたかを数えよ．</p>
+</section>
+<section id="x">
+<h4><span class="section-number">1.1.1.3. </span>商品Xを購入しているのは誰？<a class="headerlink" href="#x" title="Link to this heading">#</a></h4>
+<p>Excelのオートフィルタ機能を使って，「ビタミン補助剤」を購入している人をリストアップせよ．
+オートフィルタの使い方については，<a class="reference external" href="https://support.microsoft.com/ja-jp/office/%E7%AF%84%E5%9B%B2%E3%81%BE%E3%81%9F%E3%81%AF%E8%A1%A8%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC%E5%87%A6%E7%90%86%E3%81%99%E3%82%8B-01832226-31b5-4568-8806-38c37dcc180e">コチラ</a>のリンク先を参照すること．</p>
+</section>
+<section id="id6">
+<h4><span class="section-number">1.1.1.4. </span>総売上金額<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+<p>Excel関数の<code class="docutils literal notranslate"><span class="pre">SUM</span></code>を用いて，現時点での総売上金額を計算せよ．
+<code class="docutils literal notranslate"><span class="pre">SUM</span></code>関数の使い方については，<a class="reference external" href="https://support.microsoft.com/ja-jp/office/sum-%E9%96%A2%E6%95%B0-043e1c7d-7726-4e80-8f32-07b23e057f89">コチラ</a>のリンク先を参照すること．</p>
+</section>
+<section id="id7">
+<h4><span class="section-number">1.1.1.5. </span>最も売れた商品は？<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<p>Excelの<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%83%94%E3%83%9C%E3%83%83%E3%83%88%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB">ピボットテーブル</a>機能を使って，集計期間中に</p>
+<ul class="simple">
+<li><p>最も購買階数が多かった商品</p></li>
+<li><p>最も売上金額の合計が大きかった商品</p></li>
+</ul>
+<p>のそれぞれを求めよ．
+ピボットテーブル機能の使い方については，<a class="reference external" href="https://support.microsoft.com/ja-jp/office/%E3%83%94%E3%83%9C%E3%83%83%E3%83%88%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%82%92%E4%BD%9C%E6%88%90%E3%81%97%E3%81%A6%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B7%E3%83%BC%E3%83%88-%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E5%88%86%E6%9E%90%E3%81%99%E3%82%8B-a9a84538-bfe9-40a9-a8e9-f99134456576">コチラ</a>のリンク先を参照すること．</p>
+</section>
+</section>
+</section>
+<section id="id8">
+<h2><span class="section-number">1.2. </span>ケース2: 認知度向上につき，得られるデータも膨大に!?<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p>現時点では手持ちのデータは少ないが，販売履歴データの分析に将来性を感じた山畑さん．
+販売履歴データが活用できるよう，ショッピングサイト運営により力を入れようと決意したのであった．</p>
+<p>以下は，山畑さんのその後の話（架空の話）である．</p>
+<blockquote>
+ショッピングサイト立ち上げ以降，順調に利用者数も増えていった．
+やはりメディアに取り上げられたのが大きかったのだろう．
+あのタイミングで認知度が一気に上がり，サイト利用頻度も加速度的に増えていった．
+それに伴い，サイト運営に関わるスタッフも増員した．
+<p>販売履歴の管理は当初山畑さんが一人で担当していたが，さすがに一人では捌ききれなくなった．
+そこで，ある時点から数名体制で販売履歴の記録をすることになった．
+これまで販売履歴の管理に使ってきたExcelシートをクラウドストレージに置き，
+販売履歴記録のスタッフのPC間で同期を取るようにした．
+こうすることで，同じExcelファイルの上で記録をつけられるようにしたのである．</p>
+<p>2年後．
+サイト事業も軌道に乗った．
+十分に販売履歴データが蓄積されたと判断した山畑さんは，いよいよ大規模に販売履歴データを分析しようと思った．
+立ち上げ当初は200-300行しかなかったExcelシートであったが，シートを開き行数を数えてみると…
+なんとその数90万行以上!
+データの数に小躍りした山畑さんは，早速Excelシートでの分析に詳しいスタッフと一緒にデータ分析に取りかかったのであった．</p>
+</blockquote><section id="id9">
+<h3><span class="section-number">1.2.1. </span>演習2<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p><a class="reference download internal" download="" href="../../_downloads/5e173d8b61abfb1eee0a2e24080b4bfd/purchase_large.xlsx"><span class="xref download myst">コチラ</span></a>をクリックして，上のケース2で山畑さんが分析しようとしているExcelファイル<code class="docutils literal notranslate"><span class="pre">purchase_large.xlsx</span></code>をダウンロードせよ．
+またダウンロードしたファイルを用いて下記課題（演習1と同じ）に取り組み，データ分析上の課題（困ったこと）を議論せよ．
+もし，<code class="docutils literal notranslate"><span class="pre">purchase_large.xlsx</span></code>ファイルがうまく開けない場合は，<a class="reference download internal" download="" href="../../_downloads/3c9d29321e8179538801bdc39db7bd55/purchase_medium.xlsx"><span class="xref download myst">コチラ</span></a>からダウンロードできる<code class="docutils literal notranslate"><span class="pre">purchase_medium.xlsx</span></code>を用いよ．
+なお，ダウンロードできるExcelシートの構造はケース1で用いた<code class="docutils literal notranslate"><span class="pre">purchase_small.xlsx</span></code>と同じである．</p>
+<ul class="simple">
+<li><p>「岡田 真綾」という人物が何回買い物をしていたかを数えよ</p></li>
+<li><p>「ビタミン補助剤」を購入している人をリストアップせよ</p></li>
+<li><p>総売上金額を計算せよ</p></li>
+<li><p>集計期間中に「最も購買階数が多かった商品」「最も売上金額の合計が大きかった商品」を求めよ</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id10">
+<h2><span class="section-number">1.3. </span>おわりに<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<p>ケース1および2で用いたExcelファイルは販売履歴データの集まりであった．
+一般的な認識からすると「データベース」ということになるだろう．</p>
+<p>ところで，上記演習（特にケース2）に取り組んでみてイライラしなかっただろうか？
+数万件，数十万件ある表データをExcelで扱おうとすると，色々な不都合が生じる．
+これは，Excelが個人用の表計算アプリケーションであって，大規模データの管理や処理を想定していないからである．
+では，大規模なデータを管理・処理するためにはどうすればよいだろうか？
+そのための技術こそが「データベース」である．</p>
+<p>以降，本講義では<strong>大規模データを効率よく管理・処理するための技術である「データベース」技術</strong> について学習する．</p>
 </section>
 </section>
 
@@ -518,9 +597,21 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1. ケース1: 販売履歴の記録をはじめる</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.1.1. 演習1-1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.1.1. 演習</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.1.1.1. データの確認</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.1.1.2. あの人は何回買い物をしている？</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#x">1.1.1.3. 商品Xを購入しているのは誰？</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.1.1.4. 総売上金額</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.1.1.5. 最も売れた商品は？</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1.2. ケース2: 認知度向上につき，得られるデータも膨大に!?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">1.2.1. 演習2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">1.3. おわりに</a></li>
 </ul>
   </nav></div>
 
