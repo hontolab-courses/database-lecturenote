@@ -40,12 +40,7 @@ parse:
   myst_url_schemes: [mailto, http, https] # URI schemes that will be recognised as external URLs in Markdown links
   myst_dmath_double_inline: true  # Allow display math ($$) within an inline context
 
-#######################################################################################
-# LaTeX-specific settings
-latex:
-  latex_engine: lualatex
-  latex_documents:
-    targetname: database-lecture.tex
+
 
 #######################################################################################
 # Add a bibtex file so that we can create citations
@@ -76,13 +71,23 @@ html:
     hypothesis              : false
     utterances              : false
 
-
 sphinx:
   config:
-    language: en
+    language: ja
     html_show_copyright: false
     bibtex_reference_style: author_year
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js
+    latex_toplevel_sectioning: section
+    #latex_elements:
+      #polyglossia: ''
+
+#######################################################################################
+# LaTeX-specific settings
+latex:
+  latex_engine: lualatex
+  latex_documents:
+    targetname: database-lecture.tex
+  latex_table_style: booktabs
 
 
 #######################################################################################
