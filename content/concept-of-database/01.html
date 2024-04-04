@@ -433,7 +433,7 @@ document.write(`
 例えば，<a class="reference external" href="https://www.amazon.co.jp/">Amazon</a>や<a class="reference external" href="https://www.rakuten.co.jp/">楽天市場</a>といったオンラインショッピングサイトにおいては，購買管理や在庫管理を行うためにデータベースが用いられている．
 <a class="reference external" href="https://www.instagram.com/">Instagram</a>や<a class="reference external" href="https://www.tiktok.com/">Tiktok</a>といった，多数のユーザがコンテンツを投稿するソーシャルメディアでもデータベースは欠かせない．
 個人用ブログのような比較的小規模なアプリケーションにおいても，記事データを管理するためにデータベースが用いられる（例: <a class="reference external" href="https://ja.wordpress.org/">WordPress</a>）．
-データを語る上で，データベースはなくてはならないものである（<a class="reference internal" href="../misc/math.html#q1"><span class="std std-ref">★Quiz 1★</span></a>）．</p>
+データを語る上で，データベースはなくてはならないものである（<a class="reference internal" href="#q2-1"><span class="std std-ref">★Quiz 1★</span></a>）．</p>
 <p>本章では，データベースの概念を説明した後，最も代表的なデータベースであり，かつ本講義の主要テーマである<strong>関係データベース</strong> の概要について説明する．</p>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
@@ -511,7 +511,7 @@ Excelのようなスプレッドシートでは，購買データのように多
 数百万件の書籍の情報を格納したシステムがあっても，ニーズを満たす書籍リストの検索結果を出力するのに何分もかかるシステムは使われない．
 ユーザが増えるほどシステムに対する負荷は増える．
 例えば，Amazon.co.jpでは毎分平均900個以上の商品取引が行われている（<a class="reference external" href="https://amazon-press.jp/Top-Navi/RSS/Presse-release/amazon/jp/SMB/20211005_SMB-numbers/?initialSessionID=357-7144082-6478660&amp;amp;ld=NSGoogle&amp;amp;ldStackingCodes=NSGoogle">出典</a>）．
-このように大量のデータのやりとりが発生するケースでは，データは高速に処理されることが望ましい（<a class="reference internal" href="../misc/math.html#q2"><span class="std std-ref">★Quiz 2★</span></a>）．</p>
+このように大量のデータのやりとりが発生するケースでは，データは高速に処理されることが望ましい（<a class="reference internal" href="#q2-2"><span class="std std-ref">★Quiz 2★</span></a>）．</p>
 <p><img alt="線形探索は大変" src="../../_images/2-3.png" /></p>
 </section>
 <section id="id8">
@@ -548,7 +548,7 @@ Xさんの預金額は100万円だとする．
 <p>一人で扱えるほどデータが小規模であれば，Excelなどのソフトウェアでデータ管理しても間に合う．
 しかし，扱うデータが多様かつ大規模になると，データ処理の質が変わるため，データ処理の方法を変える必要がある．</p>
 <p>本稿で学ぶデータベースを用いれば，<strong>データを一元管理</strong>が可能になり，データ管理・データ利活用における様々な恩恵を受けられる．
-具体的には，データベースが備える以下のような性質あるいは関連技術を用いることで，前節で述べた「データ処理に求められる要件」をクリアすることができる（<a class="reference internal" href="../misc/math.html#q3"><span class="std std-ref">★Quiz 3★</span></a>，<a class="reference internal" href="../misc/math.html#q4"><span class="std std-ref">★Quiz 4★</span></a>）．</p>
+具体的には，データベースが備える以下のような性質あるいは関連技術を用いることで，前節で述べた「データ処理に求められる要件」をクリアすることができる（<a class="reference internal" href="#q2-3"><span class="std std-ref">★Quiz 3★</span></a>，<a class="reference internal" href="#q2-4"><span class="std std-ref">★Quiz 4★</span></a>）．</p>
 <ul class="simple">
 <li><p>大規模データ管理：「<strong>物理的データ格納方式</strong>」の工夫によって対応</p></li>
 <li><p>データの正しさの管理：「<strong>一貫性制約</strong>」によって対応</p></li>
@@ -606,7 +606,7 @@ Xさんの預金額は100万円だとする．
 <li><p>データの制約条件</p></li>
 <li><p>データの操作</p></li>
 </ul>
-<p>本講義の主要テーマである<strong>関係データベース</strong>は，<strong>関係データモデル（relational data model）</strong> <a class="footnote-reference brackets" href="#id23" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>にもとづいて設計されたデータベースである．
+<p>本講義の主要テーマである<strong>関係データベース</strong>は，<strong>関係データモデル（relational data model）</strong> <a class="footnote-reference brackets" href="#id19" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>にもとづいて設計されたデータベースである．
 関係データモデルの詳細については，次章以降で述べる．</p>
 <p>データベース管理システムで扱われるデータモデルとしては，関係データモデル以外にも</p>
 <ul class="simple">
@@ -621,10 +621,10 @@ Xさんの預金額は100万円だとする．
 <section id="id16">
 <h3><span class="section-number">2.2.3. </span>関係データモデル（導入）<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
 <p>関係データモデルは，最も代表的なデータモデルである．
-<a class="reference external" href="https://www.seas.upenn.edu/~zives/03f/cis550/codd.pdf">1970年</a>に<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%89%E3%82%AC%E3%83%BC%E3%83%BBF%E3%83%BB%E3%82%B3%E3%83%83%E3%83%89">Edgar F. Codd</a>により提案されたもので，単純ながらその背後に強力な数学的基盤をもつ（<a class="reference internal" href="../misc/math.html#q5"><span class="std std-ref">★Quiz 5★</span></a>）．
+<a class="reference external" href="https://www.seas.upenn.edu/~zives/03f/cis550/codd.pdf">1970年</a>に<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%89%E3%82%AC%E3%83%BC%E3%83%BBF%E3%83%BB%E3%82%B3%E3%83%83%E3%83%89">Edgar F. Codd</a>により提案されたもので，単純ながらその背後に強力な数学的基盤をもつ（<a class="reference internal" href="#q2-5"><span class="std std-ref">★Quiz 5★</span></a>）．
 関係データモデルでは，あらゆるのデータを<strong>表</strong>としてモデル化する．</p>
 <p>以下の図は，関係データモデルを用いて作られた授業の履修状況・成績を管理する関係データベースの例である．
-この関係データベースには以下の3つの表<a class="footnote-reference brackets" href="#id24" id="id17" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>が存在する．</p>
+この関係データベースには以下の3つの表<a class="footnote-reference brackets" href="#id20" id="id17" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>が存在する．</p>
 <ul class="simple">
 <li><p>学生テーブル：学籍番号，氏名，入学年度，所属といった学生に関する情報を格納</p></li>
 <li><p>科目テーブル：科目IDや科目名，開講年度といった科目に関する情報を格納</p></li>
@@ -649,35 +649,35 @@ Xさんの預金額は100万円だとする．
 <section id="id18">
 <h2><span class="section-number">2.3. </span>クイズ<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
 <section id="q1">
-<span id="id19"></span><h3><span class="section-number">2.3.1. </span>Q1. メジャーなデータベース管理システム<a class="headerlink" href="#q1" title="Link to this heading">#</a></h3>
+<span id="q2-1"></span><h3><span class="section-number">2.3.1. </span>Q1. メジャーなデータベース管理システム<a class="headerlink" href="#q1" title="Link to this heading">#</a></h3>
 <p>ウェブ検索エンジンを用いて，世の中にあるメジャーなデータベース管理システムを調べよ．
 また，調べたデータベース管理システムを「関係データベースを扱うもの」とそうでないものに分類せよ．</p>
 </section>
 <section id="q2">
-<span id="id20"></span><h3><span class="section-number">2.3.2. </span>Q2. 線形探索<a class="headerlink" href="#q2" title="Link to this heading">#</a></h3>
+<span id="q2-2"></span><h3><span class="section-number">2.3.2. </span>Q2. 線形探索<a class="headerlink" href="#q2" title="Link to this heading">#</a></h3>
 <p>100万個ある商品リストの中に特定の商品が含まれているかを確認したい．
 商品リストの先頭から末尾まで順に商品名を確認するとき，平均で何回（何個）の確認で商品の有無を確認できるか？</p>
 </section>
 <section id="q3">
-<span id="id21"></span><h3><span class="section-number">2.3.3. </span>Q3. データベース管理システムの利用例<a class="headerlink" href="#q3" title="Link to this heading">#</a></h3>
+<span id="q2-3"></span><h3><span class="section-number">2.3.3. </span>Q3. データベース管理システムの利用例<a class="headerlink" href="#q3" title="Link to this heading">#</a></h3>
 <p>普段利用しているサービスのうち，データベース管理システムを用いていると思われるものを3つピックアップせよ．</p>
 </section>
 <section id="q4-csv-tsv">
-<span id="q4"></span><h3><span class="section-number">2.3.4. </span>Q4. CSV/TSVファイル<a class="headerlink" href="#q4-csv-tsv" title="Link to this heading">#</a></h3>
+<span id="q2-4"></span><h3><span class="section-number">2.3.4. </span>Q4. CSV/TSVファイル<a class="headerlink" href="#q4-csv-tsv" title="Link to this heading">#</a></h3>
 <p>CSVファイルおよびTSVファイルとは何かを調べよ．
 また，（データベースと比較して）CSV/TSVファイルに存在する欠点を挙げよ．</p>
 </section>
 <section id="q5">
-<span id="id22"></span><h3><span class="section-number">2.3.5. </span>Q5. チューリング賞<a class="headerlink" href="#q5" title="Link to this heading">#</a></h3>
+<span id="q2-5"></span><h3><span class="section-number">2.3.5. </span>Q5. チューリング賞<a class="headerlink" href="#q5" title="Link to this heading">#</a></h3>
 <p>関係データモデルを提唱したEdgar F. Codd氏は，計算機科学分野のノーベル賞に該当するチューリング賞の受賞者である．
 Codd氏以外で，データベースに関する功績でチューリング賞を受賞した人をピックアップせよ．</p>
 <hr class="footnotes docutils" />
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id23" role="doc-footnote">
+<aside class="footnote brackets" id="id19" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id15">1</a><span class="fn-bracket">]</span></span>
 <p>関係モデル（relational model）と呼ぶこともある</p>
 </aside>
-<aside class="footnote brackets" id="id24" role="doc-footnote">
+<aside class="footnote brackets" id="id20" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id17">2</a><span class="fn-bracket">]</span></span>
 <p>テーブルと呼ぶこともある</p>
 </aside>
