@@ -433,7 +433,7 @@ document.write(`
 例えば，<a class="reference external" href="https://www.amazon.co.jp/">Amazon</a>や<a class="reference external" href="https://www.rakuten.co.jp/">楽天市場</a>といったオンラインショッピングサイトにおいては，購買管理や在庫管理を行うためにデータベースが用いられている．
 <a class="reference external" href="https://www.instagram.com/">Instagram</a>や<a class="reference external" href="https://www.tiktok.com/">Tiktok</a>といった，多数のユーザがコンテンツを投稿するソーシャルメディアでもデータベースは欠かせない．
 個人用ブログのような比較的小規模なアプリケーションにおいても，記事データを管理するためにデータベースが用いられる（例: <a class="reference external" href="https://ja.wordpress.org/">WordPress</a>）．
-データを語る上で，データベースはなくてはならないものである（<a class="reference internal" href="#q1"><span class="std std-ref">★Quiz 1★</span></a>）．</p>
+データを語る上で，データベースはなくてはならないものである（<a class="reference internal" href="../misc/math.html#q1"><span class="std std-ref">★Quiz 1★</span></a>）．</p>
 <p>本章では，データベースの概念を説明した後，最も代表的なデータベースであり，かつ本講義の主要テーマである<strong>関係データベース</strong> の概要について説明する．</p>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
@@ -511,7 +511,7 @@ Excelのようなスプレッドシートでは，購買データのように多
 数百万件の書籍の情報を格納したシステムがあっても，ニーズを満たす書籍リストの検索結果を出力するのに何分もかかるシステムは使われない．
 ユーザが増えるほどシステムに対する負荷は増える．
 例えば，Amazon.co.jpでは毎分平均900個以上の商品取引が行われている（<a class="reference external" href="https://amazon-press.jp/Top-Navi/RSS/Presse-release/amazon/jp/SMB/20211005_SMB-numbers/?initialSessionID=357-7144082-6478660&amp;amp;ld=NSGoogle&amp;amp;ldStackingCodes=NSGoogle">出典</a>）．
-このように大量のデータのやりとりが発生するケースでは，データは高速に処理されることが望ましい（<a class="reference internal" href="#q2"><span class="std std-ref">★Quiz 2★</span></a>）．</p>
+このように大量のデータのやりとりが発生するケースでは，データは高速に処理されることが望ましい（<a class="reference internal" href="../misc/math.html#q2"><span class="std std-ref">★Quiz 2★</span></a>）．</p>
 <p><img alt="線形探索は大変" src="../../_images/2-3.png" /></p>
 </section>
 <section id="id8">
@@ -548,7 +548,7 @@ Xさんの預金額は100万円だとする．
 <p>一人で扱えるほどデータが小規模であれば，Excelなどのソフトウェアでデータ管理しても間に合う．
 しかし，扱うデータが多様かつ大規模になると，データ処理の質が変わるため，データ処理の方法を変える必要がある．</p>
 <p>本稿で学ぶデータベースを用いれば，<strong>データを一元管理</strong>が可能になり，データ管理・データ利活用における様々な恩恵を受けられる．
-具体的には，データベースが備える以下のような性質あるいは関連技術を用いることで，前節で述べた「データ処理に求められる要件」をクリアすることができる（<a class="reference internal" href="#q3"><span class="std std-ref">★Quiz 3★</span></a>，<a class="reference internal" href="#q4"><span class="std std-ref">★Quiz 4★</span></a>）．</p>
+具体的には，データベースが備える以下のような性質あるいは関連技術を用いることで，前節で述べた「データ処理に求められる要件」をクリアすることができる（<a class="reference internal" href="../misc/math.html#q3"><span class="std std-ref">★Quiz 3★</span></a>，<a class="reference internal" href="../misc/math.html#q4"><span class="std std-ref">★Quiz 4★</span></a>）．</p>
 <ul class="simple">
 <li><p>大規模データ管理：「<strong>物理的データ格納方式</strong>」の工夫によって対応</p></li>
 <li><p>データの正しさの管理：「<strong>一貫性制約</strong>」によって対応</p></li>
@@ -621,7 +621,7 @@ Xさんの預金額は100万円だとする．
 <section id="id16">
 <h3><span class="section-number">2.2.3. </span>関係データモデル（導入）<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
 <p>関係データモデルは，最も代表的なデータモデルである．
-<a class="reference external" href="https://www.seas.upenn.edu/~zives/03f/cis550/codd.pdf">1970年</a>に<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%89%E3%82%AC%E3%83%BC%E3%83%BBF%E3%83%BB%E3%82%B3%E3%83%83%E3%83%89">Edgar F. Codd</a>により提案されたもので，単純ながらその背後に強力な数学的基盤をもつ（<a class="reference internal" href="#q5"><span class="std std-ref">★Quiz 5★</span></a>）．
+<a class="reference external" href="https://www.seas.upenn.edu/~zives/03f/cis550/codd.pdf">1970年</a>に<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%89%E3%82%AC%E3%83%BC%E3%83%BBF%E3%83%BB%E3%82%B3%E3%83%83%E3%83%89">Edgar F. Codd</a>により提案されたもので，単純ながらその背後に強力な数学的基盤をもつ（<a class="reference internal" href="../misc/math.html#q5"><span class="std std-ref">★Quiz 5★</span></a>）．
 関係データモデルでは，あらゆるのデータを<strong>表</strong>としてモデル化する．</p>
 <p>以下の図は，関係データモデルを用いて作られた授業の履修状況・成績を管理する関係データベースの例である．
 この関係データベースには以下の3つの表<a class="footnote-reference brackets" href="#id24" id="id17" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>が存在する．</p>
