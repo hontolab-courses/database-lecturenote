@@ -34,3 +34,21 @@ $ ghp-import -n -p -f _build/html --cname=database-lecture.hontolab.org
 
 ### MyST Markdown
 使用頻度の高いのは[Directives](https://qiita.com/magolors/items/620860558661b527f267)（コンテンツブロック作成機能）．
+
+
+### ページ内リンク
+
+あるセクションにページ内リンクで飛べるようにするには，以下のようにアンカー用ラベルを張る．
+`anchor-label`のところにアンカー用ラベルを記す．
+
+```
+
+(anchor-label)=
+# セクション名
+xxxxx
+
+```
+
+いったんアンカーを張れば，`[アンカーテキスト名](#anchor-label)`でリンクを作れる．
+なお`(#anchor-label)`の箇所は，どんなに対象セクションが深くても`#`の数は1つにすること．
+
