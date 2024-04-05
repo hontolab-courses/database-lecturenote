@@ -711,7 +711,7 @@ document.write(`
 <p>紐付いていることが分かる．
 言い方を変えると，関係「履修」は属性「学生ID」および「科目ID」の値を通して，関係「学生」および「科目」の情報を参照していることになる．</p>
 <p>このように，関係スキーマ<span class="math notranslate nohighlight">\(\boldsymbol{R_1}(..., FK, ...)\)</span>と<span class="math notranslate nohighlight">\(\boldsymbol{R_2}(\underline{PK}, ...)\)</span>が与えられ，<span class="math notranslate nohighlight">\(R_1\)</span>におけるタプルの属性<span class="math notranslate nohighlight">\(fk\)</span>の値が必ず<span class="math notranslate nohighlight">\(R_2\)</span>におけるいずれかのタプルの主キー<span class="math notranslate nohighlight">\(PK\)</span>の値と一致しているとき，<span class="math notranslate nohighlight">\(R_1\)</span>の属性<span class="math notranslate nohighlight">\(FK\)</span>を<strong>外部キー（foreign key）</strong> と呼ぶ．
-先の例では，関係<code class="docutils literal notranslate"><span class="pre">履修</span></code>の属性「学生ID」および「科目ID」が外部キーとなる（<a class="reference internal" href="#rdm-q8">★Quiz8★</a>）．</p>
+先の例では，関係「履修」の属性「学生ID」および「科目ID」が外部キーとなる（<a class="reference internal" href="#rdm-q8">★Quiz8★</a>）．</p>
 <p>前置きが長くなったが，本節のテーマである<strong>参照制約（referential constraint）</strong> とは「関係スキーマにおいて外部キーが設定されたとき，そのいかなるインスタンスも上記外部キーの条件を満たさなければいけない」という制約である．</p>
 </section>
 <section id="id13">
@@ -794,7 +794,7 @@ document.write(`
 </section>
 <section id="q7">
 <span id="rdm-q"></span><h3><span class="section-number">3.4.7. </span>Q7. 主キー<a class="headerlink" href="#q7" title="Link to this heading">#</a></h3>
-<p>以下の表<code class="docutils literal notranslate"><span class="pre">会員管理</span></code>において，想定される主キーは何か．</p>
+<p>以下の表「会員管理」において，想定される主キーは何か．</p>
 <p><img alt="会員管理テーブル" src="../../_images/q7.png" /></p>
 </section>
 <section id="q8">
