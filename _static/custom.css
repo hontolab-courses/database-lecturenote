@@ -1,0 +1,60 @@
+@font-face {
+    font-family: JuliaMono-Regular;
+    src: url("https://cdn.jsdelivr.net/gh/cormullion/juliamono/webfonts/JuliaMono-Regular.woff2");
+}
+
+.bd-sidebar h1.site-logo{
+   font-size:0!important;
+}
+
+nav.bd-links p.caption {
+    font-size: 1.1em!important;
+}
+
+h1 {
+    font-size: 2em!important;
+}
+
+h2 {
+    font-size: 1.7em!important;
+}
+
+.utterances {
+  margin-left: inherit!important;
+}
+
+body img {
+  display: block;
+  margin: auto;
+}
+
+
+.bd-content .section table {
+    overflow-y: hidden;
+}
+
+.table td > p{
+  margin-bottom: 0;
+}
+
+.table th > p{
+  margin-bottom: 0;
+}
+
+.table thead th > p{
+  margin-bottom: 0;
+}
+
+img {
+	margin-bottom: 1rem;
+}
+
+@media print {
+	#t-skip-link {
+		display: none;
+    }
+
+	.bd-toc {
+        visibility: hidden;
+    }
+}
