@@ -54,6 +54,10 @@ img {
 		display: none;
     }
 
+	#pst-skip-link {
+		display: none;
+	}
+
 	.bd-toc {
         visibility: hidden;
     }
