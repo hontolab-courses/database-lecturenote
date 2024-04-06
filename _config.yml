@@ -41,19 +41,23 @@ parse:
   myst_dmath_double_inline: true  # Allow display math ($$) within an inline context
 
 
+#######################################################################################
+# LaTeX-specific settings
+latex:
+  latex_engine: lualatex
+  latex_documents:
+    targetname: database-lecture.tex
 
 #######################################################################################
 # Add a bibtex file so that we can create citations
 # bibtex_bibfiles:
 #   - references.bib
 
-
 #######################################################################################
 repository:
   url: https://github.com/hontolab-courses/database-lecturenote  # Online location of your book
   #path_to_book: docs  # Optional path to your book, relative to the repository root
   branch: main  # Which branch of the repository should be used when creating links (optional)
-
 
 #######################################################################################
 # HTML-specific settings
@@ -66,7 +70,7 @@ html:
   #extra_footer              : ""  # Will be displayed underneath the footer.
   google_analytics_id       : ""  # A GA id that can be used to track book views.
   home_page_in_navbar       : false  # Whether to include your home page in the left Navigation Bar
-  baseurl                   : ""  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
+  baseurl                   : "https://database-lecture.hontolab.org/"  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
   comments:
     hypothesis              : false
     utterances              : false
@@ -77,17 +81,14 @@ sphinx:
     html_show_copyright: false
     bibtex_reference_style: author_year
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js
-    latex_toplevel_sectioning: section
-    #latex_elements:
-      #polyglossia: ''
+    # latex_table_style: booktabs
+    # latex_toplevel_sectioning: section
+    # latex_elements:
+    #   polyglossia: false
+    # latex_docclass:
+    #   manual: ltjsbook
 
-#######################################################################################
-# LaTeX-specific settings
-latex:
-  latex_engine: lualatex
-  latex_documents:
-    targetname: database-lecture.tex
-  latex_table_style: booktabs
+
 
 
 #######################################################################################
