@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: データベース
+title: データベースの講義ノート
 author: ''
 copyright: "2024- by 山本 祐輔 (Yusuke YAMAMOTO)"
 exclude_patterns: [_build, material, pdf, README.md, .DS_Store]
