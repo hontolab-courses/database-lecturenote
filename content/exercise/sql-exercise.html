@@ -441,7 +441,7 @@ document.write(`
 ノックの数は合計<strong>25</strong>である．
 どのノックも前章までに解説した内容に即したものになっている．
 適宜過去資料を振り返りながら，各ノックに取り組むこと．</p>
-<p>なお，演習を始める前に，必ず以下のコードを実行すること．
+<p>なお，演習を始める前に，必ずJupyter Notebookもしくは<a class="reference internal" href="../misc/how-to-execute-sql.html"><span class="std std-doc">Google Colaboratory</span></a>上で以下のコードを実行すること．
 演習で用いるSQLiteデータ（<code class="docutils literal notranslate"><span class="pre">virtual_store.db</span></code>）のダウンロード，およびSQLiteの実行環境設定を自動で済ませることができる．</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
@@ -451,6 +451,8 @@ document.write(`
 <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;data/virtual_store.db&#39;</span><span class="p">):</span>
     <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="o">!</span>wget<span class="w"> </span>-P<span class="w"> </span>data<span class="w"> </span>https://github.com/hontolab-courses/database-lecturenote/raw/main/content/exercise/data/virtual_store.db
+
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>jupysql
 
 <span class="o">%</span><span class="k">load_ext</span> sql
 <span class="o">%</span><span class="k">config</span> SqlMagic.feedback = 0
