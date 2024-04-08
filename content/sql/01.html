@@ -2860,7 +2860,7 @@ SQLに実装されている代表的な集約関数は以下の通りである�
 <li><p><code class="docutils literal notranslate"><span class="pre">COUNT</span></code>: 行数のカウント</p></li>
 </ul>
 <p>関数の引数には計算に用いたい列名などを指定する．
-（<a class="reference internal" href="#%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E5%8C%96%E3%81%AB%E3%82%88%E3%82%8B%E9%9B%86%E7%B4%84%E6%BC%94%E7%AE%97%EF%BC%88GROUP-BY%EF%BC%89"><span class="xref myst">次節</span></a>で解説する<code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code>句を用いない場合）集計関数は，<strong><code class="docutils literal notranslate"><span class="pre">WHERE</span></code>句までで絞り込まれたレコード全体を1つのグループと見なして</strong> 集計処理を行う．</p>
+（<a class="reference internal" href="#section-group-by">次節</a>で解説する<code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code>句を用いない場合）集計関数は，<strong><code class="docutils literal notranslate"><span class="pre">WHERE</span></code>句までで絞り込まれたレコード全体を1つのグループと見なして</strong> 集計処理を行う．</p>
 <p>例えば，<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルから調査年度が2021年度のレコードだけに限定して，各都道府県の総人口の合計値を計算するSQL文は以下となる．</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
 <span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="err">総人口</span><span class="p">)</span>
@@ -2992,8 +2992,8 @@ SQLに実装されている代表的な集約関数は以下の通りである�
 </div>
 </section>
 <section id="group-by">
-<h2><span class="section-number">4.7. </span>グループ化による集約演算（GROUP BY）<a class="headerlink" href="#group-by" title="Link to this heading">#</a></h2>
-<p><a class="reference internal" href="#%E9%9B%86%E7%B4%84%E9%96%A2%E6%95%B0"><span class="xref myst">前節</span></a>で解説した集約のためのSQL文は，<code class="docutils literal notranslate"><span class="pre">WHERE</span></code>句で絞り込まれたレコード全体に対して集計操作を行うものであった．
+<span id="section-group-by"></span><h2><span class="section-number">4.7. </span>グループ化による集約演算（GROUP BY）<a class="headerlink" href="#group-by" title="Link to this heading">#</a></h2>
+<p>前節までで解説した集約のためのSQL文は，<code class="docutils literal notranslate"><span class="pre">WHERE</span></code>句で絞り込まれたレコード全体に対して集計操作を行うものであった．
 しかし実際にデータ分析を行う場合，レコード全体での集計にとどまらず，ある基準でまとめられたグループごとに集計を行うことも少なくない．
 <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code>句はグループごとに集約演算を行うための機能である．</p>
 <p>「<code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code>句 + 列名」の形式で指定をすると，指定された列名について同じ値をもつレコードが1つのグループにまとめられた<strong>グループ表</strong>が（ユーザには見えない形で）一時的に作成される．
