@@ -21,14 +21,11 @@ parts:
     - file: content/sql/01.ipynb
     - file: content/sql/02.ipynb
     - file: content/sql/03.ipynb
-- caption: 演習1
-  numbered: True
-  chapters:
-    - file: content/sql/exercise1.ipynb
-- caption: 関係モデルの操作体系
-  numbered: True
-  chapters:
-    - file: content/relational-algebra/01.ipynb
+    - file: content/exercise/sql-exercise.ipynb
+#- caption: 関係モデルの操作体系
+#  numbered: True
+#  chapters:
+#    - file: content/relational-algebra/01.ipynb
 - caption: データベース設計
   numbered: True
   chapters:
@@ -37,7 +34,8 @@ parts:
     - file: content/er-model/03.ipynb
     - file: content/db-design/01.ipynb
     - file: content/db-design/02.ipynb
-- caption: 索引づけ & トランザクション
+    - file: content/exercise/db-design-exercise.md
+- caption: 索引づけ
   numbered: True
   chapters:
     - file: content/indexing-and-transaction/01.ipynb
@@ -49,5 +47,6 @@ parts:
   numbered: False
   chapters:
     - file: content/misc/math.ipynb
+    - file: content/misc/how-to-execute-sql.ipynb
     - file: content/misc/drawio.md
     - file: content/reference.md
