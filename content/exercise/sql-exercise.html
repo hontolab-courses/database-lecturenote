@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>11. 正規形 &#8212; データベースの講義ノート</title>
+    <title>7. SQL演習 &#8212; データベースの講義ノート</title>
   
   
   
@@ -58,12 +58,12 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/db-design/01';</script>
-    <link rel="canonical" href="https://database-lecture.hontolab.org/content/db-design/01.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/exercise/sql-exercise';</script>
+    <link rel="canonical" href="https://database-lecture.hontolab.org/content/exercise/sql-exercise.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="12. 分解" href="02.html" />
-    <link rel="prev" title="10. 拡張実体関連モデル &amp; n項関連" href="../er-model/03.html" />
+    <link rel="next" title="8. 実体関連モデルとは" href="../er-model/01.html" />
+    <link rel="prev" title="6. 副問い合わせ &amp; テーブルの定義と更新" href="../sql/03.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -183,20 +183,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../sql/03.html">6. 副問い合わせ &amp; テーブルの定義と更新</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">演習1</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../exercise/sql-exercise.html">7. SQL演習</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. SQL演習</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">データベース設計</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../er-model/01.html">8. 実体関連モデルとは</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../er-model/02.html">9. 実体関連モデル上の一貫性制約</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../er-model/03.html">10. 拡張実体関連モデル &amp; n項関連</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. 正規形</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02.html">12. 分解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">11. 正規形</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">12. 分解</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">演習2</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../exercise/db-design-exercise.html">13. データベース設計演習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db-design-exercise.html">13. データベース設計演習</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">索引づけ</span></p>
 <ul class="nav bd-sidenav">
@@ -265,7 +265,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/hontolab-courses/database-lecturenote/blob/main/content/db-design/01.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/hontolab-courses/database-lecturenote/blob/main/content/exercise/sql-exercise.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -296,7 +296,7 @@
       
       
       
-      <li><a href="../../_sources/content/db-design/01.ipynb" target="_blank"
+      <li><a href="../../_sources/content/exercise/sql-exercise.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -378,7 +378,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>正規形</h1>
+    <h1>SQL演習</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -392,9 +392,48 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">11. </span>正規形<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>後日公開予定</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="sql">
+<h1><span class="section-number">7. </span>SQL演習<a class="headerlink" href="#sql" title="Link to this heading">#</a></h1>
+<div class="cell tag_remove-output tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># 演習で用いるデータのダウンロード</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;data/virtual_store.db&#39;</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">!</span>wget<span class="w"> </span>-P<span class="w"> </span>data<span class="w"> </span>https://github.com/hontolab-courses/database-lecturenote/raw/main/content/sql/data/virtual_store.db
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_remove-output tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+<span class="o">%</span><span class="k">config</span> SqlMagic.feedback = 0
+<span class="o">%</span><span class="k">sql</span> sqlite:///data/virtual_store.db
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>本演習課題で用いるデータは，<a class="reference external" href="https://www.datascientist.or.jp">データサイエンティスト協会</a>スキル定義委員の「<a class="reference external" href="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/tree/master">データサイエンス100本ノック（構造化データ加工編）</a>」で配布されているデータを，わたし山本がSQLite形式に変換したものです．
+下記のとおり，元データの著作権やライセンスは，MITライセンスに従います．</p>
+<blockquote>
+<div><p>Copyright (c) 2020 The Japan DataScientist Society<br />
+Released under the MIT license<br />
+<a class="reference external" href="https://raw.githubusercontent.com/The-Japan-DataScientist-Society/100knocks-preprocess/master/LICENSE">https://raw.githubusercontent.com/The-Japan-DataScientist-Society/100knocks-preprocess/master/LICENSE</a></p>
+</div></blockquote>
 </section>
 
     <script type="text/x-thebe-config">
@@ -410,7 +449,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/db-design"
+            path: "./content/exercise"
         },
         predefinedOutput: true
     }
@@ -428,20 +467,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../er-model/03.html"
+       href="../sql/03.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>拡張実体関連モデル &amp; n項関連</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>副問い合わせ &amp; テーブルの定義と更新</p>
       </div>
     </a>
     <a class="right-next"
-       href="02.html"
+       href="../er-model/01.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">12. </span>分解</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>実体関連モデルとは</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
