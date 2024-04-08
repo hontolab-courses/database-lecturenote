@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>11. 正規形 &#8212; データベースの講義ノート</title>
+    <title>Google Colab上でのSQLiteの使い方 &#8212; データベースの講義ノート</title>
   
   
   
@@ -58,12 +58,12 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/db-design/01';</script>
-    <link rel="canonical" href="https://database-lecture.hontolab.org/content/db-design/01.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/misc/how-to-execute-sql';</script>
+    <link rel="canonical" href="https://database-lecture.hontolab.org/content/misc/how-to-execute-sql.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="12. 分解" href="02.html" />
-    <link rel="prev" title="10. 拡張実体関連モデル &amp; n項関連" href="../er-model/03.html" />
+    <link rel="next" title="draw.io の使い方" href="drawio.html" />
+    <link rel="prev" title="集合と写像" href="math.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -184,12 +184,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../exercise/sql-exercise.html">7. SQL演習</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">データベース設計</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../er-model/01.html">8. 実体関連モデルとは</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../er-model/02.html">9. 実体関連モデル上の一貫性制約</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../er-model/03.html">10. 拡張実体関連モデル &amp; n項関連</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. 正規形</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02.html">12. 分解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">11. 正規形</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">12. 分解</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercise/db-design-exercise.html">13. データベース設計演習</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">索引づけ</span></p>
@@ -201,10 +201,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../nosql/01.html">15. NoSQL</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">付録</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../misc/math.html">集合と写像</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/how-to-execute-sql.html">Google Colab上でのSQLiteの使い方</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../misc/drawio.html">draw.io の使い方</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="math.html">集合と写像</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Google Colab上でのSQLiteの使い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="drawio.html">draw.io の使い方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">参考文献</a></li>
 </ul>
 
@@ -260,7 +260,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/hontolab-courses/database-lecturenote/blob/main/content/db-design/01.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/hontolab-courses/database-lecturenote/blob/main/content/misc/how-to-execute-sql.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -291,7 +291,7 @@
       
       
       
-      <li><a href="../../_sources/content/db-design/01.ipynb" target="_blank"
+      <li><a href="../../_sources/content/misc/how-to-execute-sql.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -362,7 +362,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -373,11 +375,21 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>正規形</h1>
+    <h1>Google Colab上でのSQLiteの使い方</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">基本的な使い方</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sql">SQL演習のための環境設定</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sql-on-google-colab">SQL文の書き方 on Google Colab</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -387,9 +399,61 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">11. </span>正規形<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>後日公開予定</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="google-colabsqlite">
+<h1>Google Colab上でのSQLiteの使い方<a class="headerlink" href="#google-colabsqlite" title="Link to this heading">#</a></h1>
+<p>演習で用いる<a class="reference external" href="https://www.sqlite.org">SQLite</a>は，関係データベースの管理システム（DBMS）の中でも環境構築がカンタンで軽量なDBMSである．
+SQLiteはWindows/Mac/LinuxどのOSでもインストールして利用することができるが，
+本演習は環境構築の手間をできるだけ減らすために，<a class="reference external" href="https://colab.research.google.com/?hl=ja">Google Colaboratory（略称Google Colab）</a>上でSQLiteを用いる．</p>
+<p>Google Colaboratoryは，ブラウザ上で対話的にPythonを実行できるプログラミング環境である．
+インターネットとウェブブウザさえあればPythonが実行でき，自分のPC/Mac上に自前で環境構築を行う必要がない．</p>
+<section id="id1">
+<h2>基本的な使い方<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>使い方はカンタン．
+まず，<a class="reference external" href="https://colab.research.google.com/?hl=ja">Google Colab</a>のウェブサイトを立ち上げよう．
+すると，以下のようなセルと呼ばれる空欄が表示されていると思うので，セルの中にPythonなどのコードを書く．</p>
+<p><img alt="Google Colabのセル" src="../../_images/cell.png" /></p>
+<p>コードを書き終わったら，実行ボタン（セルの横にある「再生ボタン」のようなもの）をクリックしよう．
+書いたコードが正しければ，セルの下にコードの実行結果が表示される．</p>
+<p>なお，Google Colab上でコードを実行するには，以下の2つの方法がある：</p>
+<ul class="simple">
+<li><p>「再生ボタン」をクリックする</p></li>
+<li><p>コードが書かれたセルをクリックし，Shift + Enterキーを押す</p></li>
+</ul>
+</section>
+<section id="sql">
+<h2>SQL演習のための環境設定<a class="headerlink" href="#sql" title="Link to this heading">#</a></h2>
+<p>Google Colabは本来はPythonをブラウザ上で実行する環境であるが，Rなどの他の言語も実行することが可能である．
+また，データベースと接続しSQLの実行結果を表示させることもできる．
+この機能を用いて，本演習ではGoogle Colab上でSQLiteを用いる．</p>
+<p><img alt="Google Colabの立ち上げボタン" src="../../_images/launch-button.png" /></p>
+<p>Googleにログインした状態で演習ページ画面右上にある「ロケットボタン」の中にある<a class="reference external" href="https://colab.research.google.com/github/hontolab-courses/database-lecturenote/blob/main/content/exercise/sql-exercise.ipynb">Colabリンク</a>をクリックすると，あなた用のGoogle Colaboratoyがブラウザ上で立ち上がり，演習ページと同様の内容がGoogle Colab上で表示される．</p>
+<p>ページが表示されたら，演習用のデータベースやSQLiteの実行環境を準備するコードを実行しよう．
+演習用ページの冒頭の方に，以下のような準備用のコードが書かれているはずである．
+実行すれば，演習用の環境が整う．
+あとは，ガンガンSQL文を書こう．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># 演習で用いるデータのダウンロード</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;data/virtual_store.db&#39;</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="err">!</span><span class="n">wget</span> <span class="o">-</span><span class="n">P</span> <span class="n">data</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">hontolab</span><span class="o">-</span><span class="n">courses</span><span class="o">/</span><span class="n">database</span><span class="o">-</span><span class="n">lecturenote</span><span class="o">/</span><span class="n">raw</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">exercise</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">virtual_store</span><span class="o">.</span><span class="n">db</span>
+
+<span class="o">%</span><span class="n">load_ext</span> <span class="n">sql</span>
+<span class="o">%</span><span class="n">config</span> <span class="n">SqlMagic</span><span class="o">.</span><span class="n">feedback</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="o">%</span><span class="n">sql</span> <span class="n">sqlite</span><span class="p">:</span><span class="o">///</span><span class="n">data</span><span class="o">/</span><span class="n">virtual_store</span><span class="o">.</span><span class="n">db</span>
+</pre></div>
+</div>
+</section>
+<section id="sql-on-google-colab">
+<h2>SQL文の書き方 on Google Colab<a class="headerlink" href="#sql-on-google-colab" title="Link to this heading">#</a></h2>
+<p>Google Colabでは，以下のようにセルの冒頭に<code class="docutils literal notranslate"><span class="pre">%%sql</span></code>と書き，2行目以降にSQL文を書くとSQL文を実行することができる．
+試しに演習用ページを開き，環境構築用コードを実行した後，以下のSQLを実行してみよう．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">receipt</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -405,7 +469,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/db-design"
+            path: "./content/misc"
         },
         predefinedOutput: true
     }
@@ -423,20 +487,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../er-model/03.html"
+       href="math.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>拡張実体関連モデル &amp; n項関連</p>
+        <p class="prev-next-title">集合と写像</p>
       </div>
     </a>
     <a class="right-next"
-       href="02.html"
+       href="drawio.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">12. </span>分解</p>
+        <p class="prev-next-title">draw.io の使い方</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -447,7 +511,22 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">基本的な使い方</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sql">SQL演習のための環境設定</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sql-on-google-colab">SQL文の書き方 on Google Colab</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
