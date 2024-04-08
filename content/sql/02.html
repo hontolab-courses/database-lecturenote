@@ -2016,14 +2016,32 @@ document.write(`
 <hr class="docutils" />
 <section id="id5">
 <h2><span class="section-number">5.3. </span>クイズ<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-<p>本クイズでは，独立行政法人統計センターが公開している教育用標準データセット（SSDSE）の<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-E">基本素材SSDSE-E</a>（データの解説は<a class="reference external" href="https://www.nstac.go.jp/sys/files/kaisetsu-E-2023.pdf">こちら</a>）および<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-A">市区町村（SSDSE-A）</a>から抜粋・加工したデータを用いる．
-なお，</p>
+<p>本クイズでは，独立行政法人統計センターが公開している教育用標準データセット（SSDSE）の<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-E">基本素材SSDSE-E</a>（データの解説は<a class="reference external" href="https://www.nstac.go.jp/sys/files/kaisetsu-E-2023.pdf">こちら</a>）および<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-A">市区町村（SSDSE-A）</a>から抜粋・加工したデータを用いる．</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルの内容については前章</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">university_student_population_top10</span></code>テーブルの内容については<a class="reference internal" href="#sql2-db2">コチラ</a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルの内容については<a class="reference internal" href="#sql2-db3">コチラ</a></p></li>
 </ul>
 <p>を参照せよ．</p>
+<p>なお，データをダウンロードしていない者は，以下のコードを実行してデータをダウンロードしてからクイズに取り組むこと．</p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;data/SSDSE.db&#39;</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;download_SSDSE.py&#39;</span><span class="p">):</span>
+        <span class="o">!</span>wget<span class="w"> </span>https://raw.githubusercontent.com/hontolab-courses/database-lecturenote/main/content/sql/download_SSDSE.py
+        <span class="kn">import</span> <span class="nn">download_SSDSE</span>
+
+<span class="o">%</span><span class="k">load_ext</span> sql
+<span class="o">%</span><span class="k">config</span> SqlMagic.feedback = 0
+<span class="o">%</span><span class="k">sql</span> sqlite:///data/SSDSE.db
+</pre></div>
+</div>
+</div>
+</div>
 <section id="q1">
 <span id="sql2-q1"></span><h3><span class="section-number">5.3.1. </span>Q1. 復習<a class="headerlink" href="#q1" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="01.html"><span class="std std-doc">前章</span></a>で用いた<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルにあるレコードのうち，大学学生数が<code class="docutils literal notranslate"><span class="pre">7万</span></code>以上かつ小学校児童数が<code class="docutils literal notranslate"><span class="pre">30万</span></code>以上の都道府県名を表示するSQL文を書け．

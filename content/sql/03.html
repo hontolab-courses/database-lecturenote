@@ -1166,6 +1166,25 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルの内容については<a class="reference internal" href="02.html"><span class="std std-doc">前章</span></a></p></li>
 </ul>
 <p>を参照せよ．</p>
+<p>なお，データをダウンロードしていない者は，以下のコードを実行してデータをダウンロードしてからクイズに取り組むこと．</p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;data/SSDSE.db&#39;</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;download_SSDSE.py&#39;</span><span class="p">):</span>
+        <span class="o">!</span>wget<span class="w"> </span>https://raw.githubusercontent.com/hontolab-courses/database-lecturenote/main/content/sql/download_SSDSE.py
+        <span class="kn">import</span> <span class="nn">download_SSDSE</span>
+
+<span class="o">%</span><span class="k">load_ext</span> sql
+<span class="o">%</span><span class="k">config</span> SqlMagic.feedback = 0
+<span class="o">%</span><span class="k">sql</span> sqlite:///data/SSDSE.db
+</pre></div>
+</div>
+</div>
+</div>
 <section id="q1-1-2">
 <span id="sql3-q1"></span><h3><span class="section-number">6.3.1. </span>Q1. 副問い合わせ（1/2）<a class="headerlink" href="#q1-1-2" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルにおいて調査年度が<code class="docutils literal notranslate"><span class="pre">2021</span></code>時点の小学校児童数上位20件のレコードを求め，それらと<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルの内容を結合した内容を表示するSQL文を書け．</p>

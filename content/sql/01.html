@@ -3253,6 +3253,25 @@ SQLに実装されている代表的な集約関数は以下の通りである�
 <h2><span class="section-number">4.8. </span>クイズ<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
 <p>本クイズでは，独立行政法人統計センターが公開している教育用標準データセット（SSDSE）の<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-E">基本素材SSDSE-E</a>（データの解説は<a class="reference external" href="https://www.nstac.go.jp/sys/files/kaisetsu-E-2023.pdf">こちら</a>）から抜粋・加工したデータ（<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブル）を用いる．
 <code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルの内容については，<a class="reference internal" href="#sql1-db">コチラ</a>を参照せよ．</p>
+<p>なお，データをダウンロードしていない者は，以下のコードを実行してデータをダウンロードしてからクイズに取り組むこと．</p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;data/SSDSE.db&#39;</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;download_SSDSE.py&#39;</span><span class="p">):</span>
+        <span class="o">!</span>wget<span class="w"> </span>https://raw.githubusercontent.com/hontolab-courses/database-lecturenote/main/content/sql/download_SSDSE.py
+        <span class="kn">import</span> <span class="nn">download_SSDSE</span>
+
+<span class="o">%</span><span class="k">load_ext</span> sql
+<span class="o">%</span><span class="k">config</span> SqlMagic.feedback = 0
+<span class="o">%</span><span class="k">sql</span> sqlite:///data/SSDSE.db
+</pre></div>
+</div>
+</div>
+</div>
 <section id="q1">
 <span id="sql1-q1"></span><h3><span class="section-number">4.8.1. </span>Q1. 射影<a class="headerlink" href="#q1" title="Link to this heading">#</a></h3>
 <p>「都道府県」「調査年度」「大学学生数」フィールドに限定して，<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルのレコードを表示するSQL文を書け．
@@ -3278,7 +3297,7 @@ SQLに実装されている代表的な集約関数は以下の通りである�
 </section>
 <section id="q3-2-3">
 <span id="sql1-q3"></span><h3><span class="section-number">4.8.3. </span>Q3. 選択 (2/3)<a class="headerlink" href="#q3-2-3" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">population</span></code>テーブル内のレコードのうち，</p>
+<p><code class="docutils literal notranslate"><span class="pre">population</span></code>テーブル内のレコードのうち</p>
 <ul class="simple">
 <li><p>総人口が<code class="docutils literal notranslate"><span class="pre">300万人</span></code>未満，かつ</p></li>
 <li><p>都道府県名が<code class="docutils literal notranslate"><span class="pre">県</span></code>で終わる，かつ</p></li>
