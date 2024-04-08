@@ -13,5 +13,6 @@
 ## ウェブサイト
 - [名古屋大学大学院情報学研究科 石川佳治先生の講義資料](https://www.db.is.i.nagoya-u.ac.jp/~ishikawa/lectures/db19/)
 - [独立行政法人統計センター SSDSE（教育用標準データセット）](https://www.nstac.go.jp/use/literacy/ssdse/)
+- [データサイエンティスト協会](https://www.datascientist.or.jp)スキル定義委員「[データサイエンス100本ノック（構造化データ加工編）](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/tree/master)」
 
 ## 謝辞
