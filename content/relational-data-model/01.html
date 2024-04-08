@@ -584,6 +584,7 @@ document.write(`
 <li><p>参照制約</p></li>
 <li><p>データ従属性</p></li>
 </ul>
+<p>関係データモデルを扱うデータベースを設計する際には，上記一貫性制約を踏まえて<strong>関係スキーマの定義や（複数の関係スキーマへの）分解</strong> を行う．</p>
 <section id="id9">
 <h3><span class="section-number">3.3.1. </span>ドメイン制約<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p><strong>ドメイン制約（domain constraint）</strong> とは，関係<span class="math notranslate nohighlight">\(\boldsymbol{R}(A_1, ..., A_n)\)</span>に含まれるタプルの各成分は，対応する属性のドメインの要素でなければならならいという制約である．
@@ -679,7 +680,7 @@ document.write(`
 </section>
 <section id="id12">
 <h3><span class="section-number">3.3.3. </span>参照整合性制約<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
-<p>（関係データモデルにもとづく）関係データベースでは，対象となる事象のデータを正しく管理するために，データを複数の関係（表）で管理することがほとんどである．
+<p>（関係データモデルにもとづく）関係データベースでは，対象となる事象のデータを正しく管理するために，<strong>データを複数の関係（表）で管理する</strong>ことがほとんどである．
 複合主キーの説明の例で使った関係「履修」には，それが具体的に何を意味するのかは不明な属性「科目ID」「学生ID」がある．
 しかし，これらの意味を読み解くためには</p>
 <ul class="simple">

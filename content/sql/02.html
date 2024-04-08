@@ -58,6 +58,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/sql/02';</script>
     <link rel="canonical" href="https://database-lecture.hontolab.org/content/sql/02.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -363,7 +365,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -379,6 +383,35 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.1. 集合演算</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#union">5.1.1. 和集合演算（UNION）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intersect">5.1.2. 積集合演算（INTERSECT）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#except">5.1.3. 差集合演算（EXCEPT）</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#join">5.2. 結合（JOIN）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-join">5.2.1. 直積（CROSS JOIN）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-join">5.2.2. 内部結合（INNER JOIN）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outer-join">5.2.3. 外部結合（OUTER JOIN）</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.3. クイズ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">5.3.1. Q1. 復習</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">5.3.2. Q2. 集合演算</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3">5.3.3. Q3. 直積</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4">5.3.4. Q4. 内部結合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5">5.3.5. Q5. 直積再び</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-1-2">5.3.6. Q6. 外部結合（1/2）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-2-2">5.3.7. Q7. 外部結合（2/2）</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -390,7 +423,1689 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">5. </span>結合質問（集合演算を含む）<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>後日公開予定</p>
+<div class="cell tag_remove-output tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;data/SSDSE.db&#39;</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;download_SSDSE.py&#39;</span><span class="p">):</span>
+        <span class="o">!</span>wget<span class="w"> </span>https://raw.githubusercontent.com/hontolab-courses/database-lecturenote/main/content/sql/download_SSDSE.py
+        <span class="kn">import</span> <span class="nn">download_SSDSE</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_remove-output tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+<span class="o">%</span><span class="k">config</span> SqlMagic.feedback = 0
+<span class="o">%</span><span class="k">config</span> SqlMagic.displaylimit = 50
+<span class="o">%</span><span class="k">sql</span> sqlite:///data/SSDSE.db
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p><a class="reference internal" href="01.html"><span class="std std-doc">前章</span></a>で扱ったSQL文は1つのテーブルに対する問い合わせ（単純質問）を対象としていた．
+しかし，関係データベースを用いたデータ分析の現場では，問い合わせ時に参照するテーブルが1つしかないことは稀である．
+所望のデータを抽出するには，<strong>複数のテーブルを組み合わせる</strong>ことが大半である．
+本章では，関係データベース内にある2つ以上のテーブルを組み合わせてデータを抽出する<strong>結合質問</strong>を扱う．</p>
+<p>前章同様，SQLの説明を行うために，独立行政法人統計センターが公開している<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/">教育用標準データセット（SSDSE）</a>の<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-E">基本素材（SSDSE-E）</a>および<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-A">市区町村（SSDSE-A）</a>から抜粋・加工したデータを用いる．
+データは<code class="docutils literal notranslate"><span class="pre">elderly_population_top10</span></code>テーブル，<code class="docutils literal notranslate"><span class="pre">university_student_population_top10</span></code>テーブル，および<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルの3種類ある．</p>
+<p id="sql2-db1">各テーブル内のデータは2021年度調査によるものである．
+<code class="docutils literal notranslate"><span class="pre">elderly_population_top10</span></code>テーブルには，65歳以上人口数が上位10位内であった都道府県の「地域コード」「都道府県名」「総人口」が格納されている．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">elderly_population_top10</span><span class="p">;</span><span class="w"> </span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>地域コード</th>
+            <th>都道府県</th>
+            <th>総人口</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R13000</td>
+            <td>東京都</td>
+            <td>14010000</td>
+        </tr>
+        <tr>
+            <td>R27000</td>
+            <td>大阪府</td>
+            <td>8806000</td>
+        </tr>
+        <tr>
+            <td>R14000</td>
+            <td>神奈川県</td>
+            <td>9236000</td>
+        </tr>
+        <tr>
+            <td>R11000</td>
+            <td>埼玉県</td>
+            <td>7340000</td>
+        </tr>
+        <tr>
+            <td>R23000</td>
+            <td>愛知県</td>
+            <td>7517000</td>
+        </tr>
+        <tr>
+            <td>R12000</td>
+            <td>千葉県</td>
+            <td>6275000</td>
+        </tr>
+        <tr>
+            <td>R01000</td>
+            <td>北海道</td>
+            <td>5183000</td>
+        </tr>
+        <tr>
+            <td>R28000</td>
+            <td>兵庫県</td>
+            <td>5432000</td>
+        </tr>
+        <tr>
+            <td>R40000</td>
+            <td>福岡県</td>
+            <td>5124000</td>
+        </tr>
+        <tr>
+            <td>R22000</td>
+            <td>静岡県</td>
+            <td>3608000</td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p id="sql2-db2"><code class="docutils literal notranslate"><span class="pre">university_student_population_top10</span></code>テーブルには，大学学生数が上位10位内であった都道府県の「地域コード」「都道府県名」「総人口」が格納されている．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">university_student_population_top10</span><span class="p">;</span><span class="w"> </span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>地域コード</th>
+            <th>都道府県</th>
+            <th>総人口</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R13000</td>
+            <td>東京都</td>
+            <td>14010000</td>
+        </tr>
+        <tr>
+            <td>R27000</td>
+            <td>大阪府</td>
+            <td>8806000</td>
+        </tr>
+        <tr>
+            <td>R23000</td>
+            <td>愛知県</td>
+            <td>7517000</td>
+        </tr>
+        <tr>
+            <td>R14000</td>
+            <td>神奈川県</td>
+            <td>9236000</td>
+        </tr>
+        <tr>
+            <td>R26000</td>
+            <td>京都府</td>
+            <td>2561000</td>
+        </tr>
+        <tr>
+            <td>R28000</td>
+            <td>兵庫県</td>
+            <td>5432000</td>
+        </tr>
+        <tr>
+            <td>R40000</td>
+            <td>福岡県</td>
+            <td>5124000</td>
+        </tr>
+        <tr>
+            <td>R11000</td>
+            <td>埼玉県</td>
+            <td>7340000</td>
+        </tr>
+        <tr>
+            <td>R12000</td>
+            <td>千葉県</td>
+            <td>6275000</td>
+        </tr>
+        <tr>
+            <td>R01000</td>
+            <td>北海道</td>
+            <td>5183000</td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p id="sql2-db3"><code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルには，「学習・自己啓発・訓練」「スポーツ」「趣味・娯楽」「ボランティア」「旅行・行楽」について過去1年以内に活動したことのある人の割合（％）について，都道府県別にまとめたものが格納されている．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">activity</span><span class="p">;</span><span class="w"> </span>
+</pre></div>
+</div>
+<div class="cell tag_scroll-output tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>地域コード</th>
+            <th>都道府県</th>
+            <th>学習・自己啓発・訓練</th>
+            <th>スポーツ</th>
+            <th>趣味娯楽</th>
+            <th>ボランティア</th>
+            <th>旅行・行楽</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R01000</td>
+            <td>北海道</td>
+            <td>35.0</td>
+            <td>62.2</td>
+            <td>85.4</td>
+            <td>16.3</td>
+            <td>51.0</td>
+        </tr>
+        <tr>
+            <td>R02000</td>
+            <td>青森県</td>
+            <td>25.4</td>
+            <td>52.1</td>
+            <td>78.6</td>
+            <td>14.0</td>
+            <td>36.6</td>
+        </tr>
+        <tr>
+            <td>R03000</td>
+            <td>岩手県</td>
+            <td>28.9</td>
+            <td>59.1</td>
+            <td>82.9</td>
+            <td>24.4</td>
+            <td>45.3</td>
+        </tr>
+        <tr>
+            <td>R04000</td>
+            <td>宮城県</td>
+            <td>37.5</td>
+            <td>64.4</td>
+            <td>87.0</td>
+            <td>20.7</td>
+            <td>52.2</td>
+        </tr>
+        <tr>
+            <td>R05000</td>
+            <td>秋田県</td>
+            <td>29.2</td>
+            <td>57.1</td>
+            <td>82.1</td>
+            <td>20.9</td>
+            <td>44.8</td>
+        </tr>
+        <tr>
+            <td>R06000</td>
+            <td>山形県</td>
+            <td>31.1</td>
+            <td>58.4</td>
+            <td>82.4</td>
+            <td>23.6</td>
+            <td>44.3</td>
+        </tr>
+        <tr>
+            <td>R07000</td>
+            <td>福島県</td>
+            <td>31.5</td>
+            <td>59.5</td>
+            <td>81.5</td>
+            <td>19.7</td>
+            <td>44.4</td>
+        </tr>
+        <tr>
+            <td>R08000</td>
+            <td>茨城県</td>
+            <td>36.5</td>
+            <td>65.8</td>
+            <td>85.3</td>
+            <td>17.1</td>
+            <td>45.0</td>
+        </tr>
+        <tr>
+            <td>R09000</td>
+            <td>栃木県</td>
+            <td>32.8</td>
+            <td>62.6</td>
+            <td>83.9</td>
+            <td>16.5</td>
+            <td>47.3</td>
+        </tr>
+        <tr>
+            <td>R10000</td>
+            <td>群馬県</td>
+            <td>35.2</td>
+            <td>67.0</td>
+            <td>85.2</td>
+            <td>19.2</td>
+            <td>50.8</td>
+        </tr>
+        <tr>
+            <td>R11000</td>
+            <td>埼玉県</td>
+            <td>40.0</td>
+            <td>69.3</td>
+            <td>88.4</td>
+            <td>15.6</td>
+            <td>51.5</td>
+        </tr>
+        <tr>
+            <td>R12000</td>
+            <td>千葉県</td>
+            <td>42.0</td>
+            <td>67.4</td>
+            <td>87.0</td>
+            <td>14.9</td>
+            <td>47.9</td>
+        </tr>
+        <tr>
+            <td>R13000</td>
+            <td>東京都</td>
+            <td>52.8</td>
+            <td>74.5</td>
+            <td>91.4</td>
+            <td>15.5</td>
+            <td>55.5</td>
+        </tr>
+        <tr>
+            <td>R14000</td>
+            <td>神奈川県</td>
+            <td>46.7</td>
+            <td>71.8</td>
+            <td>89.2</td>
+            <td>17.0</td>
+            <td>54.5</td>
+        </tr>
+        <tr>
+            <td>R15000</td>
+            <td>新潟県</td>
+            <td>34.5</td>
+            <td>59.0</td>
+            <td>84.0</td>
+            <td>19.3</td>
+            <td>47.6</td>
+        </tr>
+        <tr>
+            <td>R16000</td>
+            <td>富山県</td>
+            <td>33.4</td>
+            <td>59.7</td>
+            <td>82.6</td>
+            <td>19.5</td>
+            <td>41.1</td>
+        </tr>
+        <tr>
+            <td>R17000</td>
+            <td>石川県</td>
+            <td>35.6</td>
+            <td>63.4</td>
+            <td>86.2</td>
+            <td>20.7</td>
+            <td>44.7</td>
+        </tr>
+        <tr>
+            <td>R18000</td>
+            <td>福井県</td>
+            <td>35.8</td>
+            <td>61.5</td>
+            <td>85.2</td>
+            <td>21.7</td>
+            <td>44.3</td>
+        </tr>
+        <tr>
+            <td>R19000</td>
+            <td>山梨県</td>
+            <td>36.5</td>
+            <td>62.2</td>
+            <td>83.1</td>
+            <td>21.1</td>
+            <td>46.7</td>
+        </tr>
+        <tr>
+            <td>R20000</td>
+            <td>長野県</td>
+            <td>36.6</td>
+            <td>64.0</td>
+            <td>84.8</td>
+            <td>22.0</td>
+            <td>46.9</td>
+        </tr>
+        <tr>
+            <td>R21000</td>
+            <td>岐阜県</td>
+            <td>36.1</td>
+            <td>64.1</td>
+            <td>84.9</td>
+            <td>21.7</td>
+            <td>48.6</td>
+        </tr>
+        <tr>
+            <td>R22000</td>
+            <td>静岡県</td>
+            <td>36.5</td>
+            <td>66.3</td>
+            <td>85.1</td>
+            <td>18.9</td>
+            <td>41.3</td>
+        </tr>
+        <tr>
+            <td>R23000</td>
+            <td>愛知県</td>
+            <td>39.0</td>
+            <td>68.8</td>
+            <td>89.3</td>
+            <td>16.6</td>
+            <td>57.6</td>
+        </tr>
+        <tr>
+            <td>R24000</td>
+            <td>三重県</td>
+            <td>34.4</td>
+            <td>64.3</td>
+            <td>84.2</td>
+            <td>19.3</td>
+            <td>47.0</td>
+        </tr>
+        <tr>
+            <td>R25000</td>
+            <td>滋賀県</td>
+            <td>39.7</td>
+            <td>67.2</td>
+            <td>86.4</td>
+            <td>24.2</td>
+            <td>52.2</td>
+        </tr>
+        <tr>
+            <td>R27000</td>
+            <td>大阪府</td>
+            <td>41.3</td>
+            <td>66.1</td>
+            <td>86.7</td>
+            <td>14.5</td>
+            <td>51.9</td>
+        </tr>
+        <tr>
+            <td>R28000</td>
+            <td>兵庫県</td>
+            <td>39.5</td>
+            <td>66.4</td>
+            <td>85.4</td>
+            <td>17.7</td>
+            <td>51.6</td>
+        </tr>
+        <tr>
+            <td>R29000</td>
+            <td>奈良県</td>
+            <td>39.8</td>
+            <td>64.8</td>
+            <td>86.2</td>
+            <td>18.5</td>
+            <td>50.4</td>
+        </tr>
+        <tr>
+            <td>R30000</td>
+            <td>和歌山県</td>
+            <td>31.3</td>
+            <td>59.8</td>
+            <td>83.3</td>
+            <td>18.2</td>
+            <td>44.1</td>
+        </tr>
+        <tr>
+            <td>R31000</td>
+            <td>鳥取県</td>
+            <td>34.1</td>
+            <td>61.2</td>
+            <td>81.7</td>
+            <td>24.1</td>
+            <td>38.4</td>
+        </tr>
+        <tr>
+            <td>R32000</td>
+            <td>島根県</td>
+            <td>33.3</td>
+            <td>61.4</td>
+            <td>82.5</td>
+            <td>25.6</td>
+            <td>39.8</td>
+        </tr>
+        <tr>
+            <td>R33000</td>
+            <td>岡山県</td>
+            <td>37.1</td>
+            <td>64.8</td>
+            <td>85.0</td>
+            <td>23.2</td>
+            <td>43.0</td>
+        </tr>
+        <tr>
+            <td>R34000</td>
+            <td>広島県</td>
+            <td>38.4</td>
+            <td>65.3</td>
+            <td>85.1</td>
+            <td>18.6</td>
+            <td>47.1</td>
+        </tr>
+        <tr>
+            <td>R35000</td>
+            <td>山口県</td>
+            <td>34.8</td>
+            <td>63.2</td>
+            <td>83.9</td>
+            <td>20.1</td>
+            <td>43.5</td>
+        </tr>
+        <tr>
+            <td>R36000</td>
+            <td>徳島県</td>
+            <td>34.1</td>
+            <td>60.9</td>
+            <td>80.6</td>
+            <td>17.4</td>
+            <td>32.2</td>
+        </tr>
+        <tr>
+            <td>R37000</td>
+            <td>香川県</td>
+            <td>34.1</td>
+            <td>61.8</td>
+            <td>82.9</td>
+            <td>18.1</td>
+            <td>39.0</td>
+        </tr>
+        <tr>
+            <td>R38000</td>
+            <td>愛媛県</td>
+            <td>34.5</td>
+            <td>64.0</td>
+            <td>84.3</td>
+            <td>19.6</td>
+            <td>37.4</td>
+        </tr>
+        <tr>
+            <td>R39000</td>
+            <td>高知県</td>
+            <td>30.3</td>
+            <td>59.4</td>
+            <td>81.7</td>
+            <td>18.9</td>
+            <td>39.2</td>
+        </tr>
+        <tr>
+            <td>R40000</td>
+            <td>福岡県</td>
+            <td>37.7</td>
+            <td>67.0</td>
+            <td>85.8</td>
+            <td>19.1</td>
+            <td>52.3</td>
+        </tr>
+        <tr>
+            <td>R41000</td>
+            <td>佐賀県</td>
+            <td>37.2</td>
+            <td>62.8</td>
+            <td>82.1</td>
+            <td>24.8</td>
+            <td>47.5</td>
+        </tr>
+        <tr>
+            <td>R42000</td>
+            <td>長崎県</td>
+            <td>31.2</td>
+            <td>57.8</td>
+            <td>79.7</td>
+            <td>21.0</td>
+            <td>36.1</td>
+        </tr>
+        <tr>
+            <td>R43000</td>
+            <td>熊本県</td>
+            <td>35.7</td>
+            <td>66.6</td>
+            <td>84.1</td>
+            <td>22.1</td>
+            <td>50.5</td>
+        </tr>
+        <tr>
+            <td>R44000</td>
+            <td>大分県</td>
+            <td>33.2</td>
+            <td>63.1</td>
+            <td>82.3</td>
+            <td>20.3</td>
+            <td>45.0</td>
+        </tr>
+        <tr>
+            <td>R45000</td>
+            <td>宮崎県</td>
+            <td>31.3</td>
+            <td>65.8</td>
+            <td>81.6</td>
+            <td>20.1</td>
+            <td>42.8</td>
+        </tr>
+        <tr>
+            <td>R46000</td>
+            <td>鹿児島県</td>
+            <td>35.2</td>
+            <td>63.5</td>
+            <td>81.0</td>
+            <td>22.3</td>
+            <td>43.3</td>
+        </tr>
+        <tr>
+            <td>R47000</td>
+            <td>沖縄県</td>
+            <td>36.6</td>
+            <td>65.8</td>
+            <td>80.0</td>
+            <td>17.4</td>
+            <td>31.1</td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>以下，これら3つのテーブルが格納された関係データベースが手元にあると想定して，結合質問について説明する．</p>
+<section id="id2">
+<h2><span class="section-number">5.1. </span>集合演算<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>高校数学で学習した「集合と論理」を覚えておられるだろうか（忘れた人は<a class="reference internal" href="../misc/math.html"><span class="std std-doc">コチラ</span></a>を確認）．
+そのときに</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(A=\{1, 2, 3, 4, 9\}\)</span>，<span class="math notranslate nohighlight">\(B=\{3, 4, 7\}\)</span>のとき，AとBの共通部分<span class="math notranslate nohighlight">\(A \cap B\)</span>は<span class="math notranslate nohighlight">\(\{3, 4\}\)</span>となる</p>
+</div></blockquote>
+<p>みたいなことを勉強したと思う．
+集合演算とは，上記のように2つの集合から別の集合を作り出す演算である．
+高校数学で習った集合演算では主として数値の集合を対象としていたと思うが，
+関係データベースの集合演算において対象となるのは<strong>レコード（行）の集合</strong>である．
+関係データベースにおける集合演算は行を増やしたり減らしたりする，<strong>テーブルを縦方向にいじる操作</strong>ともいえる．
+関係データベースにおける集合演算の振る舞いは，直感的には高校数学の集合演算と変わらない．</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<h4 class="rubric" id="id3">関係データベースにおける集合演算の注意点</h4>
+<p>関係データベースで集合演算を行う際には，演算対象となる2つのレコード集合が<strong>和両立</strong>（unicon compatible, 合併可能と呼ぶこともある）という条件を満たしている必要がある．
+これは，演算対象となる2つのレコード集合が</p>
+<ol class="arabic simple">
+<li><p>同じ列（属性）で構成されている，かつ</p></li>
+<li><p>同じ列については，その定義域も同じである</p></li>
+</ol>
+<p>という条件である．
+この条件を満たしていないレコード集合の集合演算を行おうとすると，SQL文を実行してもエラーが出力される．</p>
+</div>
+<section id="union">
+<h3><span class="section-number">5.1.1. </span>和集合演算（UNION）<a class="headerlink" href="#union" title="Link to this heading">#</a></h3>
+<p><strong>和集合演算</strong>は，2つのレコード集合のいずれかに含まれるレコードの集合（和集合または合併，union）を求めるものである．
+高校数学で例えると，</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(A=\{1, 2, 3, 4, 9\}\)</span>，<span class="math notranslate nohighlight">\(B=\{3, 4, 7\}\)</span>のとき，AとBの和集合<span class="math notranslate nohighlight">\(A \cup B\)</span>は<span class="math notranslate nohighlight">\(\{1, 2, 3, 4, 7, 9\}\)</span></p>
+</div></blockquote>
+<p>となるような演算の関係データベース版である．</p>
+<p>SQLで和集合を求めるには<code class="docutils literal notranslate"><span class="pre">UINION</span></code>演算子を用いる．
+レコード集合Aとレコード集合Bの和集合を求めるには，<code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">UNION</span> <span class="pre">B</span></code>のようなSQL文を書く．
+<span class="math notranslate nohighlight">\(A\)</span>や<span class="math notranslate nohighlight">\(B\)</span>はレコード集合であるので，実際にSQL文で<code class="docutils literal notranslate"><span class="pre">UNION</span></code>を使う際には，AやBの箇所に<strong>SELECT文が入る</strong>．</p>
+<p>以下は，<code class="docutils literal notranslate"><span class="pre">elderly_population_top10</span></code>テーブルと<code class="docutils literal notranslate"><span class="pre">university_student_population_top10</span></code>テーブルの和集合を求めるSQL文である．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">elderly_population_top10</span>
+<span class="k">UNION</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">university_student_population_top10</span><span class="p">;</span><span class="w"> </span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>地域コード</th>
+            <th>都道府県</th>
+            <th>総人口</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R01000</td>
+            <td>北海道</td>
+            <td>5183000</td>
+        </tr>
+        <tr>
+            <td>R11000</td>
+            <td>埼玉県</td>
+            <td>7340000</td>
+        </tr>
+        <tr>
+            <td>R12000</td>
+            <td>千葉県</td>
+            <td>6275000</td>
+        </tr>
+        <tr>
+            <td>R13000</td>
+            <td>東京都</td>
+            <td>14010000</td>
+        </tr>
+        <tr>
+            <td>R14000</td>
+            <td>神奈川県</td>
+            <td>9236000</td>
+        </tr>
+        <tr>
+            <td>R22000</td>
+            <td>静岡県</td>
+            <td>3608000</td>
+        </tr>
+        <tr>
+            <td>R23000</td>
+            <td>愛知県</td>
+            <td>7517000</td>
+        </tr>
+        <tr>
+            <td>R26000</td>
+            <td>京都府</td>
+            <td>2561000</td>
+        </tr>
+        <tr>
+            <td>R27000</td>
+            <td>大阪府</td>
+            <td>8806000</td>
+        </tr>
+        <tr>
+            <td>R28000</td>
+            <td>兵庫県</td>
+            <td>5432000</td>
+        </tr>
+        <tr>
+            <td>R40000</td>
+            <td>福岡県</td>
+            <td>5124000</td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>なお，（後述する積集合，差集合も同様であるが）和集合演算子<code class="docutils literal notranslate"><span class="pre">UNION</span></code>の前後にはSELECT文であればよく，当然SELECT文の中には<code class="docutils literal notranslate"><span class="pre">WHERE</span></code>句などを含んでいてもよい．
+以下は，<code class="docutils literal notranslate"><span class="pre">elderly_population_top10</span></code>テーブルと<code class="docutils literal notranslate"><span class="pre">university_student_population_top10</span></code>テーブルのレコードのうち，総人口が700万以上のレコードに限定して和集合を求めるSQL文である．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
+<span class="w">    </span><span class="o">*</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="n">elderly_population_top10</span>
+<span class="k">WHERE</span>
+<span class="w">    </span><span class="err">総人口</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">7000000</span>
+<span class="k">UNION</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="o">*</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="n">university_student_population_top10</span>
+<span class="k">WHERE</span>
+<span class="w">    </span><span class="err">総人口</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">7000000</span><span class="p">;</span><span class="w"> </span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>地域コード</th>
+            <th>都道府県</th>
+            <th>総人口</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R11000</td>
+            <td>埼玉県</td>
+            <td>7340000</td>
+        </tr>
+        <tr>
+            <td>R13000</td>
+            <td>東京都</td>
+            <td>14010000</td>
+        </tr>
+        <tr>
+            <td>R14000</td>
+            <td>神奈川県</td>
+            <td>9236000</td>
+        </tr>
+        <tr>
+            <td>R23000</td>
+            <td>愛知県</td>
+            <td>7517000</td>
+        </tr>
+        <tr>
+            <td>R27000</td>
+            <td>大阪府</td>
+            <td>8806000</td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+</section>
+<section id="intersect">
+<h3><span class="section-number">5.1.2. </span>積集合演算（INTERSECT）<a class="headerlink" href="#intersect" title="Link to this heading">#</a></h3>
+<p><strong>積集合演算</strong>は，2つのレコード集合に共通して含まれるレコードの集合（積集合または共通集合，intersection）を求めるものである．
+高校数学で例えると，</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(A=\{1, 2, 3, 4, 9\}\)</span>，<span class="math notranslate nohighlight">\(B=\{3, 4, 7\}\)</span>のとき，AとBの積集合<span class="math notranslate nohighlight">\(A \cap B\)</span>は<span class="math notranslate nohighlight">\(\{3, 4\}\)</span></p>
+</div></blockquote>
+<p>となるような演算の関係データベース版である．</p>
+<p>SQLで積集合を求めるには<code class="docutils literal notranslate"><span class="pre">INTERSECT</span></code>演算子を用いる．
+以下は，<code class="docutils literal notranslate"><span class="pre">elderly_population_top10</span></code>テーブルと<code class="docutils literal notranslate"><span class="pre">university_student_population_top10</span></code>テーブルの積集合を求めるSQL文である（<a class="reference internal" href="#sql2-q1">★Quiz1★</a>，<a class="reference internal" href="#sql2-q2">★Quiz2★</a>）．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">elderly_population_top10</span>
+<span class="n">INTERSECTION</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">university_student_population_top10</span><span class="p">;</span><span class="w"> </span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>地域コード</th>
+            <th>都道府県</th>
+            <th>総人口</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R01000</td>
+            <td>北海道</td>
+            <td>5183000</td>
+        </tr>
+        <tr>
+            <td>R11000</td>
+            <td>埼玉県</td>
+            <td>7340000</td>
+        </tr>
+        <tr>
+            <td>R12000</td>
+            <td>千葉県</td>
+            <td>6275000</td>
+        </tr>
+        <tr>
+            <td>R13000</td>
+            <td>東京都</td>
+            <td>14010000</td>
+        </tr>
+        <tr>
+            <td>R14000</td>
+            <td>神奈川県</td>
+            <td>9236000</td>
+        </tr>
+        <tr>
+            <td>R23000</td>
+            <td>愛知県</td>
+            <td>7517000</td>
+        </tr>
+        <tr>
+            <td>R27000</td>
+            <td>大阪府</td>
+            <td>8806000</td>
+        </tr>
+        <tr>
+            <td>R28000</td>
+            <td>兵庫県</td>
+            <td>5432000</td>
+        </tr>
+        <tr>
+            <td>R40000</td>
+            <td>福岡県</td>
+            <td>5124000</td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+</section>
+<section id="except">
+<h3><span class="section-number">5.1.3. </span>差集合演算（EXCEPT）<a class="headerlink" href="#except" title="Link to this heading">#</a></h3>
+<p><strong>差集合演算</strong>は，あるレコード集合から別のレコード集合に含まれるレコードを除いたレコードの集合（差集合あるいは補集合，set difference）を求めるものである．
+高校数学の範囲で例えると，</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(A=\{1, 2, 3, 4, 9\}\)</span>，<span class="math notranslate nohighlight">\(B=\{3, 4, 7\}\)</span>のとき，AとBの積集合<span class="math notranslate nohighlight">\(A \setminus B\)</span>は<span class="math notranslate nohighlight">\(\{1, 2, 9\}\)</span></p>
+</div></blockquote>
+<p>となるような演算の関係データベース版である．
+差集合演算は，片側の集合にしか現れない要素の集合を求めたいときに用いる．</p>
+<p>SQLで積集合を求めるには<code class="docutils literal notranslate"><span class="pre">EXCEPT</span></code>演算子を用いる．
+以下は，<code class="docutils literal notranslate"><span class="pre">elderly_population_top10</span></code>テーブルから<code class="docutils literal notranslate"><span class="pre">university_student_population_top10</span></code>テーブルを引いた差集合を求めるSQL文である．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">elderly_population_top10</span>
+<span class="k">EXCEPT</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">university_student_population_top10</span><span class="p">;</span><span class="w"> </span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>地域コード</th>
+            <th>都道府県</th>
+            <th>総人口</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R22000</td>
+            <td>静岡県</td>
+            <td>3608000</td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>和集合演算や積集合演算とは異なり，差集合演算は演算の項の順序を入れ替えても結果は変わらない「交換法則」は<strong>成立しない</strong>．
+つまり，<span class="math notranslate nohighlight">\(A \setminus B\)</span>と<span class="math notranslate nohighlight">\(B \setminus A\)</span>はイコールになるとは限らない．</p>
+<p>例えば，以下は上で求めた例とは演算の項を入れ替えた，<code class="docutils literal notranslate"><span class="pre">university_student_population_top10</span></code>テーブルから<code class="docutils literal notranslate"><span class="pre">elderly_population_top10</span></code>テーブルを引いた差集合を求めるSQL文である．
+このSQL文と先のSQL文とで結果が異なることが分かる．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">university_student_population_top10</span>
+<span class="k">EXCEPT</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">elderly_population_top10</span><span class="p">;</span><span class="w"> </span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>地域コード</th>
+            <th>都道府県</th>
+            <th>総人口</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R26000</td>
+            <td>京都府</td>
+            <td>2561000</td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+</section>
+</section>
+<section id="join">
+<h2><span class="section-number">5.2. </span>結合（JOIN）<a class="headerlink" href="#join" title="Link to this heading">#</a></h2>
+<p><strong>結合（JOIN）</strong> とは，2つのテーブルからデータを特定の条件でデータを組み合わせて新たなレコード集合を得る操作である．
+前節で扱った<code class="docutils literal notranslate"><span class="pre">UNION</span></code>，<code class="docutils literal notranslate"><span class="pre">INTERSECT</span></code>，<code class="docutils literal notranslate"><span class="pre">EXCEPT</span></code>といった集合演算がテーブルを縦方向（行方向）に操作するのに対して，結合操作はテーブルを<strong>横方向（列方向）</strong> に操作する．
+データをあえて複数のテーブルに分けて管理する思想をもつ関係データベースにおいては，<strong>結合操作を使いこなすことが多様かつ膨大なデータの管理・検索・分析を行う上で鍵</strong>となる．</p>
+<p>以下，直積，内部結合，外部結合の3つの結合について説明する．</p>
+<section id="cross-join">
+<h3><span class="section-number">5.2.1. </span>直積（CROSS JOIN）<a class="headerlink" href="#cross-join" title="Link to this heading">#</a></h3>
+<p>集合論において，集合AとBの<strong>直積（デカルト積とも呼ぶ）</strong> とは，集合Aと集合Bのそれぞれの要素のすべての組み合わせ（の集合）を意味する．
+例えば，集合<span class="math notranslate nohighlight">\(A=\{1, 2, 3\}\)</span>，集合<span class="math notranslate nohighlight">\(B=\{a, b\}\)</span>のとき，集合Aと集合Bの直積である<span class="math notranslate nohighlight">\(A \times B\)</span>は</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(A \times B = \{(1, a), (1, b), (2, a), (2, b), (3, a), (3, b)\}\)</span></p>
+</div></blockquote>
+<p>となる．</p>
+<p>関係データベースにおいてもテーブル同士の直積が定義されている．
+関係データベースにおける<strong>直積（交差結合; cross joinと呼ぶこともある）</strong> は，2つのテーブル<span class="math notranslate nohighlight">\(R_1\)</span>と<span class="math notranslate nohighlight">\(R_2\)</span>が与えられたとき，テーブル<span class="math notranslate nohighlight">\(R_1\)</span>のレコードと<span class="math notranslate nohighlight">\(R_2\)</span>のレコードのすべての組み合わせを求める操作となる．</p>
+<p>2つのテーブルAとBの直積を求めるSQL文は，</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="k">CROSS</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">B</span><span class="p">;</span><span class="w"> </span>
+</pre></div>
+</div>
+<p>と書く．
+以下のように，上記SQL文は<code class="docutils literal notranslate"><span class="pre">CROSS</span> <span class="pre">JOIN</span></code>をカンマ（,）を省略しても書くこともできる．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">;</span><span class="w">  </span><span class="c1">-- CROSS JOINをカンマで代替</span>
+</pre></div>
+</div>
+<p>具体例を使って直積の結果を確認してみよう．
+例えば，以下のような「科目」テーブルと「教員」テーブルの2つがあるとする．</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>科目名</th>
+            <th>開講時期</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>データベース</td>
+            <td>2年前期</td>
+        </tr>
+        <tr>
+            <td>機械学習</td>
+            <td>3年前期</td>
+        </tr>
+        <tr>
+            <td>統計モデリング</td>
+            <td>2年後期</td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>氏名</th>
+            <th>職階</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>山畑</td>
+            <td>教授</td>
+        </tr>
+        <tr>
+            <td>桜山</td>
+            <td>教授</td>
+        </tr>
+        <tr>
+            <td>川澄</td>
+            <td>准教授</td>
+        </tr>
+        <tr>
+            <td>田辺</td>
+            <td>講師</td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>「科目」テーブルには3レコード，「教員」テーブルには4レコード格納されている．
+上記2つのテーブルのデータを元に，科目を担当する教員について考えられうるすべての組み合わせを求めるには，
+以下のように2つのテーブルの直積を求めれるSQL文を書けばよい．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
+<span class="w">    </span><span class="o">*</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">科目</span><span class="p">,</span><span class="w"> </span><span class="err">教員</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>科目名</th>
+            <th>開講時期</th>
+            <th>氏名</th>
+            <th>職階</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>データベース</td>
+            <td>2年前期</td>
+            <td>山畑</td>
+            <td>教授</td>
+        </tr>
+        <tr>
+            <td>データベース</td>
+            <td>2年前期</td>
+            <td>桜山</td>
+            <td>教授</td>
+        </tr>
+        <tr>
+            <td>データベース</td>
+            <td>2年前期</td>
+            <td>川澄</td>
+            <td>准教授</td>
+        </tr>
+        <tr>
+            <td>データベース</td>
+            <td>2年前期</td>
+            <td>田辺</td>
+            <td>講師</td>
+        </tr>
+        <tr>
+            <td>機械学習</td>
+            <td>3年前期</td>
+            <td>山畑</td>
+            <td>教授</td>
+        </tr>
+        <tr>
+            <td>機械学習</td>
+            <td>3年前期</td>
+            <td>桜山</td>
+            <td>教授</td>
+        </tr>
+        <tr>
+            <td>機械学習</td>
+            <td>3年前期</td>
+            <td>川澄</td>
+            <td>准教授</td>
+        </tr>
+        <tr>
+            <td>機械学習</td>
+            <td>3年前期</td>
+            <td>田辺</td>
+            <td>講師</td>
+        </tr>
+        <tr>
+            <td>統計モデリング</td>
+            <td>2年後期</td>
+            <td>山畑</td>
+            <td>教授</td>
+        </tr>
+        <tr>
+            <td>統計モデリング</td>
+            <td>2年後期</td>
+            <td>桜山</td>
+            <td>教授</td>
+        </tr>
+        <tr>
+            <td>統計モデリング</td>
+            <td>2年後期</td>
+            <td>川澄</td>
+            <td>准教授</td>
+        </tr>
+        <tr>
+            <td>統計モデリング</td>
+            <td>2年後期</td>
+            <td>田辺</td>
+            <td>講師</td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>2つのテーブルの直積を求めると，合計<span class="math notranslate nohighlight">\(3 \times 4=12\)</span>レコードの組み合わせ（レコード集合）が得られる（<a class="reference internal" href="#sql2-q3">★Quiz3★</a>）．</p>
+<p>直積を求めるSQL文では，<code class="docutils literal notranslate"><span class="pre">WHERE</span></code>句を使って抽出結果を選択（絞り込む）ことができる．</p>
+<ul class="simple">
+<li><p>大学学生数が多い上位10の都道府県名が格納された<code class="docutils literal notranslate"><span class="pre">university_student_population_top10</span></code>テーブル，</p></li>
+<li><p>「学習・自己啓発・訓練」など，いくつかの活動について過去1年以内に活動したことのある人の割合（％）が都道府県別にまとめられている<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブル</p></li>
+</ul>
+<p>の直積を求めた後，都道府県名が一致しているものだけを残して表示してみよう．
+以下は所望の結果を得るためのSQL文である．</p>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> sqlite:///data/SSDSE.db
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
+<span class="w">    </span><span class="o">*</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="n">university_student_population_top10</span><span class="p">,</span><span class="w"> </span><span class="n">activity</span>
+<span class="k">WHERE</span>
+<span class="w">    </span><span class="c1">--- 「テーブル名.都道府県」とすることで，どのテーブルの「都道府県」を参照したいかを明示</span>
+<span class="w">    </span><span class="n">university_student_population_top10</span><span class="p">.</span><span class="err">都道府県</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">activity</span><span class="p">.</span><span class="err">都道府県</span><span class="p">;</span><span class="w"> </span>
+</pre></div>
+</div>
+<div class="cell tag_scroll-output tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>地域コード</th>
+            <th>都道府県</th>
+            <th>総人口</th>
+            <th>地域コード_1</th>
+            <th>都道府県_1</th>
+            <th>学習・自己啓発・訓練</th>
+            <th>スポーツ</th>
+            <th>趣味娯楽</th>
+            <th>ボランティア</th>
+            <th>旅行・行楽</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R13000</td>
+            <td>東京都</td>
+            <td>14010000</td>
+            <td>R13000</td>
+            <td>東京都</td>
+            <td>52.8</td>
+            <td>74.5</td>
+            <td>91.4</td>
+            <td>15.5</td>
+            <td>55.5</td>
+        </tr>
+        <tr>
+            <td>R27000</td>
+            <td>大阪府</td>
+            <td>8806000</td>
+            <td>R27000</td>
+            <td>大阪府</td>
+            <td>41.3</td>
+            <td>66.1</td>
+            <td>86.7</td>
+            <td>14.5</td>
+            <td>51.9</td>
+        </tr>
+        <tr>
+            <td>R23000</td>
+            <td>愛知県</td>
+            <td>7517000</td>
+            <td>R23000</td>
+            <td>愛知県</td>
+            <td>39.0</td>
+            <td>68.8</td>
+            <td>89.3</td>
+            <td>16.6</td>
+            <td>57.6</td>
+        </tr>
+        <tr>
+            <td>R14000</td>
+            <td>神奈川県</td>
+            <td>9236000</td>
+            <td>R14000</td>
+            <td>神奈川県</td>
+            <td>46.7</td>
+            <td>71.8</td>
+            <td>89.2</td>
+            <td>17.0</td>
+            <td>54.5</td>
+        </tr>
+        <tr>
+            <td>R28000</td>
+            <td>兵庫県</td>
+            <td>5432000</td>
+            <td>R28000</td>
+            <td>兵庫県</td>
+            <td>39.5</td>
+            <td>66.4</td>
+            <td>85.4</td>
+            <td>17.7</td>
+            <td>51.6</td>
+        </tr>
+        <tr>
+            <td>R40000</td>
+            <td>福岡県</td>
+            <td>5124000</td>
+            <td>R40000</td>
+            <td>福岡県</td>
+            <td>37.7</td>
+            <td>67.0</td>
+            <td>85.8</td>
+            <td>19.1</td>
+            <td>52.3</td>
+        </tr>
+        <tr>
+            <td>R11000</td>
+            <td>埼玉県</td>
+            <td>7340000</td>
+            <td>R11000</td>
+            <td>埼玉県</td>
+            <td>40.0</td>
+            <td>69.3</td>
+            <td>88.4</td>
+            <td>15.6</td>
+            <td>51.5</td>
+        </tr>
+        <tr>
+            <td>R12000</td>
+            <td>千葉県</td>
+            <td>6275000</td>
+            <td>R12000</td>
+            <td>千葉県</td>
+            <td>42.0</td>
+            <td>67.4</td>
+            <td>87.0</td>
+            <td>14.9</td>
+            <td>47.9</td>
+        </tr>
+        <tr>
+            <td>R01000</td>
+            <td>北海道</td>
+            <td>5183000</td>
+            <td>R01000</td>
+            <td>北海道</td>
+            <td>35.0</td>
+            <td>62.2</td>
+            <td>85.4</td>
+            <td>16.3</td>
+            <td>51.0</td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<h4 class="rubric" id="id4">複数のテーブルを参照するときの注意点</h4>
+<p>複数のテーブルに同一の列名が存在する際，SQL文内で列名だけを指定すると，どのテーブルの列を参照しているのかが明確でないためエラーが発生する．
+これを防ぐために，複数のテーブルを参照するときには，列名の前に<code class="docutils literal notranslate"><span class="pre">テーブル名.</span></code>をつけて列を参照するテーブル名を明確化すること．</p>
+</div>
+</section>
+<section id="inner-join">
+<h3><span class="section-number">5.2.2. </span>内部結合（INNER JOIN）<a class="headerlink" href="#inner-join" title="Link to this heading">#</a></h3>
+<p><strong>内部結合（inner join）</strong> は，2つのテーブルにおいて指定した列の値同士が一致するレコードのみを結合して抽出する操作である．
+通常，結合あるいはジョインという時は内部結合を指す．
+テーブルAにテーブルBを内部結合するためのSQL文は</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FROM</span> <span class="pre">A</span></code>の後で<code class="docutils literal notranslate"><span class="pre">INNER</span> <span class="pre">JOIN</span> <span class="pre">B</span></code>（あるいは省略して<code class="docutils literal notranslate"><span class="pre">JOIN</span> <span class="pre">B</span></code>）と書き，</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INNER</span> <span class="pre">JOIN</span> <span class="pre">B</span></code>の後に2つのテーブルの結合条件を<code class="docutils literal notranslate"><span class="pre">ON</span></code>句で指定する</p></li>
+</ol>
+<p>というフォーマットになる．</p>
+<p>例えば，前節「直積」で扱った，</p>
+<ul class="simple">
+<li><p>大学学生数が多い上位10の都道府県名が格納された<code class="docutils literal notranslate"><span class="pre">university_student_population_top10</span></code>テーブル，</p></li>
+<li><p>「学習・自己啓発・訓練」など，いくつかの活動について過去1年以内に活動したことのある人の割合（％）が都道府県別にまとめられている<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブル</p></li>
+</ul>
+<p>の2テーブルについて「都道府県名」で内部結合をしてみよう．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
+<span class="w">    </span><span class="c1">--- 「テーブル名.*」 で「そのテーブルにあるすべての列」を意味する</span>
+<span class="w">    </span><span class="n">university_student_population_top10</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="c1">--- 「テーブル名.*」でなく，「テーブル名.列名」と書くと，</span>
+<span class="w">    </span><span class="c1">--- 該当テーブルの特定の列の情報だけを参照可能</span>
+<span class="w">    </span><span class="n">activity</span><span class="p">.</span><span class="err">学習・自己啓発・訓練</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="n">university_student_population_top10</span>
+<span class="w">    </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span>
+<span class="w">        </span><span class="n">activity</span>
+<span class="w">    </span><span class="k">ON</span>
+<span class="w">        </span><span class="n">university_student_population_top10</span><span class="p">.</span><span class="err">都道府県</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">activity</span><span class="p">.</span><span class="err">都道府県</span><span class="p">;</span><span class="w"> </span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>地域コード</th>
+            <th>都道府県</th>
+            <th>総人口</th>
+            <th>学習・自己啓発・訓練</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R13000</td>
+            <td>東京都</td>
+            <td>14010000</td>
+            <td>52.8</td>
+        </tr>
+        <tr>
+            <td>R27000</td>
+            <td>大阪府</td>
+            <td>8806000</td>
+            <td>41.3</td>
+        </tr>
+        <tr>
+            <td>R23000</td>
+            <td>愛知県</td>
+            <td>7517000</td>
+            <td>39.0</td>
+        </tr>
+        <tr>
+            <td>R14000</td>
+            <td>神奈川県</td>
+            <td>9236000</td>
+            <td>46.7</td>
+        </tr>
+        <tr>
+            <td>R28000</td>
+            <td>兵庫県</td>
+            <td>5432000</td>
+            <td>39.5</td>
+        </tr>
+        <tr>
+            <td>R40000</td>
+            <td>福岡県</td>
+            <td>5124000</td>
+            <td>37.7</td>
+        </tr>
+        <tr>
+            <td>R11000</td>
+            <td>埼玉県</td>
+            <td>7340000</td>
+            <td>40.0</td>
+        </tr>
+        <tr>
+            <td>R12000</td>
+            <td>千葉県</td>
+            <td>6275000</td>
+            <td>42.0</td>
+        </tr>
+        <tr>
+            <td>R01000</td>
+            <td>北海道</td>
+            <td>5183000</td>
+            <td>35.0</td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>前節のSQL文と似たような結果が出力されたが，処理手順は異なる．
+前節のSQL文はいったん直積ですべての組み合わせを求めた後，都道府県名が一致するものを調べて結果を表示している．
+これに対し，内部結合を用いた上記SQL文では，<code class="docutils literal notranslate"><span class="pre">INNER</span> <span class="pre">JOIN</span></code>句で指定した条件を満たす組み合わせのみを抽出し，その後それをすべて選択（表示）するという順で処理を行っている（<a class="reference internal" href="#sql2-q4">★Quiz4★</a>，<a class="reference internal" href="#sql2-q5">★Quiz5★</a>）．</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<h4 class="rubric" id="using">USING句を使った省略記法</h4>
+<p>2つのテーブルを内部結合する際，結合するテーブルの列名が等しい（同じ列名で結合する）場合は，以下のように<code class="docutils literal notranslate"><span class="pre">ON</span></code>句の代わりに<code class="docutils literal notranslate"><span class="pre">USING</span></code>句を使って簡単に書くことができる．
+以下は上記SQL文を<code class="docutils literal notranslate"><span class="pre">USING</span></code>句を使って書き換えたものである．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
+<span class="w">    </span><span class="n">university_student_population_top10</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">activity</span><span class="p">.</span><span class="err">学習・自己啓発・訓練</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="n">university_student_population_top10</span>
+<span class="w">    </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span>
+<span class="w">        </span><span class="n">activity</span>
+<span class="w">    </span><span class="k">USING</span><span class="p">(</span><span class="err">都道府県</span><span class="p">);</span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+<p>（後述する外部結合も含めて）<code class="docutils literal notranslate"><span class="pre">JOIN</span></code>句と<code class="docutils literal notranslate"><span class="pre">WHERE</span></code>句を組み合わせる際には，<code class="docutils literal notranslate"><span class="pre">JOIN</span></code>が行われる順序を意識することが重要となる．
+例えば，先の内部結合の例題において「総人口が700万以上の都道府県に限定」したいとしよう．
+そのような場合，以下のように<code class="docutils literal notranslate"><span class="pre">JOIN</span></code>句の後に<code class="docutils literal notranslate"><span class="pre">WHERE</span></code>句で選択条件を指定する．
+こうすることで，<code class="docutils literal notranslate"><span class="pre">JOIN</span></code>句で特定の条件でテーブルを結合した後，<code class="docutils literal notranslate"><span class="pre">WHERE</span></code>句で結合結果を絞り込むことができる．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
+<span class="w">    </span><span class="n">university_student_population_top10</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">activity</span><span class="p">.</span><span class="err">学習・自己啓発・訓練</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="n">university_student_population_top10</span>
+<span class="w">    </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span>
+<span class="w">        </span><span class="n">activity</span>
+<span class="w">    </span><span class="k">ON</span>
+<span class="w">        </span><span class="n">university_student_population_top10</span><span class="p">.</span><span class="err">都道府県</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">activity</span><span class="p">.</span><span class="err">都道府県</span>
+<span class="k">WHERE</span>
+<span class="w">    </span><span class="n">university_student_population_top10</span><span class="p">.</span><span class="err">総人口</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">7000000</span><span class="p">;</span><span class="w"> </span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>地域コード</th>
+            <th>都道府県</th>
+            <th>総人口</th>
+            <th>学習・自己啓発・訓練</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R13000</td>
+            <td>東京都</td>
+            <td>14010000</td>
+            <td>52.8</td>
+        </tr>
+        <tr>
+            <td>R27000</td>
+            <td>大阪府</td>
+            <td>8806000</td>
+            <td>41.3</td>
+        </tr>
+        <tr>
+            <td>R23000</td>
+            <td>愛知県</td>
+            <td>7517000</td>
+            <td>39.0</td>
+        </tr>
+        <tr>
+            <td>R14000</td>
+            <td>神奈川県</td>
+            <td>9236000</td>
+            <td>46.7</td>
+        </tr>
+        <tr>
+            <td>R11000</td>
+            <td>埼玉県</td>
+            <td>7340000</td>
+            <td>40.0</td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<h4 class="rubric" id="as">AS修飾句</h4>
+<p>長たらしいテーブル名，列名を繰り返し使うのは面倒である．
+また紛らわしいテーブル名，列名は混乱の元である．
+<code class="docutils literal notranslate"><span class="pre">AS</span></code>修飾句を使うことで，テーブル名や列名に別名を与えることができる．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
+<span class="w">    </span><span class="n">university_student_population_top10</span><span class="p">.</span><span class="o">*</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">--- 列名に別名「学習・自己鍛錬」を与える</span>
+<span class="w">    </span><span class="n">activity</span><span class="p">.</span><span class="err">学習・自己啓発・訓練</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="err">学習・自己鍛錬</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="c1">---テーブルに別名populationを与える</span>
+<span class="w">    </span><span class="n">university_student_population_top10</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">u_population</span><span class="w"> </span>
+<span class="w">    </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span>
+<span class="w">        </span><span class="n">activity</span>
+<span class="w">    </span><span class="k">ON</span>
+<span class="w">        </span><span class="n">u_population</span><span class="p">.</span><span class="err">都道府県</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">activity</span><span class="p">.</span><span class="err">都道府県</span><span class="w"> </span><span class="c1">--- 別名でテーブルを参照</span>
+<span class="k">WHERE</span>
+<span class="w">    </span><span class="n">u_population</span><span class="p">.</span><span class="err">総人口</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">7000000</span><span class="p">;</span><span class="w"> </span><span class="c1">---  別名でテーブルを参照</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="outer-join">
+<h3><span class="section-number">5.2.3. </span>外部結合（OUTER JOIN）<a class="headerlink" href="#outer-join" title="Link to this heading">#</a></h3>
+<p><a class="reference internal" href="#"><span class="xref myst">内部結合</span></a>は，片方のテーブル<span class="math notranslate nohighlight">\(R_1\)</span>にあるレコード<span class="math notranslate nohighlight">\(r\)</span>に対して，もう片方のテーブル<span class="math notranslate nohighlight">\(R_2\)</span>のレコードに結合条件を満たす列データがあるときに限ってレコード同士を結合し，その結果を表示するものであった．
+このことは，結合条件を満たすレコードがもう片方のテーブル<span class="math notranslate nohighlight">\(R_2\)</span>にない場合は<span class="math notranslate nohighlight">\(r\)</span>は<strong>無視される</strong>ことを意味する．</p>
+<p>実は例題に用いた<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルには「京都府」に関するレコードがない（授業用にデータを用意するときに含めないようにしていた）．
+そのため，内部結合の例題では<code class="docutils literal notranslate"><span class="pre">university_student_population_top10</span></code>テーブルと<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルを内部結合すると，「京都府」に関するレコードが結合結果に残らない（表示されない）のである．</p>
+<p>このような挙動をする内部結合に対して，結合条件を満たさないレコードがあった時でもそのことを示す情報を付与したレコードを残しつつ，テーブル同士を結合する演算が<strong>外部結合（outer join）</strong> である．
+外部結合では，結合条件を満たさないレコードがあった場合，値が存在しない列に<strong>NULL値（ヌル値）</strong> と呼ばれる「値がないこと」を示す情報を入れて結果を出力する．</p>
+<p>テーブルAにテーブルBを外部結合するためのSQL文は</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FROM</span> <span class="pre">A</span></code>の後で<code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">OUTER</span> <span class="pre">JOIN</span> <span class="pre">B</span></code>と書き，</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">OUTER</span> <span class="pre">JOIN</span> <span class="pre">B</span></code>の後に2つのテーブルの結合条件を<code class="docutils literal notranslate"><span class="pre">ON</span></code>句で指定する</p></li>
+</ol>
+<p>というフォーマットになる．</p>
+<p>例を見てみよう．
+以下は，内部結合の節で導入した1つ目のSQL文を外部結合に書き換えたものである．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
+<span class="w">    </span><span class="n">university_student_population_top10</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">activity</span><span class="p">.</span><span class="err">学習・自己啓発・訓練</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="n">university_student_population_top10</span>
+<span class="w">    </span><span class="k">LEFT</span><span class="w"> </span><span class="k">OUTER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="c1">--- （左）外部結合に書き換え</span>
+<span class="w">        </span><span class="n">activity</span>
+<span class="w">    </span><span class="k">ON</span>
+<span class="w">        </span><span class="n">university_student_population_top10</span><span class="p">.</span><span class="err">都道府県</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">activity</span><span class="p">.</span><span class="err">都道府県</span><span class="p">;</span><span class="w"> </span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>地域コード</th>
+            <th>都道府県</th>
+            <th>総人口</th>
+            <th>学習・自己啓発・訓練</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>R13000</td>
+            <td>東京都</td>
+            <td>14010000</td>
+            <td>52.8</td>
+        </tr>
+        <tr>
+            <td>R27000</td>
+            <td>大阪府</td>
+            <td>8806000</td>
+            <td>41.3</td>
+        </tr>
+        <tr>
+            <td>R23000</td>
+            <td>愛知県</td>
+            <td>7517000</td>
+            <td>39.0</td>
+        </tr>
+        <tr>
+            <td>R14000</td>
+            <td>神奈川県</td>
+            <td>9236000</td>
+            <td>46.7</td>
+        </tr>
+        <tr>
+            <td>R26000</td>
+            <td>京都府</td>
+            <td>2561000</td>
+            <td>None</td>
+        </tr>
+        <tr>
+            <td>R28000</td>
+            <td>兵庫県</td>
+            <td>5432000</td>
+            <td>39.5</td>
+        </tr>
+        <tr>
+            <td>R40000</td>
+            <td>福岡県</td>
+            <td>5124000</td>
+            <td>37.7</td>
+        </tr>
+        <tr>
+            <td>R11000</td>
+            <td>埼玉県</td>
+            <td>7340000</td>
+            <td>40.0</td>
+        </tr>
+        <tr>
+            <td>R12000</td>
+            <td>千葉県</td>
+            <td>6275000</td>
+            <td>42.0</td>
+        </tr>
+        <tr>
+            <td>R01000</td>
+            <td>北海道</td>
+            <td>5183000</td>
+            <td>35.0</td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>内部結合の例題とは異なり，「京都府」に関するレコードが表示され，「学習・自己啓発・訓練」列の値が<code class="docutils literal notranslate"><span class="pre">NULL</span></code>になっていることが分かる（上記結果ではNULLが<code class="docutils literal notranslate"><span class="pre">None</span></code>と表示されているが，<code class="docutils literal notranslate"><span class="pre">NULL</span></code>と読み替えてほしい）．
+外部結合は結合条件を満たすレコードがなかったとしても，それを把握したいときなどに利用できる．</p>
+<p>なお，上記の例題からも分かるように，外部結合には<strong>左外部結合（left outer join）</strong> と<strong>右外部結合（right outer join）</strong>，および<strong>完全外部結合（full outer join）</strong> の3種類が存在する．
+左外部結合が結合対象の左テーブルのレコードを全て残すのに対して，</p>
+<ul class="simple">
+<li><p>右外部結合は（結合条件を満たさなかった場合でも）結合対象の右テーブルのレコードを全て残し，</p></li>
+<li><p>完全外部結合は（結合条件を満たさなかった場合でも）左右両方のテーブルのレコードを全て残す</p></li>
+</ul>
+<p>演算となる．
+まずは左外部結合をマスターしよう（<a class="reference internal" href="#sql2-q6">★Quiz6★</a>，<a class="reference internal" href="#sql2-q7">★Quiz7★</a>）．</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<h4 class="rubric" id="null">NULLと空文字は異なる</h4>
+<p>NULLは値が存在しないことを意味する情報である．
+文字列が入ることが想定される列にNULL値が入っている場合は「その列には何らかの理由で値が設定されなかった」ことを意味する．
+一方，空文字（<code class="docutils literal notranslate"><span class="pre">''</span></code>）は長さが0の文字列である．
+もし文字列が入ることが想定される列に空文字が入っている場合は「意図を持って文字がないことを示すために空文字が入れられた」ことを意味する．SQLではNULLと空文字と厳格に区別しているため，扱いには注意しよう．</p>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id5">
+<h2><span class="section-number">5.3. </span>クイズ<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>本クイズでは，独立行政法人統計センターが公開している教育用標準データセット（SSDSE）の<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-E">基本素材SSDSE-E</a>（データの解説は<a class="reference external" href="https://www.nstac.go.jp/sys/files/kaisetsu-E-2023.pdf">こちら</a>）および<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-A">市区町村（SSDSE-A）</a>から抜粋・加工したデータを用いる．
+なお，</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルの内容については前章</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">university_student_population_top10</span></code>テーブルの内容については<a class="reference internal" href="#sql2-db2">コチラ</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルの内容については<a class="reference internal" href="#sql2-db3">コチラ</a></p></li>
+</ul>
+<p>を参照せよ．</p>
+<section id="q1">
+<span id="sql2-q1"></span><h3><span class="section-number">5.3.1. </span>Q1. 復習<a class="headerlink" href="#q1" title="Link to this heading">#</a></h3>
+<p><a class="reference internal" href="01.html"><span class="std std-doc">前章</span></a>で用いた<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルにあるレコードのうち，大学学生数が<code class="docutils literal notranslate"><span class="pre">7万</span></code>以上かつ小学校児童数が<code class="docutils literal notranslate"><span class="pre">30万</span></code>以上の都道府県名を表示するSQL文を書け．
+なお，表示の際には都道府県名の重複は除くこと．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q2">
+<span id="sql2-q2"></span><h3><span class="section-number">5.3.2. </span>Q2. 集合演算<a class="headerlink" href="#q2" title="Link to this heading">#</a></h3>
+<p>上記Q1と同様の内容を表示するSQL文を<code class="docutils literal notranslate"><span class="pre">INTERSECT</span></code>句を用いて書け．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q3">
+<span id="sql2-q3"></span><h3><span class="section-number">5.3.3. </span>Q3. 直積<a class="headerlink" href="#q3" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルと<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルの直積を求めるSQL文を書け．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q4">
+<span id="sql2-q4"></span><h3><span class="section-number">5.3.4. </span>Q4. 内部結合<a class="headerlink" href="#q4" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルと<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルをフィールド「地域コード」で内部結合を行うSQL文を書け．
+ただし，結果表示時には重複するフィールド（すなわち「地域コード」「都道府県名」）は除くこと．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q5">
+<span id="sql2-q5"></span><h3><span class="section-number">5.3.5. </span>Q5. 直積再び<a class="headerlink" href="#q5" title="Link to this heading">#</a></h3>
+<p>上記Q4と同様の内容を表示するSQL文を<code class="docutils literal notranslate"><span class="pre">JOIN</span></code>を用いずに書け．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q6-1-2">
+<span id="sql2-q6"></span><h3><span class="section-number">5.3.6. </span>Q6. 外部結合（1/2）<a class="headerlink" href="#q6-1-2" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">university_student_population_top10</span></code>テーブルに対して「地域コード」を用いて<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルを左外部結合せよ．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q7-2-2">
+<span id="sql2-q7"></span><h3><span class="section-number">5.3.7. </span>Q7. 外部結合（2/2）<a class="headerlink" href="#q7-2-2" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">university_student_population_top10</span></code>テーブルに対して「地域コード」を用いて<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルを右外部結合せよ．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -448,7 +2163,41 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.1. 集合演算</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#union">5.1.1. 和集合演算（UNION）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intersect">5.1.2. 積集合演算（INTERSECT）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#except">5.1.3. 差集合演算（EXCEPT）</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#join">5.2. 結合（JOIN）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-join">5.2.1. 直積（CROSS JOIN）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-join">5.2.2. 内部結合（INNER JOIN）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outer-join">5.2.3. 外部結合（OUTER JOIN）</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.3. クイズ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">5.3.1. Q1. 復習</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">5.3.2. Q2. 集合演算</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3">5.3.3. Q3. 直積</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4">5.3.4. Q4. 内部結合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5">5.3.5. Q5. 直積再び</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-1-2">5.3.6. Q6. 外部結合（1/2）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-2-2">5.3.7. Q7. 外部結合（2/2）</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
