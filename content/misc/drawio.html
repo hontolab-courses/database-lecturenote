@@ -331,7 +331,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -347,6 +349,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">利用手順</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -358,6 +368,37 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="draw-io">
 <h1><a class="reference external" href="http://draw.io">draw.io</a> の使い方<a class="headerlink" href="#draw-io" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://app.diagrams.net/">draw.io</a>は図を書くことに特化した無料オンラインツールである．
+利用に際して，ユーザ登録は必要ない．
+また，ブラウザ上で動作するため，インターネットさえつながればすぐにツールを使うことができる．
+サポートされている図のタイプとしては，実体関連図の他，フローチャートや樹形図といったもの，電気回路図などもある．</p>
+<p>ツールそのものは英語で提供されているが，日本語も問題なく使用できる．
+以下，draw.ioで実体関連図を書く方法について説明する．</p>
+<section id="id1">
+<h2>利用手順<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[https://app.diagrams.net/](https://app.diagrams.net/)</span></code>にアクセスする．</p></li>
+<li><p>以下の画面が表示されるので，<code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">New</span> <span class="pre">Diagram</span></code>をクリックする．</p></li>
+</ol>
+<p><img alt="Create New Diagram" src="../../_images/drawio-1.png" /></p>
+<ol class="arabic simple" start="3">
+<li><p>以下の画面が表示されるので，<code class="docutils literal notranslate"><span class="pre">Blank</span> <span class="pre">Diagram</span></code>を選択する（<code class="docutils literal notranslate"><span class="pre">Entity</span> <span class="pre">Relationship</span> <span class="pre">Diagram</span></code>は<strong>選択しないこと</strong>）．また，適当なファイル名をつけて<code class="docutils literal notranslate"><span class="pre">Create</span></code>ボタンをクリックする．
+<img alt="ファイル作成" src="../../_images/drawio-2.png" /></p></li>
+<li><p>ファイルの保存先を確認されるので，好きな場所を指定する（保存したファイルは後で再利用することが可能）．</p></li>
+<li><p>ファイルを作成すると，以下のような図を作成する画面が表示される．ファイル作成時はキャンバスは白紙状態だが，画面左端のサイドバーから実体関連図作成に必要なパーツを選択し，マウスドラッグでキャンバスに持っていくことができる．</p></li>
+</ol>
+<p><img alt="初期キャンバス" src="../../_images/drawio-3.png" /></p>
+<ol class="arabic simple" start="6">
+<li><p>長方形やひし形などの図形オブジェクトは，ダブルクリックすると図形内に文字を書くことができる．
+<img alt="テキスト入力" src="../../_images/drawio-4.png" /></p></li>
+<li><p>線の太さや色などの図形の見た目は，図形をクリックすると画面右端に現れるサイドバーから調整することができる．
+<img alt="図形の見た目調整" src="../../_images/drawio-5.png" /></p></li>
+<li><p>図形オブジェクトと図形オブジェクトを線でつなぐと，図形を移動させても線は外れないので便利．</p></li>
+</ol>
+<div style="text-align:center;" >
+<iframe width="560" height="315" src="https://www.youtube.com/embed/m0lF8YtvQ1w?si=FjaDopnrymH5mtqH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -415,7 +456,20 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">利用手順</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
