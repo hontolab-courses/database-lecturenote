@@ -16,3 +16,6 @@
 - [データサイエンティスト協会](https://www.datascientist.or.jp)スキル定義委員「[データサイエンス100本ノック（構造化データ加工編）](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/tree/master)」
 
 ## 謝辞
+- [Jupyter Book](https://jupyterbook.org/en/stable/intro.html)
+- [SQLite](https://www.sqlite.org/)
+- [draw.io](https://app.diagrams.net/)
