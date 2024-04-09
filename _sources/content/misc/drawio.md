@@ -9,7 +9,7 @@
 以下，draw.ioで実体関連図を書く方法について説明する．
 
 ## 利用手順
-1. `[https://app.diagrams.net/](https://app.diagrams.net/)`にアクセスする．
+1. [https://app.diagrams.net/](https://app.diagrams.net/)にアクセスする．
 
 2. 以下の画面が表示されるので，`Create New Diagram`をクリックする．
 
