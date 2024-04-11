@@ -38,7 +38,7 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 * 障害回復
 
 
-## 授業の予定とコンテンツ
+## 授業計画とコンテンツ
 | |  日時  | トピック | 講義ノート | スライド資料 |
 | ---- | ---- | ---- | ---- | ---- |
 | 1 | 04/15 | ガイダンス & データベースを使わない世界 | [Here](content/introduction/01.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-01) |
