@@ -1,3 +1,3 @@
 #!/bin/bash
 jb build --all .
-ghp-import -n -p -f _build/html --cname=database-lecture.hontolab.org
+ghp-import -n -p -f _build/html --cname=dbnote.hontolab.org
