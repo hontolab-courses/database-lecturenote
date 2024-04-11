@@ -41,16 +41,16 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 ## 授業の予定とコンテンツ
 | |  日時  | トピック | 講義ページ | スライド資料 |
 | ---- | ---- | ---- | ---- | ---- |
-| 1 | 04/15 | ガイダンス & データベースを使わない世界 | [URL](/content/introduction/01.html) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-01) |
-| 2 | 04/22 | データベースの概念 | [URL](./content/concept-of-database/01.html) |  |
-| 3 | 04/29 | 関係データモデル | [URL](content/relational-data-model/01.html) |  |
-| 4 | 05/13 | SQL（1/3） | [URL](//content/sql/01.html) |  |
-| 5 | 05/20 | SQL（2/3） | [URL](/content/sql/02.html) |  |
-| 6 | 05/27 | SQL（3/3） | [URL](/content/sql/03.html) |  |
-| 7 | 06/03 | SQL演習 - レポート課題1 | [URL](/content/exercise/sql-exercise.html) |  |
-| 8 | 06/10 | 実体関連モデル（1/3） | [URL](/content/er-model/01.html) |  |
-| 9 | 06/17 | 実体関連モデル（2/3）| [URL](/content/er-model/02.html) |  |
-| 10 | 06/24 | 実体関連モデル（3/3） | [URL](/content/er-model/03.html) |  |
+| 1 | 04/15 | ガイダンス & データベースを使わない世界 | [URL](content/introduction/01.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-01) |
+| 2 | 04/22 | データベースの概念 | [URL](content/concept-of-database/01.ipynb) |  |
+| 3 | 04/29 | 関係データモデル | [URL](content/relational-data-model/01.ipynb) |  |
+| 4 | 05/13 | SQL（1/3） | [URL](content/sql/01.ipynb) |  |
+| 5 | 05/20 | SQL（2/3） | [URL](content/sql/02.ipynb) |  |
+| 6 | 05/27 | SQL（3/3） | [URL](content/sql/03.ipynb) |  |
+| 7 | 06/03 | SQL演習 - レポート課題1 | [URL](content/exercise/sql-exercise.ipynb) |  |
+| 8 | 06/10 | 実体関連モデル（1/3） | [URL](content/er-model/01.ipynb) |  |
+| 9 | 06/17 | 実体関連モデル（2/3）| [URL](content/er-model/02.ipynb) |  |
+| 10 | 06/24 | 実体関連モデル（3/3） | [URL](content/er-model/03.ipynb) |  |
 | 11 | 07/01 | 正規形（1/2） |  |  |
 | 12 | 07/08 | 正規化（2/2） |  |  |
 | 13 | 07/15 | データベース設計演習 - レポート課題2|  |  |
