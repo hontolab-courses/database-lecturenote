@@ -41,10 +41,10 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 ## 授業の予定とコンテンツ
 | |  日時  | トピック | 講義ページ | スライド資料 |
 | ---- | ---- | ---- | ---- | ---- |
-| 1 | 04/15 | ガイダンス & データベースを使わない世界 | [URL](./content/introduction/01.html) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-01) |
-| 2 | 04/22 | データベースの概念 | [URL](/content/concept-of-database/01.html) |  |
-| 3 | 04/29 | 関係データモデル | [URL](/content/relational-data-model/01.html) |  |
-| 4 | 05/13 | SQL（1/3） | [URL](/content/sql/01.html) |  |
+| 1 | 04/15 | ガイダンス & データベースを使わない世界 | [URL](/content/introduction/01.html) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-01) |
+| 2 | 04/22 | データベースの概念 | [URL](./content/concept-of-database/01.html) |  |
+| 3 | 04/29 | 関係データモデル | [URL](content/relational-data-model/01.html) |  |
+| 4 | 05/13 | SQL（1/3） | [URL](//content/sql/01.html) |  |
 | 5 | 05/20 | SQL（2/3） | [URL](/content/sql/02.html) |  |
 | 6 | 05/27 | SQL（3/3） | [URL](/content/sql/03.html) |  |
 | 7 | 06/03 | SQL演習 - レポート課題1 | [URL](/content/exercise/sql-exercise.html) |  |
