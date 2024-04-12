@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>draw.io の使い方 &#8212; データベースの講義ノート</title>
+    <title>13. データベース設計演習 &#8212; データベースの講義ノート</title>
   
   
   
@@ -71,12 +71,12 @@
                 gtag('config', 'G-1GGP5ZEVQL');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/misc/drawio';</script>
-    <link rel="canonical" href="https://dbnote.hontolab.org/content/misc/drawio.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/exercise/db-design';</script>
+    <link rel="canonical" href="https://dbnote.hontolab.org/content/exercise/db-design.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="参考文献" href="../reference.html" />
-    <link rel="prev" title="Google Colab上でのSQLiteの使い方" href="how-to-execute-sql.html" />
+    <link rel="next" title="14. B木" href="../indexing-and-transaction/01.html" />
+    <link rel="prev" title="12. 分解" href="../db-design/02.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -194,16 +194,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../sql/01.html">4. 単純質問</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql/02.html">5. 結合質問（集合演算を含む）</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql/03.html">6. 副問い合わせ &amp; テーブルの定義と更新</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercise/sql.html">7. SQL演習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql.html">7. SQL演習</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">データベース設計</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../er-model/01.html">8. 実体関連モデルとは</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../er-model/02.html">9. 実体関連モデル上の一貫性制約</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../er-model/03.html">10. 拡張実体関連モデル &amp; n項関連</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">11. 正規形</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">12. 分解</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercise/db-design.html">13. データベース設計演習</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. データベース設計演習</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">索引づけ</span></p>
 <ul class="nav bd-sidenav">
@@ -214,10 +214,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../nosql/01.html">15. NoSQL</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">付録</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="math.html">集合と写像</a></li>
-<li class="toctree-l1"><a class="reference internal" href="how-to-execute-sql.html">Google Colab上でのSQLiteの使い方</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">draw.io の使い方</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../misc/math.html">集合と写像</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/how-to-execute-sql.html">Google Colab上でのSQLiteの使い方</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/drawio.html">draw.io の使い方</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">参考文献</a></li>
 </ul>
 
@@ -273,7 +273,7 @@
       
       
       
-      <li><a href="../../_sources/content/misc/drawio.md" target="_blank"
+      <li><a href="../../_sources/content/exercise/db-design.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -344,9 +344,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -357,19 +355,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>draw.io の使い方</h1>
+    <h1>データベース設計演習</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">利用手順</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -379,39 +369,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="draw-io">
-<h1><a class="reference external" href="http://draw.io">draw.io</a> の使い方<a class="headerlink" href="#draw-io" title="Link to this heading">#</a></h1>
-<p><a class="reference external" href="https://app.diagrams.net/">draw.io</a>は図を書くことに特化した無料オンラインツールである．
-利用に際して，ユーザ登録は必要ない．
-また，ブラウザ上で動作するため，インターネットさえつながればすぐにツールを使うことができる．
-サポートされている図のタイプとしては，実体関連図の他，フローチャートや樹形図といったもの，電気回路図などもある．</p>
-<p>ツールそのものは英語で提供されているが，日本語も問題なく使用できる．
-以下，draw.ioで実体関連図を書く方法について説明する．</p>
-<section id="id1">
-<h2>利用手順<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p><a class="reference external" href="https://app.diagrams.net/">https://app.diagrams.net/</a>にアクセスする．</p></li>
-<li><p>以下の画面が表示されるので，<code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">New</span> <span class="pre">Diagram</span></code>をクリックする．</p></li>
-</ol>
-<p><img alt="Create New Diagram" src="../../_images/drawio-1.png" /></p>
-<ol class="arabic simple" start="3">
-<li><p>以下の画面が表示されるので，<code class="docutils literal notranslate"><span class="pre">Blank</span> <span class="pre">Diagram</span></code>を選択する（<code class="docutils literal notranslate"><span class="pre">Entity</span> <span class="pre">Relationship</span> <span class="pre">Diagram</span></code>は<strong>選択しないこと</strong>）．また，適当なファイル名をつけて<code class="docutils literal notranslate"><span class="pre">Create</span></code>ボタンをクリックする．
-<img alt="ファイル作成" src="../../_images/drawio-2.png" /></p></li>
-<li><p>ファイルの保存先を確認されるので，好きな場所を指定する（保存したファイルは後で再利用することが可能）．</p></li>
-<li><p>ファイルを作成すると，以下のような図を作成する画面が表示される．ファイル作成時はキャンバスは白紙状態だが，画面左端のサイドバーから実体関連図作成に必要なパーツを選択し，マウスドラッグでキャンバスに持っていくことができる．</p></li>
-</ol>
-<p><img alt="初期キャンバス" src="../../_images/drawio-3.png" /></p>
-<ol class="arabic simple" start="6">
-<li><p>長方形やひし形などの図形オブジェクトは，ダブルクリックすると図形内に文字を書くことができる．
-<img alt="テキスト入力" src="../../_images/drawio-4.png" /></p></li>
-<li><p>線の太さや色などの図形の見た目は，図形をクリックすると画面右端に現れるサイドバーから調整することができる．
-<img alt="図形の見た目調整" src="../../_images/drawio-5.png" /></p></li>
-<li><p>図形オブジェクトと図形オブジェクトを線でつなぐと，図形を移動させても線は外れないので便利．</p></li>
-</ol>
-<div style="text-align:center;" >
-<iframe width="560" height="315" src="https://www.youtube.com/embed/m0lF8YtvQ1w?si=FjaDopnrymH5mtqH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">13. </span>データベース設計演習<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>後日公開予定</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -427,7 +387,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/misc"
+            path: "./content/exercise"
         },
         predefinedOutput: true
     }
@@ -445,20 +405,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="how-to-execute-sql.html"
+       href="../db-design/02.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Google Colab上でのSQLiteの使い方</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>分解</p>
       </div>
     </a>
     <a class="right-next"
-       href="../reference.html"
+       href="../indexing-and-transaction/01.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">参考文献</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>B木</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -469,20 +429,7 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">利用手順</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>
