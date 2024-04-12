@@ -21,7 +21,8 @@ parts:
     - file: content/sql/01.ipynb
     - file: content/sql/02.ipynb
     - file: content/sql/03.ipynb
-    - file: content/exercise/sql-exercise.ipynb
+    #- file: content/exercise/sql.ipynb
+    - file: content/exercise/sql.md
 #- caption: 関係モデルの操作体系
 #  numbered: True
 #  chapters:
@@ -34,7 +35,7 @@ parts:
     - file: content/er-model/03.ipynb
     - file: content/db-design/01.ipynb
     - file: content/db-design/02.ipynb
-    - file: content/exercise/db-design-exercise.md
+    - file: content/exercise/db-design.md
 - caption: 索引づけ
   numbered: True
   chapters:
