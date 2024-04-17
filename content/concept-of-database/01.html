@@ -508,7 +508,7 @@ Excelのようなスプレッドシートでは，購買データのように多
 <ul class="simple">
 <li><p>あり得ない売り上げ金額が入っている</p></li>
 <li><p>入力形式が異なる日付が入っている</p></li>
-<li><p>キャンセルされたにもかかわらず，購買履歴には「購買済み」として記録が残っている</p></li>
+<li><p>取扱商品リストにないはずの商品が購買履歴に入っている</p></li>
 </ul>
 <p>といったことが起きると，オンラインショッピング事業においては一大事である．
 このようにデータ管理においては，格納されるデータの正しさ，データ間の矛盾のなさを保証する機能が求められる．</p>
@@ -559,11 +559,11 @@ Xさんの預金額は100万円だとする．
 <p>本稿で学ぶデータベースを用いれば，<strong>データを一元管理</strong>が可能になり，データ管理・データ利活用における様々な恩恵を受けられる．
 具体的には，データベースが備える以下のような性質あるいは関連技術を用いることで，前節で述べた「データ処理に求められる要件」をクリアすることができる（<a class="reference internal" href="#q2-3"><span class="std std-ref">★Quiz3★</span></a>，<a class="reference internal" href="#q2-4"><span class="std std-ref">★Quiz4★</span></a>）．</p>
 <ul class="simple">
-<li><p>大規模データ管理：「<strong>物理的データ格納方式</strong>」の工夫によって対応</p></li>
-<li><p>データの正しさの管理：「<strong>一貫性制約</strong>」によって対応</p></li>
-<li><p>アクセス権限のコントロール：「<strong>ロール管理</strong>」によって対応</p></li>
+<li><p>大規模なデータの管理：「<strong>物理的データ格納方式</strong>」の工夫によって対応</p></li>
+<li><p>データの正しさの保証：「<strong>一貫性制約</strong>」によって対応</p></li>
 <li><p>高速で効率的なデータ処理：「<strong>インデックス</strong>」「<strong>問い合わせ最適化</strong>」などで対応</p></li>
 <li><p>同時実行，データの共同利用：「<strong>トランザクション</strong>」などで対応</p></li>
+<li><p>アクセス権のコントロール：「<strong>ロール管理</strong>」によって対応</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

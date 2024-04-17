@@ -42,7 +42,7 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 | |  日時  | トピック | 講義ノート | スライド資料 |
 | ---- | ---- | ---- | ---- | ---- |
 | 1 | 04/15 | ガイダンス & データベースを使わない世界 | [Here](content/introduction/01.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-01) |
-| 2 | 04/22 | データベースの概念 | [Here](content/concept-of-database/01.ipynb) |  |
+| 2 | 04/22 | データベースの概念 | [Here](content/concept-of-database/01.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-02) |
 | 3 | 04/29 | 関係データモデル | [Here](content/relational-data-model/01.ipynb) |  |
 | 4 | 05/13 | SQL（1/3） | [Here](content/sql/01.ipynb) |  |
 | 5 | 05/20 | SQL（2/3） | [Here](content/sql/02.ipynb) |  |
