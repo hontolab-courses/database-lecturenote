@@ -201,8 +201,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../er-model/01.html">8. 実体関連モデルとは</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../er-model/02.html">9. 実体関連モデル上の一貫性制約</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../er-model/03.html">10. 拡張実体関連モデル &amp; n項関連</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">11. 正規形</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">12. 分解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">11. 好ましくない関係スキーマ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">12. データ従属性にもとづく正規化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercise/db-design.html">13. データベース設計演習</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">索引づけ</span></p>
@@ -441,7 +441,7 @@ document.write(`
 例えば，<a class="reference external" href="https://www.amazon.co.jp/">Amazon</a>や<a class="reference external" href="https://www.rakuten.co.jp/">楽天市場</a>といったオンラインショッピングサイトにおいては，購買管理や在庫管理を行うためにデータベースが用いられている．
 <a class="reference external" href="https://www.instagram.com/">Instagram</a>や<a class="reference external" href="https://www.tiktok.com/">Tiktok</a>といった，多数のユーザがコンテンツを投稿するソーシャルメディアでもデータベースは欠かせない．
 個人用ブログのような比較的小規模なアプリケーションにおいても，記事データを管理するためにデータベースが用いられる（例: <a class="reference external" href="https://ja.wordpress.org/">WordPress</a>）．
-データを語る上で，データベースはなくてはならないものである（<a class="reference internal" href="#q2-1"><span class="std std-ref">★Quiz1★</span></a>）．</p>
+データを語る上で，データベースはなくてはならないものである．</p>
 <p>本章では，データベースの概念を説明した後，最も代表的なデータベースであり，かつ本講義の主要テーマである<strong>関係データベース</strong> の概要について説明する．</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -486,7 +486,7 @@ document.write(`
 本来データベースとはDBMSによって管理されるデータ群を指すが，DBMS（あるいはDBMSとそれによって管理されるデータ群）のことをデータベース（DB）と呼ぶこともある．</p>
 <p>増え続ける多様かつ大量のデータと付き合っていくためには，データのうまい管理・処理方法が必要になる．
 適当にデータを作ってはExcelシートやフォルダ（ディレクトリ）に突っ込んでおくというやり方は，扱うデータが増え，データを使う人やアプリが増えると破綻する．
-IT屋が考えるデータベースは，こういった事態を防ぐための強力なツールである．</p>
+IT屋が考えるデータベースは，こういった事態を防ぐための強力なツールである（<a class="reference internal" href="#q2-1"><span class="std std-ref">★Quiz1★</span></a>）．</p>
 <section id="id4">
 <h3><span class="section-number">2.1.1. </span>データ処理の際に求められる機能<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>日々発生する大量のデータをやりとりをうまく処理するために，以下のような要件が求められる．</p>
