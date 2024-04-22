@@ -425,9 +425,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-3-4">11.4.3. Q3: 関係スキーマへの変換（3/4）</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-4-4">11.4.4. Q4: 関係スキーマへの変換（4/4）</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5">11.4.5. Q5: 修正時異状</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7">11.4.6. Q7: 削除時異状</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q8">11.4.7. Q8: 挿入時異状</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q9">11.4.8. Q9: 削除，挿入，修正</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6">11.4.6. Q6: 削除時異状</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7">11.4.7. Q7: 挿入時異状</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q8">11.4.8. Q8: 削除，挿入，修正</a></li>
 </ul>
 </li>
 </ul>
@@ -616,7 +616,7 @@ document.write(`
 しかし，データベースから拒否されてしまった．
 理由は関係「購買」のスキーマにおいては<code class="docutils literal notranslate"><span class="pre">購買ID</span></code>が主キーとして設定されているため，主キーの値がないレコード<code class="docutils literal notranslate"><span class="pre">(NULL,</span> <span class="pre">NULL,</span> <span class="pre">たきのこの里山,</span> <span class="pre">250,</span> <span class="pre">NULL)</span></code>は追加できないのである．</p>
 <p><img alt="挿入時異状" src="../../_images/insertion-anomaly.png" /></p>
-<p>このように，レコードを挿入しようとしたときに発生する不都合な現象を<strong>挿入時異状（insertion anomaly）</strong> と呼ぶ（<a class="reference internal" href="#db-design1-q8">★Quiz8★</a>）．</p>
+<p>このように，レコードを挿入しようとしたときに発生する不都合な現象を<strong>挿入時異状（insertion anomaly）</strong> と呼ぶ（<a class="reference internal" href="#db-design1-q7">★Quiz7★</a>）．</p>
 </section>
 <section id="id12">
 <h3><span class="section-number">11.2.2. </span>削除時異状<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
@@ -627,7 +627,7 @@ document.write(`
 <p><img alt="削除時異状" src="../../_images/deletion-anomaly.png" /></p>
 <p>このように削除時異状とは，データベースの利用者が意図したよりも多くの情報が失われてしまう現象を指す．</p>
 <p>なお，購買IDが<code class="docutils literal notranslate"><span class="pre">T3</span></code>のレコードを削除した後に，<code class="docutils literal notranslate"><span class="pre">のど飴</span></code>の商品情報が消えてしまったことに気づいた山畑さんは，焦って<code class="docutils literal notranslate"><span class="pre">(NULL,</span> <span class="pre">NULL,</span> <span class="pre">のど飴,</span> <span class="pre">170,</span> <span class="pre">NULL)</span></code>というレコードを追加して，<code class="docutils literal notranslate"><span class="pre">のど飴</span></code>の商品情報を復活させようとした．
-しかし，挿入時異状となり，データベースからは拒否される（<a class="reference internal" href="#db-design1-q7">★Quiz7★</a>）．</p>
+しかし，挿入時異状となり，データベースからは拒否される（<a class="reference internal" href="#db-design1-q6">★Quiz6★</a>）．</p>
 </section>
 <section id="id13">
 <h3><span class="section-number">11.2.3. </span>修正時異状<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
@@ -639,7 +639,7 @@ document.write(`
 <p>ところで，今回の勘違いは「はーいお茶の単価が120円の間違いだった」という単一の修正事象にもかかわらず，データベース上ではレコードを2件書き換える必要が発生している．
 今回購買テーブルの中で<code class="docutils literal notranslate"><span class="pre">はーいお茶</span></code>の購買履歴が2件しかなかったが，これが100万件あれば100万回の修正が必要になる．
 この処理は明らかに冗長である．</p>
-<p>このようにデータベース上のデータの修正時に関わる不都合を修正時異状と呼ぶ（<a class="reference internal" href="#db-design1-q6"><span class="xref myst">★Quiz6★</span></a>）．</p>
+<p>このようにデータベース上のデータの修正時に関わる不都合を修正時異状と呼ぶ（<a class="reference internal" href="#db-design1-q5">★Quiz5★</a>）．</p>
 </section>
 </section>
 <section id="id14">
@@ -719,7 +719,7 @@ document.write(`
 <p><img alt="情報損失分解の顛末" src="../../_images/lossy-decomposition2.png" /></p>
 <p>上で挙げた2例を比較したとき，<a class="reference internal" href="#sec-lossless-decomposition">関係「購買」を関係「購買履歴」と「商品」に分解する例</a>ではなぜ情報無損失分解に成功したのであろうか．
 成功要因は，分解の軸となった属性「購入商品」は，「購入商品」の値（名前）が決まればそれに対応する「単価」の値も一意に決まるからである．
-逆に，<a class="reference internal" href="#sec-lossy-decomposition">関係「購買」を関係「購買1」と「購買2」に分解する例</a>が情報無損失分解に失敗した理由は，分解の軸となった属性「ユーザ」の値（名前）が決まっても，それに対応する「購入商品」「単価」「数量」の値が一意に決まらないからである（<a class="reference internal" href="#db-design1-q9">★Quiz9★</a>）．</p>
+逆に，<a class="reference internal" href="#sec-lossy-decomposition">関係「購買」を関係「購買1」と「購買2」に分解する例</a>が情報無損失分解に失敗した理由は，分解の軸となった属性「ユーザ」の値（名前）が決まっても，それに対応する「購入商品」「単価」「数量」の値が一意に決まらないからである（<a class="reference internal" href="#db-design1-q8">★Quiz8★</a>）．</p>
 </section>
 <hr class="docutils" />
 <section id="id16">
@@ -756,8 +756,8 @@ document.write(`
 営業担当者の成績の修正に際して，関係「営業記録」のみを用いてデータを管理する際に発生しうる挿入時異状の例を挙げよ．</p>
 <p><img alt="営業記録テーブル" src="../../_images/sale-history.png" /></p>
 </section>
-<section id="q7">
-<span id="db-design1-q7"></span><h3><span class="section-number">11.4.6. </span>Q7: 削除時異状<a class="headerlink" href="#q7" title="Link to this heading">#</a></h3>
+<section id="q6">
+<span id="db-design1-q6"></span><h3><span class="section-number">11.4.6. </span>Q6: 削除時異状<a class="headerlink" href="#q6" title="Link to this heading">#</a></h3>
 <p>架空の家具販売店「八高家具」では以下のような修正した関係スキーマを用いて改めて営業記録をつけはじめた．</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(営業記録2(\underline{ユーザ, 商品}, 連絡先, メーカー, 営業担当)\)</span></p>
@@ -767,8 +767,8 @@ document.write(`
 営業記録の削除に際して，関係「営業記録2」のみを用いてデータ管理する際に発生しうる挿入時異状の例を挙げよ．</p>
 <p><img alt="営業記録テーブル2" src="../../_images/sale-history2.png" /></p>
 </section>
-<section id="q8">
-<span id="db-design1-q8"></span><h3><span class="section-number">11.4.7. </span>Q8: 挿入時異状<a class="headerlink" href="#q8" title="Link to this heading">#</a></h3>
+<section id="q7">
+<span id="db-design1-q7"></span><h3><span class="section-number">11.4.7. </span>Q7: 挿入時異状<a class="headerlink" href="#q7" title="Link to this heading">#</a></h3>
 <p>架空の家具販売店「八高家具」では以下のようなさらに修正した関係スキーマを用いて改めて営業記録をつけはじめた．</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(営業記録3(\underline{ユーザ, 商品}, メーカー, 営業担当)\)</span></p>
@@ -777,8 +777,8 @@ document.write(`
 取り扱い商品の追加に際して，関係「営業記録3」のみを用いてデータ管理する際に発生しうる挿入時異状の例を挙げよ．</p>
 <p><img alt="営業記録テーブル3" src="../../_images/sale-history3.png" /></p>
 </section>
-<section id="q9">
-<span id="db-design1-q9"></span><h3><span class="section-number">11.4.8. </span>Q9: 削除，挿入，修正<a class="headerlink" href="#q9" title="Link to this heading">#</a></h3>
+<section id="q8">
+<span id="db-design1-q8"></span><h3><span class="section-number">11.4.8. </span>Q8: 削除，挿入，修正<a class="headerlink" href="#q8" title="Link to this heading">#</a></h3>
 <p>架空の家具販売店「八高家具」では，データエンジニアのアドバイスに基づき，
 以下の2つの関係スキーマを用いて改めて営業記録と取り扱い商品の管理を行うことにした．</p>
 <blockquote>
@@ -886,9 +886,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-3-4">11.4.3. Q3: 関係スキーマへの変換（3/4）</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-4-4">11.4.4. Q4: 関係スキーマへの変換（4/4）</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5">11.4.5. Q5: 修正時異状</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7">11.4.6. Q7: 削除時異状</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q8">11.4.7. Q8: 挿入時異状</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q9">11.4.8. Q9: 削除，挿入，修正</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6">11.4.6. Q6: 削除時異状</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7">11.4.7. Q7: 挿入時異状</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q8">11.4.8. Q8: 削除，挿入，修正</a></li>
 </ul>
 </li>
 </ul>
