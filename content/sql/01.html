@@ -203,7 +203,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../er-model/01.html">8. 実体関連モデルとは</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../er-model/02.html">9. 実体関連モデル上の一貫性制約</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../er-model/03.html">10. 拡張実体関連モデル &amp; n項関連</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">11. 好ましくない関係スキーマ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">11. 望ましくない関係スキーマ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">12. データ従属性にもとづく正規化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercise/db-design.html">13. データベース設計演習</a></li>
 </ul>
@@ -1535,9 +1535,9 @@ SQLはISOによって国際的に標準化されている．
 </div>
 </section>
 <section id="select">
-<h2><span class="section-number">4.3. </span>射影（SELECT）<a class="headerlink" href="#select" title="Link to this heading">#</a></h2>
+<span id="sec-sql-projection"></span><h2><span class="section-number">4.3. </span>射影（SELECT）<a class="headerlink" href="#select" title="Link to this heading">#</a></h2>
 <p>最も単純なSQLは<code class="docutils literal notranslate"><span class="pre">SELECT</span></code>句と<code class="docutils literal notranslate"><span class="pre">FROM</span></code>句のみからなるものである．
-<strong>射影</strong>とは<code class="docutils literal notranslate"><span class="pre">FROM</span></code>句で指定されたテーブルから，<code class="docutils literal notranslate"><span class="pre">SELECT</span></code>句で指定した特定の列のデータのみを抽出する操作である．</p>
+<strong>射影（projection）</strong> とは<code class="docutils literal notranslate"><span class="pre">FROM</span></code>句で指定されたテーブルから，<code class="docutils literal notranslate"><span class="pre">SELECT</span></code>句で指定した特定の列のデータのみを抽出する操作である．</p>
 <p>例題として用いる<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルは列として「地域コード」「都道府県」「調査年度」「総人口」「小学校児童数」「中学校生徒数」「高等学校生徒数」「大学学生数」があるが，ケースによって特定の列のデータのみ欲しい場合がある．
 そのようなケースで用いるのが射影である．
 例えば，<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルから「都道府県」「調査年度」「総人口」の列のデータのみを抽出する場合，SQL文は以下となる．</p>

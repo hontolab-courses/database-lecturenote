@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>11. 好ましくない関係スキーマ &#8212; データベースの講義ノート</title>
+    <title>11. 望ましくない関係スキーマ &#8212; データベースの講義ノート</title>
   
   
   
@@ -71,6 +71,8 @@
                 gtag('config', 'G-1GGP5ZEVQL');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/db-design/01';</script>
     <link rel="canonical" href="https://dbnote.hontolab.org/content/db-design/01.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -201,7 +203,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../er-model/01.html">8. 実体関連モデルとは</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../er-model/02.html">9. 実体関連モデル上の一貫性制約</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../er-model/03.html">10. 拡張実体関連モデル &amp; n項関連</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. 好ましくない関係スキーマ</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. 望ましくない関係スキーマ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02.html">12. データ従属性にもとづく正規化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercise/db-design.html">13. データベース設計演習</a></li>
 </ul>
@@ -375,7 +377,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -386,11 +390,48 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>好ましくない関係スキーマ</h1>
+    <h1>望ましくない関係スキーマ</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">11.1. 実体関連モデルから関係スキーマの導出</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">11.1.1. パターン1: 実体型</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">11.1.2. パターン2: 関連型</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">11.1.2.1. 多重度が「多対多」の場合</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">11.1.2.2. 多重度が「多対1」の場合</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">11.1.2.3. 多重度が「1対1」の場合</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">11.1.3. パターン3: 汎化・継承関連</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">11.1.4. パターン4: 弱実体型と弱関連型</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">11.2. 異状</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">11.2.1. 挿入時異状</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">11.2.2. 削除時異状</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">11.2.3. 修正時異状</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">11.3. 情報無損失分解</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">11.4. クイズ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-1-4">11.4.1. Q1: 関係スキーマへの変換（1/4）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-2-4">11.4.2. Q2: 関係スキーマへの変換（2/4）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-3-4">11.4.3. Q3: 関係スキーマへの変換（3/4）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-4-4">11.4.4. Q4: 関係スキーマへの変換（4/4）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5">11.4.5. Q5: 修正時異状</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7">11.4.6. Q7: 削除時異状</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q8">11.4.7. Q8: 挿入時異状</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q9">11.4.8. Q9: 削除，挿入，修正</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -401,8 +442,359 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">11. </span>好ましくない関係スキーマ<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>後日公開予定</p>
+<h1><span class="section-number">11. </span>望ましくない関係スキーマ<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>前章まで扱った実体関連モデルは概念モデルである．
+そのため，計算機上で扱える論理モデルに変換する必要がある．</p>
+<p>理想的なデータベースは，次のような性質を有するデータベーススキーマを持つ（吉川正俊（著）「<a class="reference external" href="https://www.ohmsha.co.jp/book/9784274223730/">IT Text データベースの基礎</a>」より）：</p>
+<ol class="arabic simple">
+<li><p>データの冗長性がない</p></li>
+<li><p>データのもつ一貫性制約の保持が容易である</p></li>
+</ol>
+<p>関係データベースにおいては，上記(1)(2)の要件を満たすように関係スキーマを定義することを<strong>正規化（normalization）</strong> と呼ぶ．
+望ましい関係スキーマ，つまり正規化された関係スキーマが設計できれば，関係データベースから<strong>冗長性が排除され（データの重複がなく），データは正しく矛盾なく管理・処理される</strong>．</p>
+<p>このような状態を実現するべく，本章および<a class="reference internal" href="02.html"><span class="std std-doc">次章</span></a>では，理想的な関係データモデルの設計方法について述べる．
+はじめに，前章まで扱った実体関連モデルを関係データモデルに変換する方法を述べる．
+次に，望ましくない関係スキーマについて述べ，最後に理想的な関係スキーマを導出する方法を述べる．</p>
+<section id="id2">
+<h2><span class="section-number">11.1. </span>実体関連モデルから関係スキーマの導出<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>実体関連図を用いれば，関係データモデルの構造を示す<a class="reference internal" href="../relational-data-model/01.html#sec-relation-schema"><span class="std std-ref">関係スキーマ</span></a>を機械的に導出することができる．
+以下，実体関連図のパターンに応じた関係スキーマへの変換方法を説明する．
+以下の説明では，実体関連モデルの解説で用いた<a class="reference internal" href="../er-model/02.html#fig-cardinality-constraint"><span class="std std-ref">オンラインショッピングの例</span></a>を用いる．</p>
+<section id="id3">
+<h3><span class="section-number">11.1.1. </span>パターン1: 実体型<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>実体型を関係スキーマに変換するには，</p>
+<ul class="simple">
+<li><p>実体型名を関係スキーマの関係名</p></li>
+<li><p>実体型のキーを関係スキーマのキー</p></li>
+<li><p>実体型の属性を関係スキーマの属性</p></li>
+</ul>
+<p>に対応させればよい．</p>
+<p><img alt="実体型" src="../../_images/erd-entity.png" /></p>
+<p>上図に示した実体型「ユーザ」は以下のような関係スキーマに変換される（<a class="reference internal" href="#db-design1-q1">★Quiz1★</a>）．</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(ユーザ(\underline{ユーザ名}, 氏名, 住所, email)\)</span></p>
+</div></blockquote>
+</section>
+<section id="id4">
+<h3><span class="section-number">11.1.2. </span>パターン2: 関連型<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>関連型を関係スキーマに変換するには，基本的には</p>
+<ul class="simple">
+<li><p>関連型名を関係スキーマの関係名</p></li>
+<li><p>関連型とつながる実体型のキーを関連型のキー</p></li>
+<li><p>関連型の属性を関係スキーマの属性</p></li>
+</ul>
+<p>に対応させればよいが，実体関連間の多重度によってキーの扱いが異なる．</p>
+<section id="id5">
+<h4><span class="section-number">11.1.2.1. </span>多重度が「多対多」の場合<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+<p><img alt="多重度が多対多の場合" src="../../_images/erd-relation1.png" /></p>
+<p>上の図では，実体型「ユーザ」と「商品」は関連型「購入希望」を介して多対多の関連でつながっている．</p>
+<p>このような多対多の関連を関係スキーマに変換する場合は，
+関連を一意に識別するために，<strong>関連型につながるすべての実体型の主キーを集めたもの</strong>関連型の主キーとする．
+上図の場合，実体型「ユーザ」の主キーは<code class="docutils literal notranslate"><span class="pre">ユーザ名</span></code>，「商品」の主キーは<code class="docutils literal notranslate"><span class="pre">商品ID</span></code>であるため，
+関連型「購入希望」の主キーは<code class="docutils literal notranslate"><span class="pre">{ユーザ名,</span> <span class="pre">商品ID}</span></code>となる．</p>
+<p>結果的に，関連型「購入希望」は以下のような関係スキーマに変換される．</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(購入希望(\underline{ユーザ名}, \underline{商品ID}, 登録日)\)</span></p>
+</div></blockquote>
+<p>ところで，関連型の関係スキーマの主キーは関連している実体型の主キーから構成されるため，対象となる関連型および実体型を変換した関係スキーマの間には<a class="reference internal" href="../relational-data-model/01.html#sec-referential-constraint"><span class="std std-ref">参照整合制約</span></a>が生じ，関連型の主キーは関連している（つながっている）実体型に対する外部キーとなる．
+例えば，先の例の関係「購入希望」の主キーである<code class="docutils literal notranslate"><span class="pre">ユーザ名</span></code>と<code class="docutils literal notranslate"><span class="pre">商品ID</span></code>は関係「ユーザ」および「商品」に対する外部キーになっている．
+「購入希望」の主キーである<code class="docutils literal notranslate"><span class="pre">ユーザ名</span></code>と<code class="docutils literal notranslate"><span class="pre">商品ID</span></code>の値は，必ず関係「ユーザ」の<code class="docutils literal notranslate"><span class="pre">ユーザ名</span></code>の属性値，「商品」の<code class="docutils literal notranslate"><span class="pre">商品ID</span></code>の属性値として存在していなければならない．
+よって，上記関連型を関係スキーマに変換したときには，</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(ユーザ(\underline{ユーザ名}, 氏名, 住所, email)\)</span> <br />
+<span class="math notranslate nohighlight">\(商品(\underline{商品ID}, 商品名, 価格, 発売日)\)</span> <br />
+<span class="math notranslate nohighlight">\(購入希望(\underline{ユーザ名}, \underline{商品ID}, 登録日)\)</span> <br />
+<span class="math notranslate nohighlight">\(購入希望.ユーザ名 \subseteq ユーザ.ユーザID\)</span> <br />
+<span class="math notranslate nohighlight">\(購入希望.商品ID \subseteq 商品.商品ID\)</span></p>
+</div></blockquote>
+<p>が参照整合性制約を含めた関係スキーマとなる（<a class="reference internal" href="#db-design1-q2">★Quiz2★</a>）．</p>
+</section>
+<section id="id6">
+<h4><span class="section-number">11.1.2.2. </span>多重度が「多対1」の場合<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+<p><img alt="多重度が多対1の場合" src="../../_images/erd-relation2.png" /></p>
+<p>上の図では，実体型「商品」と「メーカー」は関連型「製造」を介して多対1の関連でつながっている．
+すなわち，実体集合「商品」の実体要素が決まれば，それに対応する実体集合「メーカー」の実体要素が必ず1つ特定される．</p>
+<p>このような多対1の関連型の場合，矢印のついていない側の実体の主キーの値が決まれば，矢印のついている側の実体が一意に特定されると同時に関連の要素も一意に特定される．
+そのため，関係スキーマに変換する場合は，<strong>関連型につながる，矢印のついていない側の実体型の主キー</strong>を関連型の主キーとする．</p>
+<p>上図を関係スキーマに変換すると，以下のようになる．
+関係「製造」においては，<code class="docutils literal notranslate"><span class="pre">企業名</span></code>が属性にはなるが主キーに含まれないことに注意しよう（<a class="reference internal" href="#db-design1-q3">★Quiz3★</a>）．</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(商品(\underline{商品ID}, 商品名, 価格, 発売日)\)</span> <br />
+<span class="math notranslate nohighlight">\(メーカー(\underline{企業名}, TEL, email)\)</span> <br />
+<span class="math notranslate nohighlight">\(製造(\underline{商品ID}, 企業名)\)</span> <br />
+<span class="math notranslate nohighlight">\(製造.商品ID \subseteq 商品.商品ID\)</span> <br />
+<span class="math notranslate nohighlight">\(製造.企業名 \subseteq メーカー.企業名\)</span></p>
+</div></blockquote>
+</section>
+<section id="id7">
+<h4><span class="section-number">11.1.2.3. </span>多重度が「1対1」の場合<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<p><img alt="多重度が1対1の場合" src="../../_images/erd-relation3.png" /></p>
+<p>上の図では，実体型「メーカー」と「画像」は関連型「ロゴ」を介して1対1の関連でつながっている．</p>
+<p>このような1対1の関連型の場合，関連している<strong>いずれか</strong>の実体型の主キーの値が決まれば関連の要素も一意に特定される．
+そのため，関係スキーマに変換する場合は，<strong>関連型につながる，いずれかの実体型の主キー</strong>を関連型の主キーとする．</p>
+<p>上図を関係スキーマに変換すると，以下のようになる．
+関係「ロゴ」においては，<code class="docutils literal notranslate"><span class="pre">画像ID</span></code>が属性にはなるが主キーに含まれないことに注意しよう．</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(メーカー(\underline{企業名}, TEL, email)\)</span> <br />
+<span class="math notranslate nohighlight">\(画像(\underline{画像ID}, サイズ, ファイルパス)\)</span> <br />
+<span class="math notranslate nohighlight">\(ロゴ(\underline{企業名}, 画像ID)\)</span> <br />
+<span class="math notranslate nohighlight">\(ロゴ.企業名 \subseteq メーカー.企業名\)</span> <br />
+<span class="math notranslate nohighlight">\(ロゴ.画像ID \subseteq 画像.画像ID\)</span></p>
+</div></blockquote>
+</section>
+</section>
+<section id="id8">
+<h3><span class="section-number">11.1.3. </span>パターン3: 汎化・継承関連<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>IsA階層を使って実体型<span class="math notranslate nohighlight">\(E_1\)</span>を継承した実体型<span class="math notranslate nohighlight">\(E_2\)</span>を関係スキーマに変換するには，実体型と同じ変換方法を用いればよい．
+すなわち</p>
+<ul class="simple">
+<li><p>実体型名を関係スキーマの関係名</p></li>
+<li><p>実体型のキーを関係スキーマのキー</p></li>
+<li><p>実体型の属性を関係スキーマの属性</p></li>
+</ul>
+<p>に対応させればよい．
+この際，継承を行った実体型の主キーは継承元の実体型の主キーとなる．</p>
+<p><img alt="汎化継承" src="../../_images/erd-inheritance.png" /></p>
+<p>上図に示した実体型「プレミアムユーザ」は以下のような関係スキーマに変換される（<a class="reference internal" href="#db-design1-q4">★Quiz4★</a>）．</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(プレミアムユーザ(\underline{ユーザ名}, 登録日)\)</span></p>
+</div></blockquote>
+</section>
+<section id="id9">
+<h3><span class="section-number">11.1.4. </span>パターン4: 弱実体型と弱関連型<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p><img alt="弱実体" src="../../_images/weak-entity.png" /></p>
+<p>上の図のような弱実体・弱関連の関係スキーマへの変換はややトリッキーである．
+<a class="reference internal" href="../er-model/02.html#sec-weak-entity"><span class="std std-ref">弱実体</span></a>は自らの属性だけでは自らを一意に特定できないため，関連をつうじてつながる実体の主キーと自らの属性（部分キー）をセットにして主キーとする必要があった．
+このことを踏まえて，弱実体は以下のように関係スキーマに変換する．</p>
+<ul class="simple">
+<li><p>弱実体型の名前を関係スキーマの関係名にする</p></li>
+<li><p>弱実体型の部分キーおよび弱実体型とつながる実体型の主キーをセットにしたものを関係の主キーとする</p></li>
+<li><p>弱実体型の属性を関係スキーマの属性とする</p></li>
+</ul>
+<p>上の図の弱実体型「家族」は以下のような関係スキーマに変換される．</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(家族(\underline{ユーザ名}, \underline{氏名}, 続柄)\)</span></p>
+</div></blockquote>
+<p>なお，弱実体型の主キーのうち，部分キーでないものは別の実体型の主キーを借りており，参照整合性制約が生じる．
+上の例の実体型「家族」であれば，<code class="docutils literal notranslate"><span class="pre">ユーザ名</span></code>が外部キーに相当する．
+そのため，以下のような参照整合性制約を関係スキーマに加える必要がある．</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(家族.ユーザ名 \subseteq ユーザ.ユーザ名\)</span></p>
+</div></blockquote>
+<p>弱関連型は</p>
+<ul class="simple">
+<li><p>弱関連型名を関係スキーマの関係名</p></li>
+<li><p>自らの部分キーと関連でつながる実体型の主キーのセットを関係スキーマの主キー</p></li>
+<li><p>弱関連型の属性を関係スキーマの属性</p></li>
+</ul>
+<p>に対応させることで関係スキーマに変換する．</p>
+<p>上図の弱関連型「同居」は，以下のような関係スキーマに変換される．</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(同居(\underline{ユーザ名}, \underline{氏名})\)</span> <br />
+<span class="math notranslate nohighlight">\(同居.ユーザ名 \subseteq ユーザ.ユーザ名\)</span> <br />
+<span class="math notranslate nohighlight">\(同居.氏名 \subseteq 家族.氏名\)</span></p>
+</div></blockquote>
+</section>
+</section>
+<section id="id10">
+<h2><span class="section-number">11.2. </span>異状<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<p>上記手順によって実体関連モデルを関係スキーマに機械的に変換することができる．
+しかしながら，元となった実体関連モデルの質によっては，データを正しく扱う上で望ましい関係スキーマが得られないことがある．</p>
+<p>「望ましくない」関係スキーマを用いると，データを追加・削除・修正しようとしたときに<strong>更新時異状（update anomaly）</strong> と呼ばれる不都合な状態が発生する．
+以下，更新時異状を「挿入時異状」「削除時異状」「修正時異状」の3つに分けて説明する．</p>
+<section id="id11">
+<h3><span class="section-number">11.2.1. </span>挿入時異状<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<p>架空ショッピングサイトの管理人である山畑さんが，ショッピングサイトの購買履歴を管理するデータベースを作るために，次のような関係スキーマを定義したとしよう．</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(購買(\underline{購買ID}, ユーザ, 購入商品, 単価, 数量)\)</span></p>
+</div></blockquote>
+<p>山畑さんは購買履歴だけでなく，サイトで取り扱っている商品の情報についても関係「購買」の中で扱おうと考えた．
+その結果，蓄積されたレコード（タプル）が以下の通りである．</p>
+<p><img alt="更新時異状" src="../../_images/update-anomaly.png" /></p>
+<p>さて，山畑さんのショッピングサイトでは新商品として<code class="docutils literal notranslate"><span class="pre">たきのこの里山</span></code>の取り扱いを開始することになった．
+新商品の情報をデータベースに登録するために，山畑さんは以下の図のように「購買」テーブルに<code class="docutils literal notranslate"><span class="pre">(NULL,</span> <span class="pre">NULL,</span> <span class="pre">たきのこの里山,</span> <span class="pre">250,</span> <span class="pre">NULL)</span></code>というレコードを追加しようとした．
+しかし，データベースから拒否されてしまった．
+理由は関係「購買」のスキーマにおいては<code class="docutils literal notranslate"><span class="pre">購買ID</span></code>が主キーとして設定されているため，主キーの値がないレコード<code class="docutils literal notranslate"><span class="pre">(NULL,</span> <span class="pre">NULL,</span> <span class="pre">たきのこの里山,</span> <span class="pre">250,</span> <span class="pre">NULL)</span></code>は追加できないのである．</p>
+<p><img alt="挿入時異状" src="../../_images/insertion-anomaly.png" /></p>
+<p>このように，レコードを挿入しようとしたときに発生する不都合な現象を<strong>挿入時異状（insertion anomaly）</strong> と呼ぶ（<a class="reference internal" href="#db-design1-q8">★Quiz8★</a>）．</p>
+</section>
+<section id="id12">
+<h3><span class="section-number">11.2.2. </span>削除時異状<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<p>次に，購買実績が1件しか存在しない<code class="docutils literal notranslate"><span class="pre">のど飴</span></code>について，ユーザ<code class="docutils literal notranslate"><span class="pre">U2</span></code>が払い戻しを希望したため，購買履歴から記録を削除することにしたとしよう．
+このとき，<strong>削除時異状（deletion anomaly）</strong> と呼ばれる現象が発生する．
+このデータベースでは取扱商品についても関係「購買」で管理している．
+そのため，今回のケースに対応する表の3行目（購買IDが<code class="docutils literal notranslate"><span class="pre">T3</span></code>）のレコードを削除すると，以下のような図の状態になり，商品<code class="docutils literal notranslate"><span class="pre">のど飴</span></code>の情報（単価情報など）が失われてしまうのである．</p>
+<p><img alt="削除時異状" src="../../_images/deletion-anomaly.png" /></p>
+<p>このように削除時異状とは，データベースの利用者が意図したよりも多くの情報が失われてしまう現象を指す．</p>
+<p>なお，購買IDが<code class="docutils literal notranslate"><span class="pre">T3</span></code>のレコードを削除した後に，<code class="docutils literal notranslate"><span class="pre">のど飴</span></code>の商品情報が消えてしまったことに気づいた山畑さんは，焦って<code class="docutils literal notranslate"><span class="pre">(NULL,</span> <span class="pre">NULL,</span> <span class="pre">のど飴,</span> <span class="pre">170,</span> <span class="pre">NULL)</span></code>というレコードを追加して，<code class="docutils literal notranslate"><span class="pre">のど飴</span></code>の商品情報を復活させようとした．
+しかし，挿入時異状となり，データベースからは拒否される（<a class="reference internal" href="#db-design1-q7">★Quiz7★</a>）．</p>
+</section>
+<section id="id13">
+<h3><span class="section-number">11.2.3. </span>修正時異状<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<p>最後は，<strong>修正時異状（modification anomaly）</strong> である．</p>
+<p>山畑さんは<code class="docutils literal notranslate"><span class="pre">はーいお茶</span></code>の単価が<code class="docutils literal notranslate"><span class="pre">120</span></code>円であるにもかかわらず，勘違いして<code class="docutils literal notranslate"><span class="pre">130</span></code>円として購買テーブルに登録し続けていたとしよう．
+データベースに登録されたデータの修正が必要になるが，<code class="docutils literal notranslate"><span class="pre">はーいお茶</span></code>に関する購買は購買IDが<code class="docutils literal notranslate"><span class="pre">T1</span></code>および<code class="docutils literal notranslate"><span class="pre">T5</span></code>の2件が該当する．
+そのため，以下の図のように，この2件の「単価」の値を<code class="docutils literal notranslate"><span class="pre">120</span></code>に書き換える必要がある．</p>
+<p><img alt="修正時異状" src="../../_images/modification-anomaly.png" /></p>
+<p>ところで，今回の勘違いは「はーいお茶の単価が120円の間違いだった」という単一の修正事象にもかかわらず，データベース上ではレコードを2件書き換える必要が発生している．
+今回購買テーブルの中で<code class="docutils literal notranslate"><span class="pre">はーいお茶</span></code>の購買履歴が2件しかなかったが，これが100万件あれば100万回の修正が必要になる．
+この処理は明らかに冗長である．</p>
+<p>このようにデータベース上のデータの修正時に関わる不都合を修正時異状と呼ぶ（<a class="reference internal" href="#db-design1-q6"><span class="xref myst">★Quiz6★</span></a>）．</p>
+</section>
+</section>
+<section id="id14">
+<h2><span class="section-number">11.3. </span>情報無損失分解<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<p>上記の例で挙げたような更新時異状が発生するのはなぜだろうか．
+問題の原因は，独立して扱えるはず情報が1つの関係の中に混在していることにある．
+先の購買履歴の例の場合，単価などの商品固有の情報は購買履歴とは独立に扱えるはずである．
+よって，更新時異状が発生しないようにするには，関係「購買」を分解して商品固有の情報を別の関係として管理すればよい．</p>
+<p id="sec-lossless-decomposition">以下は，先の関係「購買」を</p>
+<ul class="simple">
+<li><p>関係「購買履歴」（関係「購買」の {購買ID, ユーザ, 購入商品, 数量} 上の<a class="reference internal" href="#sql-projection"><span class="xref myst">射影</span></a>）</p></li>
+<li><p>関係「商品」（関係「購買」の {購入商品, 単価} 上の射影）</p></li>
+</ul>
+<p>に分解したものである．</p>
+<p><img alt="情報無損失分解" src="../../_images/lossless-decomposition.png" /></p>
+<p>このように関係「購買」を分解すれば，</p>
+<ul class="simple">
+<li><p>新商品<code class="docutils literal notranslate"><span class="pre">たきのこの里山</span></code>を追加する場合，関係「商品」に<code class="docutils literal notranslate"><span class="pre">(たきのこの里山,</span> <span class="pre">250)</span></code>というレコードを追加</p></li>
+<li><p>購買IDが<code class="docutils literal notranslate"><span class="pre">T3</span></code>の「のど飴」に関する購買をなかったことにするには，関係「購買履歴」から購買IDが<code class="docutils literal notranslate"><span class="pre">T3</span></code>のレコードを削除</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">はーいお茶</span></code>の単価を<code class="docutils literal notranslate"><span class="pre">130</span></code>円から<code class="docutils literal notranslate"><span class="pre">120</span></code>円に修正する場合，関係「商品」の<code class="docutils literal notranslate"><span class="pre">はーいお茶</span></code>に関する1レコードのみを修正</p></li>
+</ul>
+<p>すれば更新時異状を発生しない．</p>
+<p>なお，関係「購買履歴」と関係「商品」は</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
+<span class="w">    </span><span class="o">*</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">購買履歴</span>
+<span class="k">JOIN</span>
+<span class="w">    </span><span class="err">商品</span><span class="w"> </span><span class="k">USING</span><span class="err">（購入書品）</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>というSQL文でデータベースに問い合わせを行うことで，元の関係「購買」の情報を完全に復元できる．
+このように，ある関係をその情報を失うことなく2つの関係に分解することを<strong>情報無損失分解</strong> と呼ぶ．</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>情報無損失分解における「分解」は<strong>タプルの重複が許されない射影</strong>操作であることに注意しよう．
+直感的には，射影操作は関係（表）から特定の属性（列）項目にデータを抽出する操作であるが，
+単に特定の列のデータを抽出するだけの場合，下記のように抽出結果内でタプルが重複する可能性がある．</p>
+<p><img alt="重複がある射影" src="../../_images/invalid-projection.png" /></p>
+<p><strong>タプルの重複が許されない射影</strong> とは以下のような操作である．
+上の例とは違い，タプルの重複は取り除かれている．
+特に指定がなければ，SQLでは問い合わせ結果にタプルの重複があっても許されてしまう．
+タプルの重複がない問い合わせを行うには，<code class="docutils literal notranslate"><span class="pre">DISTINCT</span></code>を指定しよう．</p>
+<p><img alt="重複がない射影" src="../../_images/valid-projection.png" /></p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<h3 class="rubric" id="id15">関係代数における射影</h3>
+<p>関係データモデルにおける関係の操作は，<strong>関係代数</strong>あるいは<strong>関係論理</strong>という演算体系として理論的に確立されている．
+関係代数（あるいは関係論理）で扱う「関係」とは数学的には「集合」である．
+一般に，集合は要素の重複は許されない．
+関係データモデルにおける射影操作の結果は関係であるため，当然関係の要素に重複は許されず，重複は除外される．</p>
+</div>
+<p>関係を分解する目的は「データベースにおけるデータの挿入，削除，修正の影響が極力小さくすること」にあるが，適当に分解すればOKというわけではない．
+分解の仕方によっては，情報無損失分解ではなく情報”損失”分解になりえる．</p>
+<p id="sec-lossy-decomposition">情報”損失”分解の例を見てみよう．
+以下は，先の関係「購買」を</p>
+<ul class="simple">
+<li><p>関係「購買1」（関係「購買」の {購買ID, ユーザ} 上の射影）</p></li>
+<li><p>関係「購買2」（関係「購買」の {ユーザ, 購入商品, 数量, 単価} 上の射影）</p></li>
+</ul>
+<p>に分解したものである．</p>
+<p><img alt="情報損失分解" src="../../_images/lossy-decomposition1.png" /></p>
+<p>これら2つの関係を属性「ユーザ」をもとに結合してみよう．
+以下は関係「購買1」と「購買2」を結合した結果について問い合わせを行うSQL文である．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
+<span class="w">    </span><span class="o">*</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">購買</span><span class="mi">1</span>
+<span class="k">JOIN</span>
+<span class="w">    </span><span class="err">購買</span><span class="mi">2</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="p">(</span><span class="err">ユーザ）</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>上記SQL文を実行すると，以下のような結果が得られる．
+元の関係「購買」にはなかったレコードが追加されている．
+関係「購買」から「購買1」と「購買2」への分解では情報の保存に失敗したため，結合をしても元の情報を復元できなくなってしまったのである．</p>
+<p><img alt="情報損失分解の顛末" src="../../_images/lossy-decomposition2.png" /></p>
+<p>上で挙げた2例を比較したとき，<a class="reference internal" href="#sec-lossless-decomposition">関係「購買」を関係「購買履歴」と「商品」に分解する例</a>ではなぜ情報無損失分解に成功したのであろうか．
+成功要因は，分解の軸となった属性「購入商品」は，「購入商品」の値（名前）が決まればそれに対応する「単価」の値も一意に決まるからである．
+逆に，<a class="reference internal" href="#sec-lossy-decomposition">関係「購買」を関係「購買1」と「購買2」に分解する例</a>が情報無損失分解に失敗した理由は，分解の軸となった属性「ユーザ」の値（名前）が決まっても，それに対応する「購入商品」「単価」「数量」の値が一意に決まらないからである（<a class="reference internal" href="#db-design1-q9">★Quiz9★</a>）．</p>
+</section>
+<hr class="docutils" />
+<section id="id16">
+<h2><span class="section-number">11.4. </span>クイズ<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
+<section id="q1-1-4">
+<span id="db-design1-q1"></span><h3><span class="section-number">11.4.1. </span>Q1: 関係スキーマへの変換（1/4）<a class="headerlink" href="#q1-1-4" title="Link to this heading">#</a></h3>
+<p>以下は，架空のショッピングサイトにおける購買履歴を管理するシステムの実体関連図である．
+図中の実体型「ユーザ」「注文」「商品」「メーカー」を関係スキーマに変換せよ．</p>
+<p><img alt="ショッピングサイトのER図" src="../../_images/erd-shopping.png" /></p>
+</section>
+<section id="q2-2-4">
+<span id="db-design1-q2"></span><h3><span class="section-number">11.4.2. </span>Q2: 関係スキーマへの変換（2/4）<a class="headerlink" href="#q2-2-4" title="Link to this heading">#</a></h3>
+<p>Q1の実体関連図における関連型「明細」を関係スキーマに変換せよ．
+参照整合性制約が存在する場合にはそれも記すこと．</p>
+</section>
+<section id="q3-3-4">
+<span id="db-design1-q3"></span><h3><span class="section-number">11.4.3. </span>Q3: 関係スキーマへの変換（3/4）<a class="headerlink" href="#q3-3-4" title="Link to this heading">#</a></h3>
+<p>Q1の実体関連図における関連型「製造」「購買履歴」を関係スキーマに変換せよ．
+参照整合性制約が存在する場合にはそれも記すこと．</p>
+</section>
+<section id="q4-4-4">
+<span id="db-design1-q4"></span><h3><span class="section-number">11.4.4. </span>Q4: 関係スキーマへの変換（4/4）<a class="headerlink" href="#q4-4-4" title="Link to this heading">#</a></h3>
+<p>Q1の実体関連図における実体型「有料会員」を関係スキーマに変換せよ．</p>
+</section>
+<section id="q5">
+<span id="db-design1-q5"></span><h3><span class="section-number">11.4.5. </span>Q5: 修正時異状<a class="headerlink" href="#q5" title="Link to this heading">#</a></h3>
+<p>架空の家具販売店「八高家具」では顧客と購入希望商品の「ペア」（誰が何の商品の購入を希望しているか）で営業担当を割り当てている．
+営業担当は年度ごとに営業成績が評価されることになっている．</p>
+<p>八高家具では，下記関係スキーマに従った関係データモデルを用いて営業記録，取扱商品，営業成績の管理を行っている．</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(営業記録(\underline{ユーザ, 商品}, 連絡先, メーカー, 営業担当, 営業成績)\)</span></p>
+</div></blockquote>
+<p>以下の表は，関係スキーマ<code class="docutils literal notranslate"><span class="pre">営業記録</span></code>にしたがって八高家具における営業記録を記録した関係（表）である．
+営業担当者の成績の修正に際して，関係「営業記録」のみを用いてデータを管理する際に発生しうる挿入時異状の例を挙げよ．</p>
+<p><img alt="営業記録テーブル" src="../../_images/sale-history.png" /></p>
+</section>
+<section id="q7">
+<span id="db-design1-q7"></span><h3><span class="section-number">11.4.6. </span>Q7: 削除時異状<a class="headerlink" href="#q7" title="Link to this heading">#</a></h3>
+<p>架空の家具販売店「八高家具」では以下のような修正した関係スキーマを用いて改めて営業記録をつけはじめた．</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(営業記録2(\underline{ユーザ, 商品}, 連絡先, メーカー, 営業担当)\)</span></p>
+</div></blockquote>
+<p>以下の表は，新しい関係スキーマ<code class="docutils literal notranslate"><span class="pre">営業記録2</span></code>にもとづいた営業記録の表である．
+ユーザの連絡先に関して，関係「営業記録2」上で発生しうる削除時異状の例を挙げよ．
+営業記録の削除に際して，関係「営業記録2」のみを用いてデータ管理する際に発生しうる挿入時異状の例を挙げよ．</p>
+<p><img alt="営業記録テーブル2" src="../../_images/sale-history2.png" /></p>
+</section>
+<section id="q8">
+<span id="db-design1-q8"></span><h3><span class="section-number">11.4.7. </span>Q8: 挿入時異状<a class="headerlink" href="#q8" title="Link to this heading">#</a></h3>
+<p>架空の家具販売店「八高家具」では以下のようなさらに修正した関係スキーマを用いて改めて営業記録をつけはじめた．</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(営業記録3(\underline{ユーザ, 商品}, メーカー, 営業担当)\)</span></p>
+</div></blockquote>
+<p>以下の表は，新しい関係スキーマ<code class="docutils literal notranslate"><span class="pre">営業記録3</span></code>にもとづいた営業記録の表である．
+取り扱い商品の追加に際して，関係「営業記録3」のみを用いてデータ管理する際に発生しうる挿入時異状の例を挙げよ．</p>
+<p><img alt="営業記録テーブル3" src="../../_images/sale-history3.png" /></p>
+</section>
+<section id="q9">
+<span id="db-design1-q9"></span><h3><span class="section-number">11.4.8. </span>Q9: 削除，挿入，修正<a class="headerlink" href="#q9" title="Link to this heading">#</a></h3>
+<p>架空の家具販売店「八高家具」では，データエンジニアのアドバイスに基づき，
+以下の2つの関係スキーマを用いて改めて営業記録と取り扱い商品の管理を行うことにした．</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(営業記録4(\underline{ユーザ, 商品}, メーカー, 営業担当)\)</span> <br />
+<span class="math notranslate nohighlight">\(商品(\underline{商品}, メーカー)\)</span></p>
+</div></blockquote>
+<p>以下の表は，新しい関係スキーマにもとづいた営業記録，取扱商品の関係データベースである．
+この関係データベースに対して以下の操作を行った結果を記せ．</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ソファベッド</span></code>のメーカーを<code class="docutils literal notranslate"><span class="pre">A社</span></code>から<code class="docutils literal notranslate"><span class="pre">E社</span></code>に変更</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">西尾</span></code>担当によるユーザ<code class="docutils literal notranslate"><span class="pre">tanabee</span></code>に対する<code class="docutils literal notranslate"><span class="pre">本棚(大)</span></code>の営業記録を削除</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">春日井</span></code>担当によるユーザ<code class="docutils literal notranslate"><span class="pre">north1000</span></code>に対する<code class="docutils literal notranslate"><span class="pre">オフィスチェア</span></code>（メーカー<code class="docutils literal notranslate"><span class="pre">D社</span></code>の新商品）の営業記録を追加</p></li>
+</ol>
+<p><img alt="営業記録テーブル4" src="../../_images/sale-history4.png" /></p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -460,7 +852,49 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">11.1. 実体関連モデルから関係スキーマの導出</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">11.1.1. パターン1: 実体型</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">11.1.2. パターン2: 関連型</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">11.1.2.1. 多重度が「多対多」の場合</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">11.1.2.2. 多重度が「多対1」の場合</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">11.1.2.3. 多重度が「1対1」の場合</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">11.1.3. パターン3: 汎化・継承関連</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">11.1.4. パターン4: 弱実体型と弱関連型</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">11.2. 異状</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">11.2.1. 挿入時異状</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">11.2.2. 削除時異状</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">11.2.3. 修正時異状</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">11.3. 情報無損失分解</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">11.4. クイズ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-1-4">11.4.1. Q1: 関係スキーマへの変換（1/4）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-2-4">11.4.2. Q2: 関係スキーマへの変換（2/4）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-3-4">11.4.3. Q3: 関係スキーマへの変換（3/4）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-4-4">11.4.4. Q4: 関係スキーマへの変換（4/4）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5">11.4.5. Q5: 修正時異状</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7">11.4.6. Q7: 削除時異状</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q8">11.4.7. Q8: 挿入時異状</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q9">11.4.8. Q9: 削除，挿入，修正</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

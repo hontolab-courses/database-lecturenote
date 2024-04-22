@@ -71,12 +71,14 @@
                 gtag('config', 'G-1GGP5ZEVQL');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/db-design/02';</script>
     <link rel="canonical" href="https://dbnote.hontolab.org/content/db-design/02.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="13. データベース設計演習" href="../exercise/db-design.html" />
-    <link rel="prev" title="11. 好ましくない関係スキーマ" href="01.html" />
+    <link rel="prev" title="11. 望ましくない関係スキーマ" href="01.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -201,7 +203,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../er-model/01.html">8. 実体関連モデルとは</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../er-model/02.html">9. 実体関連モデル上の一貫性制約</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../er-model/03.html">10. 拡張実体関連モデル &amp; n項関連</a></li>
-<li class="toctree-l1"><a class="reference internal" href="01.html">11. 好ましくない関係スキーマ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01.html">11. 望ましくない関係スキーマ</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">12. データ従属性にもとづく正規化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercise/db-design.html">13. データベース設計演習</a></li>
 </ul>
@@ -375,7 +377,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -391,6 +395,38 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">12.1. 関数従属性</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fd">12.1.1. FDダイアグラム</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">12.2. 関数従属性にもとづく関係スキーマの正規化</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">12.2.1. ボイス・コッド正規形</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">12.2.2. 関数従属性による情報無損失解</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">12.2.3. 分解法</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">12.2.4. 第3正規形</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">12.3. 望ましい関係スキーマを得る手順のまとめ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">12.4. クイズ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-orange-music">12.4.1. Q1: Orange Music</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-1">12.4.1.1. Q1-1: 関数従属性</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-2-fd">12.4.1.2. Q1-2: FDダイアグラム</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-3">12.4.1.3. Q1-3: 主キー</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-4">12.4.1.4. Q1-4: 関数従属性にもとづく正規化</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">12.4.2. Q2: 変換順序と分解結果の関係</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-2">12.4.3. Q3: 関数従属性にもとづく正規化2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-3">12.4.4. Q4: 関数従属性にもとづく正規化3</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -402,7 +438,359 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">12. </span>データ従属性にもとづく正規化<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>後日公開予定</p>
+<p>データの重複がなく，データが正しく矛盾なく管理・処理される望ましい関係スキーマを得るためには，関係を情報無損失分解する必要がある．
+では，何を頼りに情報無損失分解を行えばよいだろうか．
+情報無損失分解の鍵は「<strong>データ従属性</strong>」にある．</p>
+<p>本章では，代表的なデータ従属性である<strong>関数従属性</strong> の概念を（再）導入した後，それに基づく関係スキーマの正規化手法について述べる．</p>
+<section id="id2">
+<h2><span class="section-number">12.1. </span>関数従属性<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="../relational-data-model/01.html"><span class="std std-doc">関係データモデルの章</span></a>で触れたように，<strong>関数従属性（functional dependency）</strong> は「関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>においてその属性（あるいは属性集合）<span class="math notranslate nohighlight">\(X\)</span>の値が決まると属性（あるいは属性集合）<span class="math notranslate nohighlight">\(Y\)</span>の値も一意に決まる」という性質である．
+関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>において属性<span class="math notranslate nohighlight">\(Y\)</span>が属性<span class="math notranslate nohighlight">\(X\)</span>に関数従属していることを</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(X \to Y\)</span></p>
+</div></blockquote>
+<p>と記す．
+例えば</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(連絡先(\underline{学生ID}, 名前, 学年, 郵便番号, 自宅住所)\)</span></p>
+</div></blockquote>
+<p>という関係スキーマに従う，以下のような関係「連絡先」を考えよう．</p>
+<p><img alt="学生の連絡先" src="../../_images/contact-table.png" /></p>
+<p>「連絡先」上ではいくつかの関数従属性が考えられる．
+例えば，属性「学生ID」は関係「連絡先」の主キーであるため，</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\{学生ID\} \to \{名前, 学年, 郵便番号, 自宅住所 \}\)</span></p>
+</div></blockquote>
+<p>という関数従属性が成立する．
+また，一般常識として住所が決まれば対応する郵便番号は一意に決まるので，</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\{住所\} \to \{郵便番号 \}\)</span></p>
+</div></blockquote>
+<p>という関数従属性も成立する．
+ところで，関係「連絡先」においては</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\{郵便番号, 住所\} \to \{郵便番号 \}\)</span></p>
+</div></blockquote>
+<p>という関数従属性も成立する．
+これは関係「連絡先」においては，「郵便番号」と「住所」の値が決まれば，それに対応する「郵便番号」の値が決まるという意味になる．
+この関数従属性は右辺の要素が左辺の要素の部分集合になっているため，自明である．
+一般に，関数従属性として注目されるのは<strong>自明でない関数従属性</strong>である．</p>
+<p>もう1例見てみよう．
+以下の図は</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(営業記録(ユーザ, 商品, 連絡先, メーカー, 営業担当, 営業成績)\)</span></p>
+</div></blockquote>
+<p>という関係スキーマに従う関係「営業記録」である．
+「ユーザ」が購入しようとしている「商品」がどこの「メーカー」の何で，その商品の「営業担当」が誰でどんな「営業成績」を持っている人かの情報が管理されるとしよう．</p>
+<p><img alt="営業記録テーブル" src="../../_images/sale-history.png" /></p>
+<p>関係「営業記録」上では，以下のような（自明でない）関数従属性が成立する<a class="footnote-reference brackets" href="#id15" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>．</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(FD_1: ユーザ, 商品 \to 営業担当\)</span> <br />
+<span class="math notranslate nohighlight">\(FD_2: ユーザ \to 連絡先\)</span> <br />
+<span class="math notranslate nohighlight">\(FD_3: 商品 \to メーカー\)</span> <br />
+<span class="math notranslate nohighlight">\(FD_4: 営業担当 \to 営業成績\)</span></p>
+</div></blockquote>
+<p>例えば関数従属性<span class="math notranslate nohighlight">\(FD_1\)</span>は関係「営業記録」においては，ユーザと商品が決まれば担当者が決まるということを意味している（ユーザだけでは担当者は決まらないという意味でもある）（<a class="reference internal" href="#db-design2-q1-1"><span class="xref myst">★Quiz1-1★</span></a>）．</p>
+<section id="fd">
+<span id="sec-fd-diagram"></span><h3><span class="section-number">12.1.1. </span>FDダイアグラム<a class="headerlink" href="#fd" title="Link to this heading">#</a></h3>
+<p>ある関係スキーマの上に定義された複数の関数従属性は，<strong>FDダイアグラム</strong>と呼ばれる図によって表現できる．
+例えば，先の関係「営業記録」とその関数従属性<span class="math notranslate nohighlight">\(FD_1\)</span>，<span class="math notranslate nohighlight">\(FD_2\)</span>，<span class="math notranslate nohighlight">\(FD_3\)</span>，<span class="math notranslate nohighlight">\(FD_4\)</span>は以下のように図示できる．</p>
+<p><img alt="FDダイアグラムの例" src="../../_images/FD-diagram.png" /></p>
+<p>FDダイアグラムでは，属性集合は丸で囲まれる．
+上の図では属性「ユーザ」と「商品」が丸で囲まれており，これら2つの属性がセットになったものに対して「営業担当」が関数従属していること表している．
+このようにFDダイアグラムを用いることで，関係中の関数従属性を視覚的に把握することができる（<a class="reference internal" href="#db-design2-q1-2">★Quiz1-2★</a>，<a class="reference internal" href="#db-design2-q1-3">★Quiz1-3★</a>）．</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>なお，資料や文献によっては，FDダイアグラムを以下に表現する場合もあるが，本資料では上の表記法を用いる．</p>
+<p><img alt="FDダイアグラムの別表記" src="../../_images/FD-diagram2.png" /></p>
+</div>
+</section>
+</section>
+<section id="id4">
+<h2><span class="section-number">12.2. </span>関数従属性にもとづく関係スキーマの正規化<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>関係データベースの設計においては，以下の性質を有する関係スキーマを設計することが目標となる．</p>
+<ol class="arabic simple">
+<li><p>データの冗長性がない</p></li>
+<li><p>データのもつ一貫性制約の保持が容易である</p></li>
+</ol>
+<p>前章で述べたように，上記性質を持つ関係スキーマを設計することを<strong>正規化（normalization）</strong> という．
+また，正規化された関係は<strong>正規形である（normalized）</strong> という．
+正規化の条件として，正規化後に得られた関係の集合が保持しているデータ内容は，正規化前の関係が保持しているデータ内容と等しくならなければならない．
+また，正規化前と正規化後の関係が保持する一貫性制約も等しくならなければならない．．</p>
+<p>以下の図のように，正規形にはいくつかのレベルがある．
+<a class="reference internal" href="../relational-data-model/01.html"><span class="std std-doc">関係データモデルの章</span></a>で説明した<a class="reference internal" href="../relational-data-model/01.html#sec-1nf"><span class="std std-ref">第1正規形</span></a>から始まり，第5正規形まである．
+関数従属性をはじめとする<strong>データ従属性を考慮する</strong>ことで，関係スキーマを正規化することができる．
+本章では，関数従属性をもちいて第1正規形の関係スキーマから実用上重要とされるボイス・コッド正規形を得る手順を説明する．</p>
+<p><img alt="正規形の階層" src="../../_images/NF-hierarchy.png" /></p>
+<section id="id5">
+<h3><span class="section-number">12.2.1. </span>ボイス・コッド正規形<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>本章の最終目標であるボイス・コッド正規形について述べる．
+なお，第1正規形からボイス・コッド正規形に至るまでに第2正規形と第3正規形があるにもかかわらず，先にボイス・コッド正規形を説明する理由は下記の通りである：</p>
+<ul class="simple">
+<li><p>第3正規形はボイス・コッド正規形の制約を緩めたものであるため，先にボイス・コッド正規形を説明したほうが分かりよいから</p></li>
+<li><p>第2正規形はボイス・コッド正規形および第3正規形を導出する過程でまれに現れるものであり，重要性が低いから</p></li>
+</ul>
+<p><strong>ボイス・コッド正規形（Boyce-Codd normal form; BCNF）</strong> は以下のように定義される：</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<h4 class="rubric" id="id6">定義：ボイス・コッド正規形</h4>
+<p>関係スキーマ<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>において成立するどのような自明でない関数従属性<span class="math notranslate nohighlight">\(X \to Y\)</span>においても，<span class="math notranslate nohighlight">\(X\)</span>が<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>の超キーであるとき，<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>はボイス・コッド正規形であるという．</p>
+</div>
+<p><a class="reference internal" href="../relational-data-model/01.html#sec-key-constraint"><span class="std std-ref">関係データモデルの章</span></a>では，</p>
+<ul class="simple">
+<li><p>超キーとは，関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>における属性集合のうち，それらの属性値が決まればおのずと関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>のタプルが唯一ひとつに決まる（タプルを一意に特定できる）もの</p></li>
+<li><p>超キーのうち最も小さい部分集合（つまり極小な集合）を候補キー</p></li>
+</ul>
+<p>と定義した．
+ボイス・コッド正規形とは，関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>おいて成立するあらゆる関数従属性の左辺を候補キーの上位集合（つまり超キー）に限定することで，関数従属性に関するあらゆる冗長性を排除したものと考えることができる．</p>
+<p>形式的な話が続いたので，実例を見てみよう．
+以下は，上で用いた関係「営業記録」を適当に分解して得られた関係の上で成立する関数従属性を図示したものである．
+このFDダイアグラムで表現された（属性および関数従属性をもつ）関係スキーマはボイス・コッド正規形ではない．
+なぜなら，この関係スキーマにおいては属性集合<code class="docutils literal notranslate"><span class="pre">{商品,</span> <span class="pre">ユーザ}</span></code>が（唯一の）候補キーになるが，関数従属性<span class="math notranslate nohighlight">\(FD_4\)</span>の左辺は候補キーを含んでいないからである．</p>
+<p><img alt="第2正規形" src="../../_images/2NF.png" /></p>
+<p>別の例を見てみよう．
+以下のFDダイアグラムで表現された関係スキーマもボイス・コッド正規形ではない．
+先ほどと同様，この関係スキーマにおいては属性集合<code class="docutils literal notranslate"><span class="pre">{商品,</span> <span class="pre">ユーザ}</span></code>が（唯一の）候補キーになるが，関数従属性<span class="math notranslate nohighlight">\(FD_2\)</span>および<span class="math notranslate nohighlight">\(FD_3\)</span>の左辺は候補キーの上位集合ではなく「部分集合」になっている．
+そのため，ボイス・コッド正規形の定義に反する．</p>
+<p><img alt="第1正規形" src="../../_images/1NF.png" /></p>
+<p>以下のFDダイアグラムで表現された関係スキーマはボイス・コッド正規形である．
+なぜなら，関数従属性<span class="math notranslate nohighlight">\(FD_1\)</span>の左辺は候補キーそのものだからである．</p>
+<p><img alt="BCNF" src="../../_images/BCNF.png" /></p>
+</section>
+<section id="id7">
+<h3><span class="section-number">12.2.2. </span>関数従属性による情報無損失解<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>関数従属性による正規化を行うにあたり，以下の定理が成立することが知られている．</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<h4 class="rubric" id="id8">定理：情報無損失分解</h4>
+<p>属性集合<span class="math notranslate nohighlight">\(U\)</span>上の関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>において，関数従属性<span class="math notranslate nohighlight">\(X \to Y\)</span>が成立するならば，関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>は</p>
+<ul class="simple">
+<li><p>関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>を属性集合<span class="math notranslate nohighlight">\(X \cup Y\)</span>上に射影した関係<span class="math notranslate nohighlight">\(\boldsymbol{R_1}\)</span></p></li>
+<li><p>関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>を属性集合<span class="math notranslate nohighlight">\(X \cup (U - Y)\)</span>上に射影した関係<span class="math notranslate nohighlight">\(\boldsymbol{R_2}\)</span><a class="footnote-reference brackets" href="#id16" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p></li>
+</ul>
+<p>の2つの関係に情報無損失分解することができる．</p>
+</div>
+<p>具体例を考えてみよう．
+以下は前章で用いた架空ショッピングサイトの購買履歴を扱う関係「購買」である．
+関係「購買」の関係スキーマは<code class="docutils literal notranslate"><span class="pre">購買(購買ID,</span> <span class="pre">ユーザ,</span> <span class="pre">購入商品,</span> <span class="pre">単価,</span> <span class="pre">数量)</span></code>である．</p>
+<p><img alt="更新時異状" src="../../_images/update-anomaly.png" /></p>
+<p>一般常識から，関係「購買」において関数従属性</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(購入商品 \to 単価\)</span></p>
+</div></blockquote>
+<p>が成立するのは自明である（としよう）．
+では，先の定理を当てはめてみよう．</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(U = \{購買ID, ユーザ, 購入商品, 単価, 数量\}\)</span> <br />
+<span class="math notranslate nohighlight">\(X = 購入商品\)</span> <br />
+<span class="math notranslate nohighlight">\(Y = 単価\)</span> <br />
+<span class="math notranslate nohighlight">\(X \cup Y = \{購入商品, 単価\}\)</span> <br />
+<span class="math notranslate nohighlight">\(U - Y = \{購買ID, ユーザ, 購入商品, 数量\}\)</span> <br />
+<span class="math notranslate nohighlight">\(X \cup (U - Y) = \{購買ID, ユーザ, 購入商品, 数量\}\)</span></p>
+</div></blockquote>
+<p>になるので，関係「購買」は</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\boldsymbol{R_1}(購買ID, ユーザ, 購入商品, 数量)\)</span> <br />
+<span class="math notranslate nohighlight">\(\boldsymbol{R_2}(購入商品, 単価)\)</span></p>
+</div></blockquote>
+<p>に情報無損失分解できる．
+この結果は<a class="reference internal" href="01.html#sec-lossless-decomposition"><span class="std std-ref">前章の例</span></a>で扱った情報無損失分解の結果と一致する．
+形式的に書くと小難しく感じるが，要するに</p>
+<ul class="simple">
+<li><p>関数従属性の両辺（<span class="math notranslate nohighlight">\(X \cup Y\)</span>）からなる関係</p></li>
+<li><p>関数従属性の左辺（<span class="math notranslate nohighlight">\(X\)</span>）と右辺以外の属性集合（<span class="math notranslate nohighlight">\(U-Y\)</span>）からなる関係</p></li>
+</ul>
+<p>に分解すれば情報無損失分解となる．</p>
+</section>
+<section id="id10">
+<h3><span class="section-number">12.2.3. </span>分解法<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p>関数従属性を使って関係を情報無損失分解する方法が分かったので，それを使ってボイス・コッド正規形を導出することができる．
+具体的には，関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>における属性集合と<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>の上で成立する（複数の）関数従属性が与えられたとき，</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>が非正規形の場合，第1正規形に変換する．</p></li>
+<li><p>関数従属性のどれか1つに着目する</p></li>
+<li><p>ステップ1で選んだ関数従属性をもとに関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>を情報無損失分解する</p></li>
+<li><p>分解して得られた関係がボイス・コッド正規形になるまで，ステップ1とステップ2を繰り返す</p></li>
+</ol>
+<p>という流れで正規化を行う．
+この手続きにもとづく関係スキーマの設計方法は<strong>分解法</strong>と呼ばれる．
+分解法で導出された関係の集合が保持しているデータ内容は，分解前の関係が保持しているデータ内容と等しくなる．
+また，分解前と分解後の関係が保持する一貫性制約も等しくなる．</p>
+<p id="fig-to-bcnf"><a class="reference internal" href="#sec-fd-diagram">FDダイアグラムの説明の例</a>で用いた関係スキーマ「営業記録」のFDダイアグラムを使って，
+関係スキーマ「営業記録」をボイス・コッド正規形になるまで分解してみよう．
+以下の図は，FDダイアグラムが分解されていく様子を図示したものである．</p>
+<p><img alt="BCNFへの分解" src="../../_images/decomposition-to-BCNF.png" /></p>
+<p>上記の図では，関数従属性<span class="math notranslate nohighlight">\(FD_4\)</span>，<span class="math notranslate nohighlight">\(FD_2\)</span>，<span class="math notranslate nohighlight">\(FD_3\)</span>の順で情報無損失分解を行うことで，ボイス・コッド正規形の関係スキーマを導出している．
+この例では，最終的に関係スキーマ「営業記録」から</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\boldsymbol{R_1}(\underline{商品}, \underline{ユーザ}, 営業担当)\)</span> <br />
+<span class="math notranslate nohighlight">\(\boldsymbol{R_2}(\underline{ユーザ}, 連絡先)\)</span> <br />
+<span class="math notranslate nohighlight">\(\boldsymbol{R_3}(\underline{商品}, メーカー)\)</span> <br />
+<span class="math notranslate nohighlight">\(\boldsymbol{R_4}(\underline{営業担当}, 営業成績)\)</span></p>
+</div></blockquote>
+<p>の4つのボイス・コッド正規形の関係スキーマが導出されている．
+4つの関係スキーマは更新時異状が起きないように正規化されている．
+また，関数従属性<span class="math notranslate nohighlight">\(FD_1\)</span>，<span class="math notranslate nohighlight">\(FD_2\)</span>，<span class="math notranslate nohighlight">\(FD_3\)</span>，<span class="math notranslate nohighlight">\(FD_4\)</span>も保存されている．
+そのため，この4つの関係スキーマを用いて関係データベースを構築すれば，冗長性を排除しつつデータを正しく管理することができる（<a class="reference internal" href="#db-design2-q2">★Quiz2★</a>）．</p>
+</section>
+<section id="id11">
+<h3><span class="section-number">12.2.4. </span>第3正規形<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<p>関係「営業記録」の例では，何事も問題なくボイス・コッド正規形を導出できた．
+しかし実際には，すべての関係をボイス・コッド正規形にまで情報無損失分解できないケースもしばしばある．</p>
+<p>以下の図は，先の例の関係「営業記録」の関数従属性に</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(FD_5: 営業担当 \to 商品\)</span></p>
+</div></blockquote>
+<p>が加えられたFDダイアグラムである．
+営業担当者ごとに担当する商品が決まっていることを示す，現実にあり得そうな制約条件である．</p>
+<p><img alt="3NF-FD" src="../../_images/key-destruction.png" /></p>
+<p>このFDダイアグラムに従って関係スキーマ「営業記録」を分解するとしよう．
+以下のように，<span class="math notranslate nohighlight">\(FD_4\)</span>，<span class="math notranslate nohighlight">\(FD_2\)</span>，<span class="math notranslate nohighlight">\(FD_3\)</span>を使ってこの順で分解したとする．</p>
+<p><img alt="3NFへの分解" src="../../_images/decomposition-to-3NF.png" /></p>
+<p>すると，以下のような関数従属性をもつ関係スキーマ<span class="math notranslate nohighlight">\(\boldsymbol{R}(ユーザ, 商品, 営業担当)\)</span>が得られる．
+この関係スキーマは，惜しくもボイス・コッド正規形になっていない．
+候補キーの上位集合の属性（{商品, ユーザ}）を左辺とする関数従属性</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(FD_1: 商品, ユーザ \to 営業担当\)</span></p>
+</div></blockquote>
+<p>に加えて，候補キーの部分集合を右辺（{商品}）にもつ関数従属性</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(FD_5: 営業担当 \to 商品\)</span></p>
+</div></blockquote>
+<p>が存在するからである．</p>
+<p id="fig-3nf"><img alt="3NF" src="../../_images/3NF.png" /></p>
+<p>この関係スキーマは，下の図のように関数従属性<span class="math notranslate nohighlight">\(FD_5\)</span>で情報無損失分解することができる．</p>
+<p><img alt="キー破壊的な情報無損失分解" src="../../_images/key-destructive-decomposition.png" /></p>
+<p>この分解によって得られた関係スキーマは</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\{R_1(商品, 営業担当), \{営業担当 \to 商品\}\}\)</span> <br />
+<span class="math notranslate nohighlight">\(\{R_2(ユーザ, 営業担当), \{\}\}\)</span></p>
+</div></blockquote>
+<p>となる．
+これら2つの関係スキーマはボイス・コッド正規形となる．
+しかしながら，情報無損失分解前の関係<span class="math notranslate nohighlight">\(\boldsymbol{R}(ユーザ, 商品, 営業担当)\)</span>において存在していたはずの関数従属性<span class="math notranslate nohighlight">\(FD_5\)</span>が失われてしまっている．
+このように分解対象となるスキーマによっては，元のスキーマ上に存在していた関数従属性が保持できないケースがある．</p>
+<p>そこで，ボイス・コッド正規形の定義を若干緩めて，関数従属性を保持する<strong>第3正規形（3rd normal form; 3NF）</strong> が定義されている．</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<h4 class="rubric" id="id12">定義：第3正規形</h4>
+<p>関係スキーマ<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>において成立するどのような自明でない関数従属性<span class="math notranslate nohighlight">\(X \to Y\)</span>においても，以下の(1)(2)のいずれかを満たすとき，<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>は第3正規形であるという．</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(X\)</span>が<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>の超キーである</p></li>
+<li><p><span class="math notranslate nohighlight">\(Y\)</span>が<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>の候補キーの要素である</p></li>
+</ol>
+</div>
+<p>1つ目はボイス・コッド正規形であるための条件である．
+2つ目はボイス・コッド正規形の要件を満たさない場合に対応するためのOR条件である．
+定義上，ボイス・コッド正規形である関係はすべて第3正規形である．
+<a class="reference internal" href="#fig-3nf"><span class="std std-ref">先の図</span></a>における関係スキーマ<span class="math notranslate nohighlight">\(\boldsymbol{R}(ユーザ, 商品, 営業担当)\)</span>は</p>
+<ul class="simple">
+<li><p>候補キー<code class="docutils literal notranslate"><span class="pre">{商品,</span> <span class="pre">ユーザ}</span></code>を左辺とする関数従属性<span class="math notranslate nohighlight">\(FD_1\)</span></p></li>
+<li><p>候補キーの一部である<code class="docutils literal notranslate"><span class="pre">商品</span></code>を右辺とする関数従属性<span class="math notranslate nohighlight">\(FD_5\)</span></p></li>
+</ul>
+<p>の両方を保持する第3正規形である．</p>
+<p>第3正規形もボイス・コッド正規形も候補キーに関する関数従属性を保持する正規形であるが，
+第3正規形が候補キーが関数従属性の<strong>左辺，右辺のいずれか</strong>に関わることを条件にしている．
+それに対して，ボイス・コッド正規形は候補キー（とその上位集合）が関数従属性の<strong>左辺に現れることのみ</strong>を条件とした少し厳しいものになっている（非キー属性から候補キー要素への関数従属性条件を排除）（<a class="reference internal" href="#db-design2-q3">★Quiz3★</a>，<a class="reference internal" href="#db-design2-q5"><span class="xref myst">★Quiz4★</span></a>）．</p>
+</section>
+</section>
+<section id="id13">
+<h2><span class="section-number">12.3. </span>望ましい関係スキーマを得る手順のまとめ<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<p>以下の図は，概念モデリングからはじめて第3正規形もしくはボイス・コッド正規形を得るための手順をまとめたものである．
+本講義では実体関連図を作成した後，それを関係スキーマに機械的に変換し，正規化が不十分なものについてはFDダイアグラムを用いて情報無損失分解を行う流れで，正規化された関係スキーマを導出する方法を解説した．</p>
+<p>図の点線で示したように，実は実体関連図を機械的にスキーマ変換するだけで，第3正規形もしくはボイス・コッド正規形の関係スキーマが得られる場合もある．
+一方，実体関連図を作成しなくても，データベースで取り扱うことが想定されている全属性を並べた第1正規形の関係スキーマと想定されうる関数従属性だけを使って，第3正規形もしくはボイス・コッド正規形の関係スキーマを設計することも可能である．
+そのような場合でも，<strong>実体関連図とFDダイアグラムを併用</strong>して関係スキーマを導出することをオススメする．</p>
+<p>その理由は，現実世界の構造や制約が作成した実体関連図に適切に反映されていなければ，実体関連図のみで十分に正規化された関係スキーマを得られないからである．
+別の理由としては，FDダイアグラムはあくまで属性間に成立する制約に注目しているだけで，実体関連モデルのようにデータの持つ意味や構造は意識されていないからである．</p>
+<p>関係データモデルの正規化レベルとしては第1正規形から第5正規形まで定義されているが，第3正規形やボイス・コッド正規形までの正規化で十分と言われることが多い．
+しかしながら，どの程度のレベルまで正規化を行うかは，想定しているアプリケーションによる．
+例えば，SNSの投稿のようにデータの生成頻度は高いが更新頻度は低いサービスにおいては，データ整合性の担保や冗長性の排除よりも問い合わせ処理の速度が優先される場合もある．
+そのようなケースでは，ゴリゴリに関係スキーマを正規化しない，あるいは関係データベースではない別種のデータベースを用いることも視野に入れる必要がある．</p>
+<p><img alt="手順" src="../../_images/normalization-flow.png" /></p>
+</section>
+<hr class="docutils" />
+<section id="id14">
+<h2><span class="section-number">12.4. </span>クイズ<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<section id="q1-orange-music">
+<h3><span class="section-number">12.4.1. </span>Q1: Orange Music<a class="headerlink" href="#q1-orange-music" title="Link to this heading">#</a></h3>
+<p>架空のサブスクリプション型音楽ストリーミングサービスであるOrange Musicでは，楽曲に対するユーザの評価スコアを関係「評価」で管理している．
+関係「評価」の関係スキーマは以下の通りである．</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\{\boldsymbol{評価}(ユーザ名, 楽曲名, アーティスト, 収録アルバム, ジャンル, スコア), \{FD_1, FD_2, FD_3, FD_4\}\}\)</span> <br />
+<span class="math notranslate nohighlight">\(FD_1: ユーザ名, 楽曲 \to スコア\)</span> <br />
+<span class="math notranslate nohighlight">\(FD_2: 楽曲 \to 収録アルバム\)</span> <br />
+<span class="math notranslate nohighlight">\(FD_3: 楽曲 \to ジャンル\)</span> <br />
+<span class="math notranslate nohighlight">\(FD_4: 収録アルバム \to アーティスト\)</span></p>
+</div></blockquote>
+<p>なお，Orange Musicではアルバムに収録されている楽曲しか配信対象になっていないと仮定する．
+また，同名の楽曲，アルバム，アーティストは存在しないと仮定する．</p>
+<section id="q1-1">
+<span id="db-design2-q1"></span><h4><span class="section-number">12.4.1.1. </span>Q1-1: 関数従属性<a class="headerlink" href="#q1-1" title="Link to this heading">#</a></h4>
+<p>Q1で定義した定義した関係スキーマ「評価」を満たす関係を適当に例示せよ．
+タプルの数は5〜6でよい．</p>
+</section>
+<section id="q1-2-fd">
+<span id="db-design2-q1-2"></span><h4><span class="section-number">12.4.1.2. </span>Q1-2: FDダイアグラム<a class="headerlink" href="#q1-2-fd" title="Link to this heading">#</a></h4>
+<p>Q1で定義した関係スキーマ「評価」で定義された関数従属性をFDダイアグラムで表現せよ．</p>
+</section>
+<section id="q1-3">
+<span id="db-design2-q1-3"></span><h4><span class="section-number">12.4.1.3. </span>Q1-3: 主キー<a class="headerlink" href="#q1-3" title="Link to this heading">#</a></h4>
+<p>Q1で定義した関係スキーマ「評価」における主キーは何か．</p>
+</section>
+<section id="q1-4">
+<span id="db-design2-q1-4"></span><h4><span class="section-number">12.4.1.4. </span>Q1-4: 関数従属性にもとづく正規化<a class="headerlink" href="#q1-4" title="Link to this heading">#</a></h4>
+<p>Q1-2で作成したFDダイアグラムを用いて，関係スキーマ「評価」をボイス・コッド正規形へ分解せよ．
+なお，途中過程も示すこと．
+また，分解の過程で得られる関係スキーマに正規化レベルを付与すること（例: 第1正規形）．</p>
+</section>
+</section>
+<section id="q2">
+<span id="db-design2-q2"></span><h3><span class="section-number">12.4.2. </span>Q2: 変換順序と分解結果の関係<a class="headerlink" href="#q2" title="Link to this heading">#</a></h3>
+<p><a class="reference internal" href="#sec-fd-diagram">こちらの図</a>に記した関係スキーマ「営業記録」について，<span class="math notranslate nohighlight">\(FD_2\)</span>，<span class="math notranslate nohighlight">\(FD_3\)</span>，<span class="math notranslate nohighlight">\(FD_4\)</span>の順で分解法を適用してボイス・コッド正規形を導出せよ．
+なお，途中過程も示すこと．
+また，分解の過程で得られる関係スキーマに正規化レベルを付与すること（例: 第1正規形）．</p>
+</section>
+<section id="q3-2">
+<span id="db-design2-q3"></span><h3><span class="section-number">12.4.3. </span>Q3: 関数従属性にもとづく正規化2<a class="headerlink" href="#q3-2" title="Link to this heading">#</a></h3>
+<p>以下の関係スキーマ<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>およびその関数従属性が与えられたとき，<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>からからボイス・コッド正規形を導出せよ．
+なお，途中過程も示すこと．
+また，分解の過程で得られる関係スキーマに正規化レベルを付与すること（例: 第1正規形）．</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\{\boldsymbol{R}(A, B, C, D, E, F), \{FD_1, FD_2, FD_3, FD_4, FD_5\}\}\)</span> <br />
+<span class="math notranslate nohighlight">\(FD_1: A, B \to C\)</span> <br />
+<span class="math notranslate nohighlight">\(FD_2: C \to B\)</span> <br />
+<span class="math notranslate nohighlight">\(FD_3: C \to D\)</span> <br />
+<span class="math notranslate nohighlight">\(FD_4: C \to E\)</span> <br />
+<span class="math notranslate nohighlight">\(FD_5: E \to F\)</span></p>
+</div></blockquote>
+</section>
+<section id="q4-3">
+<span id="db-design2-q4"></span><h3><span class="section-number">12.4.4. </span>Q4: 関数従属性にもとづく正規化3<a class="headerlink" href="#q4-3" title="Link to this heading">#</a></h3>
+<p>あるスポーツ団体では，以下の関係スキーマ<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>とその関数従属性に基づき．団体に属する選手やチームに関する情報を管理する関係データベースを設計しようとしている．</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\{\boldsymbol{R}(選手, 出身校, 年度, チーム, 監督, チーム創立年), \{FD_1, FD_2, FD_3, FD_4, FD_5\}\}\)</span> <br />
+<span class="math notranslate nohighlight">\(FD_1: 選手 \to 出身高校\)</span> <br />
+<span class="math notranslate nohighlight">\(FD_2: チーム \to チーム創立年\)</span> <br />
+<span class="math notranslate nohighlight">\(FD_3: チーム, 年度 \to 監督\)</span> <br />
+<span class="math notranslate nohighlight">\(FD_4: 選手, 年度 \to チーム\)</span></p>
+</div></blockquote>
+<p>関数従属性<span class="math notranslate nohighlight">\(FD_1\)</span>，<span class="math notranslate nohighlight">\(FD_2\)</span>，<span class="math notranslate nohighlight">\(FD_3\)</span>，<span class="math notranslate nohighlight">\(FD_4\)</span>を用いて，関係スキーマ<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>から第3正規形もしくはボイス・コッド正規形を導出せよ．
+なお，途中過程も示すこと．
+また，分解の過程で得られる関係スキーマに正規化レベルを付与すること（例: 第1正規形）．</p>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id15" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
+<p>関数従属性の両辺は属性集合であるが，慣例により集合を表す波括弧は省略される．</p>
+</aside>
+<aside class="footnote brackets" id="id16" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">2</a><span class="fn-bracket">]</span></span>
+<p><span class="math notranslate nohighlight">\(U-Y\)</span>ではなく<span class="math notranslate nohighlight">\(X \cup (U-Y)\)</span>とする理由は，<span class="math notranslate nohighlight">\(U\)</span>に属さない別の関係の属性<span class="math notranslate nohighlight">\(X\)</span>において<span class="math notranslate nohighlight">\(X \to Y\)</span>となる場合もありえるからである．</p>
+</aside>
+</aside>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -441,7 +829,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>好ましくない関係スキーマ</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>望ましくない関係スキーマ</p>
       </div>
     </a>
     <a class="right-next"
@@ -460,7 +848,44 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">12.1. 関数従属性</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fd">12.1.1. FDダイアグラム</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">12.2. 関数従属性にもとづく関係スキーマの正規化</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">12.2.1. ボイス・コッド正規形</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">12.2.2. 関数従属性による情報無損失解</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">12.2.3. 分解法</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">12.2.4. 第3正規形</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">12.3. 望ましい関係スキーマを得る手順のまとめ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">12.4. クイズ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-orange-music">12.4.1. Q1: Orange Music</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-1">12.4.1.1. Q1-1: 関数従属性</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-2-fd">12.4.1.2. Q1-2: FDダイアグラム</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-3">12.4.1.3. Q1-3: 主キー</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-4">12.4.1.4. Q1-4: 関数従属性にもとづく正規化</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">12.4.2. Q2: 変換順序と分解結果の関係</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-2">12.4.3. Q3: 関数従属性にもとづく正規化2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-3">12.4.4. Q4: 関数従属性にもとづく正規化3</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

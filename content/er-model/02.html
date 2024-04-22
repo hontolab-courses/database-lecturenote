@@ -203,7 +203,7 @@
 <li class="toctree-l1"><a class="reference internal" href="01.html">8. 実体関連モデルとは</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">9. 実体関連モデル上の一貫性制約</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03.html">10. 拡張実体関連モデル &amp; n項関連</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">11. 好ましくない関係スキーマ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">11. 望ましくない関係スキーマ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">12. データ従属性にもとづく正規化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercise/db-design.html">13. データベース設計演習</a></li>
 </ul>
@@ -403,7 +403,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">9.1. 参加制約</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">9.2. 多重度制約</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">9.3. キー制約</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">9.3.1. 弱実体と部分キー</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sec-weak-entity">9.3.1. 弱実体と部分キー</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">9.4. クイズ</a><ul class="nav section-nav flex-column">
@@ -459,18 +459,19 @@ document.write(`
 <li><p>ユーザは複数の商品を購入希望登録することができる</p></li>
 <li><p>商品は複数のユーザから購入希望登録されてもよい</p></li>
 <li><p>ユーザの中には商品を購入希望登録をしない者がいてもよい</p></li>
-<li><p>どの商品も必ずいずれかのメーカー，いずれかのユーザとつながっている</p></li>
+<li><p>商品の中にはユーザに購入希望登録されないものがあってもよい</p></li>
 <li><p>商品は必ず1つのメーカーによって製造される（複数のメーカーが合同で1つの商品を製造することはない）</p></li>
-<li><p>メーカーは複数の商品を製造できる</p></li>
-<li><p>どのメーカーも必ず何かの商品を製造している</p></li>
+<li><p>メーカーは複数の商品を製造する</p></li>
+<li><p>メーカーの中には商品を製造していないところがあってもよい</p></li>
 </ol>
 <p>さて，これらのことを実体関連図として表現してみよう．
-上記項目のうち，項目3，4，7については参加制約に関する事柄である．
+上記項目のうち，項目3，4，5，7については参加制約に関する事柄である．
 すなわち，</p>
 <ul class="simple">
-<li><p>項目3については，実体型「ユーザ」の関連型「購入希望」への参加制約を「部分的」</p></li>
-<li><p>項目4については，実体型「商品」の関連型「購入希望」および「製造」への参加制約を「全体的」</p></li>
-<li><p>項目7については，実体型「メーカー」の関連型「製造」への参加制約を「全体的」</p></li>
+<li><p>実体型「ユーザ」の関連型「購入希望」への参加制約は「部分的」</p></li>
+<li><p>実体型「商品」の関連型「購入希望」への参加制約は「部分的」</p></li>
+<li><p>実体型「商品」の関連型「製造」への参加制約は「全体的」</p></li>
+<li><p>実体型「メーカー」の関連型「製造」への参加制約は「部分的」</p></li>
 </ul>
 <p>とすればよい．</p>
 <p>一方，項目1，2，5，6は，ある実体（要素）から見たときに，ある関連を通じて別のいくつの実体（要素）とつながることが許されるかという制約を示している．
@@ -478,7 +479,7 @@ document.write(`
 実体間の関連は「1対1」「1対多」「多対多」のいずれかとなる．
 例えば，上記図においては</p>
 <ul class="simple">
-<li><p>関連型「購入希望」はユーザと商品のの「多対多」関連（項目1および2）</p></li>
+<li><p>関連型「購入希望」はユーザと商品の「多対多」関連（項目1および2）</p></li>
 <li><p>関連型「製造」はメーカーと商品の「1体多」関連（項目5および6）</p></li>
 </ul>
 <p>と見なせる．</p>
@@ -497,8 +498,8 @@ document.write(`
 <p>実体関連モデルにおける<strong>キー制約（key constraint）</strong> とは，キーとして指定された属性はキーとしての役割を必ず果たす必要があるという制約である．
 例えば，実体型「学生」の属性「学籍番号」が主キーとして設定された場合，学籍番号を指定することにより実体「学生」は一意に特定できなければならない．
 また，学籍番号に重複は許されない．</p>
-<section id="id7">
-<h3><span class="section-number">9.3.1. </span>弱実体と部分キー<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<section id="sec-weak-entity">
+<span id="id7"></span><h3><span class="section-number">9.3.1. </span>弱実体と部分キー<a class="headerlink" href="#sec-weak-entity" title="Link to this heading">#</a></h3>
 <p>ショッピングサイトの例に戻ろう．
 ショッピングサイトを利用する際，ある人が自分のユーザ名を使ってログインをしているのだが，購入した商品の送り先を同居する家族にしたいケースが存在する．
 このようなケースに対応するために，サイト運営者は先ほど示した実体関連図を改善して，</p>
@@ -695,7 +696,7 @@ Orange Musicの「ユーザ」は「プレイリスト」を「作成」する�
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">9.1. 参加制約</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">9.2. 多重度制約</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">9.3. キー制約</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">9.3.1. 弱実体と部分キー</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sec-weak-entity">9.3.1. 弱実体と部分キー</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">9.4. クイズ</a><ul class="nav section-nav flex-column">

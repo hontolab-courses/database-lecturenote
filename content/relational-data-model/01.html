@@ -203,7 +203,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../er-model/01.html">8. 実体関連モデルとは</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../er-model/02.html">9. 実体関連モデル上の一貫性制約</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../er-model/03.html">10. 拡張実体関連モデル &amp; n項関連</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">11. 好ましくない関係スキーマ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">11. 望ましくない関係スキーマ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">12. データ従属性にもとづく正規化</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercise/db-design.html">13. データベース設計演習</a></li>
 </ul>
@@ -402,14 +402,14 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.1. 関係データモデルのデータ構造</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.1.1. 数学における「関係」</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.1.2. 関係データモデルにおける「関係」</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sec-relation-schema">3.1.2. 関係データモデルにおける「関係」</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">3.2. 非正規関係と第1正規形</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sec-1nf">3.2. 非正規関係と第1正規形</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">3.3. 一貫性制約</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.3.1. ドメイン制約</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.3.2. キー制約</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">3.3.3. 参照整合性制約</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sec-key-constraint">3.3.2. キー制約</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sec-referential-constraint">3.3.3. 参照整合性制約</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">3.3.4. データ従属性</a></li>
 </ul>
 </li>
@@ -437,9 +437,10 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">3. </span>関係データモデル<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p><strong>関係データベース（relational database）</strong> とは，関係データモデルに基づき表現されたデータの集まりである．
+<p><strong>関係データベース（relational database）</strong> とは，関係データモデルにもとづく表現されたデータの集まりである．
 前章で述べたように，関係データモデルとは表によってデータを表現するデータモデルである．
-冗長性を排除し効率よくデータを処理・管理するために，一見すると単純な表にしか見えない関係データモデルは数学によって定式化されており，強固な理論的基盤を有している．</p>
+一見すると単純な表にしか見えない関係データモデルは，数学によって定式化されており強固な理論的基盤を有している．
+関係データモデルを用いることで，データから冗長性を排除し，データを正しく管理することが可能となる．</p>
 <p>以下では，数学的な観点から関係データモデルについて述べる．
 少々堅い説明にはなるが，関係データベースという計算機科学技術が数学に支えられていることを知るためにも，眠気を我慢して読んでもらいたい．
 なお，本章では数学における「集合と写像」の知識を使う．
@@ -489,8 +490,8 @@ document.write(`
 <p>は集合AおよびB上の2項関係となる．
 このような（n項）関係の概念を使って，関係データモデルは理論構築されている（<a class="reference internal" href="#rdm-q2">★Quiz2★</a>）．</p>
 </section>
-<section id="id5">
-<h3><span class="section-number">3.1.2. </span>関係データモデルにおける「関係」<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<section id="sec-relation-schema">
+<span id="id5"></span><h3><span class="section-number">3.1.2. </span>関係データモデルにおける「関係」<a class="headerlink" href="#sec-relation-schema" title="Link to this heading">#</a></h3>
 <p>さて，<strong>関係データモデルにおける関係</strong>は「数学におけるの関係」を拡張したものになっており，以下の2つから構成される．</p>
 <ul class="simple">
 <li><p>関係スキーマ</p></li>
@@ -528,13 +529,9 @@ document.write(`
 </div></blockquote>
 <p>同様に，属性「商品ID」「名称」「登録日」についても，以下のようにドメインを定義できる．</p>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(Dom(商品ID) = \{ x \ | x \in Pから始まる文字列集合 \}\)</span></p>
-</div></blockquote>
-<blockquote>
-<div><p><span class="math notranslate nohighlight">\(Dom(名称) = \{ x \ | \ x \in 文字列集合 \}\)</span></p>
-</div></blockquote>
-<blockquote>
-<div><p><span class="math notranslate nohighlight">\(Dom(登録日) = \{ x \ | \ x \in 年月日集合（ただし西暦表記） \}\)</span></p>
+<div><p><span class="math notranslate nohighlight">\(Dom(商品ID) = \{ x \ | x \in Pから始まる文字列集合 \}\)</span> <br />
+<span class="math notranslate nohighlight">\(Dom(名称) = \{ x \ | \ x \in 文字列集合 \}\)</span> <br />
+<span class="math notranslate nohighlight">\(Dom(登録日) = \{ x \ | \ x \in 年月日集合（ただし西暦表記） \}\)</span></p>
 </div></blockquote>
 <p><strong>インスタンス（instance）</strong> は，関係スキーマ<span class="math notranslate nohighlight">\(\boldsymbol{R}(A_1, ..., A_n)\)</span>におけるドメイン<span class="math notranslate nohighlight">\(Dom(A_1), ..., Dom(A_n)\)</span>の直積の部分集合である．
 仮にインスタンスを<span class="math notranslate nohighlight">\(R\)</span>とすると，</p>
@@ -572,8 +569,8 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="id7">
-<h2><span class="section-number">3.2. </span>非正規関係と第1正規形<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<section id="sec-1nf">
+<span id="id7"></span><h2><span class="section-number">3.2. </span>非正規関係と第1正規形<a class="headerlink" href="#sec-1nf" title="Link to this heading">#</a></h2>
 <p>関係データモデルにおけるドメインは属性が取り得る値の集合であるが，取り得る値の要素はそれ以上分解不可能な値である<strong>原子値（atomic value）</strong> を対象としている．
 原子値の例としては，文字列，整数，実数，真偽値，日付などが挙げられ，どれもデータの基本単位と呼べるものである．
 逆に原子値で「ない」例としては，タプルや集合，関係などが挙げられる．
@@ -605,10 +602,8 @@ document.write(`
 例えば，</p>
 <p>先の例でとりあげた関係「商品（商品ID, 名称, 単価, 登録日）」において，属性「単価」や「登録日」のドメインは</p>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(Dom(単価) = \{ x \ | \ x \in \mathbb{N} \}\)</span></p>
-</div></blockquote>
-<blockquote>
-<div><p><span class="math notranslate nohighlight">\(Dom(登録日) = \{ x \ | \ x \in 年月日集合（ただし西暦表記） \}\)</span></p>
+<div><p><span class="math notranslate nohighlight">\(Dom(単価) = \{ x \ | \ x \in \mathbb{N} \}\)</span> <br />
+<span class="math notranslate nohighlight">\(Dom(登録日) = \{ x \ | \ x \in 年月日集合（ただし西暦表記） \}\)</span></p>
 </div></blockquote>
 <p>のように定義されていた．
 これらはドメイン制約である．
@@ -628,8 +623,8 @@ document.write(`
 <p>からである（<a class="reference internal" href="#rdm-q5">★Quiz5★</a>）．</p>
 <p><img alt="ドメイン制約に違反する関係" src="../../_images/irregular-table.png" /></p>
 </section>
-<section id="id10">
-<h3><span class="section-number">3.3.2. </span>キー制約<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<section id="sec-key-constraint">
+<span id="id10"></span><h3><span class="section-number">3.3.2. </span>キー制約<a class="headerlink" href="#sec-key-constraint" title="Link to this heading">#</a></h3>
 <p>まず，キー制約の前提となるキーの概念について説明する．
 関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>における<strong>超キー（super key）</strong> とは，関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>における属性の集合のうち，それらの属性値が決まればおのずと関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>のタプルが唯一ひとつに決まる（タプルを一意に特定できる）ものを指す．</p>
 <p>例えば，以下の表は関係「連絡先（学生ID, 名前, 学年, 大学email, 自宅住所）」を表形式で記したもので，各行（タプル）は学生の連絡先情報を示している．
@@ -642,14 +637,14 @@ document.write(`
 これは属性「学生ID」が超キーであるから，当たり前である．</p>
 <p>一方，属性「住所」は超キーにはなり得ない．
 学生IDがS3とS4の学生の住所が同じ（つまり同じところに住んでいる）であるから，住所を1つ指定しても連絡先タプルが一意に特定できないからである．</p>
-<p><img alt="連絡先" src="../../_images/contact-table.png" /></p>
+<p><img alt="連絡先" src="../../_images/contact-table1.png" /></p>
 <p>超キーは複数ありえるが，上の例では属性「学生ID」のみでタプルを特定できるため，属性集合<code class="docutils literal notranslate"><span class="pre">{学生ID,</span> <span class="pre">名前}</span></code>を使ってタプルを特定しようとするのは無駄であろう．
 そこで，超キーのうち極小（つまり最も小さい部分集合）のものを<strong>候補キー（candiate key）</strong> と定義する．
 候補キーは単純に<strong>キー（key）</strong> と呼ばれることもある．
 例えば，上の関係「連絡先」では，属性「学生ID」や「大学email」が候補キーとなりえる（<a class="reference internal" href="#rdm-q6">★Quiz6★</a>）．</p>
 <p>最後に<strong>主キー（primary key）</strong> の概念を導入する．
-候補キーのうち，データベース管理上都合のよいキーの1つを主キーと決める．
-主キー以外の候補キーは<strong>代替キー</strong>と呼ばれる．
+候補キーのうち，値として<strong>未定義や空の値（空値またはNULL値と呼ばれる）<strong>を取る可能性がなく，かつデータベース管理上都合のよいキーの1つを主キーと決める．
+主キー以外の候補キーは</strong>代替キー</strong>と呼ばれる．
 例えば，先の関係「連絡先」の場合，候補キーは「学生ID」と「大学email」であったが，大学emailは「氏名&#64;xxx.ac.jp」のようなものから「学籍番号&#64;xxx.ac.jp」のようなものに変更される可能性があったとしても，学生IDは一度決めたらほぼ変わらないと思われる．
 これらを鑑みると，関係「連絡先」においては属性「学生ID」が主キーとして選ぶのがよい．</p>
 <p>なお，候補キーの定義から主キーは属性の集合をとることができる．
@@ -664,7 +659,7 @@ document.write(`
 <strong>キー制約（key constraint）</strong> は，関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>の関係スキーマに対して主キーが設定されたとき，<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>のインスタンスにおいては</p>
 <ul class="simple">
 <li><p>その要素（タプル）は主キーによって一意に特定されなければならない，かつ</p></li>
-<li><p>主キーとなる属性の値は<strong>未定義（要するに空）</strong> であってはならない</p></li>
+<li><p>主キーとなる属性の値は<strong>NULL値</strong> であってはならない</p></li>
 </ul>
 <p>という制約である．
 定義は小難しく見えるかもしれないが，キー制約は「ある属性が主キーと設定されたら，それがきちんと主キーの役割を果たすようデータが作られなければならない」ということを意味している．
@@ -690,8 +685,8 @@ document.write(`
 キーは「<strong>関係スキーマに対して設定される</strong>」ことを意識しよう．</p>
 </div>
 </section>
-<section id="id12">
-<h3><span class="section-number">3.3.3. </span>参照整合性制約<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<section id="sec-referential-constraint">
+<span id="id12"></span><h3><span class="section-number">3.3.3. </span>参照整合性制約<a class="headerlink" href="#sec-referential-constraint" title="Link to this heading">#</a></h3>
 <p>（関係データモデルにもとづく）関係データベースでは，対象となる事象のデータを正しく管理するために，<strong>データを複数の関係（表）で管理する</strong>ことがほとんどである．
 複合主キーの説明の例で使った関係「履修」には，それが具体的に何を意味するのかは不明な属性「科目ID」「学生ID」がある．
 しかし，これらの意味を読み解くためには</p>
@@ -720,8 +715,17 @@ document.write(`
 </ul>
 <p>紐付いていることが分かる．
 言い方を変えると，関係「履修」は属性「学生ID」および「科目ID」の値を通して，関係「学生」および「科目」の情報を参照していることになる．</p>
-<p>このように，関係スキーマ<span class="math notranslate nohighlight">\(\boldsymbol{R_1}(..., FK, ...)\)</span>と<span class="math notranslate nohighlight">\(\boldsymbol{R_2}(\underline{PK}, ...)\)</span>が与えられ，<span class="math notranslate nohighlight">\(R_1\)</span>におけるタプルの属性<span class="math notranslate nohighlight">\(fk\)</span>の値が必ず<span class="math notranslate nohighlight">\(R_2\)</span>におけるいずれかのタプルの主キー<span class="math notranslate nohighlight">\(PK\)</span>の値と一致しているとき，<span class="math notranslate nohighlight">\(R_1\)</span>の属性<span class="math notranslate nohighlight">\(FK\)</span>を<strong>外部キー（foreign key）</strong> と呼ぶ．
-先の例では，関係「履修」の属性「学生ID」および「科目ID」が外部キーとなる（<a class="reference internal" href="#rdm-q8">★Quiz8★</a>）．</p>
+<p>このように，関係スキーマ<span class="math notranslate nohighlight">\(\boldsymbol{R_1}(..., FK, ...)\)</span>と<span class="math notranslate nohighlight">\(\boldsymbol{R_2}(\underline{PK}, ...)\)</span>が与えられ，<span class="math notranslate nohighlight">\(R_1\)</span>におけるタプルの属性<span class="math notranslate nohighlight">\(FK\)</span>の値が必ず<span class="math notranslate nohighlight">\(R_2\)</span>におけるいずれかのタプルの主キー<span class="math notranslate nohighlight">\(PK\)</span>の値と一致しているとき，<span class="math notranslate nohighlight">\(R_1\)</span>の属性<span class="math notranslate nohighlight">\(FK\)</span>を<strong>外部キー（foreign key）</strong> と呼ぶ．
+関係スキーマ上では，関係<span class="math notranslate nohighlight">\(\boldsymbol{R_1}\)</span>の属性<span class="math notranslate nohighlight">\(FK\)</span>が関係<span class="math notranslate nohighlight">\(\boldsymbol{R_2}\)</span>の（主キー<span class="math notranslate nohighlight">\(PK\)</span>を介した）外部キーであることを以下のように記す．</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\boldsymbol{R_1}.FK \subseteq \boldsymbol{R_1}.PK\)</span></p>
+</div></blockquote>
+<p>先の例では，関係「履修」の属性「学生ID」および「科目ID」が外部キーとなるので，関係スキーマとして</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(履修.学生ID \subseteq 学生.学生ID\)</span> <br />
+<span class="math notranslate nohighlight">\(履修.科目ID \subseteq 科目.科目ID\)</span></p>
+</div></blockquote>
+<p>と記す（<a class="reference internal" href="#rdm-q8">★Quiz8★</a>）．</p>
 <p>前置きが長くなったが，本節のテーマである<strong>参照制約（referential constraint）</strong> とは「関係スキーマにおいて外部キーが設定されたとき，そのいかなるインスタンスも上記外部キーの条件を満たさなければいけない」という制約である．</p>
 </section>
 <section id="id13">
@@ -745,10 +749,8 @@ document.write(`
 一般常識から住所が決まれば，住所がどこの都道府県に属しているか，郵便番号もひとつに決まる．
 このことから，関係「連絡先」においては</p>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(自宅住所 \to 郵便番号\)</span></p>
-</div></blockquote>
-<blockquote>
-<div><p><span class="math notranslate nohighlight">\(自宅住所 \to 都道府県\)</span></p>
+<div><p><span class="math notranslate nohighlight">\(自宅住所 \to 郵便番号\)</span> <br />
+<span class="math notranslate nohighlight">\(自宅住所 \to 都道府県\)</span></p>
 </div></blockquote>
 <p>という関数従属性が定義できる．
 関数従属性はキー制約を一般化したものと捉えることができる．</p>
@@ -809,7 +811,7 @@ document.write(`
 </section>
 <section id="q8">
 <span id="rdm-q8"></span><h3><span class="section-number">3.4.8. </span>Q8. 参照整合性制約<a class="headerlink" href="#q8" title="Link to this heading">#</a></h3>
-<p>以下の関係スキーマをもつ5つの関係からなるデータベースにおいて，整理すべき参照整合性制約をあげよ．</p>
+<p>以下の関係スキーマをもつ5つの関係からなるデータベースにおいて，定義すべき参照整合性制約をあげよ．</p>
 <p><span class="math notranslate nohighlight">\(顧客(\underline{顧客ID}, 氏名, 性別)\)</span></p>
 <p><span class="math notranslate nohighlight">\(店舗(\underline{店舗ID}, 店舗名, 住所)\)</span></p>
 <p><span class="math notranslate nohighlight">\(商品(\underline{商品ID}, 商品名, 商品カテゴリID, 単価)\)</span></p>
@@ -885,14 +887,14 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.1. 関係データモデルのデータ構造</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.1.1. 数学における「関係」</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.1.2. 関係データモデルにおける「関係」</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sec-relation-schema">3.1.2. 関係データモデルにおける「関係」</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">3.2. 非正規関係と第1正規形</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sec-1nf">3.2. 非正規関係と第1正規形</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">3.3. 一貫性制約</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.3.1. ドメイン制約</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.3.2. キー制約</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">3.3.3. 参照整合性制約</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sec-key-constraint">3.3.2. キー制約</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sec-referential-constraint">3.3.3. 参照整合性制約</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">3.3.4. データ従属性</a></li>
 </ul>
 </li>
