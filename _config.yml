@@ -79,6 +79,8 @@ html:
 sphinx:
   config:
     language: en
+    html_baseurl: "https://dbnote.hontolab.org/"
+    sitemap_url_scheme: "{link}"
     html_show_copyright: false
     bibtex_reference_style: author_year
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js
@@ -95,7 +97,8 @@ sphinx:
       #   \renewcommand\kanjifamilydefault{\gtdefault}
 
     #   polyglossia: false
-
+  extra_extensions:
+    - sphinx_sitemap
 
 
 
