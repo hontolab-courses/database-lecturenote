@@ -1704,7 +1704,7 @@ document.write(`
 </section>
 <section id="inner-join">
 <h3><span class="section-number">5.2.2. </span>内部結合（INNER JOIN）<a class="headerlink" href="#inner-join" title="Link to this heading">#</a></h3>
-<p><strong>内部結合（inner join）</strong> は，2つのテーブルにおいて指定した列の値同士が一致するレコードのみを結合して抽出する操作である．
+<p><strong>内部結合（inner join）</strong> は，2つのテーブルにおいて指定した列の値が条件を満たすレコードのみを結合して抽出する操作である．
 通常，結合あるいはジョインという時は内部結合を指す．
 テーブルAにテーブルBを内部結合するためのSQL文は</p>
 <ol class="arabic simple">
@@ -1807,7 +1807,7 @@ document.write(`
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <h4 class="rubric" id="using">USING句を使った省略記法</h4>
-<p>2つのテーブルを内部結合する際，結合するテーブルの列名が等しい（同じ列名で結合する）場合は，以下のように<code class="docutils literal notranslate"><span class="pre">ON</span></code>句の代わりに<code class="docutils literal notranslate"><span class="pre">USING</span></code>句を使って簡単に書くことができる．
+<p>2つのテーブルを内部結合する際，結合するテーブルの列名が等しい（同じ列名で結合する）かつ結合条件が等号である場合は，以下のように<code class="docutils literal notranslate"><span class="pre">ON</span></code>句の代わりに<code class="docutils literal notranslate"><span class="pre">USING</span></code>句を使って簡単に書くことができる．
 以下は上記SQL文を<code class="docutils literal notranslate"><span class="pre">USING</span></code>句を使って書き換えたものである．</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
 <span class="w">    </span><span class="n">university_student_population_top10</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span>
@@ -2092,7 +2092,7 @@ document.write(`
 </section>
 <section id="q4">
 <span id="sql2-q4"></span><h3><span class="section-number">5.3.4. </span>Q4. 内部結合<a class="headerlink" href="#q4" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルと<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルをフィールド「地域コード」で内部結合を行うSQL文を書け．
+<p><code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルと<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルをカラム「地域コード」が等しいという条件で内部結合を行うSQL文を書け．
 ただし，結果表示時には重複するフィールド（すなわち「地域コード」「都道府県名」）は除くこと．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2115,7 +2115,7 @@ document.write(`
 </section>
 <section id="q6-1-2">
 <span id="sql2-q6"></span><h3><span class="section-number">5.3.6. </span>Q6. 外部結合（1/2）<a class="headerlink" href="#q6-1-2" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">university_student_population_top10</span></code>テーブルに対して「地域コード」を用いて<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルを左外部結合せよ．</p>
+<p><code class="docutils literal notranslate"><span class="pre">university_student_population_top10</span></code>テーブルに対して「地域コード」が等しいという条件で<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルを左外部結合せよ．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
@@ -2126,7 +2126,7 @@ document.write(`
 </section>
 <section id="q7-2-2">
 <span id="sql2-q7"></span><h3><span class="section-number">5.3.7. </span>Q7. 外部結合（2/2）<a class="headerlink" href="#q7-2-2" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">university_student_population_top10</span></code>テーブルに対して「地域コード」を用いて<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルを右外部結合せよ．</p>
+<p><code class="docutils literal notranslate"><span class="pre">university_student_population_top10</span></code>テーブルに対して「地域コード」が等しいという条件で<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルを右外部結合せよ．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
@@ -2241,6 +2241,13 @@ document.write(`
   
   <div class="footer-item">
     
+
+  <p class="copyright">
+    
+      © Copyright 2024- by 山本 祐輔 (Yusuke YAMAMOTO).
+      <br/>
+    
+  </p>
 
   </div>
   

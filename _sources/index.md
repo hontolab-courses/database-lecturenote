@@ -23,7 +23,6 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 ### 学ぶこと
 * データベースの概念
 * 関係データモデル
-* 関係代数（時間があれば）
 * SQL
 * 実体関連モデル
 * 正規化
@@ -31,6 +30,7 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 * NoSQL
 
 ### 学ばないこと
+* 関係代数
 * 関係論理
 * データ格納方式
 * 問い合わせ最適化
@@ -44,8 +44,8 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 | 1 | 04/15 | ガイダンス & データベースを使わない世界 | [Here](content/introduction/01.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-01) |
 | 2 | 04/22 | データベースの概念 | [Here](content/concept-of-database/01.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-02) |
 | 3 | 04/29 | 関係データモデル | [Here](content/relational-data-model/01.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-03) |
-| 4 | 05/13 | SQL（1/3） | [Here](content/sql/01.ipynb) |  [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-04) |
-| 5 | 05/20 | SQL（2/3） | [Here](content/sql/02.ipynb) |  |
+| 4 | 05/13 | SQL（1/3） | [Here](content/sql/01.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-04) |
+| 5 | 05/20 | SQL（2/3） | [Here](content/sql/02.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-05) |
 | 6 | 05/27 | SQL（3/3） | [Here](content/sql/03.ipynb) |  |
 | 7 | 06/03 | SQL演習 - レポート課題1 |  |  |
 | 8 | 06/10 | 実体関連モデル（1/3） | [Here](content/er-model/01.ipynb) |  |
@@ -54,7 +54,7 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 | 11 | 07/01 | 正規形（1/2） | [Here](content/db-design/01.ipynb) |  |
 | 12 | 07/08 | 正規化（2/2） | [Here](content/db-design/02.ipynb) |  |
 | 13 | 07/15 | データベース設計演習 - レポート課題2 |  |  |
-| 14 | 07/22 | 索引付け & トランザクション（予定） |  |  |
+| 14 | 07/22 | 索引づけ |  |  |
 | 15 | 07/29 | NoSQL |  |  |
 | 16 | 08/05 | 期末試験 |  |  |
 
