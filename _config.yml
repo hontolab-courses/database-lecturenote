@@ -3,7 +3,7 @@
 
 title: データベースの講義ノート
 author: ''
-copyright: "2024- by 山本 祐輔 (Yusuke YAMAMOTO)"
+copyright: "2024- by Yusuke Yamamoto"
 exclude_patterns: [_build, material, pdf, README.md, .DS_Store]
 only_build_toc_files: true
 #logo: logo.png
@@ -81,7 +81,7 @@ sphinx:
     language: en
     html_baseurl: "https://dbnote.hontolab.org/"
     sitemap_url_scheme: "{link}"
-    html_show_copyright: false
+    html_show_copyright: true
     bibtex_reference_style: author_year
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js
     latex_table_style: booktabs
