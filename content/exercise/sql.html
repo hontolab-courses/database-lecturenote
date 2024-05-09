@@ -43,7 +43,7 @@
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
@@ -265,6 +265,37 @@
 
 
 
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/hontolab-courses/database-lecturenote/blob/main/content/exercise/sql.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
 <div class="dropdown dropdown-download-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
@@ -273,7 +304,7 @@
       
       
       
-      <li><a href="../../_sources/content/exercise/sql.md" target="_blank"
+      <li><a href="../../_sources/content/exercise/sql.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -283,7 +314,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -344,7 +375,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -360,6 +393,42 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.1. 演習で用いるデータおよび課題の出典について</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sql-knock-25">7.2. SQL Knock 25連発</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-1">7.2.1. Knock 1: 選択</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-2-1">7.2.2. Knock 2: 射影1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-3-2">7.2.3. Knock 3: 射影2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-4-2">7.2.4. Knock 4: 選択2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-5-3">7.2.5. Knock 5: 選択3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-6-4">7.2.6. Knock 6: 選択4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-7-5">7.2.7. Knock 7: 選択5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-8-6">7.2.8. Knock 8: 選択6</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-9-7">7.2.9. Knock 9: 選択7</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-10-like1">7.2.10. Knock 10: LIKE句1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-11-like2">7.2.11. Knock 11: LIKE句2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-12-1">7.2.12. Knock 12: ソート1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-13-2">7.2.13. Knock 13: ソート2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-14-1">7.2.14. Knock 14: 集計1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-15-2">7.2.15. Knock 15: 集計2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-16-1">7.2.16. Knock 16: 集約演算1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-17-2">7.2.17. Knock 17: 集約演算2（やや難）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-18-3">7.2.18. Knock 18: 集約演算3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-19-4">7.2.19. Knock 19: 集約演算4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-20-1">7.2.20. Knock 20: 結合1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-21-2">7.2.21. Knock 21: 結合2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-22-3">7.2.22. Knock 22: 結合3（難）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-23">7.2.23. Knock 23: 四則演算と集約演算</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-24-1">7.2.24. Knock 24: 副問い合わせ1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-25-2">7.2.25. Knock 25: 副問い合わせ2（難）</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -371,7 +440,384 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sql">
 <h1><span class="section-number">7. </span>SQL演習<a class="headerlink" href="#sql" title="Link to this heading">#</a></h1>
-<p>後日公開予定</p>
+<p>SQLの基本を体に染みこませるために，本演習では細かな課題「ノック」を大量に解く．
+架空のショッピングサイト<code class="docutils literal notranslate"><span class="pre">VirtualStore</span></code>における商品管理，購買履歴管理のために運用されている関係データベースにアクセスできるとの想定の下，様々なデータ要求に応えるためのSQL文を書く練習（ノック）を行う．</p>
+<p>本演習では，関係データベースの管理システム（DBMS）の中でも環境構築がカンタンで軽量なDBMSである<a class="reference external" href="https://www.sqlite.org">SQLite</a>を用いる．
+演習で用いる関係データベース（<code class="docutils literal notranslate"><span class="pre">virtual_store</span></code>）には，下記テーブルが格納されている：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">receipt</span></code>: レシート明細に関するテーブル</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">store</span></code>: 店舗情報に関するテーブル</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">product</span></code>: 商品情報に関するテーブル</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">category</span></code>: 商品カテゴリに関するテーブル</p></li>
+</ul>
+<p>これらテーブルに対してSQL文を実行し，データベースに対する問い合わせの練習を行う．
+ノックの数は合計<strong>25</strong>である．
+どのノックも前章までに解説した内容に即したものになっている．
+適宜過去資料を振り返りながら，各ノックに取り組むこと．</p>
+<p>なお，演習を始める前に，必ずJupyter Notebookもしくは<a class="reference internal" href="../misc/how-to-execute-sql.html"><span class="std std-doc">Google Colaboratory</span></a>上で以下のコードを実行すること．
+演習で用いるSQLiteデータ（<code class="docutils literal notranslate"><span class="pre">virtual_store.db</span></code>）のダウンロード，およびSQLiteの実行環境設定を自動で済ませることができる．</p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># 演習で用いるデータのダウンロード</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;data/virtual_store.db&#39;</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">!</span>wget<span class="w"> </span>-P<span class="w"> </span>data<span class="w"> </span>https://github.com/hontolab-courses/database-lecturenote/raw/main/content/exercise/data/virtual_store.db
+
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>jupysql
+
+<span class="o">%</span><span class="k">load_ext</span> sql
+<span class="o">%</span><span class="k">config</span> SqlMagic.feedback = 0
+<span class="o">%</span><span class="k">sql</span> sqlite:///data/virtual_store.db
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id1">
+<h2><span class="section-number">7.1. </span>演習で用いるデータおよび課題の出典について<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>本演習課題で用いるデータは，<a class="reference external" href="https://www.datascientist.or.jp">データサイエンティスト協会</a>スキル定義委員の「<a class="reference external" href="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/tree/master">データサイエンス100本ノック（構造化データ加工編）</a>」で配布されているデータを，わたし山本がSQLite形式に変換したものである．
+また，演習内容（ノック）は<a class="reference external" href="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/tree/master">データサイエンス100本ノック（構造化データ加工編）</a>に収録されている演習課題を，本講義向けにアレンジしたものである．</p>
+<p>下記のとおり，元データの著作権やライセンスは，MITライセンスに従う．</p>
+<blockquote>
+<div><p>Copyright (c) 2020 The Japan DataScientist Society<br />
+Released under the MIT license<br />
+<a class="reference external" href="https://raw.githubusercontent.com/The-Japan-DataScientist-Society/100knocks-preprocess/master/LICENSE">https://raw.githubusercontent.com/The-Japan-DataScientist-Society/100knocks-preprocess/master/LICENSE</a></p>
+</div></blockquote>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<h3 class="rubric" id="id2">レポート課題1（SQL）</h3>
+<p>本ページで出題されているすべての課題を解きなさい．
+解答期日，解答方法等については下記を参照すること．</p>
+<ul class="simple">
+<li><p>設問数：25</p></li>
+<li><p>成績評価における本課題の割合：20％（20点）</p></li>
+<li><p>評価方法：SQL文の実行結果をもとに，1問1点で採点します．ただし，20点以上のスコアは20点とカウントします</p></li>
+<li><p>解答〆切り：2024年6月16日 （日）23:59</p></li>
+<li><p>解答提出方法：解答用サイト<a class="reference external" href="https://sql-autograder.hontolab.org/">SQL Autograder</a>経由</p></li>
+<li><p>備考：解答時刻がすべて記録されています．〆切り以降に提出された解答は，本人の責めに帰さない限り，いかなる理由であっても採点対象としません</p></li>
+</ul>
+</div>
+</section>
+<section id="sql-knock-25">
+<h2><span class="section-number">7.2. </span>SQL Knock 25連発<a class="headerlink" href="#sql-knock-25" title="Link to this heading">#</a></h2>
+<section id="knock-1">
+<h3><span class="section-number">7.2.1. </span>Knock 1: 選択<a class="headerlink" href="#knock-1" title="Link to this heading">#</a></h3>
+<p>レシート明細のテーブル（<code class="docutils literal notranslate"><span class="pre">receipt</span></code>）から先頭10件を表示するSQL文を書け．なお，表示する列は<code class="docutils literal notranslate"><span class="pre">receipt</span></code>テーブルがもつ全列（<code class="docutils literal notranslate"><span class="pre">sales_ymd</span></code>, <code class="docutils literal notranslate"><span class="pre">sales_epoch</span></code>, …）とする．また，列の表示順は<code class="docutils literal notranslate"><span class="pre">receipt</span></code>テーブルで定義された列の順序に従うこと．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knock-2-1">
+<h3><span class="section-number">7.2.2. </span>Knock 2: 射影1<a class="headerlink" href="#knock-2-1" title="Link to this heading">#</a></h3>
+<p>レシート明細のテーブル（<code class="docutils literal notranslate"><span class="pre">receipt</span></code>）から先頭10件を表示するSQL文を書け．ただし，表示する列およびその表示順序は売上日（<code class="docutils literal notranslate"><span class="pre">sales_ymd</span></code>），顧客ID（<code class="docutils literal notranslate"><span class="pre">customer_id</span></code>），商品コード（<code class="docutils literal notranslate"><span class="pre">product_cd</span></code>），売上金額（<code class="docutils literal notranslate"><span class="pre">amount</span></code>）とする．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knock-3-2">
+<h3><span class="section-number">7.2.3. </span>Knock 3: 射影2<a class="headerlink" href="#knock-3-2" title="Link to this heading">#</a></h3>
+<p>レシート明細のテーブル（<code class="docutils literal notranslate"><span class="pre">receipt</span></code>）から先頭10件を表示するSQL文を書け．ただし，表示する列およびその表示順序は売上日（<code class="docutils literal notranslate"><span class="pre">sales_ymd</span></code>），顧客ID（<code class="docutils literal notranslate"><span class="pre">customer_id</span></code>），商品コード（<code class="docutils literal notranslate"><span class="pre">product_cd</span></code>），売上金額（<code class="docutils literal notranslate"><span class="pre">amount</span></code>）とする．また，列<code class="docutils literal notranslate"><span class="pre">sales_ymd</span></code>は列名を<code class="docutils literal notranslate"><span class="pre">sales_date</span></code>に変更すること．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knock-4-2">
+<h3><span class="section-number">7.2.4. </span>Knock 4: 選択2<a class="headerlink" href="#knock-4-2" title="Link to this heading">#</a></h3>
+<p>レシート明細のテーブル（<code class="docutils literal notranslate"><span class="pre">receipt</span></code>）から以下の条件を満たすレコードをすべて抽出するSQL文を書け．</p>
+<ul class="simple">
+<li><p>顧客IDが”CS018205000001”</p></li>
+</ul>
+<p>ただし，表示する列およびその表示順序は売上日（<code class="docutils literal notranslate"><span class="pre">sales_ymd</span></code>），顧客ID（<code class="docutils literal notranslate"><span class="pre">customer_id</span></code>），商品コード（<code class="docutils literal notranslate"><span class="pre">product_cd</span></code>），売上金額（<code class="docutils literal notranslate"><span class="pre">amount</span></code>）とする．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knock-5-3">
+<h3><span class="section-number">7.2.5. </span>Knock 5: 選択3<a class="headerlink" href="#knock-5-3" title="Link to this heading">#</a></h3>
+<p>レシート明細のテーブル（<code class="docutils literal notranslate"><span class="pre">receipt</span></code>）から以下の条件を満たすレコードをすべて抽出するSQL文を書け．</p>
+<ul class="simple">
+<li><p>顧客IDが”CS018205000001”</p></li>
+<li><p>売上金額が1000以上</p></li>
+</ul>
+<p>ただし，表示する列およびその表示順序は売上日（<code class="docutils literal notranslate"><span class="pre">sales_ymd</span></code>），顧客ID（<code class="docutils literal notranslate"><span class="pre">customer_id</span></code>），商品コード（<code class="docutils literal notranslate"><span class="pre">product_cd</span></code>），売上金額（<code class="docutils literal notranslate"><span class="pre">amount</span></code>）とする．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knock-6-4">
+<h3><span class="section-number">7.2.6. </span>Knock 6: 選択4<a class="headerlink" href="#knock-6-4" title="Link to this heading">#</a></h3>
+<p>レシート明細のテーブル（<code class="docutils literal notranslate"><span class="pre">receipt</span></code>）から以下の条件を満たすレコードをすべて抽出するSQL文を書け．</p>
+<ul class="simple">
+<li><p>顧客IDが”CS018205000001”</p></li>
+<li><p>売上金額が1000以上2000以下</p></li>
+</ul>
+<p>ただし，表示する列およびその表示順序は売上日（<code class="docutils literal notranslate"><span class="pre">sales_ymd</span></code>），顧客ID（<code class="docutils literal notranslate"><span class="pre">customer_id</span></code>），商品コード（<code class="docutils literal notranslate"><span class="pre">product_cd</span></code>），売上金額（<code class="docutils literal notranslate"><span class="pre">amount</span></code>）とする．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knock-7-5">
+<h3><span class="section-number">7.2.7. </span>Knock 7: 選択5<a class="headerlink" href="#knock-7-5" title="Link to this heading">#</a></h3>
+<p>レシート明細のテーブル（<code class="docutils literal notranslate"><span class="pre">receipt</span></code>）から以下の条件を満たすレコードをすべて抽出するSQL文を書け．</p>
+<ul class="simple">
+<li><p>顧客IDが”CS018205000001”</p></li>
+<li><p>売上金額が1000以上または売上数量が5以上</p></li>
+</ul>
+<p>ただし，表示する列およびその表示順序は売上日（<code class="docutils literal notranslate"><span class="pre">sales_ymd</span></code>），顧客ID（<code class="docutils literal notranslate"><span class="pre">customer_id</span></code>），商品コード（<code class="docutils literal notranslate"><span class="pre">product_cd</span></code>），売上数量（<code class="docutils literal notranslate"><span class="pre">quantity</span></code>），売上金額（<code class="docutils literal notranslate"><span class="pre">amount</span></code>）とする．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knock-8-6">
+<h3><span class="section-number">7.2.8. </span>Knock 8: 選択6<a class="headerlink" href="#knock-8-6" title="Link to this heading">#</a></h3>
+<p>レシート明細のテーブル（<code class="docutils literal notranslate"><span class="pre">receipt</span></code>）から以下の条件を満たすレコードをすべて抽出するSQL文を書け．</p>
+<ul class="simple">
+<li><p>顧客IDが”CS018205000001”</p></li>
+<li><p>商品コードが”P071401020”以外</p></li>
+</ul>
+<p>ただし，表示する列およびその表示順序は売上日（<code class="docutils literal notranslate"><span class="pre">sales_ymd</span></code>），顧客ID（<code class="docutils literal notranslate"><span class="pre">customer_id</span></code>），商品コード（<code class="docutils literal notranslate"><span class="pre">product_cd</span></code>），売上金額（<code class="docutils literal notranslate"><span class="pre">amount</span></code>）とする．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knock-9-7">
+<h3><span class="section-number">7.2.9. </span>Knock 9: 選択7<a class="headerlink" href="#knock-9-7" title="Link to this heading">#</a></h3>
+<p>下記SQL文について，問い合わせ結果が変わらないよう<code class="docutils literal notranslate"><span class="pre">OR</span></code>を<code class="docutils literal notranslate"><span class="pre">AND</span></code>に書き換えよ．</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span>
+<span class="w">    </span><span class="o">*</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="n">store</span>
+<span class="k">WHERE</span>
+<span class="w">    </span><span class="k">NOT</span><span class="w"> </span><span class="p">(</span><span class="n">prefecture_cd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">13</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">floor_area</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">900</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knock-10-like1">
+<h3><span class="section-number">7.2.10. </span>Knock 10: LIKE句1<a class="headerlink" href="#knock-10-like1" title="Link to this heading">#</a></h3>
+<p>店舗テーブル（<code class="docutils literal notranslate"><span class="pre">store</span></code>）から店舗コード（<code class="docutils literal notranslate"><span class="pre">store_cd</span></code>）が”S14”で始まるものレコードのみを抽出し，その先頭10件を表示するSQL文を書け．ただし，表示する列は<code class="docutils literal notranslate"><span class="pre">store</span></code>テーブルにある全項目とし，その表示順序も<code class="docutils literal notranslate"><span class="pre">store</span></code>テーブルに定義された順に従うとする（つまり，<code class="docutils literal notranslate"><span class="pre">store_cd</span></code>, <code class="docutils literal notranslate"><span class="pre">store_name</span></code>, …）．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knock-11-like2">
+<h3><span class="section-number">7.2.11. </span>Knock 11: LIKE句2<a class="headerlink" href="#knock-11-like2" title="Link to this heading">#</a></h3>
+<p>店舗テーブル（<code class="docutils literal notranslate"><span class="pre">store</span></code>）から横浜市にある店舗に関するレコードのみを抽出し，その先頭10件を表示するSQL文を書け．ただし，表示する列は<code class="docutils literal notranslate"><span class="pre">store</span></code>テーブルにある全項目とし，その表示順序も<code class="docutils literal notranslate"><span class="pre">store</span></code>テーブルに定義された順に従うとする（つまり，<code class="docutils literal notranslate"><span class="pre">store_cd</span></code>, <code class="docutils literal notranslate"><span class="pre">store_name</span></code>, …）．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knock-12-1">
+<h3><span class="section-number">7.2.12. </span>Knock 12: ソート1<a class="headerlink" href="#knock-12-1" title="Link to this heading">#</a></h3>
+<p>顧客テーブル（<code class="docutils literal notranslate"><span class="pre">customer</span></code>）のレコードを高年齢順にソートし，先頭10レコードを表示するSQL文を書け．ただし，表示する列は<code class="docutils literal notranslate"><span class="pre">customer</span></code>テーブルにある全項目とし，その表示順序も<code class="docutils literal notranslate"><span class="pre">customer</span></code>テーブルに定義された順に従うとする（つまり，<code class="docutils literal notranslate"><span class="pre">customer_id</span></code>, <code class="docutils literal notranslate"><span class="pre">customer_name</span></code>, …）．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knock-13-2">
+<h3><span class="section-number">7.2.13. </span>Knock 13: ソート2<a class="headerlink" href="#knock-13-2" title="Link to this heading">#</a></h3>
+<p>顧客テーブル（<code class="docutils literal notranslate"><span class="pre">customer</span></code>）のレコードを若い順（同じ年齢の場合は誕生日が遅い順）にソートし，先頭10レコードを表示するSQL文を書け．ただし，表示する列は<code class="docutils literal notranslate"><span class="pre">customer</span></code>テーブルにある全項目とし，その表示順序も<code class="docutils literal notranslate"><span class="pre">customer</span></code>テーブルに定義された順に従うとする（つまり，<code class="docutils literal notranslate"><span class="pre">customer_id</span></code>, <code class="docutils literal notranslate"><span class="pre">customer_name</span></code>, …）．</p>
+<p>※ヒント: <code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code>にはソートの軸となる属性を複数指定できる</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knock-14-1">
+<h3><span class="section-number">7.2.14. </span>Knock 14: 集計1<a class="headerlink" href="#knock-14-1" title="Link to this heading">#</a></h3>
+<p>レシート明細テーブル（<code class="docutils literal notranslate"><span class="pre">receipt</span></code>）のレコード数を求めるSQL文を書け．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knock-15-2">
+<h3><span class="section-number">7.2.15. </span>Knock 15: 集計2<a class="headerlink" href="#knock-15-2" title="Link to this heading">#</a></h3>
+<p>レシート明細テーブル（<code class="docutils literal notranslate"><span class="pre">receipt</span></code>）中の顧客ID（<code class="docutils literal notranslate"><span class="pre">customer_id</span></code>）の総数（重複を除く）を求めるSQL文を書け．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knock-16-1">
+<h3><span class="section-number">7.2.16. </span>Knock 16: 集約演算1<a class="headerlink" href="#knock-16-1" title="Link to this heading">#</a></h3>
+<p>レシート明細テーブル（<code class="docutils literal notranslate"><span class="pre">receipt</span></code>）に対し，店舗コード（<code class="docutils literal notranslate"><span class="pre">store_cd</span></code>）ごとに売上金額の合計（<code class="docutils literal notranslate"><span class="pre">total_amount</span></code>）と売上数量の合計（<code class="docutils literal notranslate"><span class="pre">total_quantity</span></code>）を計算するSQL文を書け．なお，結果のレコードは売上金額の合計値の降順で並べ替え，先頭から10件を表示せよ．また，表示する列の順序は，店舗コード，売上金額の合計，売上数量の合計の順とする．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knock-17-2">
+<h3><span class="section-number">7.2.17. </span>Knock 17: 集約演算2（やや難）<a class="headerlink" href="#knock-17-2" title="Link to this heading">#</a></h3>
+<p>レシート明細テーブル（<code class="docutils literal notranslate"><span class="pre">receipt</span></code>）に対し，顧客ID（<code class="docutils literal notranslate"><span class="pre">customer_id</span></code>）ごとに最も新しい売上日と最も古い売り上げ日を求め，それらが異なる顧客IDを求めるSQL文を書け．なお，結果レコードは顧客IDの昇順に並びかえ，先頭の10件を表示するようにせよ．また，表示する項目とその表示順序は，顧客ID，最も新しい売り上げ日（<code class="docutils literal notranslate"><span class="pre">latest_sales_ymd</span></code>），最も古い売り上げ日（<code class="docutils literal notranslate"><span class="pre">oldest_sales_ymd</span></code>）とする．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knock-18-3">
+<h3><span class="section-number">7.2.18. </span>Knock 18: 集約演算3<a class="headerlink" href="#knock-18-3" title="Link to this heading">#</a></h3>
+<p>レシート明細テーブル（<code class="docutils literal notranslate"><span class="pre">receipt</span></code>）に対し，店舗コード（<code class="docutils literal notranslate"><span class="pre">store_cd</span></code>）ごとにレシート1つあたりの売上金額（<code class="docutils literal notranslate"><span class="pre">amount</span></code>）の平均を計算し，その平均売り上げ金額の上位5件の店舗を表示するSQL文を書け．なお，表示する項目とその表示順序は，店舗コード，平均売上金額とする．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knock-19-4">
+<h3><span class="section-number">7.2.19. </span>Knock 19: 集約演算4<a class="headerlink" href="#knock-19-4" title="Link to this heading">#</a></h3>
+<p>レシート明細テーブル（<code class="docutils literal notranslate"><span class="pre">receipt</span></code>）に対し，店舗コード（<code class="docutils literal notranslate"><span class="pre">store_cd</span></code>）ごとに売上金額（<code class="docutils literal notranslate"><span class="pre">amount</span></code>）の総額を計算し，売り上げ総額が800,000以上の店舗を売り上げ総額順に表示するSQL文を書け．なお，表示する項目とその表示順序は，店舗コード，売り上げ総額とする．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knock-20-1">
+<h3><span class="section-number">7.2.20. </span>Knock 20: 結合1<a class="headerlink" href="#knock-20-1" title="Link to this heading">#</a></h3>
+<p>レシート明細テーブル（<code class="docutils literal notranslate"><span class="pre">receipt</span></code>）と店舗テーブル（<code class="docutils literal notranslate"><span class="pre">store</span></code>）を内部結合し，店舗テーブルの店舗名（<code class="docutils literal notranslate"><span class="pre">store_name</span></code>）とレシート明細テーブルの全項目を表示するSQL文を書け．なお，結果レコードは<code class="docutils literal notranslate"><span class="pre">sales_ymd</span></code>の昇順に並び替え，その先頭の10件を表示するようにせよ．また，列の表示順序は，店舗名，レシート明細テーブルで定義された列の順序とする（つまり，<code class="docutils literal notranslate"><span class="pre">store_name</span></code>, <code class="docutils literal notranslate"><span class="pre">sales_ymd</span></code>, <code class="docutils literal notranslate"><span class="pre">sales_epoch</span></code>…）．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knock-21-2">
+<h3><span class="section-number">7.2.21. </span>Knock 21: 結合2<a class="headerlink" href="#knock-21-2" title="Link to this heading">#</a></h3>
+<p>商品テーブル（<code class="docutils literal notranslate"><span class="pre">product</span></code>）とカテゴリテーブル（<code class="docutils literal notranslate"><span class="pre">category</span></code>）を内部結合し，カテゴリテーブルの小区分名（<code class="docutils literal notranslate"><span class="pre">category_small_name</span></code>）および商品テーブルの全項目を表示するSQL文を書け．なお，結果レコードは<code class="docutils literal notranslate"><span class="pre">product_cd</span></code>の昇順で並び替え，その先頭の10件を表示するようにせよ．また，列の表示順序は，カテゴリテーブルの小区分名，商品テーブルで定義された列の順序とする（つまり，<code class="docutils literal notranslate"><span class="pre">category_small_name</span></code>, <code class="docutils literal notranslate"><span class="pre">product_cd</span></code>, <code class="docutils literal notranslate"><span class="pre">category_major_cd</span></code>…）．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knock-22-3">
+<h3><span class="section-number">7.2.22. </span>Knock 22: 結合3（難）<a class="headerlink" href="#knock-22-3" title="Link to this heading">#</a></h3>
+<p>顧客テーブル（<code class="docutils literal notranslate"><span class="pre">customer</span></code>）とレシート明細テーブル（<code class="docutils literal notranslate"><span class="pre">receipt</span></code>）から，各顧客ごとの売上金額合計を求め，先頭10件を表示するSQL文を書け．ただし，以下の条件を満たすること：</p>
+<ul class="simple">
+<li><p>売上実績がない顧客については売上金額を0として表示させること．</p></li>
+<li><p>顧客は性別コード（<code class="docutils literal notranslate"><span class="pre">gender_cd</span></code>）が女性（1）であるものを対象とし，非会員（顧客IDが”Z”から始まるもの）は除外する</p></li>
+<li><p>表示項目とその表示順は顧客ID（<code class="docutils literal notranslate"><span class="pre">customer_id</span></code>），顧客名（<code class="docutils literal notranslate"><span class="pre">customer_name</span></code>），売上金額合計とする</p></li>
+<li><p>表示するレコードは顧客IDの昇順とする</p></li>
+</ul>
+<p>※ヒント: <code class="docutils literal notranslate"><span class="pre">IFNULL（変数1,</span> <span class="pre">0）</span></code>関数は，変数1が空値（None）のとき0に置き換える</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knock-23">
+<h3><span class="section-number">7.2.23. </span>Knock 23: 四則演算と集約演算<a class="headerlink" href="#knock-23" title="Link to this heading">#</a></h3>
+<p>レシート明細テーブル（<code class="docutils literal notranslate"><span class="pre">receipt</span></code>）と顧客テーブル（<code class="docutils literal notranslate"><span class="pre">customer</span></code>）を結合し，年代（<code class="docutils literal notranslate"><span class="pre">age</span></code>から計算）ごとの売上金額（<code class="docutils literal notranslate"><span class="pre">amount</span></code>）の合計値を表示するSQL文を書け．ただし，表示するレコードは年代の昇順に並び替えること．また表示する項目およびその表示順は年代，売上総額とする．</p>
+<p>なお，年代は10歳ごとの階級とすること．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knock-24-1">
+<h3><span class="section-number">7.2.24. </span>Knock 24: 副問い合わせ1<a class="headerlink" href="#knock-24-1" title="Link to this heading">#</a></h3>
+<p>レシート明細テーブル（<code class="docutils literal notranslate"><span class="pre">receipt</span></code>）を利用して顧客ID（<code class="docutils literal notranslate"><span class="pre">customer_id</span></code>）ごとの売上総額を計算し，その平均（<code class="docutils literal notranslate"><span class="pre">avg_total_amount</span></code>）を求めるSQL文を書け．ただし，顧客IDが”Z”から始まるのものは非会員を表すため，除外して計算すること．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knock-25-2">
+<h3><span class="section-number">7.2.25. </span>Knock 25: 副問い合わせ2（難）<a class="headerlink" href="#knock-25-2" title="Link to this heading">#</a></h3>
+<p>レシート明細テーブル（<code class="docutils literal notranslate"><span class="pre">receipt</span></code>）を利用して全商品の中で売上総額が上位3位の商品コード（<code class="docutils literal notranslate"><span class="pre">product_cd</span></code>）を求め，各店舗（<code class="docutils literal notranslate"><span class="pre">store_cd</span></code>）における3つの商品の売上総額を求めるSQL文を書け．ただし，結果は<code class="docutils literal notranslate"><span class="pre">store_cd</span></code>列（昇順）でソートし，その先頭の30件を表示するようにせよ．また，表示する項目とその表示順序は，店舗コード，商品コード，売上総額とする．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -429,7 +875,48 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.1. 演習で用いるデータおよび課題の出典について</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sql-knock-25">7.2. SQL Knock 25連発</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-1">7.2.1. Knock 1: 選択</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-2-1">7.2.2. Knock 2: 射影1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-3-2">7.2.3. Knock 3: 射影2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-4-2">7.2.4. Knock 4: 選択2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-5-3">7.2.5. Knock 5: 選択3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-6-4">7.2.6. Knock 6: 選択4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-7-5">7.2.7. Knock 7: 選択5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-8-6">7.2.8. Knock 8: 選択6</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-9-7">7.2.9. Knock 9: 選択7</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-10-like1">7.2.10. Knock 10: LIKE句1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-11-like2">7.2.11. Knock 11: LIKE句2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-12-1">7.2.12. Knock 12: ソート1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-13-2">7.2.13. Knock 13: ソート2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-14-1">7.2.14. Knock 14: 集計1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-15-2">7.2.15. Knock 15: 集計2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-16-1">7.2.16. Knock 16: 集約演算1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-17-2">7.2.17. Knock 17: 集約演算2（やや難）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-18-3">7.2.18. Knock 18: 集約演算3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-19-4">7.2.19. Knock 19: 集約演算4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-20-1">7.2.20. Knock 20: 結合1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-21-2">7.2.21. Knock 21: 結合2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-22-3">7.2.22. Knock 22: 結合3（難）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-23">7.2.23. Knock 23: 四則演算と集約演算</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-24-1">7.2.24. Knock 24: 副問い合わせ1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knock-25-2">7.2.25. Knock 25: 副問い合わせ2（難）</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
