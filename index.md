@@ -47,7 +47,7 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 | 4 | 05/13 | SQL（1/3） | [Here](content/sql/01.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-04) |
 | 5 | 05/20 | SQL（2/3） | [Here](content/sql/02.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-05) |
 | 6 | 05/27 | SQL（3/3） | [Here](content/sql/03.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-06) |
-| 7 | 06/03 | SQL演習 - レポート課題1 |  |  |
+| 7 | 06/03 | SQL演習 - レポート課題1 | [Here](content/exercise/sql.ipynb) |  |
 | 8 | 06/10 | 実体関連モデル（1/3） | [Here](content/er-model/01.ipynb) |  |
 | 9 | 06/17 | 実体関連モデル（2/3）| [Here](content/er-model/02.ipynb) |  |
 | 10 | 06/24 | 実体関連モデル（3/3） | [Here](content/er-model/03.ipynb) |  |

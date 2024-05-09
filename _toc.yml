@@ -21,8 +21,7 @@ parts:
     - file: content/sql/01.ipynb
     - file: content/sql/02.ipynb
     - file: content/sql/03.ipynb
-    #- file: content/exercise/sql.ipynb
-    - file: content/exercise/sql.md
+    - file: content/exercise/sql.ipynb
 #- caption: 関係モデルの操作体系
 #  numbered: True
 #  chapters:
