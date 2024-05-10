@@ -71,6 +71,8 @@
                 gtag('config', 'G-1GGP5ZEVQL');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/exercise/db-design';</script>
     <link rel="canonical" href="https://dbnote.hontolab.org/content/exercise/db-design.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -344,7 +346,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -360,6 +364,23 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">13.1. Q1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-1-6">13.1.1. Q1-1（配点6）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-2-6">13.1.2. Q1-2（配点6）</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">13.2. Q2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-1-3">13.2.1. Q2-1（配点3）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-2-5">13.2.2. Q2-2（配点5）</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -371,7 +392,110 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">13. </span>データベース設計演習<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>後日公開予定</p>
+<p>本演習では，関係データベースを適切に設計するために</p>
+<ol class="arabic simple">
+<li><p>実体関連モデリングの作成</p></li>
+<li><p>関数従属性に基づく関係スキーマの分解
+に取り組む．</p></li>
+</ol>
+<p>演習課題は大問2題である（大問1つにつき小問が2題）．
+演習課題はレポート課題を兼ねている．
+下記詳細に従い，期日までに解答を作成・提出すること．</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<h3 class="rubric" id="id2">レポート課題2（データベース設計）</h3>
+<p>本ページで出題されているすべての課題を解きなさい．
+解答期日，解答方法等については下記を参照すること．</p>
+<ul class="simple">
+<li><p>設問数：4</p></li>
+<li><p>成績評価における本課題の割合：20％（20点）</p></li>
+<li><p>評価方法：提出物をもとに担当教員が採点します．配点は各設問に記載しています</p></li>
+<li><p>解答〆切り：2024年7月28日 （日）23:59</p></li>
+<li><p>解答作成方法</p>
+<ul>
+<li><p><a class="reference external" href="https://www.dropbox.com/scl/fi/w25a14h7jh9rzyi9i4l9u/report-template.docx?rlkey=qs25tdqh327amyc4dp6b7pshf&amp;amp;dl=1">コチラのURL</a>から入手できるWordテンプレート<code class="docutils literal notranslate"><span class="pre">report-template.docx</span></code>を使用すること（図はPowerPointやdrawioで作成したものをWordに貼り付けるのが楽かと思います）</p></li>
+<li><p>解答提出時にはWordファイルを<code class="docutils literal notranslate"><span class="pre">PDFファイル</span></code>に変換すること．またファイル名は<code class="docutils literal notranslate"><span class="pre">学籍番号.pdf</span></code>とすること</p></li>
+</ul>
+</li>
+<li><p>解答提出方法：<a class="reference external" href="https://forms.office.com/r/hMnnDrKEXg">こちら（要大学Microsoft 365アカウント）</a>経由</p></li>
+<li><p>備考</p>
+<ul>
+<li><p>読めないものは採点しません</p></li>
+<li><p>指定されたフォーマット（PDFファイル）以外で提出された場合は採点対象としません</p></li>
+<li><p>〆切り以降に提出された解答は，本人の責めに帰さない限り，いかなる理由であっても採点対象としません</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="q1">
+<h2><span class="section-number">13.1. </span>Q1<a class="headerlink" href="#q1" title="Link to this heading">#</a></h2>
+<p>架空企業であるMONACA鉄道では，このたび交通系ICカードと関係データベースシステムを導入し，利用者の乗降車履歴を記録することになった．
+以下は，システム設計における想定である．</p>
+<blockquote>
+<div><p>利用者はMONACA IDが付与されたMONACAカードを持っている．
+データベースにはMONACAカードIDにひもづけて，年齢，性別の他，学生や小児，高齢者，一般といったカード種別をあわらす情報が記録されている．
+カード種別は乗車料金の決定に利用される．</p>
+<p>利用者の乗降車駅はすべてMONACA鉄道が管轄する駅である．
+駅情報はデータベースに登録されている．駅情報として駅ID，駅長名，路線名をもつ．
+なお，駅によっては複数の路線が通っている場合がある．</p>
+<p>乗車料金は料金クラスとMONACAカードのカード種別によって決まる．
+料金クラスは乗車駅と降車駅の組み合わせによって決まり，乗降車駅間の距離に応じてF1，F2，F3，F4の4クラスに分けられている．</p>
+<p>乗車駅の改札でMONACAカードをかざすと，カード内に一時的に乗車駅情報と入場日時が記録される．
+降車駅の改札で再びMONACAカードをかざすと，データベースにMONACAカードID，乗車駅，入場日時，降車駅，出場日時の情報が記録される．</p>
+</div></blockquote>
+<p>上記を踏まえて，以下の設問に答えよ．</p>
+<section id="q1-1-6">
+<h3><span class="section-number">13.1.1. </span>Q1-1（配点6）<a class="headerlink" href="#q1-1-6" title="Link to this heading">#</a></h3>
+<p>MONACA鉄道のデータベースで管理しようとするデータおよびデータ間の関係性を把握するための実体関連図を作成せよ．</p>
+</section>
+<section id="q1-2-6">
+<h3><span class="section-number">13.1.2. </span>Q1-2（配点6）<a class="headerlink" href="#q1-2-6" title="Link to this heading">#</a></h3>
+<p>Q1-1で作成した実体関連図を関係スキーマに変換せよ．</p>
+</section>
+</section>
+<section id="q2">
+<h2><span class="section-number">13.2. </span>Q2<a class="headerlink" href="#q2" title="Link to this heading">#</a></h2>
+<p>県内に複数ある図書館における蔵書貸出管理を包括的に行う関係データベースを設計したい．
+このデータベースでは，以下の11の属性をもつとする．</p>
+<ul class="simple">
+<li><p>図書館（の名前）</p></li>
+<li><p>住所</p></li>
+<li><p><a class="reference external" href="https://ja.wikipedia.org/wiki/ISBN">ISBN</a></p></li>
+<li><p>書籍タイトル</p></li>
+<li><p>出版社</p></li>
+<li><p>著者</p></li>
+<li><p>冊数</p></li>
+<li><p>ユーザ</p></li>
+<li><p>連絡先</p></li>
+<li><p>貸出日</p></li>
+<li><p>返却日</p></li>
+</ul>
+<p>また，以下の関数従属性が成立するとする．
+なお，ある書籍の著者は複数人いる場合があり，ユーザは同じ本を借りることはないと仮定する．</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(FD_1: 図書館 \to 住所\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(FD_2: ユーザ \to 連絡先\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(FD_3: ISBN \to 書籍タイトル, 出版社\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(FD_4: ISBN, 図書館 \to 冊数\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(FD_5: ISBN, 図書館, ユーザ \to 貸出日, 返却日\)</span></p></li>
+</ul>
+<p>上記を踏まえて，以下の設問に答えよ．</p>
+<section id="q2-1-3">
+<h3><span class="section-number">13.2.1. </span>Q2-1（配点3）<a class="headerlink" href="#q2-1-3" title="Link to this heading">#</a></h3>
+<p>上記関数従属性をFDダイアグラムで表現せよ．</p>
+</section>
+<section id="q2-2-5">
+<h3><span class="section-number">13.2.2. </span>Q2-2（配点5）<a class="headerlink" href="#q2-2-5" title="Link to this heading">#</a></h3>
+<p>関数従属性をふまえて，上記11の属性をもつ関係スキーマをいくつかの関係スキーマに情報無損失分解し，第3正規形またはボイス・コッド正規形を得よ．
+解答の際には，以下に留意すること．</p>
+<ul class="simple">
+<li><p>分解の過程が分かるようにすること</p></li>
+<li><p>ある関係スキーマを情報無損失分解をした際には，どの関数従属性を用いたかを明記すること</p></li>
+<li><p>分解して得られた関係スキーマは<span class="math notranslate nohighlight">\(R(\underline{A_1}, A_2, ...)\)</span>のような形式で，関係名，キー，属性を記すこと（関係名は適当に定めよ）</p></li>
+<li><p>途中過程のものも含め，得られた関係スキーマがどの正規形であるかを明記すること</p></li>
+</ul>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -429,7 +553,29 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">13.1. Q1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-1-6">13.1.1. Q1-1（配点6）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-2-6">13.1.2. Q1-2（配点6）</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">13.2. Q2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-1-3">13.2.1. Q2-1（配点3）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-2-5">13.2.2. Q2-2（配点5）</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
