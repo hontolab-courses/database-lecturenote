@@ -43,7 +43,7 @@
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
@@ -808,7 +808,7 @@ Released under the MIT license<br />
 </section>
 <section id="knock-25-2">
 <h3><span class="section-number">7.2.25. </span>Knock 25: 副問い合わせ2（難）<a class="headerlink" href="#knock-25-2" title="Link to this heading">#</a></h3>
-<p>レシート明細テーブル（<code class="docutils literal notranslate"><span class="pre">receipt</span></code>）を利用して全商品の中で売上総額が上位3位の商品コード（<code class="docutils literal notranslate"><span class="pre">product_cd</span></code>）を求め，各店舗（<code class="docutils literal notranslate"><span class="pre">store_cd</span></code>）における3つの商品の売上総額を求めるSQL文を書け．ただし，結果は<code class="docutils literal notranslate"><span class="pre">store_cd</span></code>列（昇順）でソートし，その先頭の30件を表示するようにせよ．また，表示する項目とその表示順序は，店舗コード，商品コード，売上総額とする．</p>
+<p>レシート明細テーブル（<code class="docutils literal notranslate"><span class="pre">receipt</span></code>）を利用して全商品の中で売上総額が上位3位の商品コード（<code class="docutils literal notranslate"><span class="pre">product_cd</span></code>）を求め，各店舗（<code class="docutils literal notranslate"><span class="pre">store_cd</span></code>）における3つの商品の売上総額を求めるSQL文を書け．ただし，結果は<code class="docutils literal notranslate"><span class="pre">store_cd</span></code>列（昇順）を第1キー，<code class="docutils literal notranslate"><span class="pre">product_cd</span></code>列（昇順）を第2キーとしてソートし，その先頭の30件を表示するようにせよ．また，表示する項目とその表示順序は，店舗コード，商品コード，売上総額とする．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
