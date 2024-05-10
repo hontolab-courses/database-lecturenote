@@ -22,7 +22,7 @@
 - 解答作成方法
 	* [コチラのURL](https://www.dropbox.com/scl/fi/w25a14h7jh9rzyi9i4l9u/report-template.docx?rlkey=qs25tdqh327amyc4dp6b7pshf&dl=1)から入手できるWordテンプレート`report-template.docx`を使用すること（図はPowerPointやdrawioで作成したものをWordに貼り付けるのが楽かと思います）
 	* 解答提出時にはWordファイルを`PDFファイル`に変換すること．またファイル名は`学籍番号.pdf`とすること
-- 解答提出方法：[こちら（要大学Microsoft 365アカウント）](https://forms.office.com/r/hMnnDrKEXg)経由
+- 提出方法：[こちら（要大学Microsoft 365アカウント）](https://forms.office.com/r/hMnnDrKEXg)経由
 - 備考
 	* 読めないものは採点しません
 	* 指定されたフォーマット（PDFファイル）以外で提出された場合は採点対象としません
@@ -94,7 +94,7 @@ Q1-1で作成した実体関連図を関係スキーマに変換せよ．
 - 分解の過程が分かるようにすること
 - ある関係スキーマを情報無損失分解をした際には，どの関数従属性を用いたかを明記すること
 - 分解して得られた関係スキーマは$R(\underline{A_1}, A_2, ...)$のような形式で，関係名，キー，属性を記すこと（関係名は適当に定めよ）
-- 途中過程のものも含め，得られた関係スキーマがどの正規形であるかを明記すること
+- 途中過程のものも含め，得られた関係スキーマがどの正規形（1NF，2NF，3NF，or BCNF）であるかを明記すること
 
 
 
