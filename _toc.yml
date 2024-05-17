@@ -38,7 +38,7 @@ parts:
 - caption: 索引づけ
   numbered: True
   chapters:
-    - file: content/indexing-and-transaction/01.ipynb
+    - file: content/indexing/01.md
 - caption: ビッグデータ時代のデータベース
   numbered: True
   chapters:
