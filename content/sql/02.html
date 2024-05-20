@@ -1230,7 +1230,7 @@ document.write(`
 <p>SQLで積集合を求めるには<code class="docutils literal notranslate"><span class="pre">INTERSECT</span></code>演算子を用いる．
 以下は，<code class="docutils literal notranslate"><span class="pre">elderly_population_top10</span></code>テーブルと<code class="docutils literal notranslate"><span class="pre">university_student_population_top10</span></code>テーブルの積集合を求めるSQL文である（<a class="reference internal" href="#sql2-q1">★Quiz1★</a>，<a class="reference internal" href="#sql2-q2">★Quiz2★</a>）．</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">elderly_population_top10</span>
-<span class="n">INTERSECTION</span>
+<span class="k">INTERSECT</span>
 <span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">university_student_population_top10</span><span class="p">;</span><span class="w"> </span>
 </pre></div>
 </div>
