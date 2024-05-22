@@ -393,16 +393,16 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="b">
 <h1><span class="section-number">14. </span>B+木 &amp; ハッシュ索引<a class="headerlink" href="#b" title="Link to this heading">#</a></h1>
-<p><a class="reference internal" href="#contents/db-design/01.ipynb"><span class="xref myst">第11講</span></a>と<a class="reference internal" href="#(contents/db-design/02.ipynb)"><span class="xref myst">第12講</span></a>で説明した正規化理論によって，データの正しさを担保する関係データベースを設計することができる．
-しかし，データのの正しさを保証してくれるからといって，問い合わせに対する待ち時間が長いようでは，データベースとしての利便性は低い．
+<p><a class="reference internal" href="#contents/db-design/01.ipynb"><span class="xref myst">第11講</span></a>と<a class="reference internal" href="#(contents/db-design/02.ipynb)"><span class="xref myst">第12講</span></a>で説明した正規化理論によって，データの正しさを担保する関係データベースを設計することが可能となる．
+しかし，データの正しさが保証されても，問い合わせにかかる待ち時間が長いようでは，データベースとしての利便性は低い．
 利便性が高いデータベースには，データの管理のしやすさに加え，データの処理速度も求められる．</p>
-<p>問い合わせにデータベースの応答速度（クエリ実行時間）を改善する方法としては，<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%82%AF%E3%82%A8%E3%83%AA%E6%9C%80%E9%81%A9%E5%8C%96">クエリ最適化（query optimization）</a>や索引の利用が考えられる．
+<p>データベースの応答速度（クエリ実行時間）を改善する方法としては，<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%82%AF%E3%82%A8%E3%83%AA%E6%9C%80%E9%81%A9%E5%8C%96">クエリ最適化（query optimization）</a>や索引の利用が考えられる．
 本章では索引づけに焦点を当て，データベースの応答速度を改善する手法について述べる．</p>
 <section id="id1">
 <h2><span class="section-number">14.1. </span>関係データの物理的な格納方法<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>計算機ではあらゆるデータはゼロイチの2進数で表現され，主記憶装置（メモリ）やハードディスクやSSDのような補助記憶装置のどこかに物理的に格納される．
 関係データベースにおいてもそれは同じである．
-関係データベースではすべてのデータは表形式で表現されるが，実際に補助記憶装置にデータを格納する際には，表はタプル（レコード）をひとまとまりの単位として分割され，記憶装置のどこかに格納される．</p>
+関係データベースではすべてのデータは表形式で表現されるが，データを補助記憶装置に格納する際には，表データはタプル（レコード）をひとまとまりの単位として分割され，記憶装置のどこかに格納される．</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>表データをタプル（レコード）単位で分割し格納するデータベースは<strong>行指向データベース（row-oriented database）</strong> と呼ばれる．
@@ -410,20 +410,20 @@ document.write(`
 <p>関係データベースのようにレコードの追加や削除を頻繁に行うことが想定されるデータベースにおいては，行指向でデータを格納するほうが効率的である．
 一方，データの更新が頻繁でなく，属性（列）単位の集約演算を頻繁に行うような場合は，列指向データベースの方が効率的である．</p>
 </div>
-<p>以下は，関係「商品」を（物理的な）記憶媒体に格納した際のイメージ図である．
-図のように，「商品」の各レコードは記憶装置の特定の場所にばらばらに格納されている．
-SQL文による問い合わせがあった場合は，関係データベースシステムは条件に合致するレコードが記憶装置のどこに保存されているかを調べて引っ張ってくることになる．</p>
+<p>以下は，関係「商品」を（物理的な）記憶媒体に格納する際のイメージ図である．
+図のように，「商品」の各レコードは記憶装置の特定の場所にばらばらに格納される．
+SQL文による問い合わせが行われると，関係データベースシステムは条件に合致するレコードが記憶装置のどこに保存されているかを調べ，該当する場所から具体的なデータを取得する．</p>
 <p><img alt="記憶装置へのデータ格納イメージ" src="../../_images/data-store.png" /></p>
 </section>
 <section id="id2">
 <h2><span class="section-number">14.2. </span>索引<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>データベースから条件に合致するレコードを探す方法として，該当するテーブルのレコードが格納されている場所を先頭から1つ1つ調べ上げる方法が考えられる．
 この方法では，レコードの数がN件ある場合，N回確認作業が必要となる．
-確認回数が多くなると，問い合わせへの応答時間が長くなる．
+問い合わせへの応答時間は，確認回数に比例して長くなる．
 レコードの数が少ない，つまりNが小さい場合は問題とならないかもしれないが，
 関係データベースが対象とするデータ（レコード）の数は膨大である．
-いかに計算機とはいえ，数百万，数千万のレコード数を逐次的にチェックするにはそれなりに時間がかかる．</p>
-<p>索引は，レコードの探索時間を改善したいときに有効な方法の1つである．
+計算が得意な計算機とはいえ，数百万，数千万のレコード数を逐次的にチェックするにはそれなりに時間がかかる．</p>
+<p><strong>索引づけ（indexing）</strong> は，レコードの探索時間を改善したいときに有効な方法の1つである．
 一般に索引といえば，特定の項目が書籍中のどのページに掲載されているかをまとめ，項目順に並べたものをイメージする．
 索引は書籍の末尾に掲載されていることが多い．
 下図のように索引を調べることで，全ページを見返さなくても自分が知りたい項目がどこのページに掲載されているかをカンタンに知ることができる．</p>
@@ -432,30 +432,30 @@ SQL文による問い合わせがあった場合は，関係データベース�
 データベースにおける<strong>索引（インデックス; index）</strong> とは，データベース中のある属性に注目し，ある属性値を持つレコードを効率よく取得できるよう工夫された特殊なデータを意味する．
 索引は</p>
 <ul class="simple">
-<li><p><strong>索引キー（index key）</strong> と呼ばれる検索対象となる値，および</p></li>
+<li><p><strong>索引キー（index key）</strong> と呼ばれる検索対象となる属性の値，および</p></li>
 <li><p>その値をもつレコードの場所を特定する情報（記憶装置の中でレコードが格納されている場所）</p></li>
 </ul>
 <p>から構成される．
-下図は関係「商品」の属性「単価」に関する索引とそれを利用した問い合わせのイメージである．
+下図は関係「商品」の属性「単価」に関する索引，およびそれを利用した問い合わせのイメージである．
 「単価」の索引には，単価の値（索引キー）とその値をもつレコードが格納された場所のペアが記載されている．
 例えば，単価の値が<code class="docutils literal notranslate"><span class="pre">230</span></code>のレコードを検索したい場合は，索引を上から調べる．
 値が<code class="docutils literal notranslate"><span class="pre">230</span></code>となるレコードが格納された場所が分かれれば，指定された記憶装置の場所を調べに行くことで所望のレコードの情報を得ることができる．</p>
 <p><img alt="データベースにおける索引" src="../../_images/db-index.png" /></p>
-<p>書籍における索引がそれのためにページが割かれるように，データベースの索引もそれ自体を作成するのに記憶装置の場所（空間）を消費する．
+<p>書籍における索引がそれのためにページが割かれているように，データベースの索引もそれ自体を作成するのに記憶装置の場所（空間）を消費する．
 索引は<strong>空間効率を犠牲にして時間効率を向上させる方法</strong>である．
 空間効率の劣化を抑えつつ時間効率を向上させるために，様々な種類の索引が提案されている．</p>
 </section>
 <section id="id3">
 <h2><span class="section-number">14.3. </span>二分探索<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>例えば，格納されたレコード数が10万の表に対して，ある属性に関する索引を構築したとしよう．
-索引のサイズ（行数のようなもの）が5分の1になった場合，索引の先頭から索引キーの値を調べていったとしても，合計2万回も確認が必要となる（いわゆる線形探索）．
+索引のサイズ（索引キーの数）が索引付けの対処となる表の5分の1になった場合，索引の先頭から索引キーの値を調べていったとしても，合計2万回もの確認が必要となる（いわゆる線形探索）．
 索引を使えば，特定の条件を満たすレコードが探しやすくなる ——
-直感的にはその通りなのだが，巨大な索引リストの中からある条件に合致する箇所を探そうとすると，効率の良い方法が必要となる．</p>
-<p>索引キーがソートされている場合，索引へのアクセス効率を劇的に向上させる方法の1つが二分探索である．
+直感的にはその通りなのだが，巨大な索引（キーのリスト）の中から条件に合致する箇所を探すには，効率の良い方法が必要となる．</p>
+<p>索引キーがソートされている場合，索引の探索効率を劇的に向上させる方法として二分探索がある．
 <strong>二分探索（binary search）</strong> は，ソート済みの配列から指定した値を高速に探索するアルゴリズムである．
 二分探索アルゴリズムの概要は以下の通りである：</p>
 <ol class="arabic simple">
-<li><p>配列のちょうど真ん中の位置の値をチェックする．チェックした値が探している値であった場合はそこで終了</p></li>
+<li><p>配列のちょうど真ん中の位置の値をチェックする．チェックした値が探している値の場合，そこで終了</p></li>
 <li><p>チェックした値が探している値よりも</p>
 <ul class="simple">
 <li><p>「小さかった」場合，配列の「右半分」を新たな検索対象配列とする</p></li>
@@ -479,20 +479,20 @@ SQL文による問い合わせがあった場合は，関係データベース�
 <p><img alt="二分探索" src="../../_images/binary-search.png" /></p>
 <p>270の値を見つけるのに要した配列へのアクセス回数は合計3回である．
 二分探索では，1ステップごとに調査対象となる配列のサイズが半分になっている．
-そのため，もとの配列のサイズが<span class="math notranslate nohighlight">\(N\)</span>のとき，所望の値を見つけるために必要となる配列へのアクセス回数は最悪のケースでも<span class="math notranslate nohighlight">\(log(N)\)</span>となる．
-先の例題では配列のサイズが小さいため二分探索の効果が感じにくかったかもしれないが，
+そのため，もとの配列のサイズが<span class="math notranslate nohighlight">\(N\)</span>のとき，所望の値を見つけるために必要となる配列へのアクセス回数は最悪のケースでも<span class="math notranslate nohighlight">\(log_2 N\)</span>となる．
+先の図の例では配列のサイズが小さいため二分探索の効果が感じにくかったかもしれないが，配列のサイズが巨大になると二分探索の効果が実感できる．
 例えば索引のサイズ（索引キーの種類数）が100万の場合，二分探索を使えば索引キーの配列に20回程度アクセスするだけで所望の値を見つけることができる．</p>
 </section>
 <section id="id4">
 <h2><span class="section-number">14.4. </span>B+木<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>二分探索はソート済み配列を探索する上で強力な方法であるが，データベースの索引キーを探索するには，以下のような欠点がある．</p>
+<p>二分探索はソート済み配列を探索する上で強力な方法であるが，データベースの索引キーの探索に使うには，以下のような欠点がある．</p>
 <ul class="simple">
 <li><p>データベースが超巨大になると索引のサイズも超巨大になるため，さすがの二分探索も少し遅くなる</p></li>
 <li><p>属性値がある範囲の値をもつレコードを探索したいというケースにおいて，単一の値の検索に特化した二分探索は分が悪い</p></li>
-<li><p>データベースではレコードの追加や更新が頻繁に発生するため，データベースの更新ごとに巨大な索引キーをソートするのは効率が悪い（クイックソートを使うと<span class="math notranslate nohighlight">\(O(n \log n)\)</span>の計算時間がかかる）</p></li>
+<li><p>データベースではレコードの追加や更新が頻繁に発生するため，データベースの更新ごとに巨大な索引キーをソートするのは効率が悪い（クイックソートを使っても<span class="math notranslate nohighlight">\(O(n \log n)\)</span>の計算時間がかかる）</p></li>
 </ul>
 <p id="sec-btree-feature"><strong>B+木（B+ tree）</strong><a class="footnote-reference brackets" href="#b-tree" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> は，二分探索よりも高速かつ効率よくデータの探索を行え，かつ更新にかかるコストも小さい，索引用のデータ構造である．
-B+木は以下のような特徴を持つ木構造式データである．</p>
+B+木は以下のような特徴を持つ木構造データである．</p>
 <ol class="arabic simple">
 <li><p>根ノードから葉ノードへのパスの長さはすべて同じである</p></li>
 <li><p>葉ノードは索引キーの（順序付き）集合で構成される．各葉ノードは索引キーを収容するスペースをもつ．そのスペースには最小<span class="math notranslate nohighlight">\(\frac{2m+1}{2}\)</span>個，最大<span class="math notranslate nohighlight">\(2m+1\)</span>個の索引キーを収容できる（<span class="math notranslate nohighlight">\(m\)</span>の値は事前に決めておく）．なお，葉ノード中の索引キーは昇順にソートされている</p></li>
@@ -503,19 +503,20 @@ B+木は以下のような特徴を持つ木構造式データである．</p>
 <li><p>葉ノードの各索引キーはその値を属性値としてもつレコード集合とリンクしている（記憶装置で該当レコードが記録されている位置にすぐ飛べる）</p></li>
 </ol>
 <p>上の定義だけでは分かりづらいので，図を見ながらB+木の特徴を確認しよう．
-以下の図はある属性の索引キー（属性値）として</p>
+ある属性<span class="math notranslate nohighlight">\(A\)</span>の索引キー（属性値）として</p>
 <blockquote>
 <div><p>1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144,169, 196, 225, 256</p>
 </div></blockquote>
-<p>のいずれかを取るレコードに対するB+木である．
-このB+木は<span class="math notranslate nohighlight">\(m=1\)</span>である．</p>
+<p>のいずれかを取るレコードを格納したテーブルがあるとしよう．
+以下の図は，このテーブルの属性<span class="math notranslate nohighlight">\(A\)</span>に関するB+木である．
+なお，このB+木は<span class="math notranslate nohighlight">\(m=1\)</span>としている．</p>
 <p>図を見たら分かるように，すべての索引キーはいずれかの葉ノードに格納されている（特徴2）．
 索引キーが格納されたどの葉ノードについても，根ノードから2回枝をたどるだけで到達できる（特徴1）．
 また，根以外のどのノードも半数以上スペースが埋まっている（特徴2および4）．
-さらに，ある索引キーの次に小さい（大きい）索引キーは同じ葉ノード内で，もしくは隣の葉ノードに隣接している（特徴3）．
-例えば，索引キーの4の次に大きい索引キーを知りたければ，4が含まれる一番左の葉ノードから右隣にリンクされている葉ノードを見ることで，9が次に大きい索引キーであることが分かる．</p>
+さらに，ある索引キーの次に小さい（大きい）索引キーは同じ葉ノード内で隣接している，もしくは隣接する葉ノード内に存在する（特徴3）．
+そのため，例えば索引キーの4の次に大きい索引キーを知りたければ，4が含まれる一番左の葉ノードから右隣にリンクされている葉ノードを見ることで，9が次に大きい索引キーであることが分かる．</p>
 <p id="fig-b-tree"><img alt="B+木" src="../../_images/b%2Btree.png" /></p>
-<p>B+木では，葉ノードは各レコードの場所情報を保持しており，いわゆる索引と見なすことができる．
+<p>B+木では，葉ノードは各レコードの格納場所情報を保持しているため，いわゆる索引と見なすことができる．
 一方，葉ノードの親ノードは葉ノードを振り分け，葉ノードの場所を管理しているという意味では，索引の索引になっていると見なせる．
 このように，B+木は索引を階層的に管理していると見なせる．</p>
 <p>B+木で重要なことは，どの葉ノードも<strong>根ノードからの距離が同じ</strong>であることである．
@@ -532,8 +533,7 @@ B+木は以下のような特徴を持つ木構造式データである．</p>
 <blockquote>
 <div><p>1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144,169, 196, 225, 256</p>
 </div></blockquote>
-<p>のいずれかを取るレコードが格納された関係表に対して，B+木による索引を構築したとしよう．
-そのB+木は<a class="reference internal" href="#fig-b-tree">先の図</a>となる．
+<p>のいずれかを取るレコードが格納された関係表に対して，B+木による索引を構築したとしよう（<a class="reference internal" href="#fig-b-tree">先の図</a>がそれである）．
 このB+木を使って，属性<span class="math notranslate nohighlight">\(A\)</span>の値が<code class="docutils literal notranslate"><span class="pre">121</span></code>となるレコードを探すことを考えよう．
 手順は以下の通りとなる（図も参照すること）．</p>
 <p><img alt="B+木による直接探索" src="../../_images/b%2Btree-search.png" /></p>
@@ -549,9 +549,9 @@ B+木は以下のような特徴を持つ木構造式データである．</p>
 所望の索引キーが見つかったので，そこからリンクされたレコードを取得する．
 これにて探索完了である．</p>
 <p><a class="reference internal" href="#sec-btree-feature">B+木の特徴6</a>に記した条件により，B+木ではどの中間ノードも子ノードの数は<span class="math notranslate nohighlight">\(m+1\)</span>個以上となることが保証されている．
-これにより，索引キーの数が<span class="math notranslate nohighlight">\(N\)</span>この場合，B+木の根ノードから葉ノードへのパスの長さは<span class="math notranslate nohighlight">\(log_m(N)\)</span>となる．
+これにより，索引キーの数が<span class="math notranslate nohighlight">\(N\)</span>の場合，B+木の根ノードから葉ノードへのパスの長さは<span class="math notranslate nohighlight">\(log_m(N)\)</span>となる．
 各ノードに含まれる探索キーの数は高々<span class="math notranslate nohighlight">\(2m\)</span>個である．
-各ノードを探索キーを線形に一通りチェックしたあとパスをたどるとしても，探索完了までにかかる計算量は<span class="math notranslate nohighlight">\(m\)</span>が<span class="math notranslate nohighlight">\(N\)</span>よりも十分小さいことも考慮すると，</p>
+各ノードを探索キーを線形に一通りチェックしたあとパスをたどるとしても，探索完了までにかかる計算量は<span class="math notranslate nohighlight">\(m\)</span>が<span class="math notranslate nohighlight">\(N\)</span>よりも十分小さいことも考慮すると，高々</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(O(2m log_m N) = O(log_m N )\)</span></p>
 </div></blockquote>
@@ -598,11 +598,11 @@ B+木の更新アルゴリズムの詳細については「<a class="reference e
 <section id="id9">
 <h2><span class="section-number">14.5. </span>ハッシュ索引<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
 <p>B+木のような木構造の索引では，根ノードから葉ノードにまでたどることで，条件にマッチする属性値をもつレコードが格納されている場所を調べる．
-探索を容易にするためにB+木では木構造の構築に工夫をこらしているが，<span class="math notranslate nohighlight">\(O(log_m{N})\)</span>の計算時間をかけて木をたどらなければならない．
-もしある値が指定されたときに，それを属性値としてもつレコードの格納位置を「直接」知ることができれば，B+木よりももっとカンタンに求めるレコードを取得することができる．</p>
-<p>これを実現するのが，<strong>ハッシュ索引（hash index）</strong> である．
-B+木と同様，ハッシュ索引も探索範囲となる属性に対して索引を構築する．
-B+木と異なるのは，ハッシュ索引では索引キーの値とレコード（の格納場所）との対応付けを行うために<strong>ハッシュ関数（hash function）</strong> を用いる．
+探索を容易にするためにB+木ではその索引木構造に工夫をこらしているが，<span class="math notranslate nohighlight">\(O(log_m{N})\)</span>の計算時間をかけて根から葉に向かって木をたどらなければならない．</p>
+<p>仮に，ある値が指定されたときにそれを属性値としてもつレコードの格納位置を「直接」知ることができれば，B+木よりももっとカンタンに求めるレコードを取得することができる．
+これを実現するのが，<strong>ハッシュ索引（hash index）</strong> である．
+B+木と同様，ハッシュ索引も探索範囲となる属性を指定して索引を構築する．</p>
+<p>B+木と異なるのは，ハッシュ索引では索引キーの値とレコード（の格納場所）との対応付けを行うために<strong>ハッシュ関数（hash function）</strong> を用いる．
 <a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%83%8F%E3%83%83%E3%82%B7%E3%83%A5%E9%96%A2%E6%95%B0">ハッシュ関数</a>とは，任意の値を別の都合の良い値（ハッシュ値）に変換するための関数である．
 良いハッシュ関数は値の変換にかかる計算コストが低くなるよう設計されている．</p>
 <p>以下の<span class="math notranslate nohighlight">\(mod_d(x)\)</span>は整数<span class="math notranslate nohighlight">\(x\)</span>を整数<span class="math notranslate nohighlight">\(d\)</span>で割ったときの剰余（いわゆる余り）を計算する関数である．
@@ -612,14 +612,15 @@ B+木と異なるのは，ハッシュ索引では索引キーの値とレコー
 mod_d(x) = r  \quad \text{where} \,\, x = q \cdot d + r
 \]</div>
 <p>剰余演算は高速に実行できることが知られており，ハッシュ索引を構築するためのハッシュ関数としてしばしば使われる．
-例えば，学生情報を格納するテーブル<code class="docutils literal notranslate"><span class="pre">学生</span></code>に対して属性<code class="docutils literal notranslate"><span class="pre">学籍番号</span></code>を探索キーとするハッシュ索引を構築するとしよう．
+例えば，学生情報を格納するテーブル<code class="docutils literal notranslate"><span class="pre">学生</span></code>に対して，属性<code class="docutils literal notranslate"><span class="pre">学籍番号</span></code>の値を探索キーとするハッシュ索引を構築するとしよう．
 一般に学籍番号は数字以外の文字も含まれる文字列であるが，計算機の中では文字列も整数値で表現されているので，剰余を計算することは可能である．
 そこで，以下の図のように<code class="docutils literal notranslate"><span class="pre">学生</span></code>テーブルの各レコードの<code class="docutils literal notranslate"><span class="pre">学籍番号</span></code>の値に剰余を計算する関数を適用し，得られた剰余値が示す記憶装置の場所にレコードを格納する．
 このようにハッシュ索引を構築しておけば，レコードを取得したい学生の学籍番号から剰余値を1回計算するだけで，必要となる学生情報が格納されている場所を特定し，レコードを取得することができる．</p>
 <p><img alt="ハッシュ索引" src="../../_images/hash-index.png" /></p>
-<p>このように高速にレコードを取得できるハッシュ索引であるが，致命的な弱点がある．
-ハッシュ索引は設計上，属性値がある範囲にあるレコードを見つける<strong>範囲探索にはまったく有効に機能しない</strong>．
-そのため，範囲探索が必要な属性に対してはB+木のような索引を用いる必要がある．</p>
+<p>高速にレコードを取得できるハッシュ索引であるが，致命的な弱点がある．
+ハッシュ索引は属性値がある範囲にあるレコードを見つける<strong>範囲探索にはまったく有効に機能しない</strong>．
+ハッシュ索引は各レコードの属性値のハッシュ値とレコードの格納場所を一対一対応させているにすぎず，探索キーの値が完全一致するものしか見つけられない．
+そのため，範囲探索が必要な属性に対しては，B+木のような索引を用いる必要がある．</p>
 </section>
 <section id="sql">
 <h2><span class="section-number">14.6. </span>SQLによる索引の構築<a class="headerlink" href="#sql" title="Link to this heading">#</a></h2>
