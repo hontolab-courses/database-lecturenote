@@ -42,7 +42,7 @@ parts:
 - caption: ビッグデータ時代のデータベース
   numbered: True
   chapters:
-    - file: content/nosql/01.ipynb
+    - file: content/nosql/01.md
 - caption: 付録
   numbered: False
   chapters:
