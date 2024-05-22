@@ -265,37 +265,6 @@
 
 
 
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://colab.research.google.com/github/hontolab-courses/database-lecturenote/blob/main/content/nosql/01.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch onColab"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img src="../../_static/images/logo_colab.png">
-  </span>
-<span class="btn__text-container">Colab</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-
-
 <div class="dropdown dropdown-download-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
@@ -304,7 +273,7 @@
       
       
       
-      <li><a href="../../_sources/content/nosql/01.ipynb" target="_blank"
+      <li><a href="../../_sources/content/nosql/01.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -314,7 +283,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -375,7 +344,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -391,6 +362,19 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">15.1. ビッグデータを扱うためにデータベースに求められること</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">15.2. 様々なNoSQL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">15.3. キー・ストア型データベース</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">15.4. 列指向データベース</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">15.5. ドキュメント指向データベース</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">15.6. グラフデータベース</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -402,7 +386,125 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="nosql">
 <h1><span class="section-number">15. </span>NoSQL<a class="headerlink" href="#nosql" title="Link to this heading">#</a></h1>
-<p>後日公開予定</p>
+<p>これまで14章をかけて学んできた関係データベースは，データの重複や矛盾を排除し，データ間の整合性を保つことを重視したデータベース技術である．
+関係データベースはその特性から，</p>
+<ul class="simple">
+<li><p>データの構造がはっきりしているケース</p></li>
+<li><p>データを正しく保つことが求められるケース</p></li>
+</ul>
+<p>において特に真価を発揮する．
+そのため，顧客管理，在庫管理，購買管理などのビジネス現場において重宝されている．</p>
+<p>関係データベースは1970年頃に生まれた技術であるが，今日においてもデータベースの中心的な存在である．
+しかしながらビッグデータ時代においては，従来の関係データベースでは扱いきれないデータ処理事例が発生している．
+<strong>NoSQL</strong> <a class="footnote-reference brackets" href="#id9" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>は，関係データベースがもつ特性を一部犠牲にすることで，関係データベースでは扱いきれないデータを処理するためのデータベース技術の総称である．
+以下，NoSQLについてに簡単に解説する．
+なお，NoSQLは関係データベースを保管する技術であり，NoSQL（あるいは関係データベース）のほうが優れているというわけではない．
+ケースに応じて関係データベースとNoSQLを使い分けることが重要である．</p>
+<section id="id2">
+<h2><span class="section-number">15.1. </span>ビッグデータを扱うためにデータベースに求められること<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>一般に，ビッグデータは以下のような3つの性質を満たすデータの集合である：</p>
+<ul class="simple">
+<li><p>High volume: 扱うデータの「量」が多い</p></li>
+<li><p>High variety: 扱うデータの「種類」が多い</p></li>
+<li><p>High velocity: 扱うデータが「生成される速度」が速い</p></li>
+</ul>
+<p>関係データベースシステムは計算機の上で動くソフトウェアであるため，CPUやメモリ，二次記憶装置といった計算機などのコンポーネントを強化することで，関係データベースのパフォーマンスを向上させることは可能である（このアプローチを<strong>スケールアップ</strong> あるいは<strong>垂直方向のスケーリング</strong> と呼ぶ）．
+しかしながら，関係データベースの「データの正しさを厳密に保つことに特化した設計」が仇となり，データの量や種類，生成速度が「圧倒的に大きい」ビッグデータに対しては，スケールアップした関係データベースですら処理が間に合わなくなることがある．</p>
+<p>データベースへの膨大な問い合わせを処理する方法の一つは，データベースのコピーや分割したものを複数の計算サーバ上に配置することで，サーバの稼働状況や負荷状況に応じて問い合わせ処理を振り分ける（分散させる）といった方法である．
+このように，1つの計算機をパワーアップさせるのではなく，計算サーバを増やすことで総体としてサービスのパフォーマンスを高めるアプローチを<strong>スケールアウト</strong> あるいは<strong>水平方向のスケーリング</strong> と呼ぶ．</p>
+<p>ウェブ検索エンジンやソーシャルゲーム，SNSといったビッグデータを扱うサービスにおいては，「データの整合性を厳密に保つこと」よりも「膨大かつ多様な種類のデータを安定的・高速に処理できること」が優先される．
+NoSQLはデータの整合性について妥協することで，（スケールアップではなく）スケールアウトによってビッグデータ処理を実現する．
+また，データ構造をガチガチに固定する関係データベースとは対照的に，NoSQLは複雑かつ多様なデータを柔軟に扱うための工夫がなされている．</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">15.2. </span>様々なNoSQL<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>NoSQLは単一のデータベース技術ではない．
+関係データベースの欠点を補うために，様々なタイプのNoSQLデータベースが開発されている．
+最も一般的なNoSQLデータベースは，以下の4つである．</p>
+<ul class="simple">
+<li><p>キー・バリュー型データベース</p></li>
+<li><p>列指向データベース</p></li>
+<li><p>ドキュメント指向データベース</p></li>
+<li><p>グラフデータベース</p></li>
+</ul>
+<p>重要なのは，それぞれのNoSQLデータベースの特徴を押さえて，ケースに応じてNoSQLデータベースと関係データベースを使い分けることである．</p>
+<p><img alt="様々なNoSQL" src="../../_images/nosql.png" /></p>
+</section>
+<section id="id4">
+<h2><span class="section-number">15.3. </span>キー・ストア型データベース<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p><strong>キー・バリュー型データベース（key-value database）</strong> は，以下の図のように重複のない（一意の）キーとデータの値（バリュー）のペアを格納する，非常にシンプルな構造のデータベースである．
+キー・バリュー型データベースはキーとバリューという2つの属性からなる関係データを扱っているように見えるが，関係データベースのようにデータに制約条件はない．
+また，問い合わせ形式も<strong>キーの値を直接しそれに対応するバリューの値を受け取る</strong> ことに最適化されている．</p>
+<p><img alt="KVS" src="../../_images/KVS.png" /></p>
+<p>このように，キー・バリュー型データベースはデータ構造を単純化し，問い合わせ形式を限定することで，データ処理を超高速化している．
+一方，複数のテーブルにまたがるデータの結合が必要となるケースには適していない．
+代表的なキー・バリュー型データベースとしては，<a class="reference external" href="https://ja.wikipedia.org/wiki/Redis">Redis</a>や<a class="reference external" href="https://ja.wikipedia.org/wiki/Amazon_DynamoDB">Amazon DynamoDB</a>などがある．</p>
+</section>
+<section id="id5">
+<h2><span class="section-number">15.4. </span>列指向データベース<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p><strong>列指向データベース（columnar database）</strong> は．キー・バリュー型データベースを拡張したようなNoSQLデータベースである．
+列指向データベースは<strong>ワイドカラムデータベース（wide-column database）</strong> あるいは<strong>カラムファミリーデータベース（column-family database）</strong> と呼ばれることもある．
+以下の図のように，列指向データベースではデータをキーとバリューからなるペアとして管理する．
+キー・バリュー型データベースとの違いは，バリューとしてカラムファミリーと呼ばれるキー・バリュー構造のデータを持つことができる点である．
+例えば，図中のキーが<code class="docutils literal notranslate"><span class="pre">cxxx0001</span></code>のデータの価格の値を取得したい場合は，キーの値とカラムファミリー名を指定すればよい．</p>
+<p><img alt="ワイドカラムデータベース" src="../../_images/wide-column-db.png" /></p>
+<p>なお，カラムファミリーの中には，同じくキー・バリュー構造のカラムを複数もつことができる．
+例えば，上図においてキー値が<code class="docutils literal notranslate"><span class="pre">cxxx0003</span></code>のデータは<code class="docutils literal notranslate"><span class="pre">著者</span></code>カラムファミリーの中に<code class="docutils literal notranslate"><span class="pre">姓</span></code>というカラムと<code class="docutils literal notranslate"><span class="pre">名</span></code>というカラムを持っている．
+列指向データベースにどのようなカラムファミリーを持たせるかはデータベース設計時に決めておく必要があるが，カラムファミリーの中のカラムはデータに応じて柔軟に追加することができる．</p>
+<p>列指向データベースは，関係データベースのように複数のレコードを横断して集約するような問い合わせには向いていない．
+また，データの整合性の担保も難しい．
+しかし，キーとカラム名によって高速なデータ処理が可能，スケールアウトが可能といったメリットがある．</p>
+<p>代表的なワイドカラムデータベースとしては，<a class="reference external" href="https://ja.wikipedia.org/wiki/Bigtable">Google BigTable</a>，<a class="reference external" href="https://ja.wikipedia.org/wiki/Apache_Cassandra">Apache Cassandra</a>などがある．</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>実は，ワイドカラムデータベースとは別に，<strong>カラムナーデータベース（columnar database）</strong> と呼ばれる列指向データベースがある．
+両者は区別せずに使われることがあり，注意が必要である．
+下図のように，カラムナーデータベースでは表形式のデータを列ごとに記憶装置に格納する．
+記憶装置の特性上，カラムナーデータベースは同じ列に格納された値の集計演算を高速に行うことができる．
+行か列かの些細な違いに思えるが，行指向のデータベースで集約演算を行う際には，いったんは注目しない列（属性）の値も読み込むため，効率が悪い．
+そのため，列ごとの集計演算を頻繁に行う場合は列指向データベースが適している．</p>
+<p><img alt="列指向データベース" src="../../_images/columnar-db.png" /></p>
+<p>カラムナーデータベースはNoSQLとは位置づけられていないが，ビッグデータ時代において非常に強力なツールである<a class="footnote-reference brackets" href="#olap" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>．
+代表的な列指向データベースとしては，<a class="reference external" href="https://ja.wikipedia.org/wiki/MongoDB">Google Bigquery</a>などがある．</p>
+</div>
+</section>
+<section id="id7">
+<h2><span class="section-number">15.5. </span>ドキュメント指向データベース<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>関係データベースでは，テーブルのスキーマは設計時に確定させ，それを使い続けることが前提となっている．
+ところが，実際にサービスを運用し始めると，当初考えていたスキーマを修正したくなるときがある．
+また，データによって柔軟に補助的な属性を追加したいといったケースがしばしばある．
+このようなケースで有用なNoSQLがドキュメント指向データベースである．</p>
+<p><strong>ドキュメント指向データベース（document-oriented database）</strong> は関係データベースにおけるレコードにあたるものを，<a class="reference external" href="https://ja.wikipedia.org/wiki/Extensible_Markup_Language">XML</a>や<a class="reference external" href="https://ja.wikipedia.org/wiki/JavaScript_Object_Notation">JSON</a>形式のドキュメントとして表現する．</p>
+<p>XMLドキュメントもJSONドキュメントもデータを木構造で表現したものであるが，ドキュメント指向データベースはスキーマレスであり，どのような木構造でデータを表現するかはユーザが決められる．
+以下の図は，2名の学生情報をXMLとJSONのそれぞれで表現した例である．</p>
+<p><img alt="ドキュメント指向データベース" src="../../_images/document-oriented-db.png" /></p>
+<p>図を見ると分かるように，<code class="docutils literal notranslate"><span class="pre">山畑滝子</span></code>さんの氏名情報は姓名の区別なしに保存されているのに対して，<code class="docutils literal notranslate"><span class="pre">川澄桜</span></code>さんの氏名情報は姓名を区別して保存している．
+また，<code class="docutils literal notranslate"><span class="pre">川澄桜</span></code>さんの情報には<code class="docutils literal notranslate"><span class="pre">scholarship</span></code>のフィールドを追加して奨学金に関する情報を記録している．
+このようにドキュメント指向データベースでは，臨機応変にデータの構造を変更してデータを格納することができる．
+代表的なドキュメント指向データベースとしては，<a class="reference external" href="https://ja.wikipedia.org/wiki/MongoDB">MongoDB</a>などがある．</p>
+</section>
+<section id="id8">
+<h2><span class="section-number">15.6. </span>グラフデータベース<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p>以下の図のように，<strong>グラフデータベース（graph database）</strong> は様々なデータをノードとエッジの2種類の要素を使って管理する．
+ノードはエンティティ（実体）を表し，エッジはエンティティ間の関係を表す．
+ノードもエッジもそれに関する情報を内部に持つことができる．
+なお，グラフとはノートとエンティティから構成される数学的構造を意味する．</p>
+<p><img alt="グラフデータベース" src="../../_images/graph-database.png" /></p>
+<p>グラフデータベースは，エンティティ間にある多数の関係を表現するのに適している．
+データ構造の特性と様々なグラフ探索アルゴリズムによって，グラフデータベースでは「トリノ出身で数学を専門とする人」といった複雑な問い合わせを高速に実現することができる．</p>
+<p>代表的なグラフデータベースとしては，<a class="reference external" href="https://ja.wikipedia.org/wiki/Neo4j">Neo4j</a>などがある．</p>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id9" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>NoSQLは”Not only SQL (relational database)”と解釈しよう．「SQL（関係データベース）は不要である」という意味ではないことに注意．</p>
+</aside>
+<aside class="footnote brackets" id="olap" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">2</a><span class="fn-bracket">]</span></span>
+<p>列指向データベースは列データに着目したデータ分析が主目的となるので，データベースというよりもむしろ<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%BC%E3%82%BF%E3%82%A6%E3%82%A7%E3%82%A2%E3%83%8F%E3%82%A6%E3%82%B9">データウェアハウス</a>と見なした方が自然かもしれない．</p>
+</aside>
+</aside>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -460,7 +562,25 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">15.1. ビッグデータを扱うためにデータベースに求められること</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">15.2. 様々なNoSQL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">15.3. キー・ストア型データベース</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">15.4. 列指向データベース</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">15.5. ドキュメント指向データベース</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">15.6. グラフデータベース</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
