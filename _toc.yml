@@ -30,7 +30,7 @@ parts:
   numbered: True
   chapters:
     - file: content/er-model/01.md
-    - file: content/er-model/02.ipynb
+    - file: content/er-model/02.md
     - file: content/er-model/03.ipynb
     - file: content/db-design/01.ipynb
     - file: content/db-design/02.ipynb
