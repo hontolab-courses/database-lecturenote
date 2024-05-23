@@ -485,10 +485,15 @@ document.write(`
 実体の定義において，実体とは「独立した存在として一意に識別される」と述べたが，関連はつながる実体の存在がなければ自身の存在を規定できない．
 例えば「購入希望」の例では，ある購入希望（として登録する）という行為は行為主体であるユーザと行為対象である商品がそろって初めて定義できる．</p>
 <p>同じ種類の関連の集合を<strong>関連集合（relationship set）</strong> と呼ぶ．
-例えば，先の「購入希望」の例では，ユーザAが商品Xを購入希望登録したこと，ユーザBが商品Yを購入希望登録したことなど，個々のユーザが何かを購入希望登録したという行為の集合が関連集合「購入希望」となる．
+例えば，先の「購入希望」の例では，</p>
+<ul class="simple">
+<li><p>ユーザAが商品Xを購入希望登録したこと</p></li>
+<li><p>ユーザBが商品Yを購入希望登録したこと</p></li>
+</ul>
+<p>など，個々のユーザが何かを購入希望登録したという行為の集合が関連集合「購入希望」となる．
 関連集合内の各関連は，それとつながっている複数の実体によって<strong>一意に識別される</strong>．
 もう少し具体的に言うと，ある関連はそれとつながっている実体の主キーの値が指定されたとき，一意に識別されなければならない．</p>
-<p>関連型も属性を持つ場合がある（すわなち，属性がないこともある）．
+<p>関連型も属性を持つ場合がある（すなわち，属性がないこともある）．
 例えば，先の関連型「購入希望」の例であれば，「登録日」などが属性として考えられる．</p>
 <p>（Peter Chenの記法では）実体関連図において，</p>
 <ul class="simple">
@@ -500,14 +505,14 @@ document.write(`
 また，関連型はつながりのある実体型と線で結ぶ．</p>
 <p>以下の図は，実体型「ユーザ」「商品」，および関連型「購入希望」を実体関連図として表現したものである．</p>
 <p><img alt="関連-欲しい" src="../../_images/wishlist-relationship.png" /></p>
-<p>また，以下の図は，上の実体関連図に示したモデルの実体，関連（つまり実体集合および関連集合の要素）の例を図示したものである．
+<p>以下の図は，上の実体関連図に示したモデルの実体および関連（つまり実体集合および関連集合の要素）の例を図示したものである．
 スペースの都合上，実体および関連が持つ属性のうち，主キーの値のみを図示している．
-関連の下に書かれた値は，各関連につながる実体の主キーを記している（<a class="reference internal" href="#er-model1-q4">★Quiz4★</a>，<a class="reference internal" href="#er-model1-q5">★Quiz5★</a>）．</p>
+関連「購入希望」の下に書かれた値は，各関連につながる実体の主キーの値のペアである（<a class="reference internal" href="#er-model1-q4">★Quiz4★</a>，<a class="reference internal" href="#er-model1-q5">★Quiz5★</a>）．</p>
 <p><img alt="ERモデル要素例" src="../../_images/er-model-elements.png" /></p>
 </section>
 <section id="id9">
 <h3><span class="section-number">8.2.3. </span>役割の明示<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
-<p>ある大学ではデータベースで学生情報を管理することを検討しているとしよう．
+<p>ある大学ではデータベースを用いた学生情報の管理を検討しているとしよう．
 さて，この大学ではどの学生も</p>
 <ul class="simple">
 <li><p>自分の面倒を見てくれる「先輩」学生</p></li>
@@ -515,15 +520,15 @@ document.write(`
 </ul>
 <p>が割り当てられているとしよう．
 このような状況を実体関連モデルで表現したい．</p>
-<p>さて，与えられた条件をふまえて</p>
+<p>与えられた条件をふまえて</p>
 <ul class="simple">
-<li><p>実体として「先輩学生」と「後輩学生」，</p></li>
-<li><p>先輩学生と後輩学生とのつながりを表す関連として「世話」</p></li>
+<li><p>実体型として「先輩学生」と「後輩学生」，</p></li>
+<li><p>先輩学生と後輩学生とのつながりを表す関連型として「世話」</p></li>
 </ul>
 <p>を定義したとしよう．
 この定義に従ってデータを管理しようとすると，面倒なことが起きる．
-例えば，学生「山畑滝子」さんには「川澄桜子」さんという先輩と「田辺通」さんという後輩がいたとしよう．
-この状況を先に定義した実体関連モデルで考えてみると，以下の図のように「山畑滝子」という唯一無二の実体が実体集合「先輩学生」と実体集合「後輩学生」のそれぞれの要素に現れてしまう．
+例えば，学生<code class="docutils literal notranslate"><span class="pre">山畑滝子</span></code>さんには<code class="docutils literal notranslate"><span class="pre">川澄桜子</span></code>さんという先輩と<code class="docutils literal notranslate"><span class="pre">田辺通</span></code>さんという後輩がいたとしよう．
+この状況を先に定義した実体関連モデルで考えてみると，以下の図のように<code class="docutils literal notranslate"><span class="pre">山畑滝子</span></code>という唯一無二の実体が実体集合「先輩学生」と実体集合「後輩学生」のそれぞれの要素に現れてしまう．
 検討しているデータベースでは学生情報を管理したいので，2つの実体集合に同じ情報が二重に登場するのはよろしくない．
 学生は実体型「学生」だけで表現するのが望ましい．
 先の実体関連モデリングは適切ではなかったのである．</p>
@@ -536,7 +541,7 @@ document.write(`
 </ul>
 <p>を別々に引き，直線が意味する<strong>役割</strong>を明示すればよい（つまり2本の線を引く）．
 このようにすることで，学生の概念を実体型「学生」だけに集約ができ，かつ先輩後輩の関係を表現できる．
-今回の例のように，同一の実体型感に関連型が存在するケースでは，枝の上に役割を明示することで対応する（<a class="reference internal" href="#er-model1-q6"><span class="xref myst">★Quiz6★</span></a>）．</p>
+今回の例のように，同一の実体型間に関連型が存在するケースでは，枝の上に役割を明示することで対応する（<a class="reference internal" href="#er-model1-q6">★Quiz6★</a>）．</p>
 <p><img alt="役割づけありモデル" src="../../_images/er-model-with-role.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -594,7 +599,7 @@ document.write(`
 この状況を実体関連図で表現せよ．</p>
 </section>
 <section id="q6-3-3">
-<span id="ermodel1-q6"></span><h3><span class="section-number">8.3.6. </span>Q6. 関連（3/3）<a class="headerlink" href="#q6-3-3" title="Link to this heading">#</a></h3>
+<span id="er-model1-q6"></span><h3><span class="section-number">8.3.6. </span>Q6. 関連（3/3）<a class="headerlink" href="#q6-3-3" title="Link to this heading">#</a></h3>
 <p>Orange Musicの「ユーザ」は別の「ユーザ」を「フォロー」する．
 「フォロー」は「フォロー日」が記録される．
 この状況を実体関連図で表現せよ．</p>
