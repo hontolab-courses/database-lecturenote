@@ -404,12 +404,12 @@ document.write(`
 <section id="id2">
 <h2><span class="section-number">9.1. </span>参加制約<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p id="fig-er-model-elements"><img alt="ERモデル要素例" src="../../_images/er-model-elements.png" /></p>
-<p>上の図は，前章で用いたあるショッピングサイトにおける商品の「購入希望」に関する実体型および関連型の要素を示したものである．
-上図の実体型「商品」に注目すると，どの実体「ユーザ」とも関連を持たない実体「商品」P5が存在することが分かる．
+<p>上の図は，<a class="reference internal" href="01.html"><span class="std std-doc">前章</span></a>で用いたあるショッピングサイトにおける商品の「購入希望」に関する実体型および関連型の要素を示したものである．
+上図の実体型「商品」に注目すると，どの実体「ユーザ」とも関連を持たない実体「商品」<code class="docutils literal notranslate"><span class="pre">P5</span></code>が存在することが分かる．
 これは，誰も商品P5の購入を希望していないことを示している．</p>
-<p>実体関連図上で実体型<span class="math notranslate nohighlight">\(E_1\)</span>と実体型<span class="math notranslate nohighlight">\(E_2\)</span>が関連型<span class="math notranslate nohighlight">\(R\)</span>でつながっているときに，データ管理の対象としている問題によっては，実体型<span class="math notranslate nohighlight">\(E_1\)</span>のすべての要素が関連型<span class="math notranslate nohighlight">\(R\)</span>の要素とつながっている必要がある場合がある．
+<p>実体関連図上で実体型<span class="math notranslate nohighlight">\(E_1\)</span>と実体型<span class="math notranslate nohighlight">\(E_2\)</span>が関連型<span class="math notranslate nohighlight">\(R\)</span>でつながっているときに，対象としている問題設定によっては，実体集合<span class="math notranslate nohighlight">\(E_1\)</span>のすべての要素が関連集合<span class="math notranslate nohighlight">\(R\)</span>の要素とつながっている必要がある場合がある．
 このようなケースを，<span class="math notranslate nohighlight">\(E_1\)</span>の<span class="math notranslate nohighlight">\(R\)</span>への参加は<strong>全体的</strong>であると呼ぶ．
-逆に<span class="math notranslate nohighlight">\(E_1\)</span>の集合内の全要素が関連型<span class="math notranslate nohighlight">\(R\)</span>の集合の全要素とつながっている必要がない場合，<span class="math notranslate nohighlight">\(E_1\)</span>の<span class="math notranslate nohighlight">\(R\)</span>への参加は<strong>部分的</strong>であると呼ぶ．
+逆に<span class="math notranslate nohighlight">\(E_1\)</span>の集合内の全要素が関連集合<span class="math notranslate nohighlight">\(R\)</span>の全要素とつながっている必要がない場合，<span class="math notranslate nohighlight">\(E_1\)</span>の<span class="math notranslate nohighlight">\(R\)</span>への参加は<strong>部分的</strong>であると呼ぶ．
 例えば，上のショッピングサイトの図のケースの場合，実体型「商品」は関連型「購入希望」への参加が部分的である．
 このように，ある実体型のある関連型への参加（つながり）が全体的か部分的かを定める制約を<strong>参加制約（participation constraint）</strong> と呼ぶ．</p>
 <p>実体型<span class="math notranslate nohighlight">\(E\)</span>の関連型<span class="math notranslate nohighlight">\(R\)</span>への参加が全体的であるとき，実体関連図上では<span class="math notranslate nohighlight">\(E\)</span>と<span class="math notranslate nohighlight">\(R\)</span>の間の直線を<strong>太線</strong>にする．
@@ -421,7 +421,7 @@ document.write(`
 <section id="id3">
 <h2><span class="section-number">9.2. </span>多重度制約<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>再びショッピングサイトの例に戻ろう．
-以下の図は，購入希望登録に加えて，各商品がどのメーカーによって製造されたかも管理するための実体関連モデルを設計し，それに基づき実体集合「ユーザ」「商品」「メーカー」および関連集合「購入希望」「製造」の要素を図示したものである．</p>
+以下の図は，購入希望登録に加えて，各商品がどのメーカーによって製造されたかの情報についても管理する実体関連モデルを設計し，それに基づき実体集合「ユーザ」「商品」「メーカー」および関連集合「購入希望」「製造」の要素を図示したものである．</p>
 <p id="id4"><img alt="実体関連モデルに基づくインスタンス例2" src="../../_images/er-model-elements2.png" /></p>
 <p>（図が物語っていることがすべてであるとすると）この図からは，以下のことが分かる</p>
 <ol class="arabic simple">
@@ -443,13 +443,14 @@ document.write(`
 <li><p>実体型「メーカー」の関連型「製造」への参加制約は「部分的」</p></li>
 </ul>
 <p>とすればよい．</p>
-<p>一方，項目1，2，5，6は，ある実体（要素）から見たときに，ある関連を通じて別のいくつの実体（要素）とつながることが許されるかという制約を示している．
-このように，ある関連型における対応する実体の数を<strong>多重度（cardinality）</strong> <a class="footnote-reference brackets" href="#id11" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>と呼び，多重度に関する制約を<strong>多重度制約（cardinality constraint）</strong> と呼ぶ．
+<p>一方，項目1，2，6（そして5）は，ある実体（要素）から見たときに，ある関連を通じて異なる実体（要素）と「いくつ」つながることが許されるかという制約を示している．
+このように，ある関連に対して対応づけ可能な実体の数を<strong>多重度（cardinality）</strong> <a class="footnote-reference brackets" href="#id11" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>と呼ぶ．
+また，多重度に関する制約を<strong>多重度制約（cardinality constraint）</strong> と呼ぶ．
 実体間の関連は「1対1」「1対多」「多対多」のいずれかとなる．
 例えば，上記図においては</p>
 <ul class="simple">
-<li><p>関連型「購入希望」はユーザと商品の「多対多」関連（項目1および2）</p></li>
-<li><p>関連型「製造」はメーカーと商品の「1体多」関連（項目5および6）</p></li>
+<li><p>関連「購入希望」はユーザと商品の「多対多」関連（項目1および2）</p></li>
+<li><p>関連「製造」はメーカーと商品の「1体多」関連（項目5および6）</p></li>
 </ul>
 <p>と見なせる．</p>
 <p>実体関連図において，多重度は以下のように表現する．</p>
@@ -458,7 +459,7 @@ document.write(`
 <li><p>1対多関連: 関連型から「1」に対応する実体型に引かれた線のみを矢印線にする</p></li>
 <li><p>多対多関連: 関連型から実体型に引かれた線をすべて直線にする（矢印は加えず，そのままにする）</p></li>
 </ul>
-<p>例えば，上の図の内容を踏まえて実体関連図を設計すると，以下のような図になる．
+<p>例えば，<a class="reference internal" href="#fig:er-model-elements"><span class="xref myst">上の図</span></a>の内容を踏まえて実体関連図を設計すると，以下のような図になる．
 関連型「製造」から実体型「メーカー」への線が矢印線になっていることが分かる（<a class="reference internal" href="#er-model2-q3">★Quiz3★</a>，<a class="reference internal" href="#er-model2-q4">★Quiz4★</a>，<a class="reference internal" href="#er-model2-q5">★Quiz5★</a>，<a class="reference internal" href="#er-model2-q6">★Quiz6★</a>）．</p>
 <p id="fig-cardinality-constraint"><img alt="多重度制約を表現した実体関連図" src="../../_images/cardinality-constraint.png" /></p>
 </section>
@@ -470,25 +471,27 @@ document.write(`
 <section id="sec-weak-entity">
 <span id="id7"></span><h3><span class="section-number">9.3.1. </span>弱実体と部分キー<a class="headerlink" href="#sec-weak-entity" title="Link to this heading">#</a></h3>
 <p>ショッピングサイトの例に戻ろう．
-ショッピングサイトを利用する際，ある人が自分のユーザ名を使ってログインをしているのだが，購入した商品の送り先を同居する家族にしたいケースが存在する．
-このようなケースに対応するために，サイト運営者は先ほど示した実体関連図を改善して，</p>
+ショッピングサイトを利用する際，ある人が自分のユーザ名を使ってログインをしているのだが，購入した商品の送り先を同居する家族の名前にしたいケースがある．
+このようなケースに対応するため，サイト運営者は先ほど示した<a class="reference internal" href="#fig-cardinality-constraint">実体関連図</a>を改善して，</p>
 <ul class="simple">
 <li><p>実体型「家族」を追加</p></li>
-<li><p>実体「ユーザ」と実体「家族」が同居関係にあることを示すために，関連型「同居」も追加</p></li>
+<li><p>実体「ユーザ」と実体「家族」が同居関係にあることを示すために，関連型「同居」を追加</p></li>
 </ul>
 <p>すること検討しているとしよう．
 なお，「家族」にはユーザ名は割り振られず，家族の誰かに商品を送るときは，その家族のユーザがサイトにログインをして手続きをすることを想定している．</p>
 <p>このような条件で実体関連図を作成すると，拡張した箇所は以下の図のようになる．
 図中では，実体型「家族」は「氏名」「続柄」のみを属性として持っている．
-このとき，「氏名」は実体型「家族」の主キーではない．
-そのため，あるユーザを特定したとき，そのユーザに「同居」関連で紐付いている実体「家族」については，その「氏名」によって特定は可能であるものの，「氏名」だけですべての「家族」実体集合の中である実体「家族」を特定することはできない．
+なお，「氏名」は実体型「家族」の主キーに設定していない．
+主たるユーザがいてこその「家族」であり，「家族」を独立して管理する意味がないからである．</p>
+<p>さて，このような設計をすると，あるユーザを特定すると，そのユーザに「同居」関連で紐付いている実体「家族」については「氏名」によって特定は可能である．
+しかし，（「ユーザ」の情報なしに）「氏名」だけですべての「家族」実体集合の中である実体「家族」を特定することはできない．
 これは，実体集合「家族」は自身がもつ属性だけでは主キーを構成できないことを意味する．</p>
 <p><img alt="弱実体" src="../../_images/weak-entity.png" /></p>
 <p>このように，自身がもつ属性だけでは主キーを構成できない実体集合を<strong>弱実体集合（weak entity set）</strong> と呼ぶ．
 弱実体集合のある弱実体を一意に特定するためには，</p>
 <ul class="simple">
-<li><p>それとなんらかの関連でつながっている実体の主キー，および</p></li>
-<li><p>関連する実体が固定されたときにのみ，それと関連する弱実体の特定に有効な属性</p></li>
+<li><p>それと何らかの関連でつながっている実体の主キー，および</p></li>
+<li><p>関連する実体が特定されたときにのみ，それと関連する弱実体の特定に有効な属性</p></li>
 </ul>
 <p>をセットで指定する必要がある．</p>
 <p>弱実体を特定する上で，それと関連している実体のことを<strong>所有実体（owner entity）</strong> と呼ぶ．
@@ -508,10 +511,10 @@ document.write(`
 <h3 class="rubric" id="id9">弱実体はなぜ「弱」いのか？</h3>
 <p>上の実体関連図の例において，実体「家族」が弱実体とされていた．
 読者によっては，実体「家族」にも主キーを持たせて，所有実体「ユーザ」の主キーがなくても一意に特定できるようにすればよいのでは，と考えた方がいるかもしれない．
-そのようにすることも理屈上可能であるが，「家族」をあえて弱実体にしているのは対象としているショッピングサイトの運用指針にも関係している．</p>
+そのようにすることも理屈上可能であるが，「家族」をあえて弱実体にしているのは，対象としているショッピングサイトの運用指針にも関係している．</p>
 <p>例に挙げているショッピングサイトにおいては，あくまでユーザIDをもつ「ユーザ」が販売活動の中心となる．
-あるユーザの「家族」に商品を送るというのは，その家族がユーザのIDを借りて商品を買っているようなことである．
-その家族もユーザIDを持つユーザが家族にいなければ，商品を送ってもらえない．
+あるユーザの「家族」に商品を送るというのは，その家族がユーザのIDを借りて商品を買っていると見なせる．
+これは，ユーザIDを持つユーザが家族にいなければ，商品を送ってもらえない（買えない）ことを意味する．
 つまり，弱実体「家族」は実体「ユーザ」が存在しなければ，存在できない「弱い存在」なのである．</p>
 <p>弱実体の定義は「それと関連する実体の主キーと自身の部分キーをもって，はじめて自身を特定できる実体」と定義していたが，個人的には</p>
 <blockquote>
