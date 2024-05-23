@@ -265,37 +265,6 @@
 
 
 
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://colab.research.google.com/github/hontolab-courses/database-lecturenote/blob/main/content/er-model/01.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch onColab"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img src="../../_static/images/logo_colab.png">
-  </span>
-<span class="btn__text-container">Colab</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-
-
 <div class="dropdown dropdown-download-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
@@ -304,7 +273,7 @@
       
       
       
-      <li><a href="../../_sources/content/er-model/01.ipynb" target="_blank"
+      <li><a href="../../_sources/content/er-model/01.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -314,7 +283,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -434,39 +403,40 @@ document.write(`
 しかし，実際のデータ管理の現場ではテーブル数が数十，数百になることはめずらしくない．
 そのため，どれほど経験があるデータエンジニアであっても</p>
 <ul class="simple">
-<li><p>データの冗長性がない</p></li>
-<li><p>一貫性制約の保持が容易</p></li>
+<li><p>冗長なデータがない</p></li>
+<li><p>一貫性制約の保持が容易である</p></li>
 </ul>
-<p>な関係データベースを設計するためには，対象とする事象やその中に存在するルール等の理解を深めた上で，体系的にデータモデルを構築する必要がある．</p>
+<p>関係データベースを設計するには，対象とする事象やその中に存在するルールに対する理解を深めた上で，体系的にデータモデルを構築する必要がある．</p>
 <p>以下の図に示すように，一般にデータモデリングは概念モデリング，論理モデリングの順で行われる．</p>
 <p><img alt="モデリング手順" src="../../_images/model-transform.png" /></p>
-<p><strong>概念モデリング</strong>は，最終的にどのようなデータベース技術が利用されるかとは関係なく，扱おうとするデータ対象がどのようなものであるか（どのような意味を持つか）を記述する過程である．
+<p><strong>概念モデリング</strong>は，最終的にどのようなデータベース技術を利用するかに関係なく，扱おうとするデータ対象がどのようなものであるか（どのような意味を持つか）を記述する手続きである．
 概念モデリングにおいては，しばしば実体関連モデルが用いられる．</p>
-<p><strong>論理モデリング</strong>の過程では，概念モデリングで設計された概念モデルをデータベース管理システムが扱えるように変換する．
-例えば，データベース管理システムが関係データベースの管理システムであれば，あらかじめ設計された概念モデルを関係データモデルに変換する．</p>
+<p><strong>論理モデリング</strong>の過程では，概念モデリングで設計された概念モデルをデータベース管理システムが扱えるよう変換する．
+例えば，データベース管理システムが関係データベース管理システムであれば，あらかじめ設計された概念モデルを関係データモデルに変換する．</p>
 <p>以降では，代表的な概念モデルである実体関連モデルを解説した後，実体関連モデルを関係データモデルに変換する方法について述べる．</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <h3 class="rubric" id="id3">データモデリングは難しい!?</h3>
 <p>本章を含め，「データベース設計」の章で学ぶ概念はそれほど多くない．
-しかしながら，実際にデータベース設計ができるようになるのは時間がかかる．
+しかしながら，実際にデータベース設計ができるようになるには時間がかかる．
 設計は知識よりも経験がものを言うからである．</p>
-<p>本章で学ぶ実体関連モデルも学習内容は多くないし，その内容も一見すると大したことがないように見える．
-しかし，自分で実体関連モデルを作ろうとすると，何をどうすればよいのか困る．
-モデルを作ってみても，それが合ってるのか不安になるだろう．</p>
+<p>本章で学ぶ実体関連モデルも学習内容は多くない．
+内容も一見すると大したことがないように見える．
+しかし，初心者がいざ実体関連モデルを作ろうとすると，何をどうすればよいのか困ることだろう．
+モデルを作ってみても，それが正しいものか不安になるだろう．</p>
 <p>データモデリングを含め，抽象的な思考はとにかく「やってみては間違えるを繰り返す」しかない．</p>
 </div>
 </section>
 <section id="id4">
 <h2><span class="section-number">8.2. </span>実体関連モデル<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p><strong>実体関連モデル(entity-relationship model; ERモデル)</strong> は，<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%83%94%E3%83%BC%E3%82%BF%E3%83%BC%E3%83%BB%E3%83%81%E3%82%A7%E3%83%B3">Peter Chen</a>により提唱された概念モデリング用のデータモデルである．
+<p><strong>実体関連モデル（entity-relationship model; ERモデル）</strong> は，<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%83%94%E3%83%BC%E3%82%BF%E3%83%BC%E3%83%BB%E3%83%81%E3%82%A7%E3%83%B3">Peter Chen</a>により提唱された概念モデリング用のデータモデルである．
 実体関連モデルでは，実世界のデータのすべてを「実体」と「関連」の2種類で分類・記述する．
 実体関連モデルを図として表現したものを<strong>実体関連図（entity-relationship diagram; ER図）</strong> と呼ぶ．</p>
-<p>実体関連モデルおよび実体関連図には様々な拡張・記法が存在するが，本講義ではPeter Chenの記法に従い説明を行う．</p>
+<p>実体関連モデルおよび実体関連図には様々な記法・拡張が存在するが，本講義ではPeter Chenの記法に従い説明を行う．</p>
 <section id="id5">
 <h3><span class="section-number">8.2.1. </span>実体<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p><strong>実体（entity）</strong> とは，データ対象をモデル化しようとしたときに，独立した存在として一意に識別可能な物体や事象である．
-例えば，ショッピングサイトで取り扱う商品や購買記録を管理することを考えよう．
+例えば，ショッピングサイトで取り扱う商品や購買記録をデータベースで管理することを考えよう．
 そこに登場する（であろう）個々の</p>
 <ul class="simple">
 <li><p>ユーザ</p></li>
@@ -476,13 +446,13 @@ document.write(`
 <li><p>（ショッピングサイトにおける）カート</p></li>
 </ul>
 <p>などは実体と見なすことができる．
-なお，商品レビューやカートは物理的に存在するものではないが，概念的には独立した存在として認識できる事象であるため実体となりえる．</p>
+なお，商品レビューやカートは物理的に存在するものではないが，概念的には独立した存在として識別可能な事象であるため実体となりえる．</p>
 <p>同じ種類の実体の集合を<strong>実体集合</strong>と呼ぶ．
 実体集合と実体は「集合とその要素（インスタンス）」の関係になる．
 例えば，実体集合「商品」の要素としては，「はーいお茶」「午前の紅茶」「健康麦茶」などが考えられる．</p>
-<p>実体集合の属性や一貫性制約を定めたものを<strong>実体型（entity type）</strong> と呼ぶ．</p>
-<p>実体型は必ず1つ以上の<strong>属性（attribute）</strong> を持つ．
-属性とは実体の性質を表すものである．
+<p>実体集合の属性や一貫性制約を定めたものを<strong>実体型（entity type）</strong> と呼ぶ．
+実体型は必ず1つ以上の<strong>属性（attribute）</strong> を持つ．
+属性とは実体を特徴づける性質を表すものである．
 例えば，実体集合「商品」の属性としては「商品ID」「商品名」「価格」「発売日」などがあげられる．</p>
 <p>関係データモデルと同様，実体集合の実体（要素）を一意に識別（特定）するための極小な属性集合を<strong>キー</strong> と呼ぶ．
 キーのうち，管理上最適と考えられるものを<strong>主キー</strong> と呼ぶ．
@@ -624,7 +594,7 @@ document.write(`
 この状況を実体関連図で表現せよ．</p>
 </section>
 <section id="q6-3-3">
-<span id="ermodel1-q7"></span><h3><span class="section-number">8.3.6. </span>Q6. 関連（3/3）<a class="headerlink" href="#q6-3-3" title="Link to this heading">#</a></h3>
+<span id="ermodel1-q6"></span><h3><span class="section-number">8.3.6. </span>Q6. 関連（3/3）<a class="headerlink" href="#q6-3-3" title="Link to this heading">#</a></h3>
 <p>Orange Musicの「ユーザ」は別の「ユーザ」を「フォロー」する．
 「フォロー」は「フォロー日」が記録される．
 この状況を実体関連図で表現せよ．</p>
