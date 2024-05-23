@@ -392,19 +392,20 @@ document.write(`
 <h1><span class="section-number">10. </span>拡張実体関連モデル &amp; n項関連<a class="headerlink" href="#n" title="Link to this heading">#</a></h1>
 <section id="isa">
 <h2><span class="section-number">10.1. </span>汎化・継承（IsA階層）<a class="headerlink" href="#isa" title="Link to this heading">#</a></h2>
-<p>実体関連モデルに対して，いつかの拡張概念が提案・導入されている．
+<p>実体関連モデルに対して，いつかの拡張概念が提案されている．
 そのうちのひとつが，<strong>汎化・継承</strong> の概念である．</p>
 <p>実世界を実体関連モデルで表現する際，実体集合間にある種の包含関係（階層関係）が想定されることがしばしばある．
 例えば，実体型「大学構成員」「学生」「教員」を考えてみよう．
-学生も教員も大学を構成するメンバーであるから，「大学構成員」と「学生」「教員」の間には包含関係があると見なせる．</p>
-<p>今，ある大学のデータ管理者は，大学構成員の情報を管理する上で，</p>
+学生も教員も大学を構成するメンバーである．
+そのため「大学構成員」と「学生」「教員」の間には包含関係があると見なせる．</p>
+<p>ある大学のデータ管理者は，大学構成員の情報を管理する上で，</p>
 <ul class="simple">
 <li><p>学生には「大学ID」「氏名」「生年月日」「性別」「所属」と「入学年」</p></li>
 <li><p>教員には「大学ID」「氏名」「生年月日」「性別」「所属」と「研究者ID」「職階」</p></li>
 </ul>
-<p>の情報を持たせたいと考えているとする．</p>
-<p>さて，実体関連モデルで実体型「学生」「教員」を定義しよう．
-あらかじめ，属性として「大学ID」「氏名」「生年月日」「性別」「所属」をもつ実体型「大学構成員」が定義されているとする．
+<p>の情報を持たせるたいと考えているとする．</p>
+<p>実体関連モデルで実体型「学生」「教員」を定義してみよう．
+あらかじめ，「大学ID」「氏名」「生年月日」「性別」「所属」を属性とする実体型「大学構成員」が定義されているとする．
 このとき，</p>
 <blockquote>
 <div><p>実体型「学生」は属性「大学ID」「氏名」「生年月日」「性別」「所属」「入学年」を持つ実体型である</p>
@@ -415,7 +416,7 @@ document.write(`
 </div></blockquote>
 <p>と定義したほうが明らかに無駄が少ない．また自然である．
 実体型「教員」の定義においても同様である．</p>
-<p>このように，ある実体型<span class="math notranslate nohighlight">\(E_1\)</span>の属性をすべて持つと考え，新たに実体型<span class="math notranslate nohighlight">\(E_2\)</span>を定義するとき，<span class="math notranslate nohighlight">\(E_2\)</span>は<span class="math notranslate nohighlight">\(E_1\)</span>を<strong>継承（inherit）</strong> したという（「<span class="math notranslate nohighlight">\(E_1\)</span>は<span class="math notranslate nohighlight">\(E_2\)</span>を<strong>汎化（generalize）</strong> した実体型である」と称することもある）．
+<p>このように，実体型<span class="math notranslate nohighlight">\(E_1\)</span>が持つすべての属性を持つと考え，新たな実体型<span class="math notranslate nohighlight">\(E_2\)</span>を定義するとき，<span class="math notranslate nohighlight">\(E_2\)</span>は<span class="math notranslate nohighlight">\(E_1\)</span>を<strong>継承（inherit）</strong> したという（「<span class="math notranslate nohighlight">\(E_1\)</span>は<span class="math notranslate nohighlight">\(E_2\)</span>を<strong>汎化（generalize）</strong> した実体型である」と称することもある）．
 継承を用いて実体型を表現したとき，その実体集合（下位の集合）は継承元（上位）の実体集合にすべて包含される．</p>
 <p>実体関連図において，継承元となる上位の実体型と継承先となる下位の実体型の間には，汎化・継承関係があることを示す「IsA」と記した三角の特別な関連記号を置く．
 以下は，先の実体型「大学構成員」「学生」「教員」を実体関連図で表現したものである（<a class="reference internal" href="#er-model3-q1">★Quiz1★</a>）．</p>
@@ -428,23 +429,23 @@ n個の実体型をつなぐ関連を<strong>n項関連（n-ary relationship）<
 2項関連と同様に，n項関連においても参加制約や多重度制約を考えることができる．</p>
 <p><img alt="すべて1対n関連の3項関連" src="../../_images/3-ary-relationship1.png" /></p>
 <p>上の図は，学生がどこの教室でどの教員の指導をうけるかを実体関連図で表現した図（左）および各実体集合，関連集合の要素を示した図（右）である．
-上図では，関連型「研究室配属」は「学生」「部屋」「教員」の3項関連となっている．
+上図では，関連型「研究室配属」は実体型「学生」「部屋」「教員」の3項関連となっている．
 また，実体関連図が示しているように，関連型「研究室配属」において，</p>
 <ul class="simple">
 <li><p>「学生」と「教員」は多対1の関連</p></li>
 <li><p>「学生」と「部屋」は多対1の関連</p></li>
 </ul>
 <p>となっている．
-つまり，学生は指導教員を必ず1名しか割り当てられず，部屋も必ず1つしか割り当てられない．</p>
+つまり，学生の指導教員は必ず1名であり，部屋割もどこかの部屋を1つしか割り当てられないことになっている．</p>
 <p><img alt="多対多関連を含む3項関連" src="../../_images/3-ary-relationship2.png" /></p>
-<p>一方，上の図は学生がどこの教室でどの教員の指導をうけるかを表した実体関連図および各実体集合，関連集合の要素を示した図ではあるが，実体関連図で表現されている内容が異なる．
+<p>一方，上の図は先ほど同様，学生がどこの教室でどの教員の指導をうけるかを表した実体関連図および各実体集合，関連集合の要素を示した図ではあるが，実体関連図で表現されている内容が微妙に異なる．
 上の実体関連図においては，</p>
 <ul class="simple">
 <li><p>「学生」と「教員」は多対多の関連</p></li>
 <li><p>「学生」と「部屋」は多対1の関連</p></li>
 </ul>
 <p>となっている．
-つまり，学生は必ず1つしか部屋が割り当てられないが，2名以上の教員を指導教員として割り当てることができる，と読み取れる．
+つまり，学生に割り当てられられる部屋は必ず1つであるが，学生1名につき2名以上の教員を指導教員として割り当てることができる，と読み取れる．
 上の右図を見ると，学生Bの割り当て部屋は8601号室であるが，指導教員として桜山先生と山畑先生の2名が割り当てられていることが分かる（<a class="reference internal" href="#er-model3-q2">★Quiz2★</a>，<a class="reference internal" href="#er-model3-q3">★Quiz3★</a>）．</p>
 </section>
 <hr class="docutils" />
@@ -466,7 +467,7 @@ n個の実体型をつなぐ関連を<strong>n項関連（n-ary relationship）<
 </ul>
 <p>上記前提に基づき，下記のクイズに答えよ．
 実体関連図の作成には<a class="reference external" href="https://app.diagrams.net/">draw.io</a>を用いるとよい．
-なお，ベースとなる実体関連図として，<a class="reference internal" href="#02.ipynb"><span class="xref myst">前章のクイズ</span></a>回答で作成したものを用いると楽である．</p>
+なお，ベースとなる実体関連図として，<a class="reference internal" href="02.html"><span class="std std-doc">第9回</span></a>のクイズ回答で作成したものを用いると楽である．</p>
 <section id="q1">
 <span id="er-model3-q1"></span><h3><span class="section-number">10.3.1. </span>Q1. 汎化・継承<a class="headerlink" href="#q1" title="Link to this heading">#</a></h3>
 <p>Orange Musicは追加サービスとして「プレミアムユーザ」サービスを開始した．
@@ -477,8 +478,8 @@ Orange Musicの「ユーザ」は追加料金を支払うことで「プレミ�
 </section>
 <section id="q2-n-1-2">
 <span id="er-model3-q2"></span><h3><span class="section-number">10.3.2. </span>Q2. n項関連（1/2）<a class="headerlink" href="#q2-n-1-2" title="Link to this heading">#</a></h3>
-<p>Orange Musicでは追加サービスとして，アーティストがコンサート等のイベントで演奏した曲目のリストを閲覧できるサービスを開始することにした．
-このサービスでは，「アーティスト」がどの「楽曲」をどの「イベント」で「演奏」したのかが閲覧できる．
+<p>Orange Musicでは追加サービスとして，アーティストがコンサート等のイベントで演奏した曲目（いわゆるセットリスト）を閲覧できるサービスを開始することにした．
+このサービスでは，「アーティスト」がどの「楽曲」をどの「イベント」で「演奏」したのかを閲覧できる．
 「イベント」は「イベント名」「場所」「日時」を情報としてもつ．
 また，「演奏」には「出演番号」が記録される．
 なお，「アーティスト」が「演奏」した「楽曲」は他者が制作した楽曲も含まれる．</p>
@@ -486,7 +487,7 @@ Orange Musicの「ユーザ」は追加料金を支払うことで「プレミ�
 </section>
 <section id="q3-n-2-2">
 <span id="er-model3-q3"></span><h3><span class="section-number">10.3.3. </span>Q3. n項関連（2/2）<a class="headerlink" href="#q3-n-2-2" title="Link to this heading">#</a></h3>
-<p>第9回目の講義で用いた<a class="reference internal" href="02.html#fig-cardinality-constraint"><span class="std std-ref">オンラインショッピングの例</span></a>に戻ろう．
+<p><a class="reference internal" href="02.html"><span class="std std-doc">第9回</span></a>の講義資料で用いた<a class="reference internal" href="02.html#fig-cardinality-constraint"><span class="std std-ref">オンラインショッピングの例</span></a>に戻ろう．
 このオンラインショッピングサイトでは，「ユーザ」がどの「商品」を「購入」したかを記録している．
 購入記録においては，購入した「商品」の「数量」や「購入日」の情報を記録している．</p>
 <p>この状況を<a class="reference internal" href="02.html#fig-cardinality-constraint"><span class="std std-ref">オンラインショッピングの例</span></a>の実体関連図に追記する形で表現せよ．</p>
