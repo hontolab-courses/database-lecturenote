@@ -48,8 +48,8 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 | 5 | 05/20 | SQL（2/3） | [Here](content/sql/02.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-05) |
 | 6 | 05/27 | SQL（3/3） | [Here](content/sql/03.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-06) |
 | 7 | 06/03 | SQL演習 - レポート課題1 | [Here](content/exercise/sql.ipynb) |  |
-| 8 | 06/10 | 実体関連モデル（1/3） | [Here](content/er-model/01.md) |  |
-| 9 | 06/17 | 実体関連モデル（2/3）| [Here](content/er-model/02.md) |  |
+| 8 | 06/10 | 実体関連モデル（1/3） | [Here](content/er-model/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-08) |
+| 9 | 06/17 | 実体関連モデル（2/3）| [Here](content/er-model/02.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-09) |
 | 10 | 06/24 | 実体関連モデル（3/3） | [Here](content/er-model/03.md) |  |
 | 11 | 07/01 | 正規形（1/2） | [Here](content/db-design/01.ipynb) |  |
 | 12 | 07/08 | 正規化（2/2） | [Here](content/db-design/02.ipynb) |  |
