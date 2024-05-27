@@ -43,7 +43,7 @@
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
@@ -400,7 +400,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">11.1. 実体関連モデルから関係スキーマの導出</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">11.1. 実体関連モデルからの関係スキーマの導出</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">11.1.1. パターン1: 実体型</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">11.1.2. パターン2: 関連型</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">11.1.2.1. 多重度が「多対多」の場合</a></li>
@@ -456,7 +456,7 @@ document.write(`
 はじめに，前章まで扱った実体関連モデルを関係データモデルに変換する方法を述べる．
 次に，望ましくない関係スキーマについて述べ，最後に理想的な関係スキーマを導出する方法を述べる．</p>
 <section id="id2">
-<h2><span class="section-number">11.1. </span>実体関連モデルから関係スキーマの導出<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.1. </span>実体関連モデルからの関係スキーマの導出<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>実体関連図を用いれば，関係データモデルの構造を示す<a class="reference internal" href="../relational-data-model/01.html#sec-relation-schema"><span class="std std-ref">関係スキーマ</span></a>を機械的に導出することができる．
 以下，実体関連図のパターンに応じた関係スキーマへの変換方法を説明する．
 以下の説明では，実体関連モデルの解説で用いた<a class="reference internal" href="../er-model/02.html#fig-cardinality-constraint"><span class="std std-ref">オンラインショッピングの例</span></a>を用いる．</p>
@@ -511,7 +511,7 @@ document.write(`
 </section>
 <section id="id6">
 <h4><span class="section-number">11.1.2.2. </span>多重度が「多対1」の場合<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
-<p><img alt="多重度が多対1の場合" src="../../_images/erd-relation2.png" /></p>
+<p><img alt="多重度が多対1の場合" src="../../_images/erd-relation2.jpg" /></p>
 <p>上の図では，実体型「商品」と「メーカー」は関連型「製造」を介して多対1の関連でつながっている．
 すなわち，実体集合「商品」の実体要素が決まれば，それに対応する実体集合「メーカー」の実体要素が必ず1つ特定される．</p>
 <p>このような多対1の関連型の場合，矢印のついていない側の実体の主キーの値が決まれば，矢印のついている側の実体が一意に特定されると同時に関連の要素も一意に特定される．
@@ -861,7 +861,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">11.1. 実体関連モデルから関係スキーマの導出</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">11.1. 実体関連モデルからの関係スキーマの導出</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">11.1.1. パターン1: 実体型</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">11.1.2. パターン2: 関連型</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">11.1.2.1. 多重度が「多対多」の場合</a></li>
