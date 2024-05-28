@@ -52,7 +52,7 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 | 9 | 06/17 | 実体関連モデル（2/3）| [Here](content/er-model/02.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-09) |
 | 10 | 06/24 | 実体関連モデル（3/3） | [Here](content/er-model/03.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-10) |
 | 11 | 07/01 | 正規形（1/2） | [Here](content/db-design/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-11) |
-| 12 | 07/08 | 正規化（2/2） | [Here](content/db-design/02.ipynb) |  |
+| 12 | 07/08 | 正規化（2/2） | [Here](content/db-design/02.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-12) |
 | 13 | 07/15 | データベース設計演習 - レポート課題2 | [Here](content/exercise/db-design.md) |  |
 | 14 | 07/22 | 索引づけ | [Here](content/indexing/01.md) |  |
 | 15 | 07/29 | NoSQL | [Here](content/nosql/01.md) |  |
