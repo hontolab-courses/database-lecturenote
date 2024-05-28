@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>13. B+木 &amp; ハッシュ索引 &#8212; データベースの講義ノート</title>
+    <title>14. B+木 &amp; ハッシュ索引 &#8212; データベースの講義ノート</title>
   
   
   
@@ -77,8 +77,8 @@
     <link rel="canonical" href="https://dbnote.hontolab.org/content/indexing/01.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="14. NoSQL" href="../nosql/01.html" />
-    <link rel="prev" title="12. データベース設計演習" href="../exercise/db-design.html" />
+    <link rel="next" title="15. NoSQL" href="../nosql/01.html" />
+    <link rel="prev" title="13. データベース設計演習" href="../exercise/db-design.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -203,16 +203,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../er-model/01.html">8. 実体関連モデルとは</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../er-model/02.html">9. 実体関連モデル上の一貫性制約</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../er-model/03.html">10. 拡張実体関連モデル &amp; n項関連</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">11. データ従属性にもとづく正規化</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercise/db-design.html">12. データベース設計演習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">11. 望ましくない関係スキーマ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">12. データ従属性にもとづく正規化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/db-design.html">13. データベース設計演習</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">索引づけ</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. B+木 &amp; ハッシュ索引</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. B+木 &amp; ハッシュ索引</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ビッグデータ時代のデータベース</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../nosql/01.html">14. NoSQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nosql/01.html">15. NoSQL</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">付録</span></p>
 <ul class="nav bd-sidenav">
@@ -368,17 +369,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">13.1. 関係データの物理的な格納方法</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">13.2. 索引</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">13.3. 二分探索</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">13.4. B+木</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">13.4.1. B+木による値の探索</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">13.4.2. 範囲探索</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">13.4.3. B+木の構築・更新</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">14.1. 関係データの物理的な格納方法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">14.2. 索引</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">14.3. 二分探索</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">14.4. B+木</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">14.4.1. B+木による値の探索</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">14.4.2. 範囲探索</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">14.4.3. B+木の構築・更新</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">13.5. ハッシュ索引</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sql">13.6. SQLによる索引の構築</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">14.5. ハッシュ索引</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sql">14.6. SQLによる索引の構築</a></li>
 </ul>
             </nav>
         </div>
@@ -391,14 +392,14 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="b">
-<h1><span class="section-number">13. </span>B+木 &amp; ハッシュ索引<a class="headerlink" href="#b" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">14. </span>B+木 &amp; ハッシュ索引<a class="headerlink" href="#b" title="Link to this heading">#</a></h1>
 <p><a class="reference internal" href="#contents/db-design/01.ipynb"><span class="xref myst">第11回</span></a>と<a class="reference internal" href="#(contents/db-design/02.ipynb)"><span class="xref myst">第12回</span></a>で説明した正規化理論によって，データの正しさを担保する関係データベースを設計することが可能となる．
 しかし，データの正しさが保証されても，問い合わせにかかる待ち時間が長いようでは，データベースとしての利便性は低い．
 利便性が高いデータベースには，データの管理のしやすさに加え，データの処理速度も求められる．</p>
 <p>データベースの応答速度（クエリ実行時間）を改善する方法としては，<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%82%AF%E3%82%A8%E3%83%AA%E6%9C%80%E9%81%A9%E5%8C%96">クエリ最適化（query optimization）</a>や索引の利用が考えられる．
 本章では索引づけに焦点を当て，データベースの応答速度を改善する手法について述べる．</p>
 <section id="id1">
-<h2><span class="section-number">13.1. </span>関係データの物理的な格納方法<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.1. </span>関係データの物理的な格納方法<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>計算機ではあらゆるデータはゼロイチの2進数で表現され，主記憶装置（メモリ）やハードディスクやSSDのような補助記憶装置のどこかに物理的に格納される．
 関係データベースにおいてもそれは同じである．
 関係データベースではすべてのデータは表形式で表現されるが，データを補助記憶装置に格納する際には，表データはタプル（レコード）をひとまとまりの単位として分割され，記憶装置のどこかに格納される．</p>
@@ -415,7 +416,7 @@ SQL文による問い合わせが行われると，関係データベースシ�
 <p><img alt="記憶装置へのデータ格納イメージ" src="../../_images/data-store.png" /></p>
 </section>
 <section id="id2">
-<h2><span class="section-number">13.2. </span>索引<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.2. </span>索引<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>データベースから条件に合致するレコードを探す方法として，該当するテーブルのレコードが格納されている場所を先頭から1つ1つ調べ上げる方法が考えられる．
 この方法では，レコードの数がN件ある場合，N回確認作業が必要となる．
 問い合わせへの応答時間は，確認回数に比例して長くなる．
@@ -445,7 +446,7 @@ SQL文による問い合わせが行われると，関係データベースシ�
 空間効率の劣化を抑えつつ時間効率を向上させるために，様々な種類の索引が提案されている．</p>
 </section>
 <section id="id3">
-<h2><span class="section-number">13.3. </span>二分探索<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.3. </span>二分探索<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>例えば，格納されたレコード数が10万の表に対して，ある属性に関する索引を構築したとしよう．
 索引のサイズ（索引キーの数）が索引付けの対処となる表の5分の1になった場合，索引の先頭から索引キーの値を調べていったとしても，合計2万回もの確認が必要となる（いわゆる線形探索）．
 索引を使えば，特定の条件を満たすレコードが探しやすくなる ——
@@ -483,7 +484,7 @@ SQL文による問い合わせが行われると，関係データベースシ�
 例えば索引のサイズ（索引キーの種類数）が100万の場合，二分探索を使えば索引キーの配列に20回程度アクセスするだけで所望の値を見つけることができる．</p>
 </section>
 <section id="id4">
-<h2><span class="section-number">13.4. </span>B+木<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.4. </span>B+木<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>二分探索はソート済み配列を探索する上で強力な方法であるが，データベースの索引キーの探索に使うには，以下のような欠点がある．</p>
 <ul class="simple">
 <li><p>データベースが超巨大になると索引のサイズも超巨大になるため，さすがの二分探索も少し遅くなる</p></li>
@@ -526,7 +527,7 @@ B+木は以下のような特徴を持つ木構造データである．</p>
 また，レコードが追加・更新・修正されても，コストを抑えて索引を更新することができる．</p>
 <p>以下では，B+木を用いたレコードの探索方法について見てみよう．</p>
 <section id="id6">
-<h3><span class="section-number">13.4.1. </span>B+木による値の探索<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">14.4.1. </span>B+木による値の探索<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>ある属性値をもつレコードの探索は，ノードに含まれる探索キーをチェックしながらB+木の根ノードから葉ノードまでたどることで行う．
 例えば，ある属性<span class="math notranslate nohighlight">\(A\)</span>の値として，</p>
 <blockquote>
@@ -558,7 +559,7 @@ B+木は以下のような特徴を持つ木構造データである．</p>
 二分探索を用いた場合の計算量は<span class="math notranslate nohighlight">\(O(log_2 N)\)</span>であるため，<span class="math notranslate nohighlight">\(m\)</span>を2より大きく取ればB+木は二分探索よりも高速に値を探索することができる．</p>
 </section>
 <section id="id7">
-<h3><span class="section-number">13.4.2. </span>範囲探索<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">14.4.2. </span>範囲探索<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>B+木を使えば，範囲探索も容易に行える．
 先ほどの例で使ったB+木を使って，属性値がある範囲にあるレコードを探索する手順を示そう．
 今，属性値が<code class="docutils literal notranslate"><span class="pre">10</span></code>以上<code class="docutils literal notranslate"><span class="pre">40</span></code>未満であるレコードをすべて取得したいとしよう．
@@ -581,7 +582,7 @@ B+木は以下のような特徴を持つ木構造データである．</p>
 これにて範囲探索完了である．</p>
 </section>
 <section id="id8">
-<h3><span class="section-number">13.4.3. </span>B+木の構築・更新<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">14.4.3. </span>B+木の構築・更新<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <p>すでに述べたように，データベースではレコードの追加や更新が度々行われる．
 そのため，データベースの更新に応じて索引の更新も必要となる．</p>
 <p>B+木は根ノードから葉ノードへのパスの長さが均一になるよう（木の高さのバランスを崩さない）よう，索引を更新するアルゴリズムが提案されている．
@@ -595,7 +596,7 @@ B+木の更新アルゴリズムの詳細については「<a class="reference e
 </section>
 </section>
 <section id="id9">
-<h2><span class="section-number">13.5. </span>ハッシュ索引<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.5. </span>ハッシュ索引<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
 <p>B+木のような木構造の索引では，根ノードから葉ノードにまでたどることで，条件にマッチする属性値をもつレコードが格納されている場所を調べる．
 探索を容易にするためにB+木ではその索引木構造に工夫をこらしているが，<span class="math notranslate nohighlight">\(O(log_m{N})\)</span>の計算時間をかけて根から葉に向かって木をたどらなければならない．</p>
 <p>仮に，ある値が指定されたときにそれを属性値としてもつレコードの格納位置を「直接」知ることができれば，B+木よりももっとカンタンに求めるレコードを取得することができる．
@@ -622,7 +623,7 @@ mod_d(x) = r  \quad \text{where} \,\, x = q \cdot d + r
 そのため，範囲探索が必要な属性に対しては，B+木のような索引を用いる必要がある．</p>
 </section>
 <section id="sql">
-<h2><span class="section-number">13.6. </span>SQLによる索引の構築<a class="headerlink" href="#sql" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.6. </span>SQLによる索引の構築<a class="headerlink" href="#sql" title="Link to this heading">#</a></h2>
 <p>大抵の関係データベース管理システムでは，以下のようなSQL文でテーブルの特定の属性に対して索引を構築することができる（「インデックスを張る」ともいう）．</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="err">インデックス名</span>
 <span class="w">	</span><span class="k">ON</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="p">(</span><span class="err">索引の対象となる属性名</span><span class="p">)</span>
@@ -684,7 +685,7 @@ mod_d(x) = r  \quad \text{where} \,\, x = q \cdot d + r
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">12. </span>データベース設計演習</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>データベース設計演習</p>
       </div>
     </a>
     <a class="right-next"
@@ -692,7 +693,7 @@ mod_d(x) = r  \quad \text{where} \,\, x = q \cdot d + r
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">14. </span>NoSQL</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>NoSQL</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -712,17 +713,17 @@ mod_d(x) = r  \quad \text{where} \,\, x = q \cdot d + r
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">13.1. 関係データの物理的な格納方法</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">13.2. 索引</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">13.3. 二分探索</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">13.4. B+木</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">13.4.1. B+木による値の探索</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">13.4.2. 範囲探索</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">13.4.3. B+木の構築・更新</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">14.1. 関係データの物理的な格納方法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">14.2. 索引</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">14.3. 二分探索</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">14.4. B+木</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">14.4.1. B+木による値の探索</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">14.4.2. 範囲探索</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">14.4.3. B+木の構築・更新</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">13.5. ハッシュ索引</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sql">13.6. SQLによる索引の構築</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">14.5. ハッシュ索引</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sql">14.6. SQLによる索引の構築</a></li>
 </ul>
   </nav></div>
 

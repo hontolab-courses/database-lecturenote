@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>12. データベース設計演習 &#8212; データベースの講義ノート</title>
+    <title>13. データベース設計演習 &#8212; データベースの講義ノート</title>
   
   
   
@@ -77,8 +77,8 @@
     <link rel="canonical" href="https://dbnote.hontolab.org/content/exercise/db-design.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="13. B+木 &amp; ハッシュ索引" href="../indexing/01.html" />
-    <link rel="prev" title="11. データ従属性にもとづく正規化" href="../db-design/02.html" />
+    <link rel="next" title="14. B+木 &amp; ハッシュ索引" href="../indexing/01.html" />
+    <link rel="prev" title="12. データ従属性にもとづく正規化" href="../db-design/02.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -203,16 +203,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../er-model/01.html">8. 実体関連モデルとは</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../er-model/02.html">9. 実体関連モデル上の一貫性制約</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../er-model/03.html">10. 拡張実体関連モデル &amp; n項関連</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">11. データ従属性にもとづく正規化</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. データベース設計演習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">11. 望ましくない関係スキーマ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">12. データ従属性にもとづく正規化</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. データベース設計演習</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">索引づけ</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../indexing/01.html">13. B+木 &amp; ハッシュ索引</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../indexing/01.html">14. B+木 &amp; ハッシュ索引</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ビッグデータ時代のデータベース</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../nosql/01.html">14. NoSQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nosql/01.html">15. NoSQL</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">付録</span></p>
 <ul class="nav bd-sidenav">
@@ -368,14 +369,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">12.1. Q1</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-1-6">12.1.1. Q1-1（配点6）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-2-6">12.1.2. Q1-2（配点6）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">13.1. Q1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-1-6">13.1.1. Q1-1（配点6）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-2-6">13.1.2. Q1-2（配点6）</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">12.2. Q2</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-1-3">12.2.1. Q2-1（配点3）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-2-5">12.2.2. Q2-2（配点5）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">13.2. Q2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-1-3">13.2.1. Q2-1（配点3）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-2-5">13.2.2. Q2-2（配点5）</a></li>
 </ul>
 </li>
 </ul>
@@ -390,7 +391,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">12. </span>データベース設計演習<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">13. </span>データベース設計演習<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>本演習では，関係データベースを適切に設計するために</p>
 <ol class="arabic simple">
 <li><p>実体関連モデリングの作成</p></li>
@@ -417,7 +418,7 @@ document.write(`
 	* 〆切り以降に提出された解答は，本人の責めに帰さない限り，いかなる理由であっても採点対象としません
 ``` -->
 <section id="q1">
-<h2><span class="section-number">12.1. </span>Q1<a class="headerlink" href="#q1" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.1. </span>Q1<a class="headerlink" href="#q1" title="Link to this heading">#</a></h2>
 <p>架空企業であるMONACA鉄道では，このたび交通系ICカードと関係データベースシステムを導入し，利用者の乗降車履歴を記録することになった．
 以下は，システム設計における想定である．</p>
 <blockquote>
@@ -434,16 +435,16 @@ document.write(`
 </div></blockquote>
 <p>上記を踏まえて，以下の設問に答えよ．</p>
 <section id="q1-1-6">
-<h3><span class="section-number">12.1.1. </span>Q1-1（配点6）<a class="headerlink" href="#q1-1-6" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.1.1. </span>Q1-1（配点6）<a class="headerlink" href="#q1-1-6" title="Link to this heading">#</a></h3>
 <p>MONACA鉄道のデータベースで管理しようとするデータおよびデータ間の関係性を把握するための実体関連図を作成せよ．</p>
 </section>
 <section id="q1-2-6">
-<h3><span class="section-number">12.1.2. </span>Q1-2（配点6）<a class="headerlink" href="#q1-2-6" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.1.2. </span>Q1-2（配点6）<a class="headerlink" href="#q1-2-6" title="Link to this heading">#</a></h3>
 <p>Q1-1で作成した実体関連図を関係スキーマに変換せよ．</p>
 </section>
 </section>
 <section id="q2">
-<h2><span class="section-number">12.2. </span>Q2<a class="headerlink" href="#q2" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.2. </span>Q2<a class="headerlink" href="#q2" title="Link to this heading">#</a></h2>
 <p>県内に複数ある図書館における蔵書貸出管理を包括的に行う関係データベースを設計したい．
 このデータベースでは，以下の11の属性をもつとする．</p>
 <ul class="simple">
@@ -470,11 +471,11 @@ document.write(`
 </ul>
 <p>上記を踏まえて，以下の設問に答えよ．</p>
 <section id="q2-1-3">
-<h3><span class="section-number">12.2.1. </span>Q2-1（配点3）<a class="headerlink" href="#q2-1-3" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.2.1. </span>Q2-1（配点3）<a class="headerlink" href="#q2-1-3" title="Link to this heading">#</a></h3>
 <p>上記関数従属性をFDダイアグラムで表現せよ．</p>
 </section>
 <section id="q2-2-5">
-<h3><span class="section-number">12.2.2. </span>Q2-2（配点5）<a class="headerlink" href="#q2-2-5" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.2.2. </span>Q2-2（配点5）<a class="headerlink" href="#q2-2-5" title="Link to this heading">#</a></h3>
 <p>関数従属性をふまえて，上記11の属性をもつ関係スキーマをいくつかの関係スキーマに情報無損失分解し，第3正規形またはボイス・コッド正規形を得よ．
 解答の際には，以下に留意すること．</p>
 <ul class="simple">
@@ -523,7 +524,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>データ従属性にもとづく正規化</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>データ従属性にもとづく正規化</p>
       </div>
     </a>
     <a class="right-next"
@@ -531,7 +532,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">13. </span>B+木 &amp; ハッシュ索引</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>B+木 &amp; ハッシュ索引</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -551,14 +552,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">12.1. Q1</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-1-6">12.1.1. Q1-1（配点6）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-2-6">12.1.2. Q1-2（配点6）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">13.1. Q1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-1-6">13.1.1. Q1-1（配点6）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-2-6">13.1.2. Q1-2（配点6）</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">12.2. Q2</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-1-3">12.2.1. Q2-1（配点3）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-2-5">12.2.2. Q2-2（配点5）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">13.2. Q2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-1-3">13.2.1. Q2-1（配点3）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-2-5">13.2.2. Q2-2（配点5）</a></li>
 </ul>
 </li>
 </ul>
