@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>15. NoSQL &#8212; データベースの講義ノート</title>
+    <title>14. NoSQL &#8212; データベースの講義ノート</title>
   
   
   
@@ -76,7 +76,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="集合と写像" href="../misc/math.html" />
-    <link rel="prev" title="14. B+木 &amp; ハッシュ索引" href="../indexing/01.html" />
+    <link rel="prev" title="13. B+木 &amp; ハッシュ索引" href="../indexing/01.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -201,17 +201,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../er-model/01.html">8. 実体関連モデルとは</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../er-model/02.html">9. 実体関連モデル上の一貫性制約</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../er-model/03.html">10. 拡張実体関連モデル &amp; n項関連</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">11. 望ましくない関係スキーマ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">12. データ従属性にもとづく正規化</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercise/db-design.html">13. データベース設計演習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">11. データ従属性にもとづく正規化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/db-design.html">12. データベース設計演習</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">索引づけ</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../indexing/01.html">14. B+木 &amp; ハッシュ索引</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../indexing/01.html">13. B+木 &amp; ハッシュ索引</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ビッグデータ時代のデータベース</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">15. NoSQL</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. NoSQL</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">付録</span></p>
 <ul class="nav bd-sidenav">
@@ -367,12 +366,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">15.1. ビッグデータを扱うためにデータベースに求められること</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">15.2. 様々なNoSQL</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">15.2.1. キー・ストア型データベース</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">15.2.2. 列指向データベース</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">15.2.3. ドキュメント指向データベース</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">15.2.4. グラフデータベース</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">14.1. ビッグデータを扱うためにデータベースに求められること</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">14.2. 様々なNoSQL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">14.2.1. キー・ストア型データベース</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">14.2.2. 列指向データベース</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">14.2.3. ドキュメント指向データベース</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">14.2.4. グラフデータベース</a></li>
 </ul>
 </li>
 </ul>
@@ -387,7 +386,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="nosql">
-<h1><span class="section-number">15. </span>NoSQL<a class="headerlink" href="#nosql" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">14. </span>NoSQL<a class="headerlink" href="#nosql" title="Link to this heading">#</a></h1>
 <p>これまで計14回に渡って学んできた関係データベースは，データの重複や矛盾を排除し，データ間の整合性を保つことを重視したデータベース技術である．
 関係データベースはその特性から，</p>
 <ul class="simple">
@@ -403,7 +402,7 @@ document.write(`
 なお，NoSQLは関係データベースを補完する技術であり，NoSQL（あるいは関係データベース）のほうが優れているというわけではない．
 ケースに応じて関係データベースとNoSQLを使い分けることが重要である．</p>
 <section id="id2">
-<h2><span class="section-number">15.1. </span>ビッグデータを扱うためにデータベースに求められること<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.1. </span>ビッグデータを扱うためにデータベースに求められること<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>一般に，ビッグデータは以下のような3つの性質を満たすデータの集合を指す：</p>
 <ul class="simple">
 <li><p>High volume: 扱うデータの「量」が多い</p></li>
@@ -420,7 +419,7 @@ NoSQLはデータの正しさ（特に，データが常に最新であること
 また，データ構造をガチガチに固定する関係データベースとは対照的に，NoSQLは複雑かつ多様なデータを柔軟に扱うための工夫を有している．</p>
 </section>
 <section id="id3">
-<h2><span class="section-number">15.2. </span>様々なNoSQL<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.2. </span>様々なNoSQL<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>NoSQLは単一のデータベース技術ではない．
 関係データベースの欠点を補うために，様々なタイプのNoSQLデータベースが開発されている．
 最も一般的なNoSQLデータベースは，以下の4つである．</p>
@@ -433,7 +432,7 @@ NoSQLはデータの正しさ（特に，データが常に最新であること
 <p>重要なのは，それぞれのNoSQLデータベースの特徴を押さえて，ケースに応じてNoSQLデータベースと関係データベースを使い分けることである．</p>
 <p><img alt="様々なNoSQL" src="../../_images/nosql.png" /></p>
 <section id="id4">
-<h3><span class="section-number">15.2.1. </span>キー・ストア型データベース<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">14.2.1. </span>キー・ストア型データベース<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p><strong>キー・バリュー型データベース（key-value store database; KVS database）</strong> は，以下の図のように重複のない（一意の）キーとデータの値（バリュー）のペアを格納する，非常にシンプルな構造のデータベースである．
 キー・バリュー型データベースはキーとバリューという2つの属性からなる関係データを扱っているように見えるが，関係データベースのようにデータに厳密な約条件を設けない．
 また，問い合わせも<strong>キーの値を直接しそれに対応するバリューの値を受け取る</strong> ことに特化している．</p>
@@ -443,7 +442,7 @@ NoSQLはデータの正しさ（特に，データが常に最新であること
 代表的なキー・バリュー型データベースとしては，<a class="reference external" href="https://redis.io">Redis</a>や<a class="reference external" href="https://aws.amazon.com/jp/dynamodb/">Amazon DynamoDB</a>などがある．</p>
 </section>
 <section id="id5">
-<h3><span class="section-number">15.2.2. </span>列指向データベース<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">14.2.2. </span>列指向データベース<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p><strong>列指向データベース（column-orieted database）</strong> は，キー・バリュー型データベースを拡張したようなNoSQLデータベースである．
 列指向データベースは<strong>ワイドカラムデータベース（wide-column database）</strong> あるいは<strong>カラムファミリーデータベース（column-family database）</strong> と呼ばれることもある．
 以下の図のように，列指向データベースではデータをキーとバリューからなるペアとして管理する．
@@ -472,7 +471,7 @@ NoSQLはデータの正しさ（特に，データが常に最新であること
 </div>
 </section>
 <section id="id8">
-<h3><span class="section-number">15.2.3. </span>ドキュメント指向データベース<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">14.2.3. </span>ドキュメント指向データベース<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <p>関係データベースでは，テーブルのスキーマは設計時に確定させ，それを使い続けることが前提となっている．
 ところが，実際にサービスを運用し始めると，スキーマを修正したくなることがある．
 また，データに応じて柔軟に補助的な属性を追加したいといったケースもしばしばある．
@@ -487,7 +486,7 @@ XMLドキュメントもJSONドキュメントもデータを木構造で表現�
 代表的なドキュメント指向データベースとしては，<a class="reference external" href="https://www.mongodb.com/ja-jp">MongoDB</a>などがある．</p>
 </section>
 <section id="id9">
-<h3><span class="section-number">15.2.4. </span>グラフデータベース<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">14.2.4. </span>グラフデータベース<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p>以下の図のように，<strong>グラフデータベース（graph database）</strong> は様々なデータをノードとエッジの2種類の要素を使って管理する．
 ノードはエンティティ（実体）を表し，エッジはエンティティ間の関係を表す．
 ノードもエッジもそれに関する情報を内部に持つことができる．
@@ -547,7 +546,7 @@ XMLドキュメントもJSONドキュメントもデータを木構造で表現�
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">14. </span>B+木 &amp; ハッシュ索引</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>B+木 &amp; ハッシュ索引</p>
       </div>
     </a>
     <a class="right-next"
@@ -575,12 +574,12 @@ XMLドキュメントもJSONドキュメントもデータを木構造で表現�
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">15.1. ビッグデータを扱うためにデータベースに求められること</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">15.2. 様々なNoSQL</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">15.2.1. キー・ストア型データベース</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">15.2.2. 列指向データベース</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">15.2.3. ドキュメント指向データベース</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">15.2.4. グラフデータベース</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">14.1. ビッグデータを扱うためにデータベースに求められること</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">14.2. 様々なNoSQL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">14.2.1. キー・ストア型データベース</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">14.2.2. 列指向データベース</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">14.2.3. ドキュメント指向データベース</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">14.2.4. グラフデータベース</a></li>
 </ul>
 </li>
 </ul>
