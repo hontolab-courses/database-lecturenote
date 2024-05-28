@@ -32,7 +32,7 @@ parts:
     - file: content/er-model/01.md
     - file: content/er-model/02.md
     - file: content/er-model/03.md
-    - file: content/db-design/01.ipynb
+    - file: content/db-design/01.md
     - file: content/db-design/02.ipynb
     - file: content/exercise/db-design.md
 - caption: 索引づけ
