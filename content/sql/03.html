@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>5. 副問い合わせ &amp; テーブルの定義と更新 &#8212; データベースの講義ノート</title>
+    <title>6. 副問い合わせ &amp; テーブルの定義と更新 &#8212; データベースの講義ノート</title>
   
   
   
@@ -75,8 +75,8 @@
     <link rel="canonical" href="https://dbnote.hontolab.org/content/sql/03.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6. SQL演習" href="../exercise/sql.html" />
-    <link rel="prev" title="4. 結合質問（集合演算を含む）" href="02.html" />
+    <link rel="next" title="7. SQL演習" href="../exercise/sql.html" />
+    <link rel="prev" title="5. 結合質問（集合演算を含む）" href="02.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -185,29 +185,33 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../concept-of-database/01.html">2. データベースの概念</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">データモデル</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../relational-data-model/01.html">3. 関係データモデル</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">SQL</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01.html">3. 単純質問</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02.html">4. 結合質問（集合演算を含む）</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. 副問い合わせ &amp; テーブルの定義と更新</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercise/sql.html">6. SQL演習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01.html">4. 単純質問</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02.html">5. 結合質問（集合演算を含む）</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. 副問い合わせ &amp; テーブルの定義と更新</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/sql.html">7. SQL演習</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">データベース設計</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../er-model/01.html">7. 実体関連モデルとは</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../er-model/02.html">8. 実体関連モデル上の一貫性制約</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../er-model/03.html">9. 拡張実体関連モデル &amp; n項関連</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">10. 望ましくない関係スキーマ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">11. データ従属性にもとづく正規化</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercise/db-design.html">12. データベース設計演習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../er-model/01.html">8. 実体関連モデルとは</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../er-model/02.html">9. 実体関連モデル上の一貫性制約</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../er-model/03.html">10. 拡張実体関連モデル &amp; n項関連</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">11. 望ましくない関係スキーマ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">12. データ従属性にもとづく正規化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/db-design.html">13. データベース設計演習</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">索引づけ</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../indexing/01.html">13. B+木 &amp; ハッシュ索引</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../indexing/01.html">14. B+木 &amp; ハッシュ索引</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ビッグデータ時代のデータベース</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../nosql/01.html">14. NoSQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nosql/01.html">15. NoSQL</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">付録</span></p>
 <ul class="nav bd-sidenav">
@@ -394,17 +398,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.1. 副問い合わせ</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.2. テーブルの定義と更新</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">5.2.1. テーブルの定義</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.2.2. レコードの追加</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.2.3. レコードの削除</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">5.2.4. レコードの更新</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.1. 副問い合わせ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.2. テーブルの定義と更新</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.2.1. テーブルの定義</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.2.2. レコードの追加</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.2.3. レコードの削除</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">6.2.4. レコードの更新</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">5.3. クイズ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-1-2">5.3.1. Q1. 副問い合わせ（1/2）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-2-2">5.3.2. Q2. 副問い合わせ（2/2）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">6.3. クイズ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-1-2">6.3.1. Q1. 副問い合わせ（1/2）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-2-2">6.3.2. Q2. 副問い合わせ（2/2）</a></li>
 </ul>
 </li>
 </ul>
@@ -419,7 +423,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">5. </span>副問い合わせ &amp; テーブルの定義と更新<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">6. </span>副問い合わせ &amp; テーブルの定義と更新<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <div class="cell tag_remove-output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -460,7 +464,7 @@ document.write(`
 <code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルには，47ある各都道府県に関する総人口，小学校児童数，中学校生徒数，高等学校生徒数，大学学生数のデータが2021年度，2020年度分入っている．
 このテーブルが格納された関係データベースが手元にあると想定して，SQLの使い方を説明する．</p>
 <section id="id2">
-<h2><span class="section-number">5.1. </span>副問い合わせ<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.1. </span>副問い合わせ<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>関係データベースへの問い合わせが複雑になってくると，SQLによる問い合わせ結果を使ってさらにSQL文を書きたいケースも発生する．
 このようなケースで役に立つのが<strong>副問い合わせ（サブクエリ; subqueryと呼ぶことも）</strong> である．
 副問い合わせを用いると，<code class="docutils literal notranslate"><span class="pre">FROM</span></code>句や<code class="docutils literal notranslate"><span class="pre">WHERE</span></code>句の中で<code class="docutils literal notranslate"><span class="pre">SELECT</span></code>文を書くことができ，SQL文の中で別のSQL文の実行結果を参照することができる．</p>
@@ -1077,10 +1081,10 @@ document.write(`
 </div>
 </section>
 <section id="id3">
-<h2><span class="section-number">5.2. </span>テーブルの定義と更新<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.2. </span>テーブルの定義と更新<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>SQLの締めくくりとして，関係データベースにおけるテーブルの定義と更新操作（挿入．削除．更新）について説明する．</p>
 <section id="id4">
-<h3><span class="section-number">5.2.1. </span>テーブルの定義<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.2.1. </span>テーブルの定義<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>SQLでテーブルの定義を行うには<code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span></code>文を用いる．
 テーブル定義では</p>
 <ul class="simple">
@@ -1091,7 +1095,7 @@ document.write(`
 <li><p>（必要なら）外部キー</p></li>
 </ul>
 <p>を指定する．</p>
-<p>データ型は<span class="xref myst">関係データモデル</span>の章で説明した<strong>定義域（domain）</strong> に対応するものである．
+<p>データ型は<a class="reference internal" href="../relational-data-model/01.html"><span class="std std-doc">関係データモデル</span></a>の章で説明した<strong>定義域（domain）</strong> に対応するものである．
 関係データベースで扱える代表的なデータ型は以下の通りである．</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">VARCHAR(n)</span></code>: n文字まで扱える可変長の文字列型．通常文字列を扱うときはこれを指定する．</p></li>
@@ -1119,7 +1123,7 @@ document.write(`
 使用する関係データベース管理システムによって微妙に設定方法が異なるので，RDBMSに対応したドキュメントを適宜参照すること．</p>
 </section>
 <section id="id5">
-<h3><span class="section-number">5.2.2. </span>レコードの追加<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.2.2. </span>レコードの追加<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>レコードの追加には<code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span></code>文を用いる．
 以下は，<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルに2つのレコードを追加するSQL文の例である．</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span>
@@ -1142,7 +1146,7 @@ document.write(`
 </div>
 </section>
 <section id="id6">
-<h3><span class="section-number">5.2.3. </span>レコードの削除<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.2.3. </span>レコードの削除<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>レコードの削除には<code class="docutils literal notranslate"><span class="pre">DELETE</span></code>文を用いる．
 以下は，<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルから調査年度が2022もしくは2023のレコードを削除するSQL文の例である．</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span>
@@ -1153,7 +1157,7 @@ document.write(`
 </div>
 </section>
 <section id="id7">
-<h3><span class="section-number">5.2.4. </span>レコードの更新<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.2.4. </span>レコードの更新<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>レコードの更新には<code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>文を用いる．
 以下は，<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルから調査年度が2022のレコードについて，総人口の値更新前の総人口から100増やしたものに更新するSQL文である．</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span><span class="w"> </span>
@@ -1168,7 +1172,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="id8">
-<h2><span class="section-number">5.3. </span>クイズ<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.3. </span>クイズ<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
 <p>本クイズでは，独立行政法人統計センターが公開している教育用標準データセット（SSDSE）の<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-E">基本素材SSDSE-E</a>（データの解説は<a class="reference external" href="https://www.nstac.go.jp/sys/files/kaisetsu-E-2023.pdf">こちら</a>）および<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-A">市区町村（SSDSE-A）</a>から抜粋・加工したデータを用いる．
 なお，</p>
 <ul class="simple">
@@ -1196,7 +1200,7 @@ document.write(`
 </div>
 </div>
 <section id="q1-1-2">
-<span id="sql3-q1"></span><h3><span class="section-number">5.3.1. </span>Q1. 副問い合わせ（1/2）<a class="headerlink" href="#q1-1-2" title="Link to this heading">#</a></h3>
+<span id="sql3-q1"></span><h3><span class="section-number">6.3.1. </span>Q1. 副問い合わせ（1/2）<a class="headerlink" href="#q1-1-2" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルにおいて調査年度が<code class="docutils literal notranslate"><span class="pre">2021</span></code>時点の小学校児童数上位20件のレコードを求め，それらと<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルの内容を結合した内容を表示するSQL文を書け．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1207,7 +1211,7 @@ document.write(`
 </div>
 </section>
 <section id="q2-2-2">
-<span id="sql3-q2"></span><h3><span class="section-number">5.3.2. </span>Q2. 副問い合わせ（2/2）<a class="headerlink" href="#q2-2-2" title="Link to this heading">#</a></h3>
+<span id="sql3-q2"></span><h3><span class="section-number">6.3.2. </span>Q2. 副問い合わせ（2/2）<a class="headerlink" href="#q2-2-2" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルにおいて「ボランティア」の値が上位10件以内に入る都道府県を求めるSQL文を考えよ．
 その上で，<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルを用いて，「ボランティア」の値が上位10件以内に入る各都道府県の調査期間（2020および2021）における平均総人口を求めるSQL文を書け．</p>
 <div class="cell docutils container">
@@ -1257,7 +1261,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>結合質問（集合演算を含む）</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>結合質問（集合演算を含む）</p>
       </div>
     </a>
     <a class="right-next"
@@ -1265,7 +1269,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>SQL演習</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>SQL演習</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1285,17 +1289,17 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.1. 副問い合わせ</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.2. テーブルの定義と更新</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">5.2.1. テーブルの定義</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.2.2. レコードの追加</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.2.3. レコードの削除</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">5.2.4. レコードの更新</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.1. 副問い合わせ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.2. テーブルの定義と更新</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.2.1. テーブルの定義</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.2.2. レコードの追加</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.2.3. レコードの削除</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">6.2.4. レコードの更新</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">5.3. クイズ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-1-2">5.3.1. Q1. 副問い合わせ（1/2）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-2-2">5.3.2. Q2. 副問い合わせ（2/2）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">6.3. クイズ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-1-2">6.3.1. Q1. 副問い合わせ（1/2）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-2-2">6.3.2. Q2. 副問い合わせ（2/2）</a></li>
 </ul>
 </li>
 </ul>

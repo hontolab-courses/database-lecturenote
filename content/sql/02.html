@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>4. 結合質問（集合演算を含む） &#8212; データベースの講義ノート</title>
+    <title>5. 結合質問（集合演算を含む） &#8212; データベースの講義ノート</title>
   
   
   
@@ -77,8 +77,8 @@
     <link rel="canonical" href="https://dbnote.hontolab.org/content/sql/02.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="5. 副問い合わせ &amp; テーブルの定義と更新" href="03.html" />
-    <link rel="prev" title="3. 単純質問" href="01.html" />
+    <link rel="next" title="6. 副問い合わせ &amp; テーブルの定義と更新" href="03.html" />
+    <link rel="prev" title="4. 単純質問" href="01.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -187,29 +187,33 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../concept-of-database/01.html">2. データベースの概念</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">データモデル</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../relational-data-model/01.html">3. 関係データモデル</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">SQL</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01.html">3. 単純質問</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. 結合質問（集合演算を含む）</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03.html">5. 副問い合わせ &amp; テーブルの定義と更新</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercise/sql.html">6. SQL演習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01.html">4. 単純質問</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. 結合質問（集合演算を含む）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03.html">6. 副問い合わせ &amp; テーブルの定義と更新</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/sql.html">7. SQL演習</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">データベース設計</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../er-model/01.html">7. 実体関連モデルとは</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../er-model/02.html">8. 実体関連モデル上の一貫性制約</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../er-model/03.html">9. 拡張実体関連モデル &amp; n項関連</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">10. 望ましくない関係スキーマ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">11. データ従属性にもとづく正規化</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercise/db-design.html">12. データベース設計演習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../er-model/01.html">8. 実体関連モデルとは</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../er-model/02.html">9. 実体関連モデル上の一貫性制約</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../er-model/03.html">10. 拡張実体関連モデル &amp; n項関連</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">11. 望ましくない関係スキーマ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">12. データ従属性にもとづく正規化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/db-design.html">13. データベース設計演習</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">索引づけ</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../indexing/01.html">13. B+木 &amp; ハッシュ索引</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../indexing/01.html">14. B+木 &amp; ハッシュ索引</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ビッグデータ時代のデータベース</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../nosql/01.html">14. NoSQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nosql/01.html">15. NoSQL</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">付録</span></p>
 <ul class="nav bd-sidenav">
@@ -396,26 +400,26 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1. 集合演算</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#union">4.1.1. 和集合演算（UNION）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intersect">4.1.2. 積集合演算（INTERSECT）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#except">4.1.3. 差集合演算（EXCEPT）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.1. 集合演算</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#union">5.1.1. 和集合演算（UNION）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intersect">5.1.2. 積集合演算（INTERSECT）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#except">5.1.3. 差集合演算（EXCEPT）</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#join">4.2. 結合（JOIN）</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-join">4.2.1. 直積（CROSS JOIN）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-join">4.2.2. 内部結合（INNER JOIN）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outer-join">4.2.3. 外部結合（OUTER JOIN）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#join">5.2. 結合（JOIN）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-join">5.2.1. 直積（CROSS JOIN）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-join">5.2.2. 内部結合（INNER JOIN）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outer-join">5.2.3. 外部結合（OUTER JOIN）</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.3. クイズ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">4.3.1. Q1. 復習</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">4.3.2. Q2. 集合演算</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3">4.3.3. Q3. 直積</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4">4.3.4. Q4. 内部結合</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5">4.3.5. Q5. 直積再び</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-1-2">4.3.6. Q6. 外部結合（1/2）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-2-2">4.3.7. Q7. 外部結合（2/2）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.3. クイズ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">5.3.1. Q1. 復習</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">5.3.2. Q2. 集合演算</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3">5.3.3. Q3. 直積</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4">5.3.4. Q4. 内部結合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5">5.3.5. Q5. 直積再び</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-1-2">5.3.6. Q6. 外部結合（1/2）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-2-2">5.3.7. Q7. 外部結合（2/2）</a></li>
 </ul>
 </li>
 </ul>
@@ -430,7 +434,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">4. </span>結合質問（集合演算を含む）<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">5. </span>結合質問（集合演算を含む）<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <div class="cell tag_remove-output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1048,7 +1052,7 @@ document.write(`
 </div>
 <p>以下，これら3つのテーブルが格納された関係データベースが手元にあると想定して，結合質問について説明する．</p>
 <section id="id2">
-<h2><span class="section-number">4.1. </span>集合演算<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.1. </span>集合演算<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>高校数学で学習した「集合と論理」を覚えておられるだろうか（忘れた人は<a class="reference internal" href="../misc/math.html"><span class="std std-doc">コチラ</span></a>を確認）．
 そのときに</p>
 <blockquote>
@@ -1073,7 +1077,7 @@ document.write(`
 この条件を満たしていないレコード集合の集合演算を行おうとすると，SQL文を実行してもエラーが出力される．</p>
 </div>
 <section id="union">
-<h3><span class="section-number">4.1.1. </span>和集合演算（UNION）<a class="headerlink" href="#union" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.1.1. </span>和集合演算（UNION）<a class="headerlink" href="#union" title="Link to this heading">#</a></h3>
 <p><strong>和集合演算</strong>は，2つのレコード集合のいずれかに含まれるレコードの集合（和集合または合併，union）を求めるものである．
 高校数学で例えると，</p>
 <blockquote>
@@ -1216,7 +1220,7 @@ document.write(`
 </div>
 </section>
 <section id="intersect">
-<h3><span class="section-number">4.1.2. </span>積集合演算（INTERSECT）<a class="headerlink" href="#intersect" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.1.2. </span>積集合演算（INTERSECT）<a class="headerlink" href="#intersect" title="Link to this heading">#</a></h3>
 <p><strong>積集合演算</strong>は，2つのレコード集合に共通して含まれるレコードの集合（積集合または共通集合，intersection）を求めるものである．
 高校数学で例えると，</p>
 <blockquote>
@@ -1291,7 +1295,7 @@ document.write(`
 </div>
 </section>
 <section id="except">
-<h3><span class="section-number">4.1.3. </span>差集合演算（EXCEPT）<a class="headerlink" href="#except" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.1.3. </span>差集合演算（EXCEPT）<a class="headerlink" href="#except" title="Link to this heading">#</a></h3>
 <p><strong>差集合演算</strong>は，あるレコード集合から別のレコード集合に含まれるレコードを除いたレコードの集合（差集合あるいは補集合，set difference）を求めるものである．
 高校数学の範囲で例えると，</p>
 <blockquote>
@@ -1356,13 +1360,13 @@ document.write(`
 </section>
 </section>
 <section id="join">
-<h2><span class="section-number">4.2. </span>結合（JOIN）<a class="headerlink" href="#join" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.2. </span>結合（JOIN）<a class="headerlink" href="#join" title="Link to this heading">#</a></h2>
 <p><strong>結合（JOIN）</strong> とは，2つのテーブルからデータを特定の条件でデータを組み合わせて新たなレコード集合を得る操作である．
 前節で扱った<code class="docutils literal notranslate"><span class="pre">UNION</span></code>，<code class="docutils literal notranslate"><span class="pre">INTERSECT</span></code>，<code class="docutils literal notranslate"><span class="pre">EXCEPT</span></code>といった集合演算がテーブルを縦方向（行方向）に操作するのに対して，結合操作はテーブルを<strong>横方向（列方向）</strong> に操作する．
 データをあえて複数のテーブルに分けて管理する思想をもつ関係データベースにおいては，<strong>結合操作を使いこなすことが多様かつ膨大なデータの管理・検索・分析を行う上で鍵</strong>となる．</p>
 <p>以下，直積，内部結合，外部結合の3つの結合について説明する．</p>
 <section id="cross-join">
-<h3><span class="section-number">4.2.1. </span>直積（CROSS JOIN）<a class="headerlink" href="#cross-join" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.2.1. </span>直積（CROSS JOIN）<a class="headerlink" href="#cross-join" title="Link to this heading">#</a></h3>
 <p>集合論において，集合AとBの<strong>直積（デカルト積とも呼ぶ）</strong> とは，集合Aと集合Bのそれぞれの要素のすべての組み合わせ（の集合）を意味する．
 例えば，集合<span class="math notranslate nohighlight">\(A=\{1, 2, 3\}\)</span>，集合<span class="math notranslate nohighlight">\(B=\{a, b\}\)</span>のとき，集合Aと集合Bの直積である<span class="math notranslate nohighlight">\(A \times B\)</span>は</p>
 <blockquote>
@@ -1699,7 +1703,7 @@ document.write(`
 </div>
 </section>
 <section id="inner-join">
-<h3><span class="section-number">4.2.2. </span>内部結合（INNER JOIN）<a class="headerlink" href="#inner-join" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.2.2. </span>内部結合（INNER JOIN）<a class="headerlink" href="#inner-join" title="Link to this heading">#</a></h3>
 <p><strong>内部結合（inner join）</strong> は，2つのテーブルにおいて指定した列の値が条件を満たすレコードのみを結合して抽出する操作である．
 通常，結合あるいはジョインという時は内部結合を指す．
 テーブルAにテーブルBを内部結合するためのSQL文は</p>
@@ -1902,7 +1906,7 @@ document.write(`
 </div>
 </section>
 <section id="outer-join">
-<h3><span class="section-number">4.2.3. </span>外部結合（OUTER JOIN）<a class="headerlink" href="#outer-join" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.2.3. </span>外部結合（OUTER JOIN）<a class="headerlink" href="#outer-join" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="#"><span class="xref myst">内部結合</span></a>は，片方のテーブル<span class="math notranslate nohighlight">\(R_1\)</span>にあるレコード<span class="math notranslate nohighlight">\(r\)</span>に対して，もう片方のテーブル<span class="math notranslate nohighlight">\(R_2\)</span>のレコードに結合条件を満たす列データがあるときに限ってレコード同士を結合し，その結果を表示するものであった．
 このことは，結合条件を満たすレコードがもう片方のテーブル<span class="math notranslate nohighlight">\(R_2\)</span>にない場合は<span class="math notranslate nohighlight">\(r\)</span>は<strong>無視される</strong>ことを意味する．</p>
 <p>実は例題に用いた<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルには「京都府」に関するレコードがない（授業用にデータを用意するときに含めないようにしていた）．
@@ -2025,7 +2029,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="id5">
-<h2><span class="section-number">4.3. </span>クイズ<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.3. </span>クイズ<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <p>本クイズでは，独立行政法人統計センターが公開している教育用標準データセット（SSDSE）の<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-E">基本素材SSDSE-E</a>（データの解説は<a class="reference external" href="https://www.nstac.go.jp/sys/files/kaisetsu-E-2023.pdf">こちら</a>）および<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-A">市区町村（SSDSE-A）</a>から抜粋・加工したデータを用いる．</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルの内容については前章</p></li>
@@ -2053,7 +2057,7 @@ document.write(`
 </div>
 </div>
 <section id="q1">
-<span id="sql2-q1"></span><h3><span class="section-number">4.3.1. </span>Q1. 復習<a class="headerlink" href="#q1" title="Link to this heading">#</a></h3>
+<span id="sql2-q1"></span><h3><span class="section-number">5.3.1. </span>Q1. 復習<a class="headerlink" href="#q1" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="01.html"><span class="std std-doc">前章</span></a>で用いた<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルにあるレコードのうち，大学学生数が<code class="docutils literal notranslate"><span class="pre">7万</span></code>以上かつ小学校児童数が<code class="docutils literal notranslate"><span class="pre">30万</span></code>以上の都道府県名を表示するSQL文を書け．
 なお，表示の際には都道府県名の重複は除くこと．</p>
 <div class="cell docutils container">
@@ -2065,7 +2069,7 @@ document.write(`
 </div>
 </section>
 <section id="q2">
-<span id="sql2-q2"></span><h3><span class="section-number">4.3.2. </span>Q2. 集合演算<a class="headerlink" href="#q2" title="Link to this heading">#</a></h3>
+<span id="sql2-q2"></span><h3><span class="section-number">5.3.2. </span>Q2. 集合演算<a class="headerlink" href="#q2" title="Link to this heading">#</a></h3>
 <p>上記Q1と同様の内容を表示するSQL文を<code class="docutils literal notranslate"><span class="pre">INTERSECT</span></code>句を用いて書け．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2076,7 +2080,7 @@ document.write(`
 </div>
 </section>
 <section id="q3">
-<span id="sql2-q3"></span><h3><span class="section-number">4.3.3. </span>Q3. 直積<a class="headerlink" href="#q3" title="Link to this heading">#</a></h3>
+<span id="sql2-q3"></span><h3><span class="section-number">5.3.3. </span>Q3. 直積<a class="headerlink" href="#q3" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルと<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルの直積を求めるSQL文を書け．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2087,7 +2091,7 @@ document.write(`
 </div>
 </section>
 <section id="q4">
-<span id="sql2-q4"></span><h3><span class="section-number">4.3.4. </span>Q4. 内部結合<a class="headerlink" href="#q4" title="Link to this heading">#</a></h3>
+<span id="sql2-q4"></span><h3><span class="section-number">5.3.4. </span>Q4. 内部結合<a class="headerlink" href="#q4" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルと<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルをカラム「地域コード」が等しいという条件で内部結合を行うSQL文を書け．
 ただし，結果表示時には重複するフィールド（すなわち「地域コード」「都道府県名」）は除くこと．</p>
 <div class="cell docutils container">
@@ -2099,7 +2103,7 @@ document.write(`
 </div>
 </section>
 <section id="q5">
-<span id="sql2-q5"></span><h3><span class="section-number">4.3.5. </span>Q5. 直積再び<a class="headerlink" href="#q5" title="Link to this heading">#</a></h3>
+<span id="sql2-q5"></span><h3><span class="section-number">5.3.5. </span>Q5. 直積再び<a class="headerlink" href="#q5" title="Link to this heading">#</a></h3>
 <p>上記Q4と同様の内容を表示するSQL文を<code class="docutils literal notranslate"><span class="pre">JOIN</span></code>を用いずに書け．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2110,7 +2114,7 @@ document.write(`
 </div>
 </section>
 <section id="q6-1-2">
-<span id="sql2-q6"></span><h3><span class="section-number">4.3.6. </span>Q6. 外部結合（1/2）<a class="headerlink" href="#q6-1-2" title="Link to this heading">#</a></h3>
+<span id="sql2-q6"></span><h3><span class="section-number">5.3.6. </span>Q6. 外部結合（1/2）<a class="headerlink" href="#q6-1-2" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">university_student_population_top10</span></code>テーブルに対して「地域コード」が等しいという条件で<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルを左外部結合せよ．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2121,7 +2125,7 @@ document.write(`
 </div>
 </section>
 <section id="q7-2-2">
-<span id="sql2-q7"></span><h3><span class="section-number">4.3.7. </span>Q7. 外部結合（2/2）<a class="headerlink" href="#q7-2-2" title="Link to this heading">#</a></h3>
+<span id="sql2-q7"></span><h3><span class="section-number">5.3.7. </span>Q7. 外部結合（2/2）<a class="headerlink" href="#q7-2-2" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">university_student_population_top10</span></code>テーブルに対して「地域コード」が等しいという条件で<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルを右外部結合せよ．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2170,7 +2174,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>単純質問</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>単純質問</p>
       </div>
     </a>
     <a class="right-next"
@@ -2178,7 +2182,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>副問い合わせ &amp; テーブルの定義と更新</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>副問い合わせ &amp; テーブルの定義と更新</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2198,26 +2202,26 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1. 集合演算</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#union">4.1.1. 和集合演算（UNION）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intersect">4.1.2. 積集合演算（INTERSECT）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#except">4.1.3. 差集合演算（EXCEPT）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.1. 集合演算</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#union">5.1.1. 和集合演算（UNION）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intersect">5.1.2. 積集合演算（INTERSECT）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#except">5.1.3. 差集合演算（EXCEPT）</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#join">4.2. 結合（JOIN）</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-join">4.2.1. 直積（CROSS JOIN）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-join">4.2.2. 内部結合（INNER JOIN）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outer-join">4.2.3. 外部結合（OUTER JOIN）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#join">5.2. 結合（JOIN）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-join">5.2.1. 直積（CROSS JOIN）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-join">5.2.2. 内部結合（INNER JOIN）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outer-join">5.2.3. 外部結合（OUTER JOIN）</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.3. クイズ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">4.3.1. Q1. 復習</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">4.3.2. Q2. 集合演算</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3">4.3.3. Q3. 直積</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4">4.3.4. Q4. 内部結合</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5">4.3.5. Q5. 直積再び</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-1-2">4.3.6. Q6. 外部結合（1/2）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-2-2">4.3.7. Q7. 外部結合（2/2）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.3. クイズ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">5.3.1. Q1. 復習</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">5.3.2. Q2. 集合演算</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3">5.3.3. Q3. 直積</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4">5.3.4. Q4. 内部結合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5">5.3.5. Q5. 直積再び</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-1-2">5.3.6. Q6. 外部結合（1/2）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-2-2">5.3.7. Q7. 外部結合（2/2）</a></li>
 </ul>
 </li>
 </ul>

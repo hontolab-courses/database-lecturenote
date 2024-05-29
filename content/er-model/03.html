@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>9. 拡張実体関連モデル &amp; n項関連 &#8212; データベースの講義ノート</title>
+    <title>10. 拡張実体関連モデル &amp; n項関連 &#8212; データベースの講義ノート</title>
   
   
   
@@ -77,8 +77,8 @@
     <link rel="canonical" href="https://dbnote.hontolab.org/content/er-model/03.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="10. 望ましくない関係スキーマ" href="../db-design/01.html" />
-    <link rel="prev" title="8. 実体関連モデル上の一貫性制約" href="02.html" />
+    <link rel="next" title="11. 望ましくない関係スキーマ" href="../db-design/01.html" />
+    <link rel="prev" title="9. 実体関連モデル上の一貫性制約" href="02.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -187,29 +187,33 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../concept-of-database/01.html">2. データベースの概念</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">データモデル</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../relational-data-model/01.html">3. 関係データモデル</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">SQL</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../sql/01.html">3. 単純質問</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sql/02.html">4. 結合質問（集合演算を含む）</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sql/03.html">5. 副問い合わせ &amp; テーブルの定義と更新</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercise/sql.html">6. SQL演習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql/01.html">4. 単純質問</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql/02.html">5. 結合質問（集合演算を含む）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql/03.html">6. 副問い合わせ &amp; テーブルの定義と更新</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/sql.html">7. SQL演習</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">データベース設計</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01.html">7. 実体関連モデルとは</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02.html">8. 実体関連モデル上の一貫性制約</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. 拡張実体関連モデル &amp; n項関連</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">10. 望ましくない関係スキーマ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">11. データ従属性にもとづく正規化</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercise/db-design.html">12. データベース設計演習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01.html">8. 実体関連モデルとは</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02.html">9. 実体関連モデル上の一貫性制約</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. 拡張実体関連モデル &amp; n項関連</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">11. 望ましくない関係スキーマ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">12. データ従属性にもとづく正規化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/db-design.html">13. データベース設計演習</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">索引づけ</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../indexing/01.html">13. B+木 &amp; ハッシュ索引</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../indexing/01.html">14. B+木 &amp; ハッシュ索引</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ビッグデータ時代のデータベース</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../nosql/01.html">14. NoSQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nosql/01.html">15. NoSQL</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">付録</span></p>
 <ul class="nav bd-sidenav">
@@ -365,12 +369,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isa">9.1. 汎化・継承（IsA階層）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">9.2. n項関連</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">9.3. クイズ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">9.3.1. Q1. 汎化・継承</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-n-1-2">9.3.2. Q2. n項関連（1/2）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-n-2-2">9.3.3. Q3. n項関連（2/2）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isa">10.1. 汎化・継承（IsA階層）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">10.2. n項関連</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.3. クイズ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">10.3.1. Q1. 汎化・継承</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-n-1-2">10.3.2. Q2. n項関連（1/2）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-n-2-2">10.3.3. Q3. n項関連（2/2）</a></li>
 </ul>
 </li>
 </ul>
@@ -385,9 +389,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="n">
-<h1><span class="section-number">9. </span>拡張実体関連モデル &amp; n項関連<a class="headerlink" href="#n" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">10. </span>拡張実体関連モデル &amp; n項関連<a class="headerlink" href="#n" title="Link to this heading">#</a></h1>
 <section id="isa">
-<h2><span class="section-number">9.1. </span>汎化・継承（IsA階層）<a class="headerlink" href="#isa" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.1. </span>汎化・継承（IsA階層）<a class="headerlink" href="#isa" title="Link to this heading">#</a></h2>
 <p>実体関連モデルに対して，いつかの拡張概念が提案されている．
 そのうちのひとつが，<strong>汎化・継承</strong> の概念である．</p>
 <p>実世界を実体関連モデルで表現する際，実体集合間にある種の包含関係（階層関係）が想定されることがしばしばある．
@@ -419,7 +423,7 @@ document.write(`
 <p><img alt="継承・汎化を用いたER図" src="../../_images/inheritance.png" /></p>
 </section>
 <section id="id1">
-<h2><span class="section-number">9.2. </span>n項関連<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.2. </span>n項関連<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>これまでの説明では扱ってきた関連型は，2つの実体型とのつながりを表現したもの（2項関連）に限定されていたが，3つ以上の実体型とつながりがあってもよい．
 n個の実体型をつなぐ関連を<strong>n項関連（n-ary relationship）</strong> と呼ぶ．
 2項関連と同様に，n項関連においても参加制約や多重度制約を考えることができる．</p>
@@ -446,7 +450,7 @@ n個の実体型をつなぐ関連を<strong>n項関連（n-ary relationship）<
 </section>
 <hr class="docutils" />
 <section id="id2">
-<h2><span class="section-number">9.3. </span>クイズ<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.3. </span>クイズ<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://music.apple.com/">Apple Music</a>や<a class="reference external" href="https://open.spotify.com/">Spotify</a>，<a class="reference external" href="https://music.line.me/about/">LINE MUSIC</a>などのサブスクリプション型音楽ストリーミングサービスでは，月額や年額でサービス使用料を支払うことで，好きなアーティストの好きな楽曲を好きなだけ聴くことができる．</p>
 <p>下記クイズでは，架空のサブスクリプション型音楽ストリーミングサービス「Orange Music」の実体関連モデルについて考える．
 以下，想定している実体関連モデルの詳細である．</p>
@@ -465,7 +469,7 @@ n個の実体型をつなぐ関連を<strong>n項関連（n-ary relationship）<
 実体関連図の作成には<a class="reference external" href="https://app.diagrams.net/">draw.io</a>を用いるとよい．
 なお，ベースとなる実体関連図として，<a class="reference internal" href="02.html"><span class="std std-doc">第9回</span></a>のクイズ回答で作成したものを用いると楽である．</p>
 <section id="q1">
-<span id="er-model3-q1"></span><h3><span class="section-number">9.3.1. </span>Q1. 汎化・継承<a class="headerlink" href="#q1" title="Link to this heading">#</a></h3>
+<span id="er-model3-q1"></span><h3><span class="section-number">10.3.1. </span>Q1. 汎化・継承<a class="headerlink" href="#q1" title="Link to this heading">#</a></h3>
 <p>Orange Musicは追加サービスとして「プレミアムユーザ」サービスを開始した．
 Orange Musicの「ユーザ」は追加料金を支払うことで「プレミアムユーザ」になることができる．
 「プレミアムユーザ」は最大100曲まで「楽曲」を「ダウンロード」できる．
@@ -473,7 +477,7 @@ Orange Musicの「ユーザ」は追加料金を支払うことで「プレミ�
 <p>クイズの前提，および追加状況を表現する実体関連図を作成せよ．</p>
 </section>
 <section id="q2-n-1-2">
-<span id="er-model3-q2"></span><h3><span class="section-number">9.3.2. </span>Q2. n項関連（1/2）<a class="headerlink" href="#q2-n-1-2" title="Link to this heading">#</a></h3>
+<span id="er-model3-q2"></span><h3><span class="section-number">10.3.2. </span>Q2. n項関連（1/2）<a class="headerlink" href="#q2-n-1-2" title="Link to this heading">#</a></h3>
 <p>Orange Musicでは追加サービスとして，アーティストがコンサート等のイベントで演奏した曲目（いわゆるセットリスト）を閲覧できるサービスを開始することにした．
 このサービスでは，「アーティスト」がどの「楽曲」をどの「イベント」で「演奏」したのかを閲覧できる．
 「イベント」は「イベント名」「場所」「日時」を情報としてもつ．
@@ -482,7 +486,7 @@ Orange Musicの「ユーザ」は追加料金を支払うことで「プレミ�
 <p>この状況を実体関連図で表現せよ．</p>
 </section>
 <section id="q3-n-2-2">
-<span id="er-model3-q3"></span><h3><span class="section-number">9.3.3. </span>Q3. n項関連（2/2）<a class="headerlink" href="#q3-n-2-2" title="Link to this heading">#</a></h3>
+<span id="er-model3-q3"></span><h3><span class="section-number">10.3.3. </span>Q3. n項関連（2/2）<a class="headerlink" href="#q3-n-2-2" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="02.html"><span class="std std-doc">第9回</span></a>の講義資料で用いた<a class="reference internal" href="02.html#fig-cardinality-constraint"><span class="std std-ref">オンラインショッピングの例</span></a>に戻ろう．
 このオンラインショッピングサイトでは，「ユーザ」がどの「商品」を「購入」したかを記録している．
 購入記録においては，購入した「商品」の「数量」や「購入日」の情報を記録している．</p>
@@ -527,7 +531,7 @@ Orange Musicの「ユーザ」は追加料金を支払うことで「プレミ�
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>実体関連モデル上の一貫性制約</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>実体関連モデル上の一貫性制約</p>
       </div>
     </a>
     <a class="right-next"
@@ -535,7 +539,7 @@ Orange Musicの「ユーザ」は追加料金を支払うことで「プレミ�
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>望ましくない関係スキーマ</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>望ましくない関係スキーマ</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -555,12 +559,12 @@ Orange Musicの「ユーザ」は追加料金を支払うことで「プレミ�
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isa">9.1. 汎化・継承（IsA階層）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">9.2. n項関連</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">9.3. クイズ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">9.3.1. Q1. 汎化・継承</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-n-1-2">9.3.2. Q2. n項関連（1/2）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-n-2-2">9.3.3. Q3. n項関連（2/2）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isa">10.1. 汎化・継承（IsA階層）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">10.2. n項関連</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.3. クイズ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">10.3.1. Q1. 汎化・継承</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-n-1-2">10.3.2. Q2. n項関連（1/2）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-n-2-2">10.3.3. Q3. n項関連（2/2）</a></li>
 </ul>
 </li>
 </ul>
