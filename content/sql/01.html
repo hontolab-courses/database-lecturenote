@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>4. 単純質問 &#8212; データベースの講義ノート</title>
+    <title>3. 単純質問 &#8212; データベースの講義ノート</title>
   
   
   
@@ -77,8 +77,8 @@
     <link rel="canonical" href="https://dbnote.hontolab.org/content/sql/01.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="5. 結合質問（集合演算を含む）" href="02.html" />
-    <link rel="prev" title="3. 関係データモデル" href="../relational-data-model/01.html" />
+    <link rel="next" title="4. 結合質問（集合演算を含む）" href="02.html" />
+    <link rel="prev" title="2. データベースの概念" href="../concept-of-database/01.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -187,33 +187,29 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../concept-of-database/01.html">2. データベースの概念</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">データモデル</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../relational-data-model/01.html">3. 関係データモデル</a></li>
-</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">SQL</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. 単純質問</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02.html">5. 結合質問（集合演算を含む）</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03.html">6. 副問い合わせ &amp; テーブルの定義と更新</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercise/sql.html">7. SQL演習</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. 単純質問</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02.html">4. 結合質問（集合演算を含む）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03.html">5. 副問い合わせ &amp; テーブルの定義と更新</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/sql.html">6. SQL演習</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">データベース設計</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../er-model/01.html">8. 実体関連モデルとは</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../er-model/02.html">9. 実体関連モデル上の一貫性制約</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../er-model/03.html">10. 拡張実体関連モデル &amp; n項関連</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">11. 望ましくない関係スキーマ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">12. データ従属性にもとづく正規化</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercise/db-design.html">13. データベース設計演習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../er-model/01.html">7. 実体関連モデルとは</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../er-model/02.html">8. 実体関連モデル上の一貫性制約</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../er-model/03.html">9. 拡張実体関連モデル &amp; n項関連</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">10. 望ましくない関係スキーマ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">11. データ従属性にもとづく正規化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/db-design.html">12. データベース設計演習</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">索引づけ</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../indexing/01.html">14. B+木 &amp; ハッシュ索引</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../indexing/01.html">13. B+木 &amp; ハッシュ索引</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ビッグデータ時代のデータベース</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../nosql/01.html">15. NoSQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nosql/01.html">14. NoSQL</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">付録</span></p>
 <ul class="nav bd-sidenav">
@@ -400,23 +396,23 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.1. SQLと関係データモデルの比較</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.2. 基本形</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select">4.3. 射影（SELECT）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where">4.4. 選択（WHERE）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#order-by">4.5. 整列（ORDER BY）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">4.6. 集約関数</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-by">4.7. グループ化による集約演算（GROUP BY）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">4.8. クイズ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">4.8.1. Q1. 射影</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-1-3">4.8.2. Q2. 選択 (1/3)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-2-3">4.8.3. Q3. 選択 (2/3)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-3-3">4.8.4. Q4. 選択 (3/3)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-1-2">4.8.5. Q5. ソート (1/2)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-2-2">4.8.6. Q6. ソート (2/2)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-group-by-1-3">4.8.7. Q7. GROUP BY (1/3)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q8-group-by-2-3">4.8.8. Q8. GROUP BY (2/3)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q9-group-by-3-3">4.8.9. Q9. GROUP BY (3/3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.1. SQLと関係データモデルの比較</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.2. 基本形</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select">3.3. 射影（SELECT）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where">3.4. 選択（WHERE）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#order-by">3.5. 整列（ORDER BY）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.6. 集約関数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-by">3.7. グループ化による集約演算（GROUP BY）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">3.8. クイズ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">3.8.1. Q1. 射影</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-1-3">3.8.2. Q2. 選択 (1/3)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-2-3">3.8.3. Q3. 選択 (2/3)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-3-3">3.8.4. Q4. 選択 (3/3)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-1-2">3.8.5. Q5. ソート (1/2)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-2-2">3.8.6. Q6. ソート (2/2)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-group-by-1-3">3.8.7. Q7. GROUP BY (1/3)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q8-group-by-2-3">3.8.8. Q8. GROUP BY (2/3)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q9-group-by-3-3">3.8.9. Q9. GROUP BY (3/3)</a></li>
 </ul>
 </li>
 </ul>
@@ -431,7 +427,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">4. </span>単純質問<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">3. </span>単純質問<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <div class="cell tag_remove-output tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -494,7 +490,7 @@ SQLはISOによって国際的に標準化されている．
 <p>RDBMSによって，SQLで使用できる関数が異なったりすることがある．特にSQLiteについては，簡易的なRDMBSということもあり，他のRDBMSでは実装されている機能や関数が実装されていない場合がある．自分が書いたSQL文がうまく動作しない場合は，マニュアルに当たってみよう．</p>
 </div>
 <section id="id4">
-<h2><span class="section-number">4.1. </span>SQLと関係データモデルの比較<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.1. </span>SQLと関係データモデルの比較<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>SQLは関係データベースを操作する言語であり，それが扱うデータモデルは関係データモデルを実用的に拡張したものである．
 「実用」のSQLデータモデルと「理論」の関係データモデルでは，同様の概念が異なる用語で定義されている．
 以下はSQLと関係データモデルの用語の比較である．</p>
@@ -524,7 +520,7 @@ SQLはISOによって国際的に標準化されている．
 そのような状況では，特殊な値である<strong>NULL</strong>値（ヌルと読む）を用いる．</p>
 </section>
 <section id="id5">
-<h2><span class="section-number">4.2. </span>基本形<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.2. </span>基本形<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <p>関係データベースに対する最も典型的な問い合わせ要求は，</p>
 <ul class="simple">
 <li><p>特定の<strong>表（table，テーブル）</strong> から</p></li>
@@ -1535,7 +1531,7 @@ SQLはISOによって国際的に標準化されている．
 </div>
 </section>
 <section id="select">
-<span id="sec-sql-projection"></span><h2><span class="section-number">4.3. </span>射影（SELECT）<a class="headerlink" href="#select" title="Link to this heading">#</a></h2>
+<span id="sec-sql-projection"></span><h2><span class="section-number">3.3. </span>射影（SELECT）<a class="headerlink" href="#select" title="Link to this heading">#</a></h2>
 <p>最も単純なSQLは<code class="docutils literal notranslate"><span class="pre">SELECT</span></code>句と<code class="docutils literal notranslate"><span class="pre">FROM</span></code>句のみからなるものである．
 <strong>射影（projection）</strong> とは<code class="docutils literal notranslate"><span class="pre">FROM</span></code>句で指定されたテーブルから，<code class="docutils literal notranslate"><span class="pre">SELECT</span></code>句で指定した特定の列のデータのみを抽出する操作である．</p>
 <p>例題として用いる<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルは列として「地域コード」「都道府県」「調査年度」「総人口」「小学校児童数」「中学校生徒数」「高等学校生徒数」「大学学生数」があるが，ケースによって特定の列のデータのみ欲しい場合がある．
@@ -2254,7 +2250,7 @@ LIMIT 10;
 </div>
 </section>
 <section id="where">
-<h2><span class="section-number">4.4. </span>選択（WHERE）<a class="headerlink" href="#where" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.4. </span>選択（WHERE）<a class="headerlink" href="#where" title="Link to this heading">#</a></h2>
 <p><strong>選択</strong>とは関係データベースから特定の条件を満たすレコードを抽出する操作である．
 選択を行うには<code class="docutils literal notranslate"><span class="pre">WHERE</span></code>句はを用いる．
 <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>句を使うことで，列の値と定数，あるいは列同士の値を比較して，<code class="docutils literal notranslate"><span class="pre">FROM</span></code>句で参照したテーブル中のデータを絞り込むことができる．</p>
@@ -2596,7 +2592,7 @@ LIMIT 10;
 </div>
 </section>
 <section id="order-by">
-<h2><span class="section-number">4.5. </span>整列（ORDER BY）<a class="headerlink" href="#order-by" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.5. </span>整列（ORDER BY）<a class="headerlink" href="#order-by" title="Link to this heading">#</a></h2>
 <p>データ分析では，大きいもの（小さいもの）順にデータを<strong>整列（ソート）</strong> させたいケースが多々ある．
 そのようなケースで使用するのが<code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code>句である．</p>
 <p>以下のように<code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code>の後に列名を指定することで，SQL文で抽出したレコードを指定した列の値の<strong>小さいもの順（昇順）</strong> に並び替えることができる．</p>
@@ -2860,7 +2856,7 @@ LIMIT 10;
 </div>
 </section>
 <section id="id10">
-<h2><span class="section-number">4.6. </span>集約関数<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.6. </span>集約関数<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
 <p>合計値や平均値の計算など，データの集計はデータ集合の特徴を知る上での基礎となる．
 関係データベースから抽出したレコード集合に対して集計処理を行いたい場合は<strong>集約関数（aggregate functions）</strong> を用いる．
 SQLに実装されている代表的な集約関数は以下の通りである．</p>
@@ -3004,7 +3000,7 @@ SQLに実装されている代表的な集約関数は以下の通りである�
 </div>
 </section>
 <section id="group-by">
-<span id="section-group-by"></span><h2><span class="section-number">4.7. </span>グループ化による集約演算（GROUP BY）<a class="headerlink" href="#group-by" title="Link to this heading">#</a></h2>
+<span id="section-group-by"></span><h2><span class="section-number">3.7. </span>グループ化による集約演算（GROUP BY）<a class="headerlink" href="#group-by" title="Link to this heading">#</a></h2>
 <p>前節までで解説した集約のためのSQL文は，<code class="docutils literal notranslate"><span class="pre">WHERE</span></code>句で絞り込まれたレコード全体に対して集計操作を行うものであった．
 しかし実際にデータ分析を行う場合，レコード全体での集計にとどまらず，ある基準でまとめられたグループごとに集計を行うことも少なくない．
 <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code>句はグループごとに集約演算を行うための機能である．</p>
@@ -3264,7 +3260,7 @@ SQLに実装されている代表的な集約関数は以下の通りである�
 </section>
 <hr class="docutils" />
 <section id="id13">
-<h2><span class="section-number">4.8. </span>クイズ<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.8. </span>クイズ<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
 <p>本クイズでは，独立行政法人統計センターが公開している教育用標準データセット（SSDSE）の<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-E">基本素材SSDSE-E</a>（データの解説は<a class="reference external" href="https://www.nstac.go.jp/sys/files/kaisetsu-E-2023.pdf">こちら</a>）から抜粋・加工したデータ（<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブル）を用いる．
 <code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルの内容については，<a class="reference internal" href="#sql1-db">コチラ</a>を参照せよ．</p>
 <p>なお，データをダウンロードしていない者は，以下のコードを実行してデータをダウンロードしてからクイズに取り組むこと．</p>
@@ -3287,7 +3283,7 @@ SQLに実装されている代表的な集約関数は以下の通りである�
 </div>
 </div>
 <section id="q1">
-<span id="sql1-q1"></span><h3><span class="section-number">4.8.1. </span>Q1. 射影<a class="headerlink" href="#q1" title="Link to this heading">#</a></h3>
+<span id="sql1-q1"></span><h3><span class="section-number">3.8.1. </span>Q1. 射影<a class="headerlink" href="#q1" title="Link to this heading">#</a></h3>
 <p>「都道府県」「調査年度」「大学学生数」フィールドに限定して，<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルのレコードを表示するSQL文を書け．
 なお，表示するレコード数は30件とせよ．</p>
 <div class="cell docutils container">
@@ -3299,7 +3295,7 @@ SQLに実装されている代表的な集約関数は以下の通りである�
 </div>
 </section>
 <section id="q2-1-3">
-<span id="sql1-q2"></span><h3><span class="section-number">4.8.2. </span>Q2. 選択 (1/3)<a class="headerlink" href="#q2-1-3" title="Link to this heading">#</a></h3>
+<span id="sql1-q2"></span><h3><span class="section-number">3.8.2. </span>Q2. 選択 (1/3)<a class="headerlink" href="#q2-1-3" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">population</span></code>テーブル内のレコードのうち，都道府県が<code class="docutils literal notranslate"><span class="pre">愛知県</span></code>で調査年度が<code class="docutils literal notranslate"><span class="pre">2020</span></code>であるものを表示するSQL文を書け．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3310,7 +3306,7 @@ SQLに実装されている代表的な集約関数は以下の通りである�
 </div>
 </section>
 <section id="q3-2-3">
-<span id="sql1-q3"></span><h3><span class="section-number">4.8.3. </span>Q3. 選択 (2/3)<a class="headerlink" href="#q3-2-3" title="Link to this heading">#</a></h3>
+<span id="sql1-q3"></span><h3><span class="section-number">3.8.3. </span>Q3. 選択 (2/3)<a class="headerlink" href="#q3-2-3" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">population</span></code>テーブル内のレコードのうち</p>
 <ul class="simple">
 <li><p>総人口が<code class="docutils literal notranslate"><span class="pre">300万人</span></code>未満，かつ</p></li>
@@ -3327,7 +3323,7 @@ SQLに実装されている代表的な集約関数は以下の通りである�
 </div>
 </section>
 <section id="q4-3-3">
-<span id="sql1-q4"></span><h3><span class="section-number">4.8.4. </span>Q4. 選択 (3/3)<a class="headerlink" href="#q4-3-3" title="Link to this heading">#</a></h3>
+<span id="sql1-q4"></span><h3><span class="section-number">3.8.4. </span>Q4. 選択 (3/3)<a class="headerlink" href="#q4-3-3" title="Link to this heading">#</a></h3>
 <p>Q3のSQL文を修正して，Q3の条件を満たす都道府県を表示するSQL文を書け．
 ただし，出力される都道府県名に重複があってはならない．</p>
 <div class="cell docutils container">
@@ -3339,7 +3335,7 @@ SQLに実装されている代表的な集約関数は以下の通りである�
 </div>
 </section>
 <section id="q5-1-2">
-<span id="sql1-q5"></span><h3><span class="section-number">4.8.5. </span>Q5. ソート (1/2)<a class="headerlink" href="#q5-1-2" title="Link to this heading">#</a></h3>
+<span id="sql1-q5"></span><h3><span class="section-number">3.8.5. </span>Q5. ソート (1/2)<a class="headerlink" href="#q5-1-2" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">population</span></code>テーブル内のレコードのうち調査年度が<code class="docutils literal notranslate"><span class="pre">2021</span></code>のものについて，大学学生数順の大きいもの順に並び替えて表示するSQL文を書け．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3350,7 +3346,7 @@ SQLに実装されている代表的な集約関数は以下の通りである�
 </div>
 </section>
 <section id="q6-2-2">
-<span id="sql1-q6"></span><h3><span class="section-number">4.8.6. </span>Q6. ソート (2/2)<a class="headerlink" href="#q6-2-2" title="Link to this heading">#</a></h3>
+<span id="sql1-q6"></span><h3><span class="section-number">3.8.6. </span>Q6. ソート (2/2)<a class="headerlink" href="#q6-2-2" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">population</span></code>テーブル内のレコードのうち調査年度が<code class="docutils literal notranslate"><span class="pre">2021</span></code>のものについて，総人口に占める大学学生数の割合が大きいもの順に並び替えて表示するSQL文を書け．
 その際，総人口に占める大学学生数の割合も合わせて表示せよ．</p>
 <div class="cell docutils container">
@@ -3362,7 +3358,7 @@ SQLに実装されている代表的な集約関数は以下の通りである�
 </div>
 </section>
 <section id="q7-group-by-1-3">
-<span id="sql1-q7"></span><h3><span class="section-number">4.8.7. </span>Q7. GROUP BY (1/3)<a class="headerlink" href="#q7-group-by-1-3" title="Link to this heading">#</a></h3>
+<span id="sql1-q7"></span><h3><span class="section-number">3.8.7. </span>Q7. GROUP BY (1/3)<a class="headerlink" href="#q7-group-by-1-3" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">population</span></code>テーブル内のレコードに対して都道府県ごとの集約演算を行い，都道府県別に</p>
 <ul class="simple">
 <li><p>（調査期間中の）大学学生数の平均</p></li>
@@ -3378,7 +3374,7 @@ SQLに実装されている代表的な集約関数は以下の通りである�
 </div>
 </section>
 <section id="q8-group-by-2-3">
-<span id="sql1-q8"></span><h3><span class="section-number">4.8.8. </span>Q8. GROUP BY (2/3)<a class="headerlink" href="#q8-group-by-2-3" title="Link to this heading">#</a></h3>
+<span id="sql1-q8"></span><h3><span class="section-number">3.8.8. </span>Q8. GROUP BY (2/3)<a class="headerlink" href="#q8-group-by-2-3" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">population</span></code>テーブル内の総人口が<code class="docutils literal notranslate"><span class="pre">300万人</span></code>を超えるレコードに対して調査年度ごとの集約演算を行い，
 調査年度別に</p>
 <ul class="simple">
@@ -3397,7 +3393,7 @@ SQLに実装されている代表的な集約関数は以下の通りである�
 </div>
 </section>
 <section id="q9-group-by-3-3">
-<span id="sql1-q9"></span><h3><span class="section-number">4.8.9. </span>Q9. GROUP BY (3/3)<a class="headerlink" href="#q9-group-by-3-3" title="Link to this heading">#</a></h3>
+<span id="sql1-q9"></span><h3><span class="section-number">3.8.9. </span>Q9. GROUP BY (3/3)<a class="headerlink" href="#q9-group-by-3-3" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルのレコードに対して都道府県ごとの集約演算を行い，
 都道府県別に</p>
 <ul class="simple">
@@ -3461,12 +3457,12 @@ SQLに実装されている代表的な集約関数は以下の通りである�
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../relational-data-model/01.html"
+       href="../concept-of-database/01.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>関係データモデル</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>データベースの概念</p>
       </div>
     </a>
     <a class="right-next"
@@ -3474,7 +3470,7 @@ SQLに実装されている代表的な集約関数は以下の通りである�
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>結合質問（集合演算を含む）</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>結合質問（集合演算を含む）</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -3494,23 +3490,23 @@ SQLに実装されている代表的な集約関数は以下の通りである�
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.1. SQLと関係データモデルの比較</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.2. 基本形</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select">4.3. 射影（SELECT）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where">4.4. 選択（WHERE）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#order-by">4.5. 整列（ORDER BY）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">4.6. 集約関数</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-by">4.7. グループ化による集約演算（GROUP BY）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">4.8. クイズ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">4.8.1. Q1. 射影</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-1-3">4.8.2. Q2. 選択 (1/3)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-2-3">4.8.3. Q3. 選択 (2/3)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-3-3">4.8.4. Q4. 選択 (3/3)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-1-2">4.8.5. Q5. ソート (1/2)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-2-2">4.8.6. Q6. ソート (2/2)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-group-by-1-3">4.8.7. Q7. GROUP BY (1/3)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q8-group-by-2-3">4.8.8. Q8. GROUP BY (2/3)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q9-group-by-3-3">4.8.9. Q9. GROUP BY (3/3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.1. SQLと関係データモデルの比較</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.2. 基本形</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select">3.3. 射影（SELECT）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where">3.4. 選択（WHERE）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#order-by">3.5. 整列（ORDER BY）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.6. 集約関数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-by">3.7. グループ化による集約演算（GROUP BY）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">3.8. クイズ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">3.8.1. Q1. 射影</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-1-3">3.8.2. Q2. 選択 (1/3)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-2-3">3.8.3. Q3. 選択 (2/3)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-3-3">3.8.4. Q4. 選択 (3/3)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-1-2">3.8.5. Q5. ソート (1/2)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-2-2">3.8.6. Q6. ソート (2/2)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7-group-by-1-3">3.8.7. Q7. GROUP BY (1/3)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q8-group-by-2-3">3.8.8. Q8. GROUP BY (2/3)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q9-group-by-3-3">3.8.9. Q9. GROUP BY (3/3)</a></li>
 </ul>
 </li>
 </ul>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>9. 実体関連モデル上の一貫性制約 &#8212; データベースの講義ノート</title>
+    <title>8. 実体関連モデル上の一貫性制約 &#8212; データベースの講義ノート</title>
   
   
   
@@ -77,8 +77,8 @@
     <link rel="canonical" href="https://dbnote.hontolab.org/content/er-model/02.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="10. 拡張実体関連モデル &amp; n項関連" href="03.html" />
-    <link rel="prev" title="8. 実体関連モデルとは" href="01.html" />
+    <link rel="next" title="9. 拡張実体関連モデル &amp; n項関連" href="03.html" />
+    <link rel="prev" title="7. 実体関連モデルとは" href="01.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -187,33 +187,29 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../concept-of-database/01.html">2. データベースの概念</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">データモデル</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../relational-data-model/01.html">3. 関係データモデル</a></li>
-</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">SQL</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../sql/01.html">4. 単純質問</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sql/02.html">5. 結合質問（集合演算を含む）</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sql/03.html">6. 副問い合わせ &amp; テーブルの定義と更新</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercise/sql.html">7. SQL演習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql/01.html">3. 単純質問</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql/02.html">4. 結合質問（集合演算を含む）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sql/03.html">5. 副問い合わせ &amp; テーブルの定義と更新</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/sql.html">6. SQL演習</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">データベース設計</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01.html">8. 実体関連モデルとは</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. 実体関連モデル上の一貫性制約</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03.html">10. 拡張実体関連モデル &amp; n項関連</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">11. 望ましくない関係スキーマ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">12. データ従属性にもとづく正規化</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercise/db-design.html">13. データベース設計演習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01.html">7. 実体関連モデルとは</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. 実体関連モデル上の一貫性制約</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03.html">9. 拡張実体関連モデル &amp; n項関連</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">10. 望ましくない関係スキーマ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">11. データ従属性にもとづく正規化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/db-design.html">12. データベース設計演習</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">索引づけ</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../indexing/01.html">14. B+木 &amp; ハッシュ索引</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../indexing/01.html">13. B+木 &amp; ハッシュ索引</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ビッグデータ時代のデータベース</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../nosql/01.html">15. NoSQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nosql/01.html">14. NoSQL</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">付録</span></p>
 <ul class="nav bd-sidenav">
@@ -369,20 +365,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">9.1. 参加制約</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">9.2. 多重度制約</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">9.3. キー制約</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sec-weak-entity">9.3.1. 弱実体と部分キー</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">8.1. 参加制約</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">8.2. 多重度制約</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">8.3. キー制約</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sec-weak-entity">8.3.1. 弱実体と部分キー</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">9.4. クイズ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">9.4.1. Q1. 復習</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">9.4.2. Q2. 参加制約</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-1-4">9.4.3. Q3. 多重度（1/4）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-2-4">9.4.4. Q4. 多重度（2/4）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-3-4">9.4.5. Q5. 多重度（3/4）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-4-4">9.4.6. Q6. 多重度（4/4）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7">9.4.7. Q7. 弱実体と部分キー</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">8.4. クイズ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">8.4.1. Q1. 復習</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">8.4.2. Q2. 参加制約</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-1-4">8.4.3. Q3. 多重度（1/4）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-2-4">8.4.4. Q4. 多重度（2/4）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-3-4">8.4.5. Q5. 多重度（3/4）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-4-4">8.4.6. Q6. 多重度（4/4）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7">8.4.7. Q7. 弱実体と部分キー</a></li>
 </ul>
 </li>
 </ul>
@@ -397,12 +393,12 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">9. </span>実体関連モデル上の一貫性制約<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">8. </span>実体関連モデル上の一貫性制約<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>関係データモデルでは，対象となるデータが持つべき条件としてドメイン制約やキー制約といった一貫性制約を定義する．
 実体関連モデルにおいても，データが持つべき一貫性制約を表現・設定する方法がいくつか用意されている．
 以下，参加制約，多重度制約，キー制約について説明する（<a class="reference internal" href="#er-model2-q1">★Quiz1★</a>）．</p>
 <section id="id2">
-<h2><span class="section-number">9.1. </span>参加制約<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.1. </span>参加制約<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p id="fig-er-model-elements"><img alt="ERモデル要素例" src="../../_images/er-model-elements.png" /></p>
 <p>上の図は，<a class="reference internal" href="01.html"><span class="std std-doc">第8回</span></a>で用いたあるショッピングサイトにおける商品の「購入希望」に関する実体型および関連型の要素を示したものである．
 上図の実体型「商品」に注目すると，どの実体「ユーザ」とも関連を持たない実体「商品」<code class="docutils literal notranslate"><span class="pre">P5</span></code>が存在することが分かる．
@@ -419,7 +415,7 @@ document.write(`
 （上の図からは，実体「ユーザ」の中には関連「購入希望」とつながっていないもののある，つまり購入希望登録したことがないユーザが存在することを許す，ということも読み取れる）（<a class="reference internal" href="#er-model2-q2">★Quiz2★</a>）．</p>
 </section>
 <section id="id3">
-<h2><span class="section-number">9.2. </span>多重度制約<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.2. </span>多重度制約<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>再びショッピングサイトの例に戻ろう．
 以下の図は，購入希望登録に加えて，各商品がどのメーカーによって製造されたかの情報についても管理する実体関連モデルを設計し，それに基づき実体集合「ユーザ」「商品」「メーカー」および関連集合「購入希望」「製造」の要素を図示したものである．</p>
 <p id="fig-er-model-elements2"><img alt="実体関連モデルに基づくインスタンス例2" src="../../_images/er-model-elements2.jpg" /></p>
@@ -464,12 +460,12 @@ document.write(`
 <p id="fig-cardinality-constraint"><img alt="多重度制約を表現した実体関連図" src="../../_images/cardinality-constraint.png" /></p>
 </section>
 <section id="id5">
-<h2><span class="section-number">9.3. </span>キー制約<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.3. </span>キー制約<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <p>実体関連モデルにおける<strong>キー制約（key constraint）</strong> とは，キーとして指定された属性はキーとしての役割を必ず果たす必要があるという制約である．
 例えば，実体型「学生」の属性「学籍番号」が主キーとして設定された場合，学籍番号を指定することにより実体「学生」は一意に特定できなければならない．
 また，学籍番号に重複は許されない．</p>
 <section id="sec-weak-entity">
-<span id="id6"></span><h3><span class="section-number">9.3.1. </span>弱実体と部分キー<a class="headerlink" href="#sec-weak-entity" title="Link to this heading">#</a></h3>
+<span id="id6"></span><h3><span class="section-number">8.3.1. </span>弱実体と部分キー<a class="headerlink" href="#sec-weak-entity" title="Link to this heading">#</a></h3>
 <p>ショッピングサイトの例に戻ろう．
 ショッピングサイトを利用する際，ある人が自分のユーザ名を使ってログインをしているのだが，購入した商品の送り先を同居する家族の名前にしたいケースがある．
 このようなケースに対応するため，サイト運営者は先ほど示した<a class="reference internal" href="#fig-cardinality-constraint">実体関連図</a>を改善して，</p>
@@ -526,14 +522,14 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="id9">
-<h2><span class="section-number">9.4. </span>クイズ<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.4. </span>クイズ<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://music.apple.com/">Apple Music</a>や<a class="reference external" href="https://open.spotify.com/">Spotify</a>，<a class="reference external" href="https://music.line.me/about/">LINE MUSIC</a>などのサブスクリプション型音楽ストリーミングサービスでは，月額や年額でサービス使用料を支払うことで，好きなアーティストの好きな楽曲を好きなだけ聴くことができる．
 ユーザは「プレイリスト」と呼ばれる，あるテーマをもとに楽曲を集めたリストを作成・公開することができる．
 また，ユーザは別のユーザをフォローし，そのユーザが新しいプレイリストを作成すると通知を受け取ることができる．</p>
 <p>下記クイズでは，架空のサブスクリプション型音楽ストリーミングサービス「Orange Music」の実体関連モデルについて考える．
 なお，実体関連図の作成には<a class="reference external" href="https://app.diagrams.net/">draw.io</a>を用いるとよい．</p>
 <section id="q1">
-<span id="er-model2-q1"></span><h3><span class="section-number">9.4.1. </span>Q1. 復習<a class="headerlink" href="#q1" title="Link to this heading">#</a></h3>
+<span id="er-model2-q1"></span><h3><span class="section-number">8.4.1. </span>Q1. 復習<a class="headerlink" href="#q1" title="Link to this heading">#</a></h3>
 <p>Orange Musicの「ユーザ」は「ユーザID」「氏名」「性別」「誕生日」「電話番号」をもつ．
 Orange Musicの「アーティスト」は「アーティストID」「アーティスト名」をもつ．
 Orange Musicの「楽曲」は「楽曲ID」「楽曲名」「ジャンル」「長さ」をもつ．
@@ -549,11 +545,11 @@ Orange Musicの「ユーザ」は「プレイリスト」を「作成」する�
 なお，Q1で作成する実体関連図作成においては，参加制約，多重度制約，キー制約は考慮しなくてよい．</p>
 </section>
 <section id="q2">
-<span id="er-model2-q2"></span><h3><span class="section-number">9.4.2. </span>Q2. 参加制約<a class="headerlink" href="#q2" title="Link to this heading">#</a></h3>
+<span id="er-model2-q2"></span><h3><span class="section-number">8.4.2. </span>Q2. 参加制約<a class="headerlink" href="#q2" title="Link to this heading">#</a></h3>
 <p>Q1で作成した実体関連図において参加が「全体的」となる実体型と関連型のペアを考え，それを実体関連図に反映させよ．</p>
 </section>
 <section id="q3-1-4">
-<span id="er-model2-q3"></span><h3><span class="section-number">9.4.3. </span>Q3. 多重度（1/4）<a class="headerlink" href="#q3-1-4" title="Link to this heading">#</a></h3>
+<span id="er-model2-q3"></span><h3><span class="section-number">8.4.3. </span>Q3. 多重度（1/4）<a class="headerlink" href="#q3-1-4" title="Link to this heading">#</a></h3>
 <p>Q1の設定に以下を追加する．</p>
 <blockquote>
 <div><p>「レーベル」は「レーベル名」「住所」をもつ．
@@ -562,7 +558,7 @@ Orange Musicの「ユーザ」は「プレイリスト」を「作成」する�
 <p>Q2で作成した実体関連図に，上記追加設定を反映させよ．</p>
 </section>
 <section id="q4-2-4">
-<span id="er-model2-q4"></span><h3><span class="section-number">9.4.4. </span>Q4. 多重度（2/4）<a class="headerlink" href="#q4-2-4" title="Link to this heading">#</a></h3>
+<span id="er-model2-q4"></span><h3><span class="section-number">8.4.4. </span>Q4. 多重度（2/4）<a class="headerlink" href="#q4-2-4" title="Link to this heading">#</a></h3>
 <p>Q3の設定に以下を追加する．</p>
 <blockquote>
 <div><p>「アーティスト」はいくつかの「楽曲」を「公開」する．
@@ -573,7 +569,7 @@ Orange Musicの「ユーザ」は「プレイリスト」を「作成」する�
 <p>Q3で作成した実体関連図に，上記追加設定を反映させよ．</p>
 </section>
 <section id="q5-3-4">
-<span id="er-model2-q5"></span><h3><span class="section-number">9.4.5. </span>Q5. 多重度（3/4）<a class="headerlink" href="#q5-3-4" title="Link to this heading">#</a></h3>
+<span id="er-model2-q5"></span><h3><span class="section-number">8.4.5. </span>Q5. 多重度（3/4）<a class="headerlink" href="#q5-3-4" title="Link to this heading">#</a></h3>
 <p>Q4の設定に以下を追加する．</p>
 <blockquote>
 <div><p>「ユーザ」は気に入った「楽曲」に「いいね」をすることができる．「ユーザ」は何曲でも「いいね」できる．
@@ -582,11 +578,11 @@ Orange Musicの「ユーザ」は「プレイリスト」を「作成」する�
 <p>Q4で作成した実体関連図に，上記追加設定を反映させよ．</p>
 </section>
 <section id="q6-4-4">
-<span id="er-model2-q6"></span><h3><span class="section-number">9.4.6. </span>Q6. 多重度（4/4）<a class="headerlink" href="#q6-4-4" title="Link to this heading">#</a></h3>
+<span id="er-model2-q6"></span><h3><span class="section-number">8.4.6. </span>Q6. 多重度（4/4）<a class="headerlink" href="#q6-4-4" title="Link to this heading">#</a></h3>
 <p>Q5で作成した実体関連モデルについて，参加制約や多重度制約の特徴が分かるよう，実体集合，関連集合とそれに対応する要素の例を<a class="reference internal" href="#fig-er-model-elements2">こちらの図</a>のような形式で図示せよ．</p>
 </section>
 <section id="q7">
-<span id="er-model2-q7"></span><h3><span class="section-number">9.4.7. </span>Q7. 弱実体と部分キー<a class="headerlink" href="#q7" title="Link to this heading">#</a></h3>
+<span id="er-model2-q7"></span><h3><span class="section-number">8.4.7. </span>Q7. 弱実体と部分キー<a class="headerlink" href="#q7" title="Link to this heading">#</a></h3>
 <p>Q5で作成した実体関連図において「弱実体」「弱関連」になり得るものを特定し，それを実体関連図に反映させよ．
 なお，弱実体の部分キーには点線を付与すること．</p>
 <hr class="footnotes docutils" />
@@ -640,7 +636,7 @@ Orange Musicの「ユーザ」は「プレイリスト」を「作成」する�
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>実体関連モデルとは</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>実体関連モデルとは</p>
       </div>
     </a>
     <a class="right-next"
@@ -648,7 +644,7 @@ Orange Musicの「ユーザ」は「プレイリスト」を「作成」する�
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>拡張実体関連モデル &amp; n項関連</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>拡張実体関連モデル &amp; n項関連</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -668,20 +664,20 @@ Orange Musicの「ユーザ」は「プレイリスト」を「作成」する�
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">9.1. 参加制約</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">9.2. 多重度制約</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">9.3. キー制約</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sec-weak-entity">9.3.1. 弱実体と部分キー</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">8.1. 参加制約</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">8.2. 多重度制約</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">8.3. キー制約</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sec-weak-entity">8.3.1. 弱実体と部分キー</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">9.4. クイズ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">9.4.1. Q1. 復習</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">9.4.2. Q2. 参加制約</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-1-4">9.4.3. Q3. 多重度（1/4）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-2-4">9.4.4. Q4. 多重度（2/4）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-3-4">9.4.5. Q5. 多重度（3/4）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-4-4">9.4.6. Q6. 多重度（4/4）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7">9.4.7. Q7. 弱実体と部分キー</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">8.4. クイズ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">8.4.1. Q1. 復習</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">8.4.2. Q2. 参加制約</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-1-4">8.4.3. Q3. 多重度（1/4）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-2-4">8.4.4. Q4. 多重度（2/4）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-3-4">8.4.5. Q5. 多重度（3/4）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-4-4">8.4.6. Q6. 多重度（4/4）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q7">8.4.7. Q7. 弱実体と部分キー</a></li>
 </ul>
 </li>
 </ul>
