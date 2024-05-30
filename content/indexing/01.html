@@ -492,16 +492,17 @@ SQL文による問い合わせが行われると，関係データベースシ�
 <li><p>データベースではレコードの追加や更新が頻繁に発生するため，データベースの更新ごとに巨大な索引キーをソートするのは効率が悪い（クイックソートを使っても<span class="math notranslate nohighlight">\(O(n \log n)\)</span>の計算時間がかかる）</p></li>
 </ul>
 <p id="sec-btree-feature"><strong>B+木（B+ tree）</strong><a class="footnote-reference brackets" href="#b-tree" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> は，二分探索よりも高速かつ効率よくデータの探索を行え，かつ更新にかかるコストも小さい，索引用のデータ構造である．
-B+木は以下のような特徴を持つ木構造データである．</p>
+B+木は以下のような特徴を持つ木構造データである（<span class="math notranslate nohighlight">\(d\)</span>および<span class="math notranslate nohighlight">\(e\)</span>の値は事前に決めておく）．</p>
 <ol class="arabic simple">
 <li><p>根ノードから葉ノードへのパスの長さはすべて同じである</p></li>
-<li><p>葉ノードは索引キーの（順序付き）集合で構成される．各葉ノードは索引キーを収容するスペースをもつ．そのスペースには最小<span class="math notranslate nohighlight">\(\frac{2m+1}{2}\)</span>個，最大<span class="math notranslate nohighlight">\(2m+1\)</span>個の索引キーを収容できる（<span class="math notranslate nohighlight">\(m\)</span>の値は事前に決めておく）．なお，葉ノード中の索引キーは昇順にソートされている</p></li>
+<li><p>葉ノードは索引キーの（順序付き）集合で構成される．各葉ノードは索引キーを収容するスペースをもつ．そのスペースには最小<span class="math notranslate nohighlight">\(\lceil \frac{e}{2} \rceil\)</span>個，最大<span class="math notranslate nohighlight">\(e\)</span>個の索引キーを収容できる．なお，葉ノード中の索引キーは昇順にソートされている</p></li>
 <li><p>隣接する葉ノードはリンクで結ばれている（すぐ隣の索引キーが何か分かる）</p></li>
-<li><p>葉ノード以外のノードは，ポインタと探索キーを交互に持つ．なお，ノードに収容できるポインタの数は最大で<span class="math notranslate nohighlight">\(2m+1\)</span>個，探索キーは最大<span class="math notranslate nohighlight">\(2m\)</span>個である．探索キー<span class="math notranslate nohighlight">\(k\)</span>の左隣のポインタは値が<span class="math notranslate nohighlight">\(k\)</span>未満の探索キーを含む子ノードにリンクしている．探索キー<span class="math notranslate nohighlight">\(k\)</span>の右隣のポインタは値が<span class="math notranslate nohighlight">\(k\)</span>以上の探索キーを含む子ノードにリンクしている</p></li>
+<li><p>葉ノード以外のノードは，ポインタと探索キーを交互に持つ．なお，ノードに収容できるポインタの数は最大で<span class="math notranslate nohighlight">\(2d+1\)</span>個，探索キーは最大<span class="math notranslate nohighlight">\(2d\)</span>個である．探索キー<span class="math notranslate nohighlight">\(k\)</span>の左隣のポインタは値が<span class="math notranslate nohighlight">\(k\)</span>未満の探索キーを含む子ノードにリンクしている．探索キー<span class="math notranslate nohighlight">\(k\)</span>の右隣のポインタは値が<span class="math notranslate nohighlight">\(k\)</span>以上の探索キーを含む子ノードにリンクしている</p></li>
 <li><p>根ノードは1個以上の探索キーを持つ</p></li>
-<li><p>根ノード，葉ノード以外の中間ノードは<span class="math notranslate nohighlight">\(m\)</span>個以上の探索キーを持つ</p></li>
+<li><p>根ノード，葉ノード以外の中間ノードは<span class="math notranslate nohighlight">\(d\)</span>個以上の探索キーを持つ</p></li>
 <li><p>葉ノードの各索引キーはその値を属性値としてもつレコード集合とリンクしている（記憶装置で該当レコードが記録されている位置にすぐ飛べる）</p></li>
 </ol>
+<p>なお<span class="math notranslate nohighlight">\(d\)</span>の値をB+木の<strong>次数</strong> と呼ぶ．</p>
 <p>上の定義だけでは分かりづらいので，図を見ながらB+木の特徴を確認しよう．
 ある属性<span class="math notranslate nohighlight">\(A\)</span>の索引キー（属性値）として</p>
 <blockquote>
@@ -509,7 +510,7 @@ B+木は以下のような特徴を持つ木構造データである．</p>
 </div></blockquote>
 <p>のいずれかを取るレコードを格納したテーブルがあるとしよう．
 以下の図は，このテーブルの属性<span class="math notranslate nohighlight">\(A\)</span>に関するB+木である．
-なお，このB+木は<span class="math notranslate nohighlight">\(m=1\)</span>としている．</p>
+なお，このB+木は<span class="math notranslate nohighlight">\(d=1，e=3\)</span>としている．</p>
 <p>図を見たら分かるように，すべての索引キーはいずれかの葉ノードに格納されている（特徴2）．
 索引キーが格納されたどの葉ノードについても，根ノードから2回枝をたどるだけで到達できる（特徴1）．
 また，根以外のどのノードも半数以上スペースが埋まっている（特徴2および4）．
@@ -548,15 +549,15 @@ B+木は以下のような特徴を持つ木構造データである．</p>
 葉ノードに格納された索引キーを左から探索すると，一番左端にターゲット値である索引キー<code class="docutils literal notranslate"><span class="pre">121</span></code>が見つかる．
 所望の索引キーが見つかったので，そこからリンクされたレコードを取得する．
 これにて探索完了である．</p>
-<p><a class="reference internal" href="#sec-btree-feature">B+木の特徴6</a>に記した条件により，B+木ではどの中間ノードも子ノードの数は<span class="math notranslate nohighlight">\(m+1\)</span>個以上となることが保証されている．
-これにより，索引キーの数が<span class="math notranslate nohighlight">\(N\)</span>の場合，B+木の根ノードから葉ノードへのパスの長さは<span class="math notranslate nohighlight">\(log_m(N)\)</span>となる．
-各ノードに含まれる探索キーの数は高々<span class="math notranslate nohighlight">\(2m\)</span>個である．
-各ノードを探索キーを線形に一通りチェックしたあとパスをたどるとしても，探索完了までにかかる計算量は<span class="math notranslate nohighlight">\(m\)</span>が<span class="math notranslate nohighlight">\(N\)</span>よりも十分小さいことも考慮すると，高々</p>
+<p><a class="reference internal" href="#sec-btree-feature">B+木の特徴6</a>に記した条件により，B+木ではどの中間ノードも子ノードの数は<span class="math notranslate nohighlight">\(d+1\)</span>個以上となることが保証されている．
+これにより，索引キーの数が<span class="math notranslate nohighlight">\(N\)</span>の場合，B+木の根ノードから葉ノードへのパスの長さは<span class="math notranslate nohighlight">\(log_d(N)\)</span>となる．
+各ノードに含まれる探索キーの数は高々<span class="math notranslate nohighlight">\(2d\)</span>個である．
+各ノードを探索キーを線形に一通りチェックしたあとパスをたどるとしても，探索完了までにかかる計算量は<span class="math notranslate nohighlight">\(d\)</span>が<span class="math notranslate nohighlight">\(N\)</span>よりも十分小さいことも考慮すると，高々</p>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(O(2m log_m N) = O(log_m N )\)</span></p>
+<div><p><span class="math notranslate nohighlight">\(O(2d log_d N) = O(log_d N )\)</span></p>
 </div></blockquote>
 <p>となる．
-二分探索を用いた場合の計算量は<span class="math notranslate nohighlight">\(O(log_2 N)\)</span>であるため，<span class="math notranslate nohighlight">\(m\)</span>を2より大きく取ればB+木は二分探索よりも高速に値を探索することができる．</p>
+二分探索を用いた場合の計算量は<span class="math notranslate nohighlight">\(O(log_2 N)\)</span>であるため，<span class="math notranslate nohighlight">\(d\)</span>を2より大きく取ればB+木は二分探索よりも高速に値を探索することができる．</p>
 </section>
 <section id="id7">
 <h3><span class="section-number">14.4.2. </span>範囲探索<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
