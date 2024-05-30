@@ -554,7 +554,7 @@ B+木は以下のような特徴を持つ木構造データである（<span cla
 各ノードに含まれる探索キーの数は高々<span class="math notranslate nohighlight">\(2d\)</span>個である．
 各ノードを探索キーを線形に一通りチェックしたあとパスをたどるとしても，探索完了までにかかる計算量は<span class="math notranslate nohighlight">\(d\)</span>が<span class="math notranslate nohighlight">\(N\)</span>よりも十分小さいことも考慮すると，高々</p>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(O(2d log_d N) = O(log_d N )\)</span></p>
+<div><p><span class="math notranslate nohighlight">\(O(2d \ log_d N) = O(log_d N )\)</span></p>
 </div></blockquote>
 <p>となる．
 二分探索を用いた場合の計算量は<span class="math notranslate nohighlight">\(O(log_2 N)\)</span>であるため，<span class="math notranslate nohighlight">\(d\)</span>を2より大きく取ればB+木は二分探索よりも高速に値を探索することができる．</p>
