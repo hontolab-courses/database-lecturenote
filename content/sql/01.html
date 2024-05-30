@@ -482,7 +482,8 @@ SQLはISOによって国際的に標準化されている．
 なお，本教材のターゲットはデータ分析人材の卵であることから，本教材では関係データベースから<strong>データの読み出し</strong>に焦点を当ててSQLの説明を行う．</p>
 <p>SQLはデータベースに対する問い合わせ言語であって，プログラミング言語ではない．
 そのため，プログラミング言語に比べて覚えることは少なく，問い合わせ内容を英語に近い形で書き下すことができるよう設計されている．
-データ分析人材はソフトウェアを開発することが目的ではないから高度なプログラミング能力を持つ必要は必ずしもないが，関係データベースに納められた大量のデータを自由自在に扱うためにも<strong>SQLの習得は必須</strong>である．</p>
+データ分析人材はソフトウェアを開発することが目的ではないから，高度なプログラミング能力を持つ必要は必ずしもない．
+しかし，関係データベースに納められた大量のデータを自由自在に扱うためにも，<strong>SQLの習得は必須</strong>である．</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <h4 class="rubric" id="sql">SQLの読み方</h4>
@@ -497,7 +498,7 @@ SQLはISOによって国際的に標準化されている．
 <h2><span class="section-number">4.1. </span>SQLと関係データモデルの比較<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>SQLは関係データベースを操作する言語であり，それが扱うデータモデルは関係データモデルを実用的に拡張したものである．
 「実用」のSQLデータモデルと「理論」の関係データモデルでは，同様の概念が異なる用語で定義されている．
-以下はSQLと関係データモデルの用語の比較である．</p>
+以下，SQLと関係データモデルの用語の比較である．</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>関係データモデル</p></th>
@@ -547,7 +548,7 @@ SQLはISOによって国際的に標準化されている．
 </div></blockquote>
 <p>という問い合わせ要求を表現したものである．</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>句を用いて「問い合わせ結果に表示したい情報」，</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>句を用いて「問い合わせ結果に表示したい列情報」，</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">FROM</span></code>句を用いて「参照したい表」，</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">WHERE</span></code>句を用いて「表示する際の条件」</p></li>
 </ul>
@@ -1538,7 +1539,7 @@ SQLはISOによって国際的に標準化されている．
 <span id="sec-sql-projection"></span><h2><span class="section-number">4.3. </span>射影（SELECT）<a class="headerlink" href="#select" title="Link to this heading">#</a></h2>
 <p>最も単純なSQLは<code class="docutils literal notranslate"><span class="pre">SELECT</span></code>句と<code class="docutils literal notranslate"><span class="pre">FROM</span></code>句のみからなるものである．
 <strong>射影（projection）</strong> とは<code class="docutils literal notranslate"><span class="pre">FROM</span></code>句で指定されたテーブルから，<code class="docutils literal notranslate"><span class="pre">SELECT</span></code>句で指定した特定の列のデータのみを抽出する操作である．</p>
-<p>例題として用いる<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルは列として「地域コード」「都道府県」「調査年度」「総人口」「小学校児童数」「中学校生徒数」「高等学校生徒数」「大学学生数」があるが，ケースによって特定の列のデータのみ欲しい場合がある．
+<p>例題として用いる<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルには，列として「地域コード」「都道府県」「調査年度」「総人口」「小学校児童数」「中学校生徒数」「高等学校生徒数」「大学学生数」があるが，ケースによって特定の列のデータのみ欲しい場合がある．
 そのようなケースで用いるのが射影である．
 例えば，<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルから「都道府県」「調査年度」「総人口」の列のデータのみを抽出する場合，SQL文は以下となる．</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
@@ -3005,7 +3006,7 @@ SQLに実装されている代表的な集約関数は以下の通りである�
 </section>
 <section id="group-by">
 <span id="section-group-by"></span><h2><span class="section-number">4.7. </span>グループ化による集約演算（GROUP BY）<a class="headerlink" href="#group-by" title="Link to this heading">#</a></h2>
-<p>前節までで解説した集約のためのSQL文は，<code class="docutils literal notranslate"><span class="pre">WHERE</span></code>句で絞り込まれたレコード全体に対して集計操作を行うものであった．
+<p>前節までに解説した集約のためのSQL文は，<code class="docutils literal notranslate"><span class="pre">WHERE</span></code>句で絞り込まれたレコード全体に対して集計操作を行うものであった．
 しかし実際にデータ分析を行う場合，レコード全体での集計にとどまらず，ある基準でまとめられたグループごとに集計を行うことも少なくない．
 <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code>句はグループごとに集約演算を行うための機能である．</p>
 <p>「<code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code>句 + 列名」の形式で指定をすると，指定された列名について同じ値をもつレコードが1つのグループにまとめられた<strong>グループ表</strong>が（ユーザには見えない形で）一時的に作成される．

@@ -412,7 +412,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outer-join">5.2.3. 外部結合（OUTER JOIN）</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.3. クイズ</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.3. クイズ</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">5.3.1. Q1. 復習</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">5.3.2. Q2. 集合演算</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3">5.3.3. Q3. 直積</a></li>
@@ -471,11 +471,11 @@ document.write(`
 </div>
 </details>
 </div>
-<p><a class="reference internal" href="01.html"><span class="std std-doc">前章</span></a>で扱ったSQL文は1つのテーブルに対する問い合わせ（単純質問）を対象としていた．
+<p><a class="reference internal" href="01.html"><span class="std std-doc">前講</span></a>で扱ったSQL文は，1つのテーブルに対する問い合わせ（単純質問）を対象としていた．
 しかし，関係データベースを用いたデータ分析の現場では，問い合わせ時に参照するテーブルが1つしかないことは稀である．
 所望のデータを抽出するには，<strong>複数のテーブルを組み合わせる</strong>ことが大半である．
 本章では，関係データベース内にある2つ以上のテーブルを組み合わせてデータを抽出する<strong>結合質問</strong>を扱う．</p>
-<p>前章同様，SQLの説明を行うために，独立行政法人統計センターが公開している<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/">教育用標準データセット（SSDSE）</a>の<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-E">基本素材（SSDSE-E）</a>および<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-A">市区町村（SSDSE-A）</a>から抜粋・加工したデータを用いる．
+<p>前講同様，SQLの説明を行うために，独立行政法人統計センターが公開している<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/">教育用標準データセット（SSDSE）</a>の<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-E">基本素材（SSDSE-E）</a>および<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-A">市区町村（SSDSE-A）</a>から抜粋・加工したデータを用いる．
 データは<code class="docutils literal notranslate"><span class="pre">elderly_population_top10</span></code>テーブル，<code class="docutils literal notranslate"><span class="pre">university_student_population_top10</span></code>テーブル，および<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルの3種類ある．</p>
 <p id="sql2-db1">各テーブル内のデータは2021年度調査によるものである．
 <code class="docutils literal notranslate"><span class="pre">elderly_population_top10</span></code>テーブルには，65歳以上人口数が上位10位内であった都道府県の「地域コード」「都道府県名」「総人口」が格納されている．</p>
@@ -1053,7 +1053,7 @@ document.write(`
 <p>以下，これら3つのテーブルが格納された関係データベースが手元にあると想定して，結合質問について説明する．</p>
 <section id="id2">
 <h2><span class="section-number">5.1. </span>集合演算<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>高校数学で学習した「集合と論理」を覚えておられるだろうか（忘れた人は<a class="reference internal" href="#../misc/math.ipynb"><span class="xref myst">コチラ</span></a>を確認）．
+<p>高校数学で学習した「集合と論理」を覚えておられるだろうか（忘れた人は<a class="reference internal" href="../misc/math.html"><span class="std std-doc">コチラ</span></a>を確認）．
 そのときに</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(A=\{1, 2, 3, 4, 9\}\)</span>，<span class="math notranslate nohighlight">\(B=\{3, 4, 7\}\)</span>のとき，AとBの共通部分<span class="math notranslate nohighlight">\(A \cap B\)</span>は<span class="math notranslate nohighlight">\(\{3, 4\}\)</span>となる</p>
@@ -1084,7 +1084,7 @@ document.write(`
 <div><p><span class="math notranslate nohighlight">\(A=\{1, 2, 3, 4, 9\}\)</span>，<span class="math notranslate nohighlight">\(B=\{3, 4, 7\}\)</span>のとき，AとBの和集合<span class="math notranslate nohighlight">\(A \cup B\)</span>は<span class="math notranslate nohighlight">\(\{1, 2, 3, 4, 7, 9\}\)</span></p>
 </div></blockquote>
 <p>となるような演算の関係データベース版である．</p>
-<p>SQLで和集合を求めるには<code class="docutils literal notranslate"><span class="pre">UINION</span></code>演算子を用いる．
+<p>SQLで和集合を求めるには<code class="docutils literal notranslate"><span class="pre">UNION</span></code>演算子を用いる．
 レコード集合Aとレコード集合Bの和集合を求めるには，<code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">UNION</span> <span class="pre">B</span></code>のようなSQL文を書く．
 <span class="math notranslate nohighlight">\(A\)</span>や<span class="math notranslate nohighlight">\(B\)</span>はレコード集合であるので，実際にSQL文で<code class="docutils literal notranslate"><span class="pre">UNION</span></code>を使う際には，AやBの箇所に<strong>SELECT文が入る</strong>．</p>
 <p>以下は，<code class="docutils literal notranslate"><span class="pre">elderly_population_top10</span></code>テーブルと<code class="docutils literal notranslate"><span class="pre">university_student_population_top10</span></code>テーブルの和集合を求めるSQL文である．</p>
@@ -2009,7 +2009,7 @@ document.write(`
 </div>
 <p>内部結合の例題とは異なり，「京都府」に関するレコードが表示され，「学習・自己啓発・訓練」列の値が<code class="docutils literal notranslate"><span class="pre">NULL</span></code>になっていることが分かる（上記結果ではNULLが<code class="docutils literal notranslate"><span class="pre">None</span></code>と表示されているが，<code class="docutils literal notranslate"><span class="pre">NULL</span></code>と読み替えてほしい）．
 外部結合は結合条件を満たすレコードがなかったとしても，それを把握したいときなどに利用できる．</p>
-<p>なお，上記の例題からも分かるように，外部結合には<strong>左外部結合（left outer join）</strong> と<strong>右外部結合（right outer join）</strong>，および<strong>完全外部結合（full outer join）</strong> の3種類が存在する．
+<p>なお，上記の例題からも分かるように，外部結合には<strong>左外部結合（left outer join）</strong> と<strong>右外部結合（right outer join）</strong>，および<strong>完全外部結合（full outer join）</strong> の3種類が存在する<a class="footnote-reference brackets" href="#id7" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>．
 左外部結合が結合対象の左テーブルのレコードを全て残すのに対して，</p>
 <ul class="simple">
 <li><p>右外部結合は（結合条件を満たさなかった場合でも）結合対象の右テーブルのレコードを全て残し，</p></li>
@@ -2028,8 +2028,8 @@ document.write(`
 </section>
 </section>
 <hr class="docutils" />
-<section id="id5">
-<h2><span class="section-number">5.3. </span>クイズ<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<section id="id6">
+<h2><span class="section-number">5.3. </span>クイズ<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
 <p>本クイズでは，独立行政法人統計センターが公開している教育用標準データセット（SSDSE）の<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-E">基本素材SSDSE-E</a>（データの解説は<a class="reference external" href="https://www.nstac.go.jp/sys/files/kaisetsu-E-2023.pdf">こちら</a>）および<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-A">市区町村（SSDSE-A）</a>から抜粋・加工したデータを用いる．</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルの内容については前章</p></li>
@@ -2058,7 +2058,7 @@ document.write(`
 </div>
 <section id="q1">
 <span id="sql2-q1"></span><h3><span class="section-number">5.3.1. </span>Q1. 復習<a class="headerlink" href="#q1" title="Link to this heading">#</a></h3>
-<p><a class="reference internal" href="01.html"><span class="std std-doc">前章</span></a>で用いた<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルにあるレコードのうち，大学学生数が<code class="docutils literal notranslate"><span class="pre">7万</span></code>以上かつ小学校児童数が<code class="docutils literal notranslate"><span class="pre">30万</span></code>以上の都道府県名を表示するSQL文を書け．
+<p><a class="reference internal" href="01.html"><span class="std std-doc">前講</span></a>で用いた<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルにあるレコードのうち，大学学生数が<code class="docutils literal notranslate"><span class="pre">7万</span></code>以上かつ小学校児童数が<code class="docutils literal notranslate"><span class="pre">30万</span></code>以上の都道府県名を表示するSQL文を書け．
 なお，表示の際には都道府県名の重複は除くこと．</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2134,6 +2134,13 @@ document.write(`
 </div>
 </div>
 </div>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id7" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">1</a><span class="fn-bracket">]</span></span>
+<p>SQLiteでは，バージョンによっては右外部結合および完全外部結合はサポートされていないので注意．</p>
+</aside>
+</aside>
 </section>
 </section>
 </section>
@@ -2214,7 +2221,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outer-join">5.2.3. 外部結合（OUTER JOIN）</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.3. クイズ</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.3. クイズ</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">5.3.1. Q1. 復習</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">5.3.2. Q2. 集合演算</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3">5.3.3. Q3. 直積</a></li>
