@@ -413,7 +413,7 @@ document.write(`
 <p>本講では，代表的なデータ従属性である<strong>関数従属性</strong> の概念を（再）導入した後，それに基づく関係の正規化手法について述べる．</p>
 <section id="id2">
 <h2><span class="section-number">12.1. </span>関数従属性<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p><a class="reference internal" href="../relational-data-model/01.html"><span class="std std-doc">関係データモデルの講</span></a>で触れたように，<strong>関数従属性（functional dependency）</strong> は「関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>においてその属性（あるいは属性集合）<span class="math notranslate nohighlight">\(X\)</span>の値が決まると属性（あるいは属性集合）<span class="math notranslate nohighlight">\(Y\)</span>の値も一意に決まる」という性質である．
+<p><a class="reference internal" href="#../relational-data-model/01.ipynb"><span class="xref myst">関係データモデルの講</span></a>で触れたように，<strong>関数従属性（functional dependency）</strong> は「関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>においてその属性（あるいは属性集合）<span class="math notranslate nohighlight">\(X\)</span>の値が決まると属性（あるいは属性集合）<span class="math notranslate nohighlight">\(Y\)</span>の値も一意に決まる」という性質である．
 関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>において属性<span class="math notranslate nohighlight">\(Y\)</span>が属性<span class="math notranslate nohighlight">\(X\)</span>に関数従属していることを</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(X \to Y\)</span></p>
@@ -491,7 +491,7 @@ document.write(`
 正規化の条件として，正規化後に得られた関係の集合が保持しているデータ内容は，正規化前の関係が保持しているデータ内容と等しくならなければならない．
 また，正規化前と正規化後の関係が保持する一貫性制約も等しくならなければならない．．</p>
 <p>以下の図のように，正規形にはいくつかのレベルがある．
-<a class="reference internal" href="../relational-data-model/01.html"><span class="std std-doc">関係データモデルの講</span></a>で説明した<a class="reference internal" href="../relational-data-model/01.html#sec-1nf"><span class="std std-ref">第1正規形</span></a>から始まり，第5正規形まである．
+<a class="reference internal" href="#../relational-data-model/01.ipynb"><span class="xref myst">関係データモデルの講</span></a>で説明した<a class="reference internal" href="../relational-data-model/01.html#sec-1nf"><span class="std std-ref">第1正規形</span></a>から始まり，第5正規形まである．
 関係の正規化は，関数従属性をはじめとする<strong>データ従属性を考慮する</strong>ことで実現される．
 本講では，関数従属性に着目して，第1正規形の関係スキーマから実用上重要とされるボイス・コッド正規形を得る手順を説明する．</p>
 <p><img alt="正規形の階層" src="../../_images/NF-hierarchy.png" /></p>

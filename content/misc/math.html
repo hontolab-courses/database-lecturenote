@@ -410,7 +410,7 @@ document.write(`
 <p>関係データベースのデータモデルである関係データモデルは，代数学，特に集合と写像に関する数学理論に支えられている．
 関係データモデルを理解するためにはこれらの知識が必要となるため，以下，最低限必要となる集合と写像の知識を説明する．</p>
 <p>以下の説明はかなり形式的である．
-当たり前のことを記号的に説明することになるが，<strong>物事を抽象化して捉えるためには記号的（数学的）な道具が必要になる</strong>ので，嫌がらず読んでほしい（ただし気負いすぎないこと）．
+当たり前のことを記号をふんだんに使って説明しているが，<strong>物事を抽象化して捉えるためには記号的（数学的）な道具が必要になる</strong>ので，嫌がらず読んでほしい（ただし気負いすぎないこと）．
 なお，集合と写像について知識がある読者は，本節を読み飛ばしても問題ない．</p>
 <section id="id2">
 <h2>集合<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
@@ -455,19 +455,19 @@ document.write(`
 </div></blockquote>
 <p>となる．
 また，（数学的な定義の）<strong>集合の要素は重複してはならない</strong><a class="footnote-reference brackets" href="#id24" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>．
-重複する要素があった場合は，重複を無視して集合が扱われる．
+重複する要素があった場合は，重複は無視して扱われる．
 例えば，<span class="math notranslate nohighlight">\(A=\{1, 3, 5, 7, 7\}\)</span>は<span class="math notranslate nohighlight">\(A=\{1, 3, 5, 7\}\)</span>として扱われることになる．</p>
 <section id="id5">
 <h3>集合の外延的定義と内包的定義<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>集合の定義（表記）方法には2種類ある．</p>
 <p>1つは<strong>外延的定義</strong>である．
-これは集合の要素を具体的に列挙することで，集合を定義する方法である．
+これは，集合の要素を具体的に列挙することで集合を定義する方法である．
 例えば，</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(A = \{2, 4, 6, 8, 10, 12, 14, 16, 18, 20\}\)</span></p>
 </div></blockquote>
 <p>は「20以下の偶数」である集合Aを外延的定義によって定義したものである．
-外延的定義では集合の要素をすべて列挙するのが大変なため，以下のように途中をテンテンで省略して書く場合もある．</p>
+外延的定義では集合の要素をすべて列挙するのが大変なため，以下のように途中の要素をテンテンで省略して書く場合もある．</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(A = \{2, 4, 6, ..., 18, 20\}\)</span></p>
 </div></blockquote>
@@ -536,7 +536,7 @@ document.write(`
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(A \cap B = \{ x \ | \ x \in A かつ x \in B\}\)</span></p>
 </div></blockquote>
-<p>例えば，以下の図は集合<span class="math notranslate nohighlight">\(A=\{2, 4, 6, 8, 10\}\)</span>と集合<span class="math notranslate nohighlight">\(B=\{4, 8, 12, 16, 20\}\)</span>の積集合<span class="math notranslate nohighlight">\(A \cap B\)</span>をベン図で表している．
+<p>以下の図は，集合<span class="math notranslate nohighlight">\(A=\{2, 4, 6, 8, 10\}\)</span>と集合<span class="math notranslate nohighlight">\(B=\{4, 8, 12, 16, 20\}\)</span>の積集合<span class="math notranslate nohighlight">\(A \cap B\)</span>をベン図で表している．
 このケースでは<span class="math notranslate nohighlight">\(A \cap B = \{4, 8\}\)</span>となる．</p>
 <p><img alt="積集合" src="../../_images/intersection.png" /></p>
 </section>
@@ -548,7 +548,7 @@ document.write(`
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(A \cup B = \{ x \ | \ x \in A または x \in B\}\)</span></p>
 </div></blockquote>
-<p>例えば，以下の図は集合<span class="math notranslate nohighlight">\(A=\{2, 4, 6, 8, 10\}\)</span>と集合<span class="math notranslate nohighlight">\(B=\{4, 8, 12, 16, 20\}\)</span>の和集合<span class="math notranslate nohighlight">\(A \cup B\)</span>をベン図で表している．
+<p>以下の図は，集合<span class="math notranslate nohighlight">\(A=\{2, 4, 6, 8, 10\}\)</span>と集合<span class="math notranslate nohighlight">\(B=\{4, 8, 12, 16, 20\}\)</span>の和集合<span class="math notranslate nohighlight">\(A \cup B\)</span>をベン図で表している．
 このケースでは<span class="math notranslate nohighlight">\(A \cup B = \{2, 4, 6, 8, 10, 12, 16, 20\}\)</span>となる．</p>
 <p><img alt="和集合" src="../../_images/union.png" /></p>
 </section>
@@ -556,11 +556,11 @@ document.write(`
 <h3>差集合<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
 <p>2つの集合A，Bが与えられたとき，集合Aには属しているが集合Bには属していない要素を集めた集合をBからAを引いた<strong>差集合（set difference）</strong> と呼ぶ．
 集合Bから集合Aを引いた差集合を<span class="math notranslate nohighlight">\(B-A\)</span>または<span class="math notranslate nohighlight">\(B \setminus A\)</span>と記す．
-和集合<span class="math notranslate nohighlight">\(B-A\)</span>の内包的定義は以下の通り：</p>
+差集合<span class="math notranslate nohighlight">\(B-A\)</span>の内包的定義は以下の通り：</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(B-A = \{ x \ | \ x \in B かつ x \notin A\}\)</span></p>
 </div></blockquote>
-<p>例えば，以下の図は集合<span class="math notranslate nohighlight">\(A=\{2, 4, 6, 8, 10\}\)</span>から集合<span class="math notranslate nohighlight">\(B=\{4, 8, 12, 16, 20\}\)</span>を引いた差集合<span class="math notranslate nohighlight">\(A-B\)</span>をベン図で表している．
+<p>以下の図は，集合<span class="math notranslate nohighlight">\(A=\{2, 4, 6, 8, 10\}\)</span>から集合<span class="math notranslate nohighlight">\(B=\{4, 8, 12, 16, 20\}\)</span>を引いた差集合<span class="math notranslate nohighlight">\(A-B\)</span>をベン図で表している．
 このケースでは<span class="math notranslate nohighlight">\(A-B = \{2, 6, 10\}\)</span>となる．</p>
 <p><img alt="差集合1" src="../../_images/difference1.png" /></p>
 <p>以下は，集合Bから集合Aを引いた差集合<span class="math notranslate nohighlight">\(B-A\)</span>を表したベン図である．
@@ -570,10 +570,10 @@ document.write(`
 </section>
 <section id="id12">
 <h3>部分集合<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
-<p>2つの集合A，Bが与えられたとき，集合Bが集合Aの一部としてすっぽり入っているとき，集合Bは集合Aの**部分集合（subset）**と呼ぶ．
+<p>2つの集合A，Bが与えられたとき，集合Bが集合Aの一部としてすっぽり入っているとき，集合Bは集合Aの<strong>部分集合（subset）</strong> であるという．
 もう少し堅い定義をすると，集合Bの任意の要素（あらゆる要素）が集合Aに属するとき，集合Bは集合Aの部分集合である，とする．
 集合Bが集合Aの部分集合であることを，<span class="math notranslate nohighlight">\(B \subset{A}\)</span>と記す．</p>
-<p>例えば，以下の図は集合<span class="math notranslate nohighlight">\(A=\{5, 10, 15, 20, 25, 30, 35\}\)</span>と集合<span class="math notranslate nohighlight">\(B=\{10, 20, 30\}\)</span>があるとき，
+<p>例えば，以下の図では集合<span class="math notranslate nohighlight">\(A=\{5, 10, 15, 20, 25, 30, 35\}\)</span>と集合<span class="math notranslate nohighlight">\(B=\{10, 20, 30\}\)</span>であり，
 集合Bの要素はすべて集合Aの要素なので，<span class="math notranslate nohighlight">\(B \subset{A}\)</span>となる（<a class="reference internal" href="#q4"><span class="std std-ref">★Quiz4★</span></a>）．</p>
 <p><img alt="部分集合" src="../../_images/subset.png" /></p>
 </section>
@@ -602,7 +602,7 @@ document.write(`
 </div></blockquote>
 <p>となる．</p>
 <p><strong>関係データベースは直積と関連が深い．</strong>
-高校数学には学ばなかった（と思われる）直積であるが，きっちり概念を押さえておこう（<a class="reference internal" href="#q5"><span class="std std-ref">★Quiz5★</span></a>）．</p>
+高校数学では学ばなかった（と思われる）直積であるが，きっちり概念を押さえておこう（<a class="reference internal" href="#q5"><span class="std std-ref">★Quiz5★</span></a>）．</p>
 </section>
 </section>
 <section id="id14">
@@ -617,7 +617,7 @@ document.write(`
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(f: x \mapsto y\)</span></p>
 </div></blockquote>
-<p>このとき<span class="math notranslate nohighlight">\(y\)</span>のことを，写像<span class="math notranslate nohighlight">\(f\)</span>による要素<span class="math notranslate nohighlight">\(x\)</span>の<strong>像（あるいは値）</strong> と呼び，<span class="math notranslate nohighlight">\(f(x)\)</span>と記すこともできる．</p>
+<p>このとき，<span class="math notranslate nohighlight">\(y\)</span>を写像<span class="math notranslate nohighlight">\(f\)</span>による要素<span class="math notranslate nohighlight">\(x\)</span>の<strong>像（あるいは値）</strong> と呼び，<span class="math notranslate nohighlight">\(f(x)\)</span>と記すこともできる．</p>
 <p>最も馴染みのある写像の一つは関数である．
 例えば，小売店で商品を購入する際には，商品価格<span class="math notranslate nohighlight">\(x\)</span>に対して消費税10%分を加算した料金を支払う．
 最終的な支払い料金<span class="math notranslate nohighlight">\(y\)</span>を計算する関数<span class="math notranslate nohighlight">\(f\)</span>は</p>
@@ -642,16 +642,15 @@ document.write(`
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(S \times C = \{(山畑滝子, 線形代数), (山畑滝子, データベース), (川澄桜, 線形代数), ... \}\)</span></p>
 </div></blockquote>
-<p>といった感じになる．
-さて，成績の種別を表す集合を<span class="math notranslate nohighlight">\(U = \{優, 良, 可, 不可\}\)</span>とすると，各学生の各科目に成績を付けるという行為（<span class="math notranslate nohighlight">\(f_{採点}\)</span>）はまさに集合<span class="math notranslate nohighlight">\(S \times C\)</span>から<span class="math notranslate nohighlight">\(U\)</span>への写像と見なすことができる．
+<p>といった感じになる．</p>
+<p>さて，成績の種別を表す集合を<span class="math notranslate nohighlight">\(U = \{優, 良, 可, 不可\}\)</span>とすると，各学生の各科目に成績を付けるという行為（<span class="math notranslate nohighlight">\(f_{採点}\)</span>）はまさに集合<span class="math notranslate nohighlight">\(S \times C\)</span>から<span class="math notranslate nohighlight">\(U\)</span>への写像と見なすことができる．
 よって，以下のように書くことができる．</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(f_{採点}: S \times C \to U\)</span></p>
 </div></blockquote>
 <section id="id15">
 <h3>定義域と値域<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
-<p>最後にもう3つだけ定義を導入する．
-上で写像<span class="math notranslate nohighlight">\(f: X \to Y\)</span>の概念を導入したが，写像元と写像先に名前を付けておくと便利なため，3つの概念を導入する．</p>
+<p>上で写像<span class="math notranslate nohighlight">\(f: X \to Y\)</span>の概念を導入したが，写像元と写像先に名前を付けておくと便利なため，3つの概念を導入する．</p>
 <p>1つ目は定義域である．
 集合<span class="math notranslate nohighlight">\(X\)</span>から集合<span class="math notranslate nohighlight">\(Y\)</span>への写像<span class="math notranslate nohighlight">\(f\)</span>が与えられたとき，集合<span class="math notranslate nohighlight">\(X\)</span>を写像<span class="math notranslate nohighlight">\(f\)</span>の<strong>定義域</strong>と呼ぶ．</p>
 <p>2つ目は終域である．
