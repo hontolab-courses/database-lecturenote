@@ -6,15 +6,15 @@ parts:
 - caption: はじめに
   numbered: True
   chapters:
-    - file: content/introduction/01.ipynb
+    - file: content/introduction/01.md
 - caption: データベースとは
   numbered: True
   chapters:
-    - file: content/concept-of-database/01.ipynb
+    - file: content/concept-of-database/01.md
 - caption: データモデル
   numbered: True
   chapters:
-    - file: content/relational-data-model/01.ipynb
+    - file: content/relational-data-model/01.md
 - caption: SQL
   numbered: True
   chapters:
@@ -46,7 +46,7 @@ parts:
 - caption: 付録
   numbered: False
   chapters:
-    - file: content/misc/math.ipynb
+    - file: content/misc/math.md
     - file: content/misc/how-to-execute-sql.ipynb
     - file: content/misc/drawio.md
     - file: content/reference.md

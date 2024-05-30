@@ -15,7 +15,11 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 本講義は，データサイエンスを学ぶ方を対象にしたデータベース講義です．
 一般に，データベースの講義はデータベースを使ったシステムの研究・開発を志向する学生，つまりコンピュータサイエンスを専門とする学生に提供されるものです．
 しかし，本講義が想定している受講者はデータサイエンス学部の学生であり，その大半はデータ分析のためにデータベースを活用することが想定されます．
-そのため，本講義では一般的なデータベースの講義で教授する内容のうち，関係データベースの設計および関係データベース用いたデータの検索・分析を行う上で必要となる知識・スキルに焦点をしぼって授業を行います．
+そのため，本講義では一般的なデータベースの講義で教授する内容のうち，
+- 関係データベースの設計
+- 関係データベース用いたデータの検索・分析
+
+を行う上で必要となる知識・スキルに焦点をしぼって授業を行います．
 
 以下，本講義で学ぶこと，学ばないことです．
 
@@ -34,16 +38,16 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 * 関係論理
 * データ格納方式
 * 問い合わせ最適化
-* トランザクション（同時実行制御）
+* トランザクション
 * 障害回復
 
 
 ## 授業計画とコンテンツ
 | |  日時  | トピック | 講義ノート | スライド資料 |
 | ---- | ---- | ---- | ---- | ---- |
-| 1 | 04/15 | ガイダンス & データベースを使わない世界 | [Here](content/introduction/01.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-01) |
-| 2 | 04/22 | データベースの概念 | [Here](content/concept-of-database/01.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-02) |
-| 3 | 04/29 | 関係データモデル | [Here](content/relational-data-model/01.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-03) |
+| 1 | 04/15 | ガイダンス & データベースを使わない世界 | [Here](content/introduction/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-01) |
+| 2 | 04/22 | データベースの概念 | [Here](content/concept-of-database/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-02) |
+| 3 | 04/29 | 関係データモデル | [Here](content/relational-data-model/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-03) |
 | 4 | 05/13 | SQL（1/3） | [Here](content/sql/01.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-04) |
 | 5 | 05/20 | SQL（2/3） | [Here](content/sql/02.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-05) |
 | 6 | 05/27 | SQL（3/3） | [Here](content/sql/03.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-06) |
@@ -51,7 +55,7 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 | 8 | 06/10 | 実体関連モデル（1/3） | [Here](content/er-model/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-08) |
 | 9 | 06/17 | 実体関連モデル（2/3）| [Here](content/er-model/02.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-09) |
 | 10 | 06/24 | 実体関連モデル（3/3） | [Here](content/er-model/03.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-10) |
-| 11 | 07/01 | 正規形（1/2） | [Here](content/db-design/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-11) |
+| 11 | 07/01 | 正規化（1/2） | [Here](content/db-design/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-11) |
 | 12 | 07/08 | 正規化（2/2） | [Here](content/db-design/02.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-12) |
 | 13 | 07/15 | データベース設計演習 - レポート課題2 | [Here](content/exercise/db-design.md) |  |
 | 14 | 07/22 | 索引づけ | [Here](content/indexing/01.md) |  |
