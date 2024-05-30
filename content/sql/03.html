@@ -460,7 +460,7 @@ document.write(`
 </div>
 </details>
 </div>
-<p>前章，前々章同様，本章ではSQLの説明のために独立行政法人統計センターが公開している教育用標準データセット（SSDSE）の<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-E">基本素材SSDSE-E</a>（データの解説は<a class="reference external" href="https://www.nstac.go.jp/sys/files/kaisetsu-E-2023.pdf">こちら</a>）から抜粋・加工したデータ（<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブル）を用いる．
+<p><a class="reference internal" href="01.html"><span class="std std-doc">第4講</span></a>，<a class="reference internal" href="02.html"><span class="std std-doc">第5講</span></a>同様，本講ではSQLの説明のために独立行政法人統計センターが公開している教育用標準データセット（SSDSE）の<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-E">基本素材SSDSE-E</a>（データの解説は<a class="reference external" href="https://www.nstac.go.jp/sys/files/kaisetsu-E-2023.pdf">こちら</a>）から抜粋・加工したデータ（<code class="docutils literal notranslate"><span class="pre">population</span></code>テーブル）を用いる．
 <code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルには，47ある各都道府県に関する総人口，小学校児童数，中学校生徒数，高等学校生徒数，大学学生数のデータが2021年度，2020年度分入っている．
 このテーブルが格納された関係データベースが手元にあると想定して，SQLの使い方を説明する．</p>
 <section id="id2">
@@ -742,7 +742,7 @@ document.write(`
 <span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">population_avg</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="err">平均大学生数</span><span class="w"> </span><span class="k">DESC</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>上記のようなことは，ステップ1のSQL文を「副問い合わせ指定」することで実現できる．
+<p>上記のようなことは，ステップ1のSQL文を「副問い合わせ」することで実現できる．
 具体的には，上記仮のSQL文の<code class="docutils literal notranslate"><span class="pre">FROM</span></code>句にある<code class="docutils literal notranslate"><span class="pre">population_avg</span></code>の箇所について，下記のSQL文のようにカッコで囲んだ「ステップ1だけを行う」<code class="docutils literal notranslate"><span class="pre">SELECT</span></code>文で置き換える．</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
 <span class="w">  </span><span class="o">*</span>
@@ -871,7 +871,7 @@ document.write(`
 </pre></div>
 </div>
 <p>上の例では<code class="docutils literal notranslate"><span class="pre">FROM</span></code>句内で副問い合わせ指定を行っていたが，<code class="docutils literal notranslate"><span class="pre">WHERE</span></code>句においても副問い合わせを用いることができる．
-例えば，<a class="reference internal" href="#../02.ipynb"><span class="xref myst">前章</span></a>の例題で用いた</p>
+例えば，<a class="reference internal" href="02.html"><span class="std std-doc">前講</span></a>の例題で用いた</p>
 <ul class="simple">
 <li><p>65歳以上人口数の上位10都道府県のリストが格納された<code class="docutils literal notranslate"><span class="pre">elderly_population_top10</span></code>テーブル</p></li>
 <li><p>「学習・自己啓発・訓練」「スポーツ」「趣味・娯楽」「ボランティア」「旅行・行楽」について過去1年以内に活動したことのある人の割合（%）について都道府県別にまとめた<code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブル</p></li>
@@ -880,12 +880,12 @@ document.write(`
 <blockquote>
 <div><p>65歳以上人口数の上位10件に「入っていない」都道府県について，過去1年以内に「旅行・行楽」活動をしたことのある人の割合が5割を超える場合のみ，その割合を地域コード，都道府県名とともに表示する</p>
 </div></blockquote>
-<p>ためのSQL文を考えてみよう．
+<p>ようなSQL文を考えてみよう．
 ちなみに，</p>
 <blockquote>
 <div><p>65歳以上人口数の上位10件に「<strong>入っている</strong>」都道府県について，過去1年以内に「旅行・行楽」活動をしたことのある人の割合が5割を超える場合のみ，その割合を地域コード，都道府県名とともに表示する</p>
 </div></blockquote>
-<p>のであれば，以下のようなSQL文になる（<a class="reference internal" href="#sql3-q1">★Quiz1★</a>）．</p>
+<p>ようなSQL文であれば，以下となる（<a class="reference internal" href="#sql3-q1">★Quiz1★</a>）．</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
 <span class="w">  </span><span class="n">activity</span><span class="p">.</span><span class="err">地域コード</span><span class="p">,</span>
 <span class="w">  </span><span class="n">activity</span><span class="p">.</span><span class="err">都道府県</span><span class="p">,</span>
@@ -1063,7 +1063,7 @@ document.write(`
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <h4 class="rubric" id="sql">問い合わせのための発展的なSQL</h4>
-<p>これまでに述べてきたSQLは，関係データベースから所望のレコードを引っ張ってくるためのあくまで基礎である．
+<p>これまでに述べてきたSQLは，関係データベースから所望のレコードを引っ張ってくるための基礎にすぎない．
 解説していないSQLは他にも色々ある．
 例えば，</p>
 <ul class="simple">
@@ -1095,7 +1095,7 @@ document.write(`
 <li><p>（必要なら）外部キー</p></li>
 </ul>
 <p>を指定する．</p>
-<p>データ型は<a class="reference internal" href="#../relational-data-model/01.ipynb"><span class="xref myst">関係データモデル</span></a>の章で説明した<strong>定義域（domain）</strong> に対応するものである．
+<p>データ型は<a class="reference internal" href="../relational-data-model/01.html"><span class="std std-doc">関係データモデル</span></a>の講で説明した<strong>定義域（domain）</strong> に対応するものである．
 関係データベースで扱える代表的なデータ型は以下の通りである．</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">VARCHAR(n)</span></code>: n文字まで扱える可変長の文字列型．通常文字列を扱うときはこれを指定する．</p></li>
@@ -1176,8 +1176,8 @@ document.write(`
 <p>本クイズでは，独立行政法人統計センターが公開している教育用標準データセット（SSDSE）の<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-E">基本素材SSDSE-E</a>（データの解説は<a class="reference external" href="https://www.nstac.go.jp/sys/files/kaisetsu-E-2023.pdf">こちら</a>）および<a class="reference external" href="https://www.nstac.go.jp/use/literacy/ssdse/#SSDSE-A">市区町村（SSDSE-A）</a>から抜粋・加工したデータを用いる．
 なお，</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルの内容については<a class="reference internal" href="01.html"><span class="std std-doc">前々章</span></a></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルの内容については<a class="reference internal" href="02.html"><span class="std std-doc">前章</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">population</span></code>テーブルの内容については<a class="reference internal" href="01.html"><span class="std std-doc">第4講</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">activity</span></code>テーブルの内容については<a class="reference internal" href="02.html"><span class="std std-doc">第5講</span></a></p></li>
 </ul>
 <p>を参照せよ．</p>
 <p>なお，データをダウンロードしていない者は，以下のコードを実行してデータをダウンロードしてからクイズに取り組むこと．</p>
