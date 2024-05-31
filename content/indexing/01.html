@@ -43,7 +43,7 @@
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
@@ -617,7 +617,7 @@ mod_d(x) = r  \quad \text{where} \,\, x = q \cdot d + r
 一般に学籍番号は数字以外の文字も含まれる文字列であるが，計算機の中では文字列も整数値で表現されているので，剰余を計算することは可能である．
 そこで，以下の図のように<code class="docutils literal notranslate"><span class="pre">学生</span></code>テーブルの各レコードの<code class="docutils literal notranslate"><span class="pre">学籍番号</span></code>の値に剰余を計算する関数を適用し，得られた剰余値が示す記憶装置の場所にレコードを格納する．
 このようにハッシュ索引を構築しておけば，レコードを取得したい学生の学籍番号から剰余値を1回計算するだけで，必要となる学生情報が格納されている場所を特定し，レコードを取得することができる．</p>
-<p><img alt="ハッシュ索引" src="../../_images/hash-index.png" /></p>
+<p><img alt="ハッシュ索引" src="../../_images/hash-index.jpg" /></p>
 <p>高速にレコードを取得できるハッシュ索引であるが，致命的な弱点がある．
 ハッシュ索引は属性値がある範囲にあるレコードを見つける<strong>範囲探索にはまったく有効に機能しない</strong>．
 ハッシュ索引は各レコードの属性値のハッシュ値とレコードの格納場所を一対一対応させているにすぎず，探索キーの値が完全一致するものしか見つけられない．
