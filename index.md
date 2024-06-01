@@ -59,7 +59,7 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 | 12 | 07/08 | 正規化（2/2） | [Here](content/db-design/02.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-12) |
 | 13 | 07/15 | データベース設計演習 - レポート課題2 | [Here](content/exercise/db-design.md) |  |
 | 14 | 07/22 | 索引づけ | [Here](content/indexing/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-14) |
-| 15 | 07/29 | NoSQL | [Here](content/nosql/01.md) |  |
+| 15 | 07/29 | NoSQL | [Here](content/nosql/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-15) |
 | 16 | 08/05 | 期末試験 |  |  |
 
 
