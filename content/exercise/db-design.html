@@ -454,28 +454,30 @@ document.write(`
 <section id="q2">
 <h2><span class="section-number">13.2. </span>Q2<a class="headerlink" href="#q2" title="Link to this heading">#</a></h2>
 <p>県内に複数ある図書館における蔵書貸出管理を包括的に行う関係データベースを設計したい．
-このデータベースでは，以下の11の属性をもつとする．</p>
+このデータベースでは，以下の12の属性をもつとする．</p>
 <ul class="simple">
 <li><p>図書館（の名前）</p></li>
 <li><p>住所</p></li>
+<li><p>管轄区</p></li>
 <li><p><a class="reference external" href="https://ja.wikipedia.org/wiki/ISBN">ISBN</a></p></li>
 <li><p>書籍タイトル</p></li>
 <li><p>出版社</p></li>
 <li><p>著者</p></li>
 <li><p>冊数</p></li>
 <li><p>ユーザ</p></li>
-<li><p>連絡先</p></li>
+<li><p>電話番号</p></li>
 <li><p>貸出日</p></li>
 <li><p>返却日</p></li>
 </ul>
 <p>また，以下の関数従属性が成立するとする．
-なお，ある書籍の著者は複数人いる場合があり，ユーザは同じ本を借りることはないと仮定する．</p>
+なお，取り扱う書籍はすべて単著（書籍につき著者は1人）であり，ユーザは同じ本を借りることはないと仮定する．</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(FD_1: 図書館 \to 住所\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(FD_2: ユーザ \to 連絡先\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(FD_3: ISBN \to 書籍タイトル, 出版社\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(FD_4: ISBN, 図書館 \to 冊数\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(FD_5: ISBN, 図書館, ユーザ \to 貸出日, 返却日\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(FD_2: 住所 \to 管轄区\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(FD_3: ユーザ \to 電話番号\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(FD_4: ISBN \to 書籍タイトル, 出版社, 著者\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(FD_5: ISBN, 図書館 \to 冊数\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(FD_6: ISBN, 図書館, ユーザ \to 貸出日, 返却日\)</span></p></li>
 </ul>
 <p>上記を踏まえて，以下の設問に答えよ．</p>
 <section id="q2-1-3">
@@ -484,7 +486,7 @@ document.write(`
 </section>
 <section id="q2-2-5">
 <h3><span class="section-number">13.2.2. </span>Q2-2（配点5）<a class="headerlink" href="#q2-2-5" title="Link to this heading">#</a></h3>
-<p>関数従属性をふまえて，上記11の属性をもつ関係スキーマをいくつかの関係スキーマに情報無損失分解し，第3正規形またはボイス・コッド正規形を導出せよ．
+<p>関数従属性をふまえて，上記12の属性をもつ関係スキーマをいくつかの関係スキーマに情報無損失分解し，第3正規形またはボイス・コッド正規形を導出せよ．
 解答の際には，以下に留意すること．</p>
 <ul class="simple">
 <li><p>分解の過程が分かるようにすること</p></li>
