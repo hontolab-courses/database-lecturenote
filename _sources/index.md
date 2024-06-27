@@ -85,7 +85,7 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 - 評価方法：提出物をもとに担当教員が採点します．配点は各設問に記載しています
 - 解答〆切り：2024年7月21日 （日）23:59
 - 解答作成方法
-	* [コチラのURL](https://www.dropbox.com/scl/fi/w25a14h7jh9rzyi9i4l9u/report-template.docx?rlkey=qs25tdqh327amyc4dp6b7pshf&dl=1)から入手できるWordテンプレート`report-template.docx`を使用すること（図はPowerPointやdrawioで作成したものをWordに貼り付けるのが楽かと思います）
+	* [コチラのURL](https://bit.ly/45K0rVI)から入手できるWordテンプレート`report-template.docx`を使用すること（図はPowerPointやdrawioで作成したものをWordに貼り付けるのが楽かと思います）
 	* 解答提出時にはWordファイルを`PDFファイル`に変換すること．またファイル名は`学籍番号.pdf`とすること
 - 提出方法：[こちら（要大学Microsoft 365アカウント）](https://forms.office.com/r/hMnnDrKEXg)経由
 - 備考
