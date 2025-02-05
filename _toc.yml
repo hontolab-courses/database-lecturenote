@@ -39,6 +39,10 @@ parts:
   numbered: True
   chapters:
     - file: content/nosql/01.md
+- caption: Pandas
+  numbered: True
+  chapters:
+    - file: content/pandas/01.ipynb
 - caption: 付録
   numbered: False
   chapters:
