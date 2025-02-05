@@ -16,19 +16,21 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -37,13 +39,14 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=aeeb188a" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
@@ -78,9 +81,10 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Google Colab上でのSQLiteの使い方" href="how-to-execute-sql.html" />
-    <link rel="prev" title="15. NoSQL" href="../nosql/01.html" />
+    <link rel="prev" title="16. pandasによるデータ処理" href="../pandas/01.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -96,19 +100,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -116,7 +109,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -124,8 +116,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -141,7 +133,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -171,15 +164,11 @@
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">はじめに</span></p>
@@ -218,6 +207,10 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../nosql/01.html">15. NoSQL</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Pandas</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../pandas/01.html">16. pandasによるデータ処理</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">付録</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">集合と写像</a></li>
@@ -232,9 +225,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -331,24 +329,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -373,22 +363,22 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">集合</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">集合の外延的定義と内包的定義</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">よく使われる数の集合</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">空集合</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">集合の要素数</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">積集合（集合の共通部分）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">和集合</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">差集合</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">部分集合</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">直積</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">集合の外延的定義と内包的定義</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">よく使われる数の集合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">空集合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">集合の要素数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">積集合（集合の共通部分）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">和集合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">差集合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">部分集合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">直積</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">写像</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">定義域と値域</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">写像</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">定義域と値域</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">クイズ</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">クイズ</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">Q1. 外延的定義</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">Q2. 内包的定義</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3">Q3. 和集合，積集合，差集合</a></li>
@@ -450,18 +440,18 @@ document.write(`
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(H = \{あ, い, う, え, お, ...., わ, を, ん\}\)</span></p>
 </div></blockquote>
-<p>なお，<strong>集合の要素間の順序関係は無視</strong>される<a class="footnote-reference brackets" href="#id23" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>．
+<p>なお，<strong>集合の要素間の順序関係は無視</strong>される<a class="footnote-reference brackets" href="#id5" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>．
 それゆえ，集合<span class="math notranslate nohighlight">\(A=\{1, 2, 3, 4, 5\}\)</span>と<span class="math notranslate nohighlight">\(B=\{5, 4, 3, 2, 1\}\)</span>はまったく同じ集合となる．
 つまり，</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(A=B\)</span></p>
 </div></blockquote>
 <p>となる．
-また，（数学的な定義の）<strong>集合の要素は重複してはならない</strong><a class="footnote-reference brackets" href="#id24" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>．
+また，（数学的な定義の）<strong>集合の要素は重複してはならない</strong><a class="footnote-reference brackets" href="#id6" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>．
 重複する要素があった場合は，重複は無視して扱われる．
 例えば，<span class="math notranslate nohighlight">\(A=\{1, 3, 5, 7, 7\}\)</span>は<span class="math notranslate nohighlight">\(A=\{1, 3, 5, 7\}\)</span>として扱われることになる．</p>
-<section id="id5">
-<h3>集合の外延的定義と内包的定義<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<section id="id7">
+<h3>集合の外延的定義と内包的定義<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>集合の定義（表記）方法には2種類ある．</p>
 <p>1つは<strong>外延的定義</strong>である．
 これは，集合の要素を具体的に列挙することで集合を定義する方法である．
@@ -486,8 +476,8 @@ document.write(`
 <div><p><span class="math notranslate nohighlight">\(A = \{ 2n \ | \ nは整数, 0\leq n \leq 10\}\)</span></p>
 </div></blockquote>
 </section>
-<section id="id6">
-<h3>よく使われる数の集合<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<section id="id8">
+<h3>よく使われる数の集合<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <p>整数，自然数のように，よく使われる数の集合には特別な集合名が付けられている．
 以下，代表的な数の集合を列挙しておく．</p>
 <p><span class="math notranslate nohighlight">\(\mathbb{Z}\)</span>は，<strong>整数全体をあらわす集合</strong>である．
@@ -504,8 +494,8 @@ document.write(`
 <p><span class="math notranslate nohighlight">\(\mathbb{R}\)</span>は，<strong>実数全体をあらわす集合</strong>である．
 例えば，<span class="math notranslate nohighlight">\(\sqrt{3} \in \mathbb{R}\)</span>，<span class="math notranslate nohighlight">\(\pi \in \mathbb{R}\)</span>，<span class="math notranslate nohighlight">\(e \in \mathbb{R}\)</span>であり，<span class="math notranslate nohighlight">\(1+1i \notin \mathbb{R}\)</span>，<span class="math notranslate nohighlight">\(文字 \notin \mathbb{R}\)</span>である（<a class="reference internal" href="#q1"><span class="std std-ref">★Quiz1★</span></a>，<a class="reference internal" href="#q2"><span class="std std-ref">★Quiz2★</span></a>）．</p>
 </section>
-<section id="id7">
-<h3>空集合<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<section id="id9">
+<h3>空集合<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p>要素を持たない集合も集合である．
 そのような集合を<strong>空集合</strong>と呼ぶ．
 空集合は<span class="math notranslate nohighlight">\(\phi\)</span>で表す．
@@ -514,8 +504,8 @@ document.write(`
 <div><p><span class="math notranslate nohighlight">\(\phi = \{\}\)</span>．</p>
 </div></blockquote>
 </section>
-<section id="id8">
-<h3>集合の要素数<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<section id="id10">
+<h3>集合の要素数<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <p>集合Xの要素数は，<span class="math notranslate nohighlight">\(|X|\)</span>と表記する．
 例えば<span class="math notranslate nohighlight">\(A=\{1, 2, 3, 4, 5\}\)</span>のとき，<span class="math notranslate nohighlight">\(|A|=5\)</span>である．
 また，</p>
@@ -531,8 +521,8 @@ document.write(`
 <div><p><span class="math notranslate nohighlight">\(\phi = \{\}\)</span>．</p>
 </div></blockquote>
 </section>
-<section id="id9">
-<h3>積集合（集合の共通部分）<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<section id="id11">
+<h3>積集合（集合の共通部分）<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
 <p>2つの集合A，Bが与えられたとき，集合A，Bに共通の要素を集めた集合を<strong>積集合（あるいは共通集合; intersection）</strong> と呼ぶ．
 集合Aと集合Bの積集合は<span class="math notranslate nohighlight">\(A \cap B\)</span>と記す．
 積集合<span class="math notranslate nohighlight">\(A \cap B\)</span>の内包的定義は以下の通り：</p>
@@ -543,8 +533,8 @@ document.write(`
 このケースでは<span class="math notranslate nohighlight">\(A \cap B = \{4, 8\}\)</span>となる．</p>
 <p><img alt="積集合" src="../../_images/intersection.png" /></p>
 </section>
-<section id="id10">
-<h3>和集合<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<section id="id12">
+<h3>和集合<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
 <p>2つの集合A，Bが与えられたとき，集合A，Bのいずれかに属する要素を集めた集合を<strong>和集合（union）</strong> と呼ぶ．
 集合Aと集合Bの和集合は<span class="math notranslate nohighlight">\(A \cup B\)</span>と記す．
 和集合<span class="math notranslate nohighlight">\(A \cup B\)</span>の内包的定義は以下の通り：</p>
@@ -555,8 +545,8 @@ document.write(`
 このケースでは<span class="math notranslate nohighlight">\(A \cup B = \{2, 4, 6, 8, 10, 12, 16, 20\}\)</span>となる．</p>
 <p><img alt="和集合" src="../../_images/union.png" /></p>
 </section>
-<section id="id11">
-<h3>差集合<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<section id="id13">
+<h3>差集合<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
 <p>2つの集合A，Bが与えられたとき，集合Aには属しているが集合Bには属していない要素を集めた集合をBからAを引いた<strong>差集合（set difference）</strong> と呼ぶ．
 集合Bから集合Aを引いた差集合を<span class="math notranslate nohighlight">\(B-A\)</span>または<span class="math notranslate nohighlight">\(B \setminus A\)</span>と記す．
 差集合<span class="math notranslate nohighlight">\(B-A\)</span>の内包的定義は以下の通り：</p>
@@ -571,8 +561,8 @@ document.write(`
 2つの図を比較したら分かるように，差集合<span class="math notranslate nohighlight">\(A-B\)</span>と<span class="math notranslate nohighlight">\(B-A\)</span>は異なる（<a class="reference internal" href="#q3"><span class="std std-ref">★Quiz3★</span></a>）．</p>
 <p><img alt="差集合2" src="../../_images/difference2.png" /></p>
 </section>
-<section id="id12">
-<h3>部分集合<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<section id="id14">
+<h3>部分集合<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
 <p>2つの集合A，Bが与えられたとき，集合Bが集合Aの一部としてすっぽり入っているとき，集合Bは集合Aの<strong>部分集合（subset）</strong> であるという．
 もう少し堅い定義をすると，集合Bの任意の要素（あらゆる要素）が集合Aに属するとき，集合Bは集合Aの部分集合である，とする．
 集合Bが集合Aの部分集合であることを，<span class="math notranslate nohighlight">\(B \subset{A}\)</span>と記す．</p>
@@ -580,8 +570,8 @@ document.write(`
 集合Bの要素はすべて集合Aの要素なので，<span class="math notranslate nohighlight">\(B \subset{A}\)</span>となる（<a class="reference internal" href="#q4"><span class="std std-ref">★Quiz4★</span></a>）．</p>
 <p><img alt="部分集合" src="../../_images/subset.png" /></p>
 </section>
-<section id="id13">
-<h3>直積<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<section id="id15">
+<h3>直積<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
 <p>2つの集合AとBが与えられたとき，Aの要素とBの要素を1つずつ取り出して作れるすべての組（ペア）を集めた集合を<strong>直積集合（Cartesian productあるいはdirect product）</strong> あるいは単に<strong>直積</strong>と呼ぶ．
 集合AおよびBの直積集合は<span class="math notranslate nohighlight">\(A \times B\)</span>と記す．
 直積集合<span class="math notranslate nohighlight">\(A \times B\)</span>の内包的な定義は以下の通り：</p>
@@ -608,8 +598,8 @@ document.write(`
 高校数学では学ばなかった（と思われる）直積であるが，きっちり概念を押さえておこう（<a class="reference internal" href="#q5"><span class="std std-ref">★Quiz5★</span></a>）．</p>
 </section>
 </section>
-<section id="id14">
-<h2>写像<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<section id="id16">
+<h2>写像<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
 <p><strong>写像</strong>とは，2つの集合間の対応づけを表すものである．
 集合<span class="math notranslate nohighlight">\(X\)</span>に属するどの要素も，ルール<span class="math notranslate nohighlight">\(f\)</span>で集合<span class="math notranslate nohighlight">\(Y\)</span>に属するいずれかの要素に対応づけすることが可能なとき，<span class="math notranslate nohighlight">\(f\)</span>を「<span class="math notranslate nohighlight">\(X\)</span>から<span class="math notranslate nohighlight">\(Y\)</span>への写像」と呼ぶ．
 <span class="math notranslate nohighlight">\(f\)</span>が<span class="math notranslate nohighlight">\(X\)</span>から<span class="math notranslate nohighlight">\(Y\)</span>への写像であることを，以下のように記す．</p>
@@ -651,8 +641,8 @@ document.write(`
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(f_{採点}: S \times C \to U\)</span></p>
 </div></blockquote>
-<section id="id15">
-<h3>定義域と値域<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<section id="id17">
+<h3>定義域と値域<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
 <p>上で写像<span class="math notranslate nohighlight">\(f: X \to Y\)</span>の概念を導入したが，写像元と写像先に名前を付けておくと便利なため，3つの概念を導入する．</p>
 <p>1つ目は定義域である．
 集合<span class="math notranslate nohighlight">\(X\)</span>から集合<span class="math notranslate nohighlight">\(Y\)</span>への写像<span class="math notranslate nohighlight">\(f\)</span>が与えられたとき，集合<span class="math notranslate nohighlight">\(X\)</span>を写像<span class="math notranslate nohighlight">\(f\)</span>の<strong>定義域</strong>と呼ぶ．</p>
@@ -672,10 +662,10 @@ document.write(`
 </section>
 </section>
 <hr class="docutils" />
-<section id="id16">
-<h2>クイズ<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
+<section id="id18">
+<h2>クイズ<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
 <section id="q1">
-<span id="id17"></span><h3>Q1. 外延的定義<a class="headerlink" href="#q1" title="Link to this heading">#</a></h3>
+<span id="id19"></span><h3>Q1. 外延的定義<a class="headerlink" href="#q1" title="Link to this heading">#</a></h3>
 <p>以下の集合<span class="math notranslate nohighlight">\(S_1\)</span>，<span class="math notranslate nohighlight">\(S_2\)</span>，<span class="math notranslate nohighlight">\(S_3\)</span>を外延的定義で記せ．
 ただし</p>
 <ul class="simple">
@@ -688,14 +678,14 @@ document.write(`
 <p><span class="math notranslate nohighlight">\(S_3 = \{f(x) \ | \ x \in S_{name}\}\)</span></p>
 </section>
 <section id="q2">
-<span id="id18"></span><h3>Q2. 内包的定義<a class="headerlink" href="#q2" title="Link to this heading">#</a></h3>
+<span id="id20"></span><h3>Q2. 内包的定義<a class="headerlink" href="#q2" title="Link to this heading">#</a></h3>
 <p>以下の集合<span class="math notranslate nohighlight">\(S_4\)</span>，<span class="math notranslate nohighlight">\(S_5\)</span>，<span class="math notranslate nohighlight">\(S_6\)</span>を内包的定義で記せ．</p>
 <p><span class="math notranslate nohighlight">\(S_4 = \{-3, -2, -1, 0, 1, 2, 3\}\)</span></p>
 <p><span class="math notranslate nohighlight">\(S_5 = \{3, 8, 13, 18, 23 \}\)</span></p>
 <p><span class="math notranslate nohighlight">\(S_6 = \{-3, -8, -13, -18, -23 \}\)</span></p>
 </section>
 <section id="q3">
-<span id="id19"></span><h3>Q3. 和集合，積集合，差集合<a class="headerlink" href="#q3" title="Link to this heading">#</a></h3>
+<span id="id21"></span><h3>Q3. 和集合，積集合，差集合<a class="headerlink" href="#q3" title="Link to this heading">#</a></h3>
 <p>上記Q1およびQ2で扱った集合をもとに，以下の集合の要素を求めよ．</p>
 <p><span class="math notranslate nohighlight">\(S_7 = S_1 \cup S_2\)</span></p>
 <p><span class="math notranslate nohighlight">\(S_8 = S_1 \cap S_2\)</span></p>
@@ -703,7 +693,7 @@ document.write(`
 <p><span class="math notranslate nohighlight">\(S_{10} = S_2 - S_1\)</span></p>
 </section>
 <section id="q4">
-<span id="id20"></span><h3>Q4. 部分集合<a class="headerlink" href="#q4" title="Link to this heading">#</a></h3>
+<span id="id22"></span><h3>Q4. 部分集合<a class="headerlink" href="#q4" title="Link to this heading">#</a></h3>
 <p>集合<span class="math notranslate nohighlight">\(A\)</span>，<span class="math notranslate nohighlight">\(B\)</span>，<span class="math notranslate nohighlight">\(C\)</span>を以下のように定義する．</p>
 <p><span class="math notranslate nohighlight">\(A = \{線形代数, 微分積分\}\)</span></p>
 <p><span class="math notranslate nohighlight">\(B = \{線形代数, 微分積分, データ構造, データベース, 機械学習\}\)</span></p>
@@ -722,14 +712,14 @@ document.write(`
 <p>※ 本問題は<a class="reference external" href="https://www.sbcr.jp/product/4815621353/">書籍「群論への第一歩: 集合、写像から準同型定理まで」</a>に掲載された問題の改題である．</p>
 </section>
 <section id="q5">
-<span id="id21"></span><h3>Q5. 直積<a class="headerlink" href="#q5" title="Link to this heading">#</a></h3>
+<span id="id23"></span><h3>Q5. 直積<a class="headerlink" href="#q5" title="Link to this heading">#</a></h3>
 <p>集合<span class="math notranslate nohighlight">\(S_{pref}\)</span>および<span class="math notranslate nohighlight">\(S_{city}\)</span>を以下のように定義する．</p>
 <p><span class="math notranslate nohighlight">\(S_{pref} = \{愛知, 岐阜, 三重\}\)</span></p>
 <p><span class="math notranslate nohighlight">\(S_{city} = \{名古屋, 岐阜, 津, 京都\}\)</span></p>
 <p>このとき，集合<span class="math notranslate nohighlight">\(S_{pref} \times S_{city}\)</span> の要素をすべて求めよ．</p>
 </section>
 <section id="q6">
-<span id="id22"></span><h3>Q6. 写像<a class="headerlink" href="#q6" title="Link to this heading">#</a></h3>
+<span id="id24"></span><h3>Q6. 写像<a class="headerlink" href="#q6" title="Link to this heading">#</a></h3>
 <p>Q5で扱った集合<span class="math notranslate nohighlight">\(S_{pref}\)</span>と<span class="math notranslate nohighlight">\(S_{city}\)</span>を再び用いる．</p>
 <p>写像<span class="math notranslate nohighlight">\(f\)</span>は集合<span class="math notranslate nohighlight">\(S_{pref} \times S_{city}\)</span>から集合<span class="math notranslate nohighlight">\(\mathbb{R}\)</span>の写像であり，
 <span class="math notranslate nohighlight">\(p \in S_{pref}\)</span>，<span class="math notranslate nohighlight">\(c \in S_{city}\)</span>に対して，</p>
@@ -746,20 +736,20 @@ document.write(`
 <li><p>写像<span class="math notranslate nohighlight">\(f\)</span>の定義域，値域，像を列挙せよ．</p></li>
 <li><p><span class="math notranslate nohighlight">\(S = \{(x, y) | \ (x, y) \in S_{pref} \times S_{city}, f(x, y) = 1\}\)</span>となる集合<span class="math notranslate nohighlight">\(S\)</span>の要素を求めよ．</p></li>
 </ol>
+</section>
+</section>
+</section>
 <hr class="footnotes docutils" />
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id23" role="doc-footnote">
+<aside class="footnote brackets" id="id5" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
 <p>集合の要素間に順序関係が定義された集合は特別な集合であり，<strong>順序集合（ordered set）</strong> と呼ばれる．</p>
 </aside>
-<aside class="footnote brackets" id="id24" role="doc-footnote">
+<aside class="footnote brackets" id="id6" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">2</a><span class="fn-bracket">]</span></span>
 <p>集合の要素に重複を許した集合を<strong>多重集合（multiset）</strong> と呼ぶ．</p>
 </aside>
 </aside>
-</section>
-</section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -792,12 +782,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../nosql/01.html"
+       href="../pandas/01.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">15. </span>NoSQL</p>
+        <p class="prev-next-title"><span class="section-number">16. </span>pandasによるデータ処理</p>
       </div>
     </a>
     <a class="right-next"
@@ -816,7 +806,8 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -826,22 +817,22 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">集合</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">集合の外延的定義と内包的定義</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">よく使われる数の集合</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">空集合</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">集合の要素数</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">積集合（集合の共通部分）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">和集合</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">差集合</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">部分集合</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">直積</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">集合の外延的定義と内包的定義</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">よく使われる数の集合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">空集合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">集合の要素数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">積集合（集合の共通部分）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">和集合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">差集合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">部分集合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">直積</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">写像</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">定義域と値域</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">写像</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">定義域と値域</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">クイズ</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">クイズ</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">Q1. 外延的定義</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">Q2. 内包的定義</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3">Q3. 和集合，積集合，差集合</a></li>
@@ -894,8 +885,8 @@ document.write(`
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
