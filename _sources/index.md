@@ -60,7 +60,7 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 | 12 | 07/07 | 正規化（2/2） | [Here](content/db-design/02.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-12-normalization-2) |
 | 13 | 07/14 | データベース設計演習 - レポート課題2 | [Here](content/exercise/db-design.md) |  |
 | 14 | 07/21 | 索引づけ | [Here](content/indexing/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-14-indexing) |
-| 15 | 07/28 | 発展的話題（NoSQL or Pandas入門） | [Here](content/nosql/01.md) | SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-15-pandas) |
+| 15 | 07/28 | 発展的話題（NoSQL or Pandas入門） | [Here](content/nosql/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-15-nosql) |
 | 16 | 08/04 | 期末試験 |  |  |
 
 
