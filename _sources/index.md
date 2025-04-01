@@ -1,7 +1,7 @@
 # データベース
 
 * 開講時期: 2年次 前期
-* 担当教員：[山本 祐輔](https://hontolab.org/)（名古屋市立大学データサイエンス学部 准教授）
+* 担当教員：[山本 祐輔](https://hontolab.org/)（名古屋市立大学 大学院データサイエンス研究科 准教授）
 
 この資料は，名古屋市立大学データサイエンス学部において開講されている講義「データベース」用に作成されたものです．
 
@@ -31,7 +31,7 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 * 実体関連モデル
 * 正規化
 * 索引づけ
-* NoSQL
+
 
 ### 学ばないこと
 * 関係代数
@@ -40,43 +40,45 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 * 問い合わせ最適化
 * トランザクション
 * 障害回復
+* NoSQL
 
 
 ## 授業計画とコンテンツ
 | |  日時  | トピック | 講義ノート | スライド資料 |
 | ---- | ---- | ---- | ---- | ---- |
-| 1 | 04/15 | ガイダンス & データベースを使わない世界 | [Here](content/introduction/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-01) |
-| 2 | 04/22 | データベースの概念 | [Here](content/concept-of-database/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-02) |
-| 3 | 04/29 | 関係データモデル | [Here](content/relational-data-model/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-03) |
-| 4 | 05/13 | SQL（1/3） | [Here](content/sql/01.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-04) |
-| 5 | 05/20 | SQL（2/3） | [Here](content/sql/02.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-05) |
-| 6 | 05/27 | SQL（3/3） | [Here](content/sql/03.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-06) |
-| 7 | 06/03 | SQL演習 - レポート課題1 | [Here](content/exercise/sql.ipynb) |  |
-| 8 | 06/10 | 実体関連モデル（1/3） | [Here](content/er-model/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-08) |
-| 9 | 06/17 | 実体関連モデル（2/3）| [Here](content/er-model/02.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-09) |
-| 10 | 06/24 | 実体関連モデル（3/3） | [Here](content/er-model/03.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-10) |
-| 11 | 07/01 | 正規化（1/2） | [Here](content/db-design/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-11) |
-| 12 | 07/08 | 正規化（2/2） | [Here](content/db-design/02.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-12) |
-| 13 | 07/15 | データベース設計演習 - レポート課題2 | [Here](content/exercise/db-design.md) |  |
-| 14 | 07/22 | 索引づけ | [Here](content/indexing/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-14) |
-| 15 | 07/29 | NoSQL | [Here](content/nosql/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-15) |
-| 16 | 08/05 | 期末試験 |  |  |
+| 1 | 04/14 | ガイダンス & データベースを使わない世界 | [Here](content/introduction/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-01-introduction) |
+| 2 | 04/21 | データベースの概念 | [Here](content/concept-of-database/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-02-db-concept) |
+| 3 | 04/28 | 関係データモデル | [Here](content/relational-data-model/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-03-relational-model) |
+| 4 | 05/12 | SQL（1/3） | [Here](content/sql/01.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-04-sql-1) |
+| 5 | 05/19 | SQL（2/3） | [Here](content/sql/02.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-05-sql-2) |
+| 6 | 05/26 | SQL（3/3） | [Here](content/sql/03.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-06-sql-3) |
+| 7 | 06/02 | SQL演習 - レポート課題1 | [Here](content/exercise/sql.ipynb) |  |
+| 8 | 06/09 | 実体関連モデル（1/3） | [Here](content/er-model/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-08-er-model-1) |
+| 9 | 06/16 | 実体関連モデル（2/3）| [Here](content/er-model/02.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-09-er-model-2) |
+| 10 | 06/23 | 実体関連モデル（3/3） | [Here](content/er-model/03.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-10-er-model-3) |
+| 11 | 06/30 | 正規化（1/2） | [Here](content/db-design/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-11-normalization-1) |
+| 12 | 07/07 | 正規化（2/2） | [Here](content/db-design/02.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-12-normalization-2) |
+| 13 | 07/14 | データベース設計演習 - レポート課題2 | [Here](content/exercise/db-design.md) |  |
+| 14 | 07/21 | 索引づけ | [Here](content/indexing/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-14-indexing) |
+| 15 | 07/28 | 発展的話題（NoSQL or Pandas入門） | [Here](content/nosql/01.md) | SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-15-pandas) |
+| 16 | 08/04 | 期末試験 |  |  |
 
 
 ## レポート課題
-### レポート課題1（SQL）
+後日掲載予定
+<!-- 簡単すぎたので，来年度は問題を難しくするか，10問目以降を採点対象とするとかにする必要がある -->
+<!-- ### レポート課題1（SQL）
 [コチラのページ](content/exercise/sql.ipynb)で出題されているすべての課題を解きなさい．
 解答期日，解答方法等については下記を参照すること．
 
 - 設問数：25
 - 成績評価における本課題の割合：20％（20点）
 - 評価方法：SQL文の実行結果をもとに，1問1点で採点します．ただし，20点以上のスコアは20点とカウントします
-<!-- 簡単すぎたので，来年度は問題を難しくするか，10問目以降を採点対象とするとかにする必要がある -->
 - 解答〆切り：2024年6月16日 （日）23:59（ **解答は締め切りました** ）
 - 解答提出方法：解答用サイト[SQL Autograder](https://sql-autograder.hontolab.org/)経由
-- 備考：〆切り以降に提出された解答は，本人の責めに帰さない限り，別途受理します．
+- 備考：〆切り以降に提出された解答は，本人の責めに帰さない限り，別途受理します． -->
 
-### レポート課題2（データベース設計）
+<!-- ### レポート課題2（データベース設計）
 [コチラのページ](content/exercise/db-design.md)で出題されているすべての課題を解きなさい．
 解答期日，解答方法等については下記を参照すること．
 
@@ -91,4 +93,4 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 - 備考
 	* 読めないものは採点しません
 	* 指定されたフォーマット（PDFファイル）以外で提出された場合は採点対象としません
-	* 〆切り以降に提出された解答は，本人の責めに帰さない限り，別途受理します．
+	* 〆切り以降に提出された解答は，本人の責めに帰さない限り，別途受理します． -->

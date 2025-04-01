@@ -369,7 +369,11 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">授業計画とコンテンツ</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">レポート課題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">レポート課題</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sql">レポート課題1（SQL）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">レポート課題2（データベース設計）</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -385,7 +389,7 @@
 <h1>データベース<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>開講時期: 2年次 前期</p></li>
-<li><p>担当教員：<a class="reference external" href="https://hontolab.org/">山本 祐輔</a>（名古屋市立大学 大学院データサイエンス研究科 准教授）</p></li>
+<li><p>担当教員：<a class="reference external" href="https://hontolab.org/">山本 祐輔</a>（名古屋市立大学データサイエンス学部 准教授）</p></li>
 </ul>
 <p>この資料は，名古屋市立大学データサイエンス学部において開講されている講義「データベース」用に作成されたものです．</p>
 <!--
@@ -413,6 +417,7 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 <li><p>実体関連モデル</p></li>
 <li><p>正規化</p></li>
 <li><p>索引づけ</p></li>
+<li><p>NoSQL</p></li>
 </ul>
 </section>
 <section id="id4">
@@ -424,7 +429,6 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 <li><p>問い合わせ最適化</p></li>
 <li><p>トランザクション</p></li>
 <li><p>障害回復</p></li>
-<li><p>NoSQL</p></li>
 </ul>
 </section>
 </section>
@@ -441,97 +445,97 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 </thead>
 <tbody>
 <tr class="row-even"><td><p>1</p></td>
-<td><p>04/14</p></td>
+<td><p>04/15</p></td>
 <td><p>ガイダンス &amp; データベースを使わない世界</p></td>
 <td><p><a class="reference internal" href="content/introduction/01.html"><span class="std std-doc">Here</span></a></p></td>
-<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-01-introduction">SpeakerDeck</a></p></td>
+<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-01">SpeakerDeck</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>2</p></td>
-<td><p>04/21</p></td>
+<td><p>04/22</p></td>
 <td><p>データベースの概念</p></td>
 <td><p><a class="reference internal" href="content/concept-of-database/01.html"><span class="std std-doc">Here</span></a></p></td>
-<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-02-db-concept">SpeakerDeck</a></p></td>
+<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-02">SpeakerDeck</a></p></td>
 </tr>
 <tr class="row-even"><td><p>3</p></td>
-<td><p>04/28</p></td>
+<td><p>04/29</p></td>
 <td><p>関係データモデル</p></td>
 <td><p><a class="reference internal" href="content/relational-data-model/01.html"><span class="std std-doc">Here</span></a></p></td>
-<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-03-relational-model">SpeakerDeck</a></p></td>
+<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-03">SpeakerDeck</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>4</p></td>
-<td><p>05/12</p></td>
+<td><p>05/13</p></td>
 <td><p>SQL（1/3）</p></td>
 <td><p><a class="reference internal" href="content/sql/01.html"><span class="std std-doc">Here</span></a></p></td>
-<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-04-sql-1">SpeakerDeck</a></p></td>
+<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-04">SpeakerDeck</a></p></td>
 </tr>
 <tr class="row-even"><td><p>5</p></td>
-<td><p>05/19</p></td>
+<td><p>05/20</p></td>
 <td><p>SQL（2/3）</p></td>
 <td><p><a class="reference internal" href="content/sql/02.html"><span class="std std-doc">Here</span></a></p></td>
-<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-05-sql-2">SpeakerDeck</a></p></td>
+<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-05">SpeakerDeck</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>6</p></td>
-<td><p>05/26</p></td>
+<td><p>05/27</p></td>
 <td><p>SQL（3/3）</p></td>
 <td><p><a class="reference internal" href="content/sql/03.html"><span class="std std-doc">Here</span></a></p></td>
-<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-06-sql-3">SpeakerDeck</a></p></td>
+<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-06">SpeakerDeck</a></p></td>
 </tr>
 <tr class="row-even"><td><p>7</p></td>
-<td><p>06/02</p></td>
+<td><p>06/03</p></td>
 <td><p>SQL演習 - レポート課題1</p></td>
 <td><p><a class="reference internal" href="content/exercise/sql.html"><span class="std std-doc">Here</span></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p>8</p></td>
-<td><p>06/09</p></td>
+<td><p>06/10</p></td>
 <td><p>実体関連モデル（1/3）</p></td>
 <td><p><a class="reference internal" href="content/er-model/01.html"><span class="std std-doc">Here</span></a></p></td>
-<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-08-er-model-1">SpeakerDeck</a></p></td>
+<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-08">SpeakerDeck</a></p></td>
 </tr>
 <tr class="row-even"><td><p>9</p></td>
-<td><p>06/16</p></td>
+<td><p>06/17</p></td>
 <td><p>実体関連モデル（2/3）</p></td>
 <td><p><a class="reference internal" href="content/er-model/02.html"><span class="std std-doc">Here</span></a></p></td>
-<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-09-er-model-2">SpeakerDeck</a></p></td>
+<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-09">SpeakerDeck</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>10</p></td>
-<td><p>06/23</p></td>
+<td><p>06/24</p></td>
 <td><p>実体関連モデル（3/3）</p></td>
 <td><p><a class="reference internal" href="content/er-model/03.html"><span class="std std-doc">Here</span></a></p></td>
-<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-10-er-model-3">SpeakerDeck</a></p></td>
+<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-10">SpeakerDeck</a></p></td>
 </tr>
 <tr class="row-even"><td><p>11</p></td>
-<td><p>06/30</p></td>
+<td><p>07/01</p></td>
 <td><p>正規化（1/2）</p></td>
 <td><p><a class="reference internal" href="content/db-design/01.html"><span class="std std-doc">Here</span></a></p></td>
-<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-11-normalization-1">SpeakerDeck</a></p></td>
+<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-11">SpeakerDeck</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>12</p></td>
-<td><p>07/07</p></td>
+<td><p>07/08</p></td>
 <td><p>正規化（2/2）</p></td>
 <td><p><a class="reference internal" href="content/db-design/02.html"><span class="std std-doc">Here</span></a></p></td>
-<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-12-normalization-2">SpeakerDeck</a></p></td>
+<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-12">SpeakerDeck</a></p></td>
 </tr>
 <tr class="row-even"><td><p>13</p></td>
-<td><p>07/14</p></td>
+<td><p>07/15</p></td>
 <td><p>データベース設計演習 - レポート課題2</p></td>
 <td><p><a class="reference internal" href="content/exercise/db-design.html"><span class="std std-doc">Here</span></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p>14</p></td>
-<td><p>07/21</p></td>
+<td><p>07/22</p></td>
 <td><p>索引づけ</p></td>
 <td><p><a class="reference internal" href="content/indexing/01.html"><span class="std std-doc">Here</span></a></p></td>
-<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-14-indexing">SpeakerDeck</a></p></td>
+<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-14">SpeakerDeck</a></p></td>
 </tr>
 <tr class="row-even"><td><p>15</p></td>
-<td><p>07/28</p></td>
-<td><p>発展的話題（NoSQL or Pandas入門）</p></td>
+<td><p>07/29</p></td>
+<td><p>NoSQL</p></td>
 <td><p><a class="reference internal" href="content/nosql/01.html"><span class="std std-doc">Here</span></a></p></td>
-<td><p>SpeakerDeck](<a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-15-pandas">https://speakerdeck.com/trycycle/database-lecture-15-pandas</a>)</p></td>
+<td><p><a class="reference external" href="https://speakerdeck.com/trycycle/database-lecture-15">SpeakerDeck</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>16</p></td>
-<td><p>08/04</p></td>
+<td><p>08/05</p></td>
 <td><p>期末試験</p></td>
 <td><p></p></td>
 <td><p></p></td>
@@ -542,34 +546,47 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 </section>
 <section id="id6">
 <h2>レポート課題<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
-<p>後日掲載予定</p>
+<section id="sql">
+<h3>レポート課題1（SQL）<a class="headerlink" href="#sql" title="Link to this heading">#</a></h3>
+<p><a class="reference internal" href="content/exercise/sql.html"><span class="std std-doc">コチラのページ</span></a>で出題されているすべての課題を解きなさい．
+解答期日，解答方法等については下記を参照すること．</p>
+<ul class="simple">
+<li><p>設問数：25</p></li>
+<li><p>成績評価における本課題の割合：20％（20点）</p></li>
+<li><p>評価方法：SQL文の実行結果をもとに，1問1点で採点します．ただし，20点以上のスコアは20点とカウントします</p></li>
+</ul>
 <!-- 簡単すぎたので，来年度は問題を難しくするか，10問目以降を採点対象とするとかにする必要がある -->
-<!-- ### レポート課題1（SQL）
-[コチラのページ](content/exercise/sql.ipynb)で出題されているすべての課題を解きなさい．
-解答期日，解答方法等については下記を参照すること．
-
-- 設問数：25
-- 成績評価における本課題の割合：20％（20点）
-- 評価方法：SQL文の実行結果をもとに，1問1点で採点します．ただし，20点以上のスコアは20点とカウントします
-- 解答〆切り：2024年6月16日 （日）23:59（ **解答は締め切りました** ）
-- 解答提出方法：解答用サイト[SQL Autograder](https://sql-autograder.hontolab.org/)経由
-- 備考：〆切り以降に提出された解答は，本人の責めに帰さない限り，別途受理します． -->
-<!-- ### レポート課題2（データベース設計）
-[コチラのページ](content/exercise/db-design.md)で出題されているすべての課題を解きなさい．
-解答期日，解答方法等については下記を参照すること．
-
-- 設問数：4
-- 成績評価における本課題の割合：20％（20点）
-- 評価方法：提出物をもとに担当教員が採点します．配点は各設問に記載しています
-- 解答〆切り：2024年7月28日 （日）23:59（ **解答は締め切りました** ）
-- 解答作成方法
-	* [コチラのURL](https://bit.ly/45K0rVI)から入手できるWordテンプレート`report-template.docx`を使用すること（図はPowerPointやdrawioで作成したものをWordに貼り付けるのが楽かと思います）
-	* 解答提出時にはWordファイルを`PDFファイル`に変換すること．またファイル名は`学籍番号.pdf`とすること
-- 提出方法：[こちら（要大学Microsoft 365アカウント）](https://forms.office.com/r/hMnnDrKEXg)経由
-- 備考
-	* 読めないものは採点しません
-	* 指定されたフォーマット（PDFファイル）以外で提出された場合は採点対象としません
-	* 〆切り以降に提出された解答は，本人の責めに帰さない限り，別途受理します． -->
+<ul class="simple">
+<li><p>解答〆切り：2024年6月16日 （日）23:59（ <strong>解答は締め切りました</strong> ）</p></li>
+<li><p>解答提出方法：解答用サイト<a class="reference external" href="https://sql-autograder.hontolab.org/">SQL Autograder</a>経由</p></li>
+<li><p>備考：〆切り以降に提出された解答は，本人の責めに帰さない限り，別途受理します．</p></li>
+</ul>
+</section>
+<section id="id7">
+<h3>レポート課題2（データベース設計）<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p><a class="reference internal" href="content/exercise/db-design.html"><span class="std std-doc">コチラのページ</span></a>で出題されているすべての課題を解きなさい．
+解答期日，解答方法等については下記を参照すること．</p>
+<ul class="simple">
+<li><p>設問数：4</p></li>
+<li><p>成績評価における本課題の割合：20％（20点）</p></li>
+<li><p>評価方法：提出物をもとに担当教員が採点します．配点は各設問に記載しています</p></li>
+<li><p>解答〆切り：2024年7月28日 （日）23:59（ <strong>解答は締め切りました</strong> ）</p></li>
+<li><p>解答作成方法</p>
+<ul>
+<li><p><a class="reference external" href="https://bit.ly/45K0rVI">コチラのURL</a>から入手できるWordテンプレート<code class="docutils literal notranslate"><span class="pre">report-template.docx</span></code>を使用すること（図はPowerPointやdrawioで作成したものをWordに貼り付けるのが楽かと思います）</p></li>
+<li><p>解答提出時にはWordファイルを<code class="docutils literal notranslate"><span class="pre">PDFファイル</span></code>に変換すること．またファイル名は<code class="docutils literal notranslate"><span class="pre">学籍番号.pdf</span></code>とすること</p></li>
+</ul>
+</li>
+<li><p>提出方法：<a class="reference external" href="https://forms.office.com/r/hMnnDrKEXg">こちら（要大学Microsoft 365アカウント）</a>経由</p></li>
+<li><p>備考</p>
+<ul>
+<li><p>読めないものは採点しません</p></li>
+<li><p>指定されたフォーマット（PDFファイル）以外で提出された場合は採点対象としません</p></li>
+<li><p>〆切り以降に提出された解答は，本人の責めに帰さない限り，別途受理します．</p></li>
+</ul>
+</li>
+</ul>
+</section>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -653,7 +670,11 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">授業計画とコンテンツ</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">レポート課題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">レポート課題</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sql">レポート課題1（SQL）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">レポート課題2（データベース設計）</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
