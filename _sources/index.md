@@ -46,7 +46,7 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 ## 授業計画とコンテンツ
 | |  日時  | トピック | 講義ノート | スライド資料 |
 | ---- | ---- | ---- | ---- | ---- |
-| 1 | 04/14 | ガイダンス & データベースを使わない世界 | [Here](content/introduction/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-01-introduction) |
+| 1 | 04/14 | データベースを使わない世界 | [Here](content/introduction/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-01-introduction) |
 | 2 | 04/21 | データベースの概念 | [Here](content/concept-of-database/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-02-db-concept) |
 | 3 | 04/28 | 関係データモデル | [Here](content/relational-data-model/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-03-relational-model) |
 | 4 | 05/12 | SQL（1/3） | [Here](content/sql/01.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-04-sql-1) |
