@@ -418,7 +418,7 @@ document.write(`
 一見すると単純な表にしか見えない関係データモデルは数学によって定式化されており，強固な理論的基盤を有している．
 関係データモデルを用いることで，データから冗長性を排除し，データを正しく管理することが可能となる．</p>
 <p>以下では，数学的な観点から関係データモデルについて述べる．
-少々堅い説明にはなるが，関係データベースという計算機科学技術が数学に支えられていることを知るためにも，眠気を我慢して読んでもらいたい．
+少々堅い説明にはなるが，関係データベースという計算機科学技術が数学に支えられていることを知るためにも，眠気を我慢して読んでほしい．
 なお，本講では数学における「集合と写像」の知識を使う．
 最低限の知識を<a class="reference internal" href="../misc/math.html"><span class="std std-doc">コチラ</span></a>にまとめたので，不安がある方はそちらを参照されたい．</p>
 <div class="admonition note">
@@ -433,11 +433,12 @@ document.write(`
 <h2><span class="section-number">3.1. </span>関係データモデルのデータ構造<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p><img alt="ある小売店の商品テーブル" src="../../_images/correct-table.png" /></p>
 <p>上の表は，ある小売店で取り扱っている商品のデータを関係データモデルによって表現したものである．
-この表において，各行は小売店で取り扱っている商品に対応し，各列には各商品に関するデータが記述されている．
-表の左上にある「商品」はこの表の名前を示しており，<strong>関係名</strong>と呼ばれる．
+この表において，各行は小売店で取り扱っている商品に対応し，各列には各商品に関するデータが記述されている．</p>
+<p>表の左上にある「商品」はこの表の名前を示しており，<strong>関係名</strong>と呼ばれる．
 関係データモデル上では，各行は<strong>タプル（tuple）</strong> と呼ばれる．
 表の1行目には，「商品」がどのようなデータを持つかを示す見出しが付けられている．
-各見出しのことを<strong>属性（attribute）</strong>，各タプルにおけるある属性の値を<strong>属性値</strong>と呼ぶ．
+表における各見出しに対応するものを，関係データモデルでは<strong>属性（attribute）</strong> と呼ぶ．
+また，各タプルにおけるある属性の値を<strong>属性値</strong>と呼ぶ．
 例えば，表中の2行目に対応するタプルは</p>
 <blockquote>
 <div><p>(“P1”, “はーいお茶”, 130, “2020/07/15”)</p>
@@ -459,7 +460,7 @@ document.write(`
 <div><p><span class="math notranslate nohighlight">\(A \times B = \{(2, -2), (2, -3), (3, -2), (3, -3)\}\)</span></p>
 </div></blockquote>
 <p>となる．
-そして，その部分集合の1つである</p>
+このとき，その部分集合の1つである</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(\{(2, -3), (3, -2)\}\)</span></p>
 </div></blockquote>
@@ -496,7 +497,7 @@ document.write(`
 <div><p><span class="math notranslate nohighlight">\(商品（商品ID, 名称, 単価, 登録日）\)</span></p>
 </div></blockquote>
 <p>と記述する（<a class="reference internal" href="#rdm-q3">★Quiz3★</a>）．</p>
-<p>関係スキーマに記された各属性には，属性が取り得る値の集合を定義することになる．
+<p>関係スキーマに記された各属性には，属性が取り得る値の集合を定義する．
 この集合は<strong>ドメイン（domain; 定義域）</strong> と呼ばれ，属性<span class="math notranslate nohighlight">\(A\)</span>のドメインは<span class="math notranslate nohighlight">\(Dom(A)\)</span>と記す．
 例えば，先の表「商品」の例では，属性「単価」は金額を表すので，そのドメイン<span class="math notranslate nohighlight">\(Dom(単価)\)</span>は0以上の整数値が想定される．
 これを数学的に記すと，以下のようになる:</p>
@@ -526,14 +527,14 @@ document.write(`
 <p>のようにあらゆる自然数を取り得る．
 また，属性「名称」については</p>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(Dom(名称) = \{あ, い, ..., はーいお茶, ... \}\)</span></p>
+<div><p><span class="math notranslate nohighlight">\(Dom(名称) = \{&quot;あ&quot;, &quot;い&quot;, ..., &quot;はーいお茶&quot;, ... \}\)</span></p>
 </div></blockquote>
 <p>のようにあらゆる文字列を取り得る．</p>
 <p>各属性の直積<span class="math notranslate nohighlight">\(Dom(商品ID) \times Dom(名称) \times Dom(単価) \times Dom(登録日)\)</span>には，</p>
 <blockquote>
 <div><p>(“P001”, “こんな商品はありません”, 100兆, “2020/01/01”)</p>
 </div></blockquote>
-<p>のように，実際に商品としてありえないタプルも含めて，様々なタプルが要素として入っている．
+<p>のように，実際に商品情報としてありえないタプルも含めて，様々なタプルが要素として含まれる．
 なぜなら，直積とは集合（ドメイン）の要素のすべての組み合わせであるためである．
 ドメインの直積の部分集合をインスタンスとすることは，取り得るタプルの候補から実際にデータとして扱われるタプルの集合を選択することに相当する（<a class="reference internal" href="#rdm-q4">★Quiz4★</a>）．</p>
 <div class="admonition warning">
@@ -561,7 +562,7 @@ document.write(`
 </section>
 <section id="id8">
 <h2><span class="section-number">3.3. </span>一貫性制約<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
-<p><strong>一貫性制約（integrity constraint）</strong> とは，データベースが対象とする実世界を反映するように設定される，データが満たすべき規則である．
+<p><strong>一貫性制約（integrity constraint）</strong> とは，データベースが対象とする実世界を反映するように設定された，データが満たすべき規則である．
 関係データモデルにおいては，代表的な一貫性制約として以下がある：</p>
 <ul class="simple">
 <li><p>ドメイン制約</p></li>
@@ -574,7 +575,7 @@ document.write(`
 <h3><span class="section-number">3.3.1. </span>ドメイン制約<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p><strong>ドメイン制約（domain constraint）</strong> とは，関係<span class="math notranslate nohighlight">\(\boldsymbol{R}(A_1, ..., A_n)\)</span>に含まれるタプルの各成分は，対応する属性のドメインの要素でなければならならいという制約である．
 これは属性の定義ですでに触れたことである．
-ドメイン制約では，各属性のドメインのデータ型（例: 整数，実数，文字列，日付）に加えて，値の取り得る範囲を指定することもある．
+ドメイン制約では，各属性のドメインのデータ型（例: 整数，実数，文字列，日付）に加えて，値が取り得る範囲を指定することもある．
 例えば，</p>
 <p>先の例でとりあげた関係</p>
 <blockquote>
@@ -597,7 +598,7 @@ document.write(`
 なぜなら，</p>
 <ul class="simple">
 <li><p>商品IDがP1の商品の登録日は年月はあるが日が抜けている</p></li>
-<li><p>商品IDがP2の商品の登録日は和暦で表現されている</p></li>
+<li><p>商品IDがP3の商品の登録日は和暦で表現されている</p></li>
 <li><p>商品IDがP1000の商品の単価は漢数字（文字列）で表現されている</p></li>
 </ul>
 <p>からである（<a class="reference internal" href="#rdm-q5">★Quiz5★</a>）．</p>
@@ -607,16 +608,16 @@ document.write(`
 <span id="id10"></span><h3><span class="section-number">3.3.2. </span>キー制約<a class="headerlink" href="#sec-key-constraint" title="Link to this heading">#</a></h3>
 <p>まず，キー制約の前提となるキーの概念について説明する．
 関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>における<strong>超キー（super key）</strong> とは，関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>における属性の集合のうち，それらの属性値が決まればおのずと関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>のタプルが唯一ひとつに決まる（タプルを一意に特定できる）ものを指す．</p>
-<p>例えば，以下の表は関係</p>
+<p>例えば，以下の表は関係スキーマ</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(連絡先(学生ID, 名前, 学年, 大学email, 自宅住所)\)</span></p>
 </div></blockquote>
-<p>を表形式で記したもので，各行（タプル）は学生の連絡先情報を示している．
+<p>に従うデータを表形式で記したもので，各行（タプル）は学生の連絡先情報を示している．
 大学において学生情報を管理する場合，学生ID（の値）が決まれば唯一1つの学生連絡先情報（行; タプル）を照会できるよう，学生IDは重複がないように設定される．
 それゆえ，この関係「連絡先」において属性「学生ID」は超キーとなる．
 同様に，属性「大学email」も超キーとなる．</p>
 <p>なお，{ 学生ID, 名前 }，{ 学生ID, 名前, 学年 } のように学生IDを含む属性の集合も超キーになる．
-例えば，「学生ID」が<code class="docutils literal notranslate"><span class="pre">S1</span></code>，「名前」が<code class="docutils literal notranslate"><span class="pre">川澄桜</span></code>である行は唯一1行に決まるので，属性集合 { 学生ID, 名前 } は超キーになる．
+例えば，「学生ID」が<code class="docutils literal notranslate"><span class="pre">S1</span></code>，「名前」が<code class="docutils literal notranslate"><span class="pre">川澄桜</span></code>である行は唯一1行に決まるので，属性集合 { 学生ID, 名前 } も超キーになる．
 これは属性「学生ID」が超キーであるから，当たり前である．</p>
 <p>一方，属性「住所」は超キーにはなり得ない．
 学生IDが<code class="docutils literal notranslate"><span class="pre">S3</span></code>と<code class="docutils literal notranslate"><span class="pre">S4</span></code>の学生の住所が同じ（つまり同じところに住んでいる）であるから，住所を1つ指定しても連絡先タプルが一意に特定できないからである．</p>
@@ -629,17 +630,17 @@ document.write(`
 候補キーのうち，値として<strong>未定義や空の値（空値またはNULL値と呼ばれる）</strong> を取る可能性がなく，かつデータベース管理上都合のよいキーの1つを主キーと決める．
 主キー以外の候補キーは<strong>代替キー</strong>と呼ばれる．
 例えば，先の関係「連絡先」の場合，候補キーは「学生ID」と「大学email」であったが，大学emailは「氏名&#64;xxx.ac.jp」のようなものから「学籍番号&#64;xxx.ac.jp」のようなものに変更される可能性があったとしても，学生IDは一度決めたらほぼ変わらないと思われる．
-これらを鑑みると，関係「連絡先」においては属性「学生ID」が主キーとして選ぶのがよい．</p>
+これらを鑑みると，関係「連絡先」においては属性「学生ID」を主キーとして選ぶのがよさそうである．</p>
 <p>なお，候補キーの定義から主キーは属性の集合をとることができる．
 このような主キーを<strong>複合主キー（composite primary key）</strong> と呼ぶ．</p>
 <p><img alt="履修テーブル" src="../../_images/credit-table.png" /></p>
 <p>例えば，上の表は，学生が履修した科目の成績をあらわす関係「履修」を表にしたものである．
-この表においては，科目IDあるいは学生IDだけでは成績が特定できないが，科目IDと学生IDの両方が決まればある学生のある科目の成績が特定される．
+この表においては科目IDあるいは学生IDだけでは成績が特定できないが，科目IDと学生IDの両方が決まれば，ある学生のある科目の成績が特定される．
 それゆえ，関係「履修」においては { 科目ID, 学生ID } の属性ペアが主キーとなる（<a class="reference internal" href="#rdm-q7">★Quiz7★</a>）．</p>
 <p>関係表と主キー，候補キー，超キーの関係は，以下の図のようにまとめることができる．</p>
 <p><img alt="キーの整理" src="../../_images/key-mapping.png" /></p>
 <p>ここまで，超キー，候補キー，主キーの説明を行ったが，最後に本節の主題であるキー制約について述べる．
-<strong>キー制約（key constraint）</strong> は，関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>の関係スキーマに対して主キーが設定されたとき，<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>のインスタンスにおいては</p>
+<strong>キー制約（key constraint）</strong> は，関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>の関係スキーマに対して主キーが設定されたとき，<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>のインスタンスにおいて</p>
 <ul class="simple">
 <li><p>主キーに設定された属性の値は重複があってはならない，かつ</p></li>
 <li><p>その要素（タプル）は主キーによって一意に特定されなければならない，かつ</p></li>
@@ -648,7 +649,7 @@ document.write(`
 <p>という制約である．
 定義は小難しく見えるかもしれないが，キー制約は「ある属性が主キーと設定されたら，それがきちんと主キーの役割を果たすようデータが作られなければならない」ということを意味している．
 主キーを定義できれば，キー制約を定義できたようなものである．</p>
-<p>さて，関係スキーマにおいてキー制約以外の一貫性制約には注目しない場合，関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>の関係スキーマは以下のように主キーに下線を引いて表す．</p>
+<p>さて，関係スキーマにおいてキー制約以外の一貫性制約には注目しない場合，関係スキーマでは主キーは以下のように下線を引いて表す．</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(\boldsymbol{R}(\underline{A_1, A_2}, ..., A_n)\)</span></p>
 </div></blockquote>
@@ -682,7 +683,7 @@ document.write(`
 以下の図は，学生の成績を管理するための関係データベースの例である．
 この中には関係「履修」も含まれている．</p>
 <p><img alt="成績管理データベース" src="../../_images/score-db.png" /></p>
-<p>上記3つの関係表があれば，</p>
+<p>上記3つの関係（表）があれば，</p>
 <ul class="simple">
 <li><p>関係「学生」から「学生ID」が<code class="docutils literal notranslate"><span class="pre">s0001</span></code>のものを探し，</p></li>
 <li><p>関係「科目」から「科目ID」が<code class="docutils literal notranslate"><span class="pre">c0001</span></code>のものを探す</p></li>
@@ -709,7 +710,7 @@ document.write(`
 <span class="math notranslate nohighlight">\(履修.科目ID \subseteq 科目.科目ID\)</span></p>
 </div></blockquote>
 <p>と記す（<a class="reference internal" href="#rdm-q8">★Quiz8★</a>）．</p>
-<p>前置きが長くなったが，本節のテーマである<strong>参照制約（referential constraint）</strong> とは「関係スキーマにおいて外部キーが設定されたとき，そのいかなるインスタンスも上記外部キーの条件を満たさなければいけない」という制約である．</p>
+<p>前置きが長くなったが，本節のテーマである<strong>参照制約（referential constraint）</strong> とは「関係スキーマにおいて外部キーが設定されたとき，そのいかなるインスタンスも設定された外部キーの条件を満たさなければいけない」という制約である．</p>
 </section>
 <section id="id13">
 <h3><span class="section-number">3.3.4. </span>データ従属性<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
@@ -729,7 +730,7 @@ document.write(`
 <div><p><span class="math notranslate nohighlight">\(連絡先(\underline{学生ID}, 名前, 学年, 大学email, 郵便番号, 都道府県, 自宅住所)\)</span></p>
 </div></blockquote>
 <p>が与えられたとしよう．
-一般常識から，住所が決まれば住所がその住所が存在する都道府県や郵便番号もひとつに決まる．
+一般常識から，住所が決まればそれが存在する都道府県や郵便番号もひとつに決まる．
 このことから，関係「連絡先」においては</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(自宅住所 \to 郵便番号\)</span> <br />
@@ -737,7 +738,7 @@ document.write(`
 </div></blockquote>
 <p>という関数従属性が定義できる．
 関数従属性はキー制約を一般化したものと捉えることができる．</p>
-<p>データ従属性は，データの更新があったときにその影響が最小限になるような関係データベースを設計する上で，極めて重要である．
+<p>データ従属性は，データの更新があったときにその影響が最小限になるように関係データベースを設計する上で，極めて重要である．
 それゆえ，特に関数従属性については<a class="reference internal" href="../db-design/02.html"><span class="std std-doc">別の講</span></a>で取り上げる．</p>
 </section>
 </section>
