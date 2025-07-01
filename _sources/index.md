@@ -52,13 +52,13 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 | 4 | 05/12 | SQL（1/3） | [Here](content/sql/01.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-04-sql-1) |
 | 5 | 05/19 | SQL（2/3） | [Here](content/sql/02.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-05-sql-2) |
 | 6 | 05/26 | SQL（3/3） | [Here](content/sql/03.ipynb) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-06-sql-3) |
-| 7 | 06/02 | SQL演習 - レポート課題1 | [Here](content/exercise/sql.ipynb) |  |
+| 7 | 06/02 | SQL演習 - レポート課題1 | [Here](content/assignment/sql.ipynb) |  |
 | 8 | 06/09 | 実体関連モデル（1/3） | [Here](content/er-model/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-08-er-model-1) |
 | 9 | 06/16 | 実体関連モデル（2/3）| [Here](content/er-model/02.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-09-er-model-2) |
 | 10 | 06/23 | 実体関連モデル（3/3） | [Here](content/er-model/03.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-10-er-model-3) |
 | 11 | 06/30 | 正規化（1/2） | [Here](content/db-design/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-11-normalization-1) |
 | 12 | 07/07 | 正規化（2/2） | [Here](content/db-design/02.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-12-normalization-2) |
-| 13 | 07/14 | データベース設計演習 - レポート課題2 | [Here](content/exercise/db-design.md) |  |
+| 13 | 07/14 | データベース設計演習 - レポート課題2 | [Here](content/assignment/db-design.md) |  |
 | 14 | 07/21 | 索引づけ | [Here](content/indexing/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-14-indexing) |
 | 15 | 07/28 | 発展的話題（NoSQL or Pandas入門） | [Here](content/nosql/01.md) | [SpeakerDeck](https://speakerdeck.com/trycycle/database-lecture-15-nosql) |
 | 16 | 08/04 | 期末試験 |  |  |
@@ -66,7 +66,7 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 
 ## レポート課題
 ### レポート課題1（SQL）
-[コチラのページ](content/exercise/sql.ipynb)で出題されているすべての課題を解きなさい．
+[コチラのページ](content/assignment/sql.ipynb)で出題されているすべての課題を解きなさい．
 解答期日，解答方法等については下記を参照すること．
 
 - 設問数：25
@@ -78,19 +78,19 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 - 解答提出方法：解答用サイト[SQL Autograder](https://sql-autograder.hontolab.org/)経由
 - 備考：〆切り以降に提出された解答は，本人の責めに帰さない限り，別途受理します．
 
-<!-- ### レポート課題2（データベース設計）
-[コチラのページ](content/exercise/db-design.md)で出題されているすべての課題を解きなさい．
+### レポート課題2（データベース設計）
+[コチラのページ](content/assignment/db-design.md)で出題されているすべての課題を解きなさい．
 解答期日，解答方法等については下記を参照すること．
 
 - 設問数：4
 - 成績評価における本課題の割合：20％（20点）
 - 評価方法：提出物をもとに担当教員が採点します．配点は各設問に記載しています
-- 解答〆切り：2024年7月28日 （日）23:59（ **解答は締め切りました** ）
+- 解答〆切り：2025年7月27日 （日）23:59
 - 解答作成方法
-	* [コチラのURL](https://bit.ly/45K0rVI)から入手できるWordテンプレート`report-template.docx`を使用すること（図はPowerPointやdrawioで作成したものをWordに貼り付けるのが楽かと思います）
+	* Teams経由で配布したWordテンプレートを使用すること（図はPowerPointやdrawioで作成したものをWordに貼り付けるのが楽かと思います）
 	* 解答提出時にはWordファイルを`PDFファイル`に変換すること．またファイル名は`学籍番号.pdf`とすること
-- 提出方法：[こちら（要大学Microsoft 365アカウント）](https://forms.office.com/r/hMnnDrKEXg)経由
+- 提出方法：Teams経由
 - 備考
 	* 読めないものは採点しません
 	* 指定されたフォーマット（PDFファイル）以外で提出された場合は採点対象としません
-	* 〆切り以降に提出された解答は，本人の責めに帰さない限り，別途受理します． -->
+	* 〆切り以降に提出された解答は，本人の責めに帰さない限り，別途受理します．

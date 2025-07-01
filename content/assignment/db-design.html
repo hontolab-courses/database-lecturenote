@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>10. 拡張実体関連モデル &amp; n項関連 &#8212; データベースの講義ノート</title>
+    <title>13. データベース設計演習 &#8212; データベースの講義ノート</title>
   
   
   
@@ -73,12 +73,12 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/er-model/03';</script>
-    <link rel="canonical" href="https://dbnote.hontolab.org/content/er-model/03.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/assignment/db-design';</script>
+    <link rel="canonical" href="https://dbnote.hontolab.org/content/assignment/db-design.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="11. 望ましくない関係スキーマ" href="../db-design/01.html" />
-    <link rel="prev" title="9. 実体関連モデル上の一貫性制約" href="02.html" />
+    <link rel="next" title="14. B+木 &amp; ハッシュ索引" href="../indexing/01.html" />
+    <link rel="prev" title="12. データ従属性にもとづく正規化" href="../db-design/02.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -199,16 +199,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../sql/01.html">4. 単純質問</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql/02.html">5. 結合質問（集合演算を含む）</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sql/03.html">6. 副問い合わせ &amp; テーブルの定義と更新</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../assignment/sql.html">7. SQL演習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql.html">7. SQL演習</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">データベース設計</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01.html">8. 実体関連モデルとは</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02.html">9. 実体関連モデル上の一貫性制約</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. 拡張実体関連モデル &amp; n項関連</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../er-model/01.html">8. 実体関連モデルとは</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../er-model/02.html">9. 実体関連モデル上の一貫性制約</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../er-model/03.html">10. 拡張実体関連モデル &amp; n項関連</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../db-design/01.html">11. 望ましくない関係スキーマ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../db-design/02.html">12. データ従属性にもとづく正規化</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../assignment/db-design.html">13. データベース設計演習</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. データベース設計演習</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">索引づけ</span></p>
 <ul class="nav bd-sidenav">
@@ -282,7 +282,7 @@
       
       
       
-      <li><a href="../../_sources/content/er-model/03.md" target="_blank"
+      <li><a href="../../_sources/content/assignment/db-design.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -366,7 +366,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>拡張実体関連モデル & n項関連</h1>
+    <h1>データベース設計演習</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -376,12 +376,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isa">10.1. 汎化・継承（IsA階層）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">10.2. n項関連</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.3. クイズ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">10.3.1. Q1. 汎化・継承</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-n-1-2">10.3.2. Q2. n項関連（1/2）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-n-2-2">10.3.3. Q3. n項関連（2/2）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">13.1. Q1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-1-8">13.1.1. Q1-1（配点8）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-2-4">13.1.2. Q1-2（配点4）</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">13.2. Q2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-1-3">13.2.1. Q2-1（配点3）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-2-5">13.2.2. Q2-2（配点5）</a></li>
 </ul>
 </li>
 </ul>
@@ -395,109 +397,110 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="n">
-<h1><span class="section-number">10. </span>拡張実体関連モデル &amp; n項関連<a class="headerlink" href="#n" title="Link to this heading">#</a></h1>
-<section id="isa">
-<h2><span class="section-number">10.1. </span>汎化・継承（IsA階層）<a class="headerlink" href="#isa" title="Link to this heading">#</a></h2>
-<p>実体関連モデルに対して，いつかの拡張概念が提案されている．
-そのうちのひとつが，<strong>汎化・継承</strong> の概念である．</p>
-<p>実世界を実体関連モデルで表現する際，実体集合間にある種の包含関係（階層関係）が想定されることがしばしばある．
-例えば，実体型「大学構成員」「学生」「教員」を考えてみよう．
-学生も教員も大学を構成するメンバーである．
-そのため「大学構成員」と「学生」「教員」の間には包含関係があると見なせる．</p>
-<p>ある大学のデータ管理者は，大学構成員の情報を管理する上で，</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">13. </span>データベース設計演習<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>本演習では，関係データベースを適切に設計するために</p>
+<ol class="arabic simple">
+<li><p>実体関連モデリングの作成</p></li>
+<li><p>関数従属性に基づく関係スキーマの分解</p></li>
+</ol>
+<p>に取り組む．
+演習課題は大問2題である（大問1つにつき小問が2題）．</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<h3 class="rubric" id="id2">レポート課題2（データベース設計）</h3>
+<p>本ページで出題されているすべての課題を解きなさい．
+解答期日，解答方法等については下記を参照すること．</p>
 <ul class="simple">
-<li><p>学生には「大学ID」「氏名」「生年月日」「性別」「所属」と「入学年」</p></li>
-<li><p>教員には「大学ID」「氏名」「生年月日」「性別」「所属」と「研究者ID」「職階」</p></li>
+<li><p>設問数：4</p></li>
+<li><p>成績評価における本課題の割合：20％（20点）</p></li>
+<li><p>評価方法：提出物をもとに担当教員が採点します．配点は各設問に記載しています</p></li>
+<li><p>解答〆切り：2025年7月27日 （日）23:59</p></li>
+<li><p>解答作成方法</p>
+<ul>
+<li><p>Teams経由で配布したWordファイルを使って解答を作成すること</p></li>
+<li><p>解答提出時にはWordファイルを<code class="docutils literal notranslate"><span class="pre">PDFファイル</span></code>に変換すること．またファイル名は<code class="docutils literal notranslate"><span class="pre">学籍番号.pdf</span></code>とすること</p></li>
 </ul>
-<p>の情報を持たせるたいと考えているとする．</p>
-<p>実体関連モデルで実体型「学生」「教員」を定義してみよう．
-あらかじめ，「大学ID」「氏名」「生年月日」「性別」「所属」を属性とする実体型「大学構成員」が定義されているとする．
-このとき，</p>
-<blockquote>
-<div><p>実体型「学生」は属性「大学ID」「氏名」「生年月日」「性別」「所属」「入学年」を持つ実体型である</p>
-</div></blockquote>
-<p>と定義するよりも，</p>
-<blockquote>
-<div><p>実体型「学生」は実体型「大学構成員」に属性「入学年」を加えた実体型である</p>
-</div></blockquote>
-<p>と定義したほうが明らかに無駄が少ない．また自然である．
-実体型「教員」の定義においても同様である．</p>
-<p>このように，実体型<span class="math notranslate nohighlight">\(E_1\)</span>が持つすべての属性を持つと考え，新たな実体型<span class="math notranslate nohighlight">\(E_2\)</span>を定義するとき，<span class="math notranslate nohighlight">\(E_2\)</span>は<span class="math notranslate nohighlight">\(E_1\)</span>を<strong>継承（inherit）</strong> したという（「<span class="math notranslate nohighlight">\(E_1\)</span>は<span class="math notranslate nohighlight">\(E_2\)</span>を<strong>汎化（generalize）</strong> した実体型である」と称することもある）．
-継承を用いて実体型を表現したとき，その実体集合（下位の集合）は継承元（上位）の実体集合にすべて包含される．</p>
-<p>実体関連図において，継承元となる上位の実体型と継承先となる下位の実体型の間には，汎化・継承関係があることを示す「IsA」と記した三角の特別な関連記号を置く．
-以下は，先の実体型「大学構成員」「学生」「教員」を実体関連図で表現したものである（<a class="reference internal" href="#er-model3-q1">★Quiz1★</a>）．</p>
-<p><img alt="継承・汎化を用いたER図" src="../../_images/inheritance.png" /></p>
-</section>
-<section id="id1">
-<h2><span class="section-number">10.2. </span>n項関連<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>これまでの説明では扱ってきた関連型は，2つの実体型とのつながりを表現したもの（2項関連）に限定されていたが，3つ以上の実体型とつながりがあってもよい．
-n個の実体型をつなぐ関連を<strong>n項関連（n-ary relationship）</strong> と呼ぶ．
-2項関連と同様に，n項関連においても参加制約や多重度制約を考えることができる．</p>
-<p><img alt="すべて1対n関連の3項関連" src="../../_images/3-ary-relationship1.png" /></p>
-<p>上の図は，学生がどこの教室でどの教員の指導をうけるかを実体関連図で表現した図（左）および各実体集合，関連集合の要素を示した図（右）である．
-上図では，関連型「研究室配属」は実体型「学生」「部屋」「教員」の3項関連となっている．
-また，実体関連図が示しているように，関連型「研究室配属」において，</p>
-<ul class="simple">
-<li><p>「学生」と「教員」は多対1の関連</p></li>
-<li><p>「学生」と「部屋」は多対1の関連</p></li>
+</li>
+<li><p>提出方法：Teams経由</p></li>
+<li><p>備考</p>
+<ul>
+<li><p>読めないものは採点しません</p></li>
+<li><p>指定されたフォーマット（PDFファイル）以外で提出された場合は採点対象としません</p></li>
+<li><p>〆切り以降に提出された解答は，本人の責めに帰さない限り，別途受理します．</p></li>
 </ul>
-<p>となっている．
-つまり，学生の指導教員は必ず1名であり，部屋割もどこかの部屋を1つしか割り当てられないことになっている．</p>
-<p><img alt="多対多関連を含む3項関連" src="../../_images/3-ary-relationship2.png" /></p>
-<p>一方，上の図は先ほど同様，学生がどこの教室でどの教員の指導をうけるかを表した実体関連図および各実体集合，関連集合の要素を示した図ではあるが，実体関連図で表現されている内容が微妙に異なる．
-上の実体関連図においては，</p>
-<ul class="simple">
-<li><p>「学生」と「教員」は多対多の関連</p></li>
-<li><p>「学生」と「部屋」は多対1の関連</p></li>
+</li>
 </ul>
-<p>となっている．
-つまり，学生に割り当てられられる部屋は必ず1つであるが，学生1名につき2名以上の教員を指導教員として割り当てることができる，と読み取れる．
-上の右図を見ると，学生Bの割り当て部屋は8601号室であるが，指導教員として桜山先生と山畑先生の2名が割り当てられていることが分かる（<a class="reference internal" href="#er-model3-q2">★Quiz2★</a>，<a class="reference internal" href="#er-model3-q3">★Quiz3★</a>）．</p>
-</section>
-<hr class="docutils" />
-<section id="id2">
-<h2><span class="section-number">10.3. </span>クイズ<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p><a class="reference external" href="https://music.apple.com/">Apple Music</a>や<a class="reference external" href="https://open.spotify.com/">Spotify</a>，<a class="reference external" href="https://music.line.me/about/">LINE MUSIC</a>などのサブスクリプション型音楽ストリーミングサービスでは，月額や年額でサービス使用料を支払うことで，好きなアーティストの好きな楽曲を好きなだけ聴くことができる．</p>
-<p>下記クイズでは，架空のサブスクリプション型音楽ストリーミングサービス「Orange Music」の実体関連モデルについて考える．
-以下，想定している実体関連モデルの詳細である．</p>
-<ul class="simple">
-<li><p>Orange Musicの「ユーザ」は「ユーザID」「氏名」「性別」「誕生日」「電話番号」をもつ．</p></li>
-<li><p>Orange Musicの「アーティスト」は「アーティストID」「アーティスト名」をもつ．</p></li>
-<li><p>Orange Musicの「楽曲」は「楽曲ID」「楽曲名」「ジャンル」「長さ」をもつ．</p></li>
-<li><p>「アーティスト」は作成した「楽曲」をOrange Musicに「公開」する．</p></li>
-<li><p>「公開」には「公開日」が記録される．</p></li>
-<li><p>Orange Musicの「ユーザ」は「プレイリスト」を「作成」することができる．</p></li>
-<li><p>「プレイリスト」は「プレイリストID」「プレイリスト名」「公開日」をもつ．</p></li>
-<li><p>作成された「プレイリスト」には「楽曲」を「追加」することができる．</p></li>
-<li><p>「追加」には楽曲がプレイリストに「追加された日」が記録される．</p></li>
-</ul>
-<p>上記前提に基づき，下記のクイズに答えよ．
-実体関連図の作成には<a class="reference external" href="https://app.diagrams.net/">draw.io</a>を用いるとよい．
-なお，ベースとなる実体関連図として，<a class="reference internal" href="02.html"><span class="std std-doc">第9講</span></a>のクイズ回答で作成したものを用いると楽である．</p>
+</div>
 <section id="q1">
-<span id="er-model3-q1"></span><h3><span class="section-number">10.3.1. </span>Q1. 汎化・継承<a class="headerlink" href="#q1" title="Link to this heading">#</a></h3>
-<p>Orange Musicは追加サービスとして「プレミアムユーザ」サービスを開始した．
-Orange Musicの「ユーザ」は追加料金を支払うことで「プレミアムユーザ」になることができる．
-「プレミアムユーザ」は最大100曲まで「楽曲」を「ダウンロード」できる．
-「ダウンロード」には「ダウンロード日」を記録する．</p>
-<p>クイズの前提，および追加状況を表現する実体関連図を作成せよ．</p>
+<h2><span class="section-number">13.1. </span>Q1<a class="headerlink" href="#q1" title="Link to this heading">#</a></h2>
+<p>架空企業であるMONACA鉄道では，このたび交通系ICカードと関係データベースシステムを導入し，利用者の乗降車履歴を記録することになった．
+以下は，システム設計における想定である．</p>
+<blockquote>
+<div><p>利用者はMONACA IDが付与されたMONACAカードを持っている．
+データベースにはMONACAカードIDにひもづけて，年齢，性別の他，学生や小児，高齢者，一般といったカード種別をあらわす情報が記録されている．
+カード種別は乗車料金の決定に利用される．</p>
+<p>利用者の乗降車駅はすべてMONACA鉄道が管轄する駅である．
+駅情報はデータベースに登録されている．駅情報として駅ID，駅長名，路線名をもつ．
+なお，駅によっては複数の路線が通っている場合がある．</p>
+<p>乗車料金は料金クラスとMONACAカードのカード種別によって決まる．
+料金クラスは乗車駅と降車駅の組み合わせによって決まり，乗降車駅間の距離に応じてF1，F2，F3，F4の4クラスに分けられている．</p>
+<p>乗車駅の改札でMONACAカードをかざすと，カード内に一時的に乗車駅情報と入場日時が記録される．
+降車駅の改札で再びMONACAカードをかざすと，データベースにMONACAカードID，乗車駅，入場日時，降車駅，出場日時の情報が記録される．</p>
+</div></blockquote>
+<p>上記を踏まえて，以下の設問に答えよ．</p>
+<section id="q1-1-8">
+<h3><span class="section-number">13.1.1. </span>Q1-1（配点8）<a class="headerlink" href="#q1-1-8" title="Link to this heading">#</a></h3>
+<p>MONACA鉄道のデータベースで管理しようとするデータおよびデータ間の関係性を把握するための実体関連図を作成せよ．</p>
 </section>
-<section id="q2-n-1-2">
-<span id="er-model3-q2"></span><h3><span class="section-number">10.3.2. </span>Q2. n項関連（1/2）<a class="headerlink" href="#q2-n-1-2" title="Link to this heading">#</a></h3>
-<p>Orange Musicでは追加サービスとして，アーティストがコンサート等のイベントで演奏した曲目（いわゆるセットリスト）を閲覧できるサービスを開始することにした．
-このサービスでは，「アーティスト」がどの「楽曲」をどの「イベント」で「演奏」したのかを閲覧できる．
-「イベント」は「イベント名」「場所」「日時」を情報としてもつ．
-また，「演奏」にはイベント中の演奏順序を示す「演奏番号」が記録される．
-なお，「アーティスト」が「演奏」した「楽曲」は他者が制作した楽曲も含まれる．</p>
-<p>この状況を実体関連図で表現せよ．</p>
+<section id="q1-2-4">
+<h3><span class="section-number">13.1.2. </span>Q1-2（配点4）<a class="headerlink" href="#q1-2-4" title="Link to this heading">#</a></h3>
+<p>Q1-1で作成した実体関連図を関係スキーマに変換せよ．</p>
 </section>
-<section id="q3-n-2-2">
-<span id="er-model3-q3"></span><h3><span class="section-number">10.3.3. </span>Q3. n項関連（2/2）<a class="headerlink" href="#q3-n-2-2" title="Link to this heading">#</a></h3>
-<p><a class="reference internal" href="02.html"><span class="std std-doc">第9講</span></a>の講義資料で用いた<a class="reference internal" href="02.html#fig-cardinality-constraint"><span class="std std-ref">オンラインショッピングの例</span></a>に戻ろう．
-このオンラインショッピングサイトでは，「ユーザ」がどの「商品」を「購入」したかを記録している．
-購入記録においては，購入した「商品」の「数量」や「購入日」の情報を記録している．</p>
-<p>この状況を<a class="reference internal" href="02.html#fig-cardinality-constraint"><span class="std std-ref">オンラインショッピングの例</span></a>の実体関連図に追記する形で表現せよ．</p>
+</section>
+<section id="q2">
+<h2><span class="section-number">13.2. </span>Q2<a class="headerlink" href="#q2" title="Link to this heading">#</a></h2>
+<p>県内に複数ある図書館における蔵書貸出管理を包括的に行う関係データベースを設計したい．
+このデータベースでは，以下の12の属性をもつとする．</p>
+<ul class="simple">
+<li><p>図書館（の名前）</p></li>
+<li><p>住所</p></li>
+<li><p>管轄区</p></li>
+<li><p><a class="reference external" href="https://ja.wikipedia.org/wiki/ISBN">ISBN</a></p></li>
+<li><p>書籍タイトル</p></li>
+<li><p>出版社</p></li>
+<li><p>著者</p></li>
+<li><p>冊数</p></li>
+<li><p>ユーザ</p></li>
+<li><p>電話番号</p></li>
+<li><p>貸出日</p></li>
+<li><p>返却日</p></li>
+</ul>
+<p>また，以下の関数従属性が成立するとする．
+なお，取り扱う書籍はすべて単著（書籍につき著者は1人）であり，ユーザは同じ本を借りることはないと仮定する．</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(FD_1: 図書館 \to 住所\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(FD_2: 住所 \to 管轄区\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(FD_3: ユーザ \to 電話番号\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(FD_4: ISBN \to 書籍タイトル, 出版社, 著者\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(FD_5: ISBN, 図書館 \to 冊数\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(FD_6: ISBN, 図書館, ユーザ \to 貸出日, 返却日\)</span></p></li>
+</ul>
+<p>上記を踏まえて，以下の設問に答えよ．</p>
+<section id="q2-1-3">
+<h3><span class="section-number">13.2.1. </span>Q2-1（配点3）<a class="headerlink" href="#q2-1-3" title="Link to this heading">#</a></h3>
+<p>上記関数従属性をFDダイアグラムで表現せよ．</p>
+</section>
+<section id="q2-2-5">
+<h3><span class="section-number">13.2.2. </span>Q2-2（配点5）<a class="headerlink" href="#q2-2-5" title="Link to this heading">#</a></h3>
+<p>関数従属性をふまえて，上記12の属性をもつ関係スキーマをいくつかの関係スキーマに情報無損失分解し，第3正規形またはボイス・コッド正規形を導出せよ．
+解答の際には，以下に留意すること．</p>
+<ul class="simple">
+<li><p>分解の過程が分かるようにすること</p></li>
+<li><p>ある関係スキーマを情報無損失分解をした際には，どの関数従属性を用いたかを明記すること</p></li>
+<li><p>分解して得られた関係スキーマは<span class="math notranslate nohighlight">\(R(\underline{A_1}, A_2, ...)\)</span>のような形式で，関係名，キー，属性を記すこと（関係名は適当に定めよ）</p></li>
+<li><p>途中過程のものも含め，得られた関係スキーマがどの正規形（1NF，2NF，3NF，or BCNF）であるかを明記すること</p></li>
+</ul>
 </section>
 </section>
 </section>
@@ -515,7 +518,7 @@ Orange Musicの「ユーザ」は追加料金を支払うことで「プレミ�
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/er-model"
+            path: "./content/assignment"
         },
         predefinedOutput: true
     }
@@ -533,20 +536,20 @@ Orange Musicの「ユーザ」は追加料金を支払うことで「プレミ�
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="02.html"
+       href="../db-design/02.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>実体関連モデル上の一貫性制約</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>データ従属性にもとづく正規化</p>
       </div>
     </a>
     <a class="right-next"
-       href="../db-design/01.html"
+       href="../indexing/01.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>望ましくない関係スキーマ</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>B+木 &amp; ハッシュ索引</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -566,12 +569,14 @@ Orange Musicの「ユーザ」は追加料金を支払うことで「プレミ�
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isa">10.1. 汎化・継承（IsA階層）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">10.2. n項関連</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.3. クイズ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">10.3.1. Q1. 汎化・継承</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-n-1-2">10.3.2. Q2. n項関連（1/2）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-n-2-2">10.3.3. Q3. n項関連（2/2）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">13.1. Q1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-1-8">13.1.1. Q1-1（配点8）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-2-4">13.1.2. Q1-2（配点4）</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">13.2. Q2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-1-3">13.2.1. Q2-1（配点3）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-2-5">13.2.2. Q2-2（配点5）</a></li>
 </ul>
 </li>
 </ul>

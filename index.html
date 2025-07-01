@@ -16,22 +16,20 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
@@ -39,14 +37,13 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=aeeb188a" />
   
-  <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
@@ -83,7 +80,6 @@
     <link rel="next" title="1. “データベース”を使わない世界" href="content/introduction/01.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -99,8 +95,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -108,6 +115,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -115,8 +123,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -134,8 +142,7 @@
       
         
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -165,11 +172,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">はじめに</span></p>
@@ -189,7 +200,7 @@
 <li class="toctree-l1"><a class="reference internal" href="content/sql/01.html">4. 単純質問</a></li>
 <li class="toctree-l1"><a class="reference internal" href="content/sql/02.html">5. 結合質問（集合演算を含む）</a></li>
 <li class="toctree-l1"><a class="reference internal" href="content/sql/03.html">6. 副問い合わせ &amp; テーブルの定義と更新</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/exercise/sql.html">7. SQL演習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/assignment/sql.html">7. SQL演習</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">データベース設計</span></p>
 <ul class="nav bd-sidenav">
@@ -198,7 +209,7 @@
 <li class="toctree-l1"><a class="reference internal" href="content/er-model/03.html">10. 拡張実体関連モデル &amp; n項関連</a></li>
 <li class="toctree-l1"><a class="reference internal" href="content/db-design/01.html">11. 望ましくない関係スキーマ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="content/db-design/02.html">12. データ従属性にもとづく正規化</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/exercise/db-design.html">13. データベース設計演習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/assignment/db-design.html">13. データベース設計演習</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">索引づけ</span></p>
 <ul class="nav bd-sidenav">
@@ -226,14 +237,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -330,16 +336,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -371,6 +385,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">授業計画とコンテンツ</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">レポート課題</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sql">レポート課題1（SQL）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">レポート課題2（データベース設計）</a></li>
 </ul>
 </li>
 </ul>
@@ -482,7 +497,7 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 <tr class="row-even"><td><p>7</p></td>
 <td><p>06/02</p></td>
 <td><p>SQL演習 - レポート課題1</p></td>
-<td><p><a class="reference internal" href="content/exercise/sql.html"><span class="std std-doc">Here</span></a></p></td>
+<td><p><a class="reference internal" href="content/assignment/sql.html"><span class="std std-doc">Here</span></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p>8</p></td>
@@ -518,7 +533,7 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 <tr class="row-even"><td><p>13</p></td>
 <td><p>07/14</p></td>
 <td><p>データベース設計演習 - レポート課題2</p></td>
-<td><p><a class="reference internal" href="content/exercise/db-design.html"><span class="std std-doc">Here</span></a></p></td>
+<td><p><a class="reference internal" href="content/assignment/db-design.html"><span class="std std-doc">Here</span></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p>14</p></td>
@@ -547,7 +562,7 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 <h2>レポート課題<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
 <section id="sql">
 <h3>レポート課題1（SQL）<a class="headerlink" href="#sql" title="Link to this heading">#</a></h3>
-<p><a class="reference internal" href="content/exercise/sql.html"><span class="std std-doc">コチラのページ</span></a>で出題されているすべての課題を解きなさい．
+<p><a class="reference internal" href="content/assignment/sql.html"><span class="std std-doc">コチラのページ</span></a>で出題されているすべての課題を解きなさい．
 解答期日，解答方法等については下記を参照すること．</p>
 <ul class="simple">
 <li><p>設問数：25</p></li>
@@ -562,22 +577,31 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 <li><p>解答提出方法：解答用サイト<a class="reference external" href="https://sql-autograder.hontolab.org/">SQL Autograder</a>経由</p></li>
 <li><p>備考：〆切り以降に提出された解答は，本人の責めに帰さない限り，別途受理します．</p></li>
 </ul>
-<!-- ### レポート課題2（データベース設計）
-[コチラのページ](content/exercise/db-design.md)で出題されているすべての課題を解きなさい．
-解答期日，解答方法等については下記を参照すること．
-
-- 設問数：4
-- 成績評価における本課題の割合：20％（20点）
-- 評価方法：提出物をもとに担当教員が採点します．配点は各設問に記載しています
-- 解答〆切り：2024年7月28日 （日）23:59（ **解答は締め切りました** ）
-- 解答作成方法
-	* [コチラのURL](https://bit.ly/45K0rVI)から入手できるWordテンプレート`report-template.docx`を使用すること（図はPowerPointやdrawioで作成したものをWordに貼り付けるのが楽かと思います）
-	* 解答提出時にはWordファイルを`PDFファイル`に変換すること．またファイル名は`学籍番号.pdf`とすること
-- 提出方法：[こちら（要大学Microsoft 365アカウント）](https://forms.office.com/r/hMnnDrKEXg)経由
-- 備考
-	* 読めないものは採点しません
-	* 指定されたフォーマット（PDFファイル）以外で提出された場合は採点対象としません
-	* 〆切り以降に提出された解答は，本人の責めに帰さない限り，別途受理します． -->
+</section>
+<section id="id7">
+<h3>レポート課題2（データベース設計）<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p><a class="reference internal" href="content/assignment/db-design.html"><span class="std std-doc">コチラのページ</span></a>で出題されているすべての課題を解きなさい．
+解答期日，解答方法等については下記を参照すること．</p>
+<ul class="simple">
+<li><p>設問数：4</p></li>
+<li><p>成績評価における本課題の割合：20％（20点）</p></li>
+<li><p>評価方法：提出物をもとに担当教員が採点します．配点は各設問に記載しています</p></li>
+<li><p>解答〆切り：2025年7月27日 （日）23:59</p></li>
+<li><p>解答作成方法</p>
+<ul>
+<li><p>Teams経由で配布したWordテンプレートを使用すること（図はPowerPointやdrawioで作成したものをWordに貼り付けるのが楽かと思います）</p></li>
+<li><p>解答提出時にはWordファイルを<code class="docutils literal notranslate"><span class="pre">PDFファイル</span></code>に変換すること．またファイル名は<code class="docutils literal notranslate"><span class="pre">学籍番号.pdf</span></code>とすること</p></li>
+</ul>
+</li>
+<li><p>提出方法：Teams経由</p></li>
+<li><p>備考</p>
+<ul>
+<li><p>読めないものは採点しません</p></li>
+<li><p>指定されたフォーマット（PDFファイル）以外で提出された場合は採点対象としません</p></li>
+<li><p>〆切り以降に提出された解答は，本人の責めに帰さない限り，別途受理します．</p></li>
+</ul>
+</li>
+</ul>
 </section>
 </section>
 <div class="toctree-wrapper compound">
@@ -646,8 +670,7 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -664,6 +687,7 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">授業計画とコンテンツ</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">レポート課題</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sql">レポート課題1（SQL）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">レポート課題2（データベース設計）</a></li>
 </ul>
 </li>
 </ul>
@@ -710,8 +734,8 @@ PDF資料が欲しい方は[コチラ]()からダウンロードしてくださ�
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
