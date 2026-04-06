@@ -16,42 +16,45 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=aeeb188a" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-1GGP5ZEVQL"></script>
@@ -81,6 +84,7 @@
     <link rel="prev" title="9. 実体関連モデル上の一貫性制約" href="02.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -96,19 +100,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -116,7 +109,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -124,8 +116,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -141,7 +133,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -171,15 +164,11 @@
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">はじめに</span></p>
@@ -236,9 +225,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -321,7 +315,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -335,25 +329,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -399,20 +385,20 @@ document.write(`
 <h1><span class="section-number">10. </span>拡張実体関連モデル &amp; n項関連<a class="headerlink" href="#n" title="Link to this heading">#</a></h1>
 <section id="isa">
 <h2><span class="section-number">10.1. </span>汎化・継承（IsA階層）<a class="headerlink" href="#isa" title="Link to this heading">#</a></h2>
-<p>実体関連モデルに対して，いつかの拡張概念が提案されている．
-そのうちのひとつが，<strong>汎化・継承</strong> の概念である．</p>
-<p>実世界を実体関連モデルで表現する際，実体集合間にある種の包含関係（階層関係）が想定されることがしばしばある．
-例えば，実体型「大学構成員」「学生」「教員」を考えてみよう．
-学生も教員も大学を構成するメンバーである．
-そのため「大学構成員」と「学生」「教員」の間には包含関係があると見なせる．</p>
+<p>実体関連モデルに対して，いくつかの拡張概念が提案されています．
+そのうちのひとつが，<strong>汎化・継承</strong> の概念です．</p>
+<p>実世界を実体関連モデルで表現する際，実体集合間にある種の包含関係（階層関係）が想定されることがしばしばあります．
+例えば，実体型「大学構成員」「学生」「教員」を考えてみましょう．
+学生も教員も大学を構成するメンバーです．
+そのため「大学構成員」と「学生」「教員」の間には包含関係があると見なせます．</p>
 <p>ある大学のデータ管理者は，大学構成員の情報を管理する上で，</p>
 <ul class="simple">
 <li><p>学生には「大学ID」「氏名」「生年月日」「性別」「所属」と「入学年」</p></li>
 <li><p>教員には「大学ID」「氏名」「生年月日」「性別」「所属」と「研究者ID」「職階」</p></li>
 </ul>
-<p>の情報を持たせるたいと考えているとする．</p>
-<p>実体関連モデルで実体型「学生」「教員」を定義してみよう．
-あらかじめ，「大学ID」「氏名」「生年月日」「性別」「所属」を属性とする実体型「大学構成員」が定義されているとする．
+<p>の情報を持たせたいと考えているとします．</p>
+<p>実体関連モデルで実体型「学生」「教員」を定義してみましょう．
+あらかじめ，「大学ID」「氏名」「生年月日」「性別」「所属」を属性とする実体型「大学構成員」が定義されているとします．
 このとき，</p>
 <blockquote>
 <div><p>実体型「学生」は属性「大学ID」「氏名」「生年月日」「性別」「所属」「入学年」を持つ実体型である</p>
@@ -421,46 +407,46 @@ document.write(`
 <blockquote>
 <div><p>実体型「学生」は実体型「大学構成員」に属性「入学年」を加えた実体型である</p>
 </div></blockquote>
-<p>と定義したほうが明らかに無駄が少ない．また自然である．
-実体型「教員」の定義においても同様である．</p>
-<p>このように，実体型<span class="math notranslate nohighlight">\(E_1\)</span>が持つすべての属性を持つと考え，新たな実体型<span class="math notranslate nohighlight">\(E_2\)</span>を定義するとき，<span class="math notranslate nohighlight">\(E_2\)</span>は<span class="math notranslate nohighlight">\(E_1\)</span>を<strong>継承（inherit）</strong> したという（「<span class="math notranslate nohighlight">\(E_1\)</span>は<span class="math notranslate nohighlight">\(E_2\)</span>を<strong>汎化（generalize）</strong> した実体型である」と称することもある）．
-継承を用いて実体型を表現したとき，その実体集合（下位の集合）は継承元（上位）の実体集合にすべて包含される．</p>
-<p>実体関連図において，継承元となる上位の実体型と継承先となる下位の実体型の間には，汎化・継承関係があることを示す「IsA」と記した三角の特別な関連記号を置く．
-以下は，先の実体型「大学構成員」「学生」「教員」を実体関連図で表現したものである（<a class="reference internal" href="#er-model3-q1">★Quiz1★</a>）．</p>
+<p>と定義したほうが明らかに無駄が少なく，また自然です．
+実体型「教員」の定義においても同様です．</p>
+<p>このように，実体型<span class="math notranslate nohighlight">\(E_1\)</span>が持つすべての属性を持つと考え，新たな実体型<span class="math notranslate nohighlight">\(E_2\)</span>を定義するとき，<span class="math notranslate nohighlight">\(E_2\)</span>は<span class="math notranslate nohighlight">\(E_1\)</span>を<strong>継承（inherit）</strong> したといいます（「<span class="math notranslate nohighlight">\(E_1\)</span>は<span class="math notranslate nohighlight">\(E_2\)</span>を<strong>汎化（generalize）</strong> した実体型である」と称することもあります）．
+継承を用いて実体型を表現したとき，その実体集合（下位の集合）は継承元（上位）の実体集合にすべて包含されます．</p>
+<p>実体関連図において，継承元となる上位の実体型と継承先となる下位の実体型の間には，汎化・継承関係があることを示す「IsA」と記した三角の特別な関連記号を置きます．
+以下は，先の実体型「大学構成員」「学生」「教員」を実体関連図で表現したものです（<a class="reference internal" href="#er-model3-q1">★Quiz1★</a>）．</p>
 <p><img alt="継承・汎化を用いたER図" src="../../_images/inheritance.png" /></p>
 </section>
 <section id="id1">
 <h2><span class="section-number">10.2. </span>n項関連<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>これまでの説明では扱ってきた関連型は，2つの実体型とのつながりを表現したもの（2項関連）に限定されていたが，3つ以上の実体型とつながりがあってもよい．
-n個の実体型をつなぐ関連を<strong>n項関連（n-ary relationship）</strong> と呼ぶ．
-2項関連と同様に，n項関連においても参加制約や多重度制約を考えることができる．</p>
+<p>これまでの説明では扱ってきた関連型は，2つの実体型とのつながりを表現したもの（2項関連）に限定されていましたが，3つ以上の実体型とつながりがあってもよいです．
+n個の実体型をつなぐ関連を<strong>n項関連（n-ary relationship）</strong> と呼びます．
+2項関連と同様に，n項関連においても参加制約や多重度制約を考えることができます．</p>
 <p><img alt="すべて1対n関連の3項関連" src="../../_images/3-ary-relationship1.png" /></p>
-<p>上の図は，学生がどこの教室でどの教員の指導をうけるかを実体関連図で表現した図（左）および各実体集合，関連集合の要素を示した図（右）である．
-上図では，関連型「研究室配属」は実体型「学生」「部屋」「教員」の3項関連となっている．
+<p>上の図は，学生がどこの教室でどの教員の指導をうけるかを実体関連図で表現した図（左）および各実体集合，関連集合の要素を示した図（右）です．
+上図では，関連型「研究室配属」は実体型「学生」「部屋」「教員」の3項関連となっています．
 また，実体関連図が示しているように，関連型「研究室配属」において，</p>
 <ul class="simple">
 <li><p>「学生」と「教員」は多対1の関連</p></li>
 <li><p>「学生」と「部屋」は多対1の関連</p></li>
 </ul>
-<p>となっている．
-つまり，学生の指導教員は必ず1名であり，部屋割もどこかの部屋を1つしか割り当てられないことになっている．</p>
+<p>となっています．
+つまり，学生の指導教員は必ず1名であり，部屋割もどこかの部屋を1つしか割り当てられないことになっています．</p>
 <p><img alt="多対多関連を含む3項関連" src="../../_images/3-ary-relationship2.png" /></p>
-<p>一方，上の図は先ほど同様，学生がどこの教室でどの教員の指導をうけるかを表した実体関連図および各実体集合，関連集合の要素を示した図ではあるが，実体関連図で表現されている内容が微妙に異なる．
+<p>一方，上の図は先ほどと同様，学生がどこの教室でどの教員の指導をうけるかを表した実体関連図および各実体集合，関連集合の要素を示した図ですが，実体関連図で表現されている内容が微妙に異なります．
 上の実体関連図においては，</p>
 <ul class="simple">
 <li><p>「学生」と「教員」は多対多の関連</p></li>
 <li><p>「学生」と「部屋」は多対1の関連</p></li>
 </ul>
-<p>となっている．
-つまり，学生に割り当てられられる部屋は必ず1つであるが，学生1名につき2名以上の教員を指導教員として割り当てることができる，と読み取れる．
-上の右図を見ると，学生Bの割り当て部屋は8601号室であるが，指導教員として桜山先生と山畑先生の2名が割り当てられていることが分かる（<a class="reference internal" href="#er-model3-q2">★Quiz2★</a>，<a class="reference internal" href="#er-model3-q3">★Quiz3★</a>）．</p>
+<p>となっています．
+つまり，学生に割り当てられる部屋は必ず1つですが，学生1名につき2名以上の教員を指導教員として割り当てることができる，と読み取れます．
+上の右図を見ると，学生Bの割り当て部屋は8601号室ですが，指導教員として桜山先生と山畑先生の2名が割り当てられていることが分かります（<a class="reference internal" href="#er-model3-q2">★Quiz2★</a>，<a class="reference internal" href="#er-model3-q3">★Quiz3★</a>）．</p>
 </section>
 <hr class="docutils" />
 <section id="id2">
 <h2><span class="section-number">10.3. </span>クイズ<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p><a class="reference external" href="https://music.apple.com/">Apple Music</a>や<a class="reference external" href="https://open.spotify.com/">Spotify</a>，<a class="reference external" href="https://music.line.me/about/">LINE MUSIC</a>などのサブスクリプション型音楽ストリーミングサービスでは，月額や年額でサービス使用料を支払うことで，好きなアーティストの好きな楽曲を好きなだけ聴くことができる．</p>
-<p>下記クイズでは，架空のサブスクリプション型音楽ストリーミングサービス「Orange Music」の実体関連モデルについて考える．
-以下，想定している実体関連モデルの詳細である．</p>
+<p><a class="reference external" href="https://music.apple.com/">Apple Music</a>や<a class="reference external" href="https://open.spotify.com/">Spotify</a>，<a class="reference external" href="https://music.line.me/about/">LINE MUSIC</a>などのサブスクリプション型音楽ストリーミングサービスでは，月額や年額でサービス使用料を支払うことで，好きなアーティストの好きな楽曲を好きなだけ聴くことができます．</p>
+<p>下記クイズでは，架空のサブスクリプション型音楽ストリーミングサービス「Orange Music」の実体関連モデルについて考えます．
+以下，想定している実体関連モデルの詳細です．</p>
 <ul class="simple">
 <li><p>Orange Musicの「ユーザ」は「ユーザID」「氏名」「性別」「誕生日」「電話番号」をもつ．</p></li>
 <li><p>Orange Musicの「アーティスト」は「アーティストID」「アーティスト名」をもつ．</p></li>
@@ -557,14 +543,16 @@ Orange Musicの「ユーザ」は追加料金を支払うことで「プレミ�
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isa">10.1. 汎化・継承（IsA階層）</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">10.2. n項関連</a></li>
@@ -618,8 +606,8 @@ Orange Musicの「ユーザ」は追加料金を支払うことで「プレミ�
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

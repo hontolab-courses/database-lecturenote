@@ -16,42 +16,45 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=aeeb188a" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-1GGP5ZEVQL"></script>
@@ -81,6 +84,7 @@
     <link rel="prev" title="12. データ従属性にもとづく正規化" href="../db-design/02.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -96,19 +100,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -116,7 +109,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -124,8 +116,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -141,7 +133,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -171,15 +164,11 @@
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">はじめに</span></p>
@@ -236,9 +225,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -321,7 +315,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -335,25 +329,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -404,22 +390,22 @@ document.write(`
 <li><p>実体関連モデリングの作成</p></li>
 <li><p>関数従属性に基づく関係スキーマの分解</p></li>
 </ol>
-<p>に取り組む．
-演習課題は大問2題である（大問1つにつき小問が2題）．</p>
+<p>に取り組みます．
+演習課題は大問2題です（大問1つにつき小問が2題）．</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <h3 class="rubric" id="id2">レポート課題2（データベース設計）</h3>
-<p>本ページで出題されているすべての課題を解きなさい．
-解答期日，解答方法等については下記を参照すること．</p>
+<p>本ページで出題されているすべての課題を解いてください．
+解答期日，解答方法等については下記を参照してください．</p>
 <ul class="simple">
 <li><p>設問数：4</p></li>
 <li><p>成績評価における本課題の割合：20％（20点）</p></li>
 <li><p>評価方法：提出物をもとに担当教員が採点します．配点は各設問に記載しています</p></li>
-<li><p>解答〆切り：2025年7月27日 （日）23:59</p></li>
+<li><p>解答〆切り：2026年7月26日 （日）23:59</p></li>
 <li><p>解答作成方法</p>
 <ul>
-<li><p>Teams経由で配布したWordファイルを使って解答を作成すること</p></li>
-<li><p>解答提出時にはWordファイルを<code class="docutils literal notranslate"><span class="pre">PDFファイル</span></code>に変換すること．またファイル名は<code class="docutils literal notranslate"><span class="pre">学籍番号.pdf</span></code>とすること</p></li>
+<li><p>Teams経由で配布したWordファイルを使って解答を作成してください</p></li>
+<li><p>解答提出時にはWordファイルを<code class="docutils literal notranslate"><span class="pre">PDFファイル</span></code>に変換してください．またファイル名は<code class="docutils literal notranslate"><span class="pre">学籍番号.pdf</span></code>としてください</p></li>
 </ul>
 </li>
 <li><p>提出方法：Teams経由</p></li>
@@ -434,8 +420,8 @@ document.write(`
 </div>
 <section id="q1">
 <h2><span class="section-number">13.1. </span>Q1<a class="headerlink" href="#q1" title="Link to this heading">#</a></h2>
-<p>架空企業であるMONACA鉄道では，このたび交通系ICカードと関係データベースシステムを導入し，利用者の乗降車履歴を記録することになった．
-以下は，システム設計における想定である．</p>
+<p>架空企業であるMONACA鉄道では，このたび交通系ICカードと関係データベースシステムを導入し，利用者の乗降車履歴を記録することになりました．
+以下は，システム設計における想定です．</p>
 <blockquote>
 <div><p>利用者はMONACA IDが付与されたMONACAカードを持っている．
 データベースにはMONACAカードIDにひもづけて，年齢，性別の他，学生や小児，高齢者，一般といったカード種別をあらわす情報が記録されている．
@@ -448,20 +434,20 @@ document.write(`
 <p>乗車駅の改札でMONACAカードをかざすと，カード内に一時的に乗車駅情報と入場日時が記録される．
 降車駅の改札で再びMONACAカードをかざすと，データベースにMONACAカードID，乗車駅，入場日時，降車駅，出場日時の情報が記録される．</p>
 </div></blockquote>
-<p>上記を踏まえて，以下の設問に答えよ．</p>
+<p>上記を踏まえて，以下の設問に答えてください．</p>
 <section id="q1-1-8">
 <h3><span class="section-number">13.1.1. </span>Q1-1（配点8）<a class="headerlink" href="#q1-1-8" title="Link to this heading">#</a></h3>
-<p>MONACA鉄道のデータベースで管理しようとするデータおよびデータ間の関係性を把握するための実体関連図を作成せよ．</p>
+<p>MONACA鉄道のデータベースで管理しようとするデータおよびデータ間の関係性を把握するための実体関連図を作成してください．</p>
 </section>
 <section id="q1-2-4">
 <h3><span class="section-number">13.1.2. </span>Q1-2（配点4）<a class="headerlink" href="#q1-2-4" title="Link to this heading">#</a></h3>
-<p>Q1-1で作成した実体関連図を関係スキーマに変換せよ．</p>
+<p>Q1-1で作成した実体関連図を関係スキーマに変換してください．</p>
 </section>
 </section>
 <section id="q2">
 <h2><span class="section-number">13.2. </span>Q2<a class="headerlink" href="#q2" title="Link to this heading">#</a></h2>
-<p>県内に複数ある図書館における蔵書貸出管理を包括的に行う関係データベースを設計したい．
-このデータベースでは，以下の12の属性をもつとする．</p>
+<p>県内に複数ある図書館における蔵書貸出管理を包括的に行う関係データベースを設計します．
+このデータベースでは，以下の12の属性をもつとします．</p>
 <ul class="simple">
 <li><p>図書館（の名前）</p></li>
 <li><p>住所</p></li>
@@ -476,8 +462,8 @@ document.write(`
 <li><p>貸出日</p></li>
 <li><p>返却日</p></li>
 </ul>
-<p>また，以下の関数従属性が成立するとする．
-なお，取り扱う書籍はすべて単著（書籍につき著者は1人）であり，ユーザは同じ本を借りることはないと仮定する．</p>
+<p>また，以下の関数従属性が成立するとします．
+なお，取り扱う書籍はすべて単著（書籍につき著者は1人）であり，ユーザは同じ本を借りることはないと仮定します．</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(FD_1: 図書館 \to 住所\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(FD_2: 住所 \to 管轄区\)</span></p></li>
@@ -486,15 +472,15 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\(FD_5: ISBN, 図書館 \to 冊数\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(FD_6: ISBN, 図書館, ユーザ \to 貸出日, 返却日\)</span></p></li>
 </ul>
-<p>上記を踏まえて，以下の設問に答えよ．</p>
+<p>上記を踏まえて，以下の設問に答えてください．</p>
 <section id="q2-1-3">
 <h3><span class="section-number">13.2.1. </span>Q2-1（配点3）<a class="headerlink" href="#q2-1-3" title="Link to this heading">#</a></h3>
-<p>上記関数従属性をFDダイアグラムで表現せよ．</p>
+<p>上記関数従属性をFDダイアグラムで表現してください．</p>
 </section>
 <section id="q2-2-5">
 <h3><span class="section-number">13.2.2. </span>Q2-2（配点5）<a class="headerlink" href="#q2-2-5" title="Link to this heading">#</a></h3>
-<p>関数従属性をふまえて，上記12の属性をもつ関係スキーマをいくつかの関係スキーマに情報無損失分解し，第3正規形またはボイス・コッド正規形を導出せよ．
-解答の際には，以下に留意すること．</p>
+<p>関数従属性をふまえて，上記12の属性をもつ関係スキーマをいくつかの関係スキーマに情報無損失分解し，第3正規形またはボイス・コッド正規形を導出してください．
+解答の際には，以下に留意してください．</p>
 <ul class="simple">
 <li><p>分解の過程が分かるようにすること</p></li>
 <li><p>ある関係スキーマを情報無損失分解をした際には，どの関数従属性を用いたかを明記すること</p></li>
@@ -560,14 +546,16 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">13.1. Q1</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-1-8">13.1.1. Q1-1（配点8）</a></li>
@@ -623,8 +611,8 @@ document.write(`
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

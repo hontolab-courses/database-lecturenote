@@ -16,42 +16,45 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=aeeb188a" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-1GGP5ZEVQL"></script>
@@ -79,6 +82,7 @@
     <link rel="prev" title="データベース" href="../../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -94,19 +98,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -114,7 +107,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -122,8 +114,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -139,7 +131,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -169,15 +162,11 @@
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">はじめに</span></p>
@@ -234,9 +223,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -319,7 +313,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -333,25 +327,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -403,33 +389,33 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">1. </span>“データベース”を使わない世界<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>データベースと聞いて何を思い浮かべるだろうか．
-大抵の人は，データベースといえば「大きなデータの集まり」を思い浮かべるのではないだろうか．
-このイメージはあながち間違いではないのだが，本講義のようにわざわざ科目を立ててまで，データベースについて学ぶことはあるのだろうか？</p>
-<p>結論としては，大規模データに携わるITエンジニアやデータ分析者を目指す人であれば「大いにあり」である．
-1960年代から今日に至るまで，データベース技術は盛んに研究開発されてきた．
-大きなデータの集まりを扱おうとすると，対処しなければならない問題がたくさんある．</p>
-<p>本講義では10数回にわたってデータベース技術について解説するが，この第1講ではデータベースのことはいったん横に置いておいておく．
-今回は（割と）大きなデータを扱うときに遭遇する問題について考えてみよう．</p>
+<p>データベースと聞いて何を思い浮かべるでしょうか．
+大抵の人は，データベースといえば「大きなデータの集まり」を思い浮かべるのではないでしょうか．
+このイメージはあながち間違いではないのですが，本講義のようにわざわざ科目を立ててまで，データベースについて学ぶことはあるのでしょうか？</p>
+<p>結論としては，大規模データに携わるITエンジニアやデータ分析者を目指す人であれば「大いにあり」です．
+1960年代から今日に至るまで，データベース技術は盛んに研究開発されてきました．
+大きなデータの集まりを扱おうとすると，対処しなければならない問題がたくさんあります．</p>
+<p>本講義では10数回にわたってデータベース技術について解説しますが，この第1講ではデータベースのことはいったん横に置いておきます．
+今回は（割と）大きなデータを扱うときに遭遇する問題について考えてみましょう．</p>
 <section id="id2">
 <h2><span class="section-number">1.1. </span>ケース1: 販売履歴の記録をはじめる<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>以下は，山畑さんという架空の人物のお話である．</p>
+<p>以下は，山畑さんという架空の人物のお話です．</p>
 <blockquote>
-山畑さんは家族で小さな小売店を営んでいる．
-個人経営ながら山畑さんのお店は繁盛している．
-とはいえ，街には大手チェーン小売店が進出してきており，このまま順調に経営を続けられるか，不安が募っている．
-何か手を打たなければならない．
-<p>2020年の4月，山畑さんは念願のショッピングサイトを立ち上げた．
-言うまでもない．
-ショッピングサイトを立ち上げたのは，オンラインの場にも顧客獲得の機会を求めるためだ．
-サイトは順調に立ち上がり，注文もポツポツ入ってきている．</p>
-<p>ところで，最近「データサイエンス」なるものが世間の注目を集めているらしい．
-データを活かせばビジネスチャンスが広がるとのことだ．
-山畑さんは，Excelシートに記録を取り始めた販売履歴を分析してみようと思い立った．</p>
-<p>山畑さんが使っているExcelシートには，「いつ，誰が，何を，いくらで購入したか」の情報が記録されている．
-ショッピングサイトは立ち上がったばかりであり，Excelシートには200行しかデータが入っていない．
-しかし，今後データが貯まっていけば，売り上げを増やすための課題が見えるかもしれない．
-いずれがっつりとデータ分析をやるためにも，山畑さんは手持ちのデータを用いて分析の練習に取り組むことにした．</p>
+山畑さんは家族で小さな小売店を営んでいます．
+個人経営ながら山畑さんのお店は繁盛しています．
+とはいえ，街には大手チェーン小売店が進出してきており，このまま順調に経営を続けられるか，不安が募っています．
+何か手を打たなければなりません．
+<p>2020年の4月，山畑さんは念願のショッピングサイトを立ち上げました．
+言うまでもありません．
+ショッピングサイトを立ち上げたのは，オンラインの場にも顧客獲得の機会を求めるためです．
+サイトは順調に立ち上がり，注文もポツポツ入ってきています．</p>
+<p>ところで，最近「データサイエンス」なるものが世間の注目を集めているようです．
+データを活かせばビジネスチャンスが広がるとのことです．
+山畑さんは，Excelシートに記録を取り始めた販売履歴を分析してみようと思い立ちました．</p>
+<p>山畑さんが使っているExcelシートには，「いつ，誰が，何を，いくらで購入したか」の情報が記録されています．
+ショッピングサイトは立ち上がったばかりであり，Excelシートには200行しかデータが入っていません．
+しかし，今後データが貯まっていけば，売り上げを増やすための課題が見えるかもしれません．
+いずれがっつりとデータ分析をやるためにも，山畑さんは手持ちのデータを用いて分析の練習に取り組むことにしました．</p>
 </blockquote>
 <section id="id3">
 <h3><span class="section-number">1.1.1. </span>演習<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
@@ -447,7 +433,7 @@ document.write(`
 </section>
 <section id="id5">
 <h4><span class="section-number">1.1.1.2. </span>あの人は何回買い物をしている？<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
-<p>「岡田 真綾」という人物が何回買い物をしていたかを数えなさい．</p>
+<p>「渡辺 真綾」という人物が何回買い物をしていたかを数えなさい．</p>
 </section>
 <section id="x">
 <h4><span class="section-number">1.1.1.3. </span>商品Xを購入しているのは誰？<a class="headerlink" href="#x" title="Link to this heading">#</a></h4>
@@ -474,28 +460,28 @@ document.write(`
 <section id="id8">
 <h2><span class="section-number">1.2. </span>ケース2: 認知度向上につき，得られるデータも膨大に!?<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
 <p>現時点では手持ちのデータは少ないものの，販売履歴データの分析に将来性を感じた山畑さん．
-販売履歴データを有効活用できるよう，ショッピングサイト運営により力を入れる決意を固めたのであった．</p>
-<p>以下は，山畑さんのその後の話（架空の話）である．</p>
+販売履歴データを有効活用できるよう，ショッピングサイト運営により力を入れる決意を固めたのでした．</p>
+<p>以下は，山畑さんのその後の話（架空の話）です．</p>
 <blockquote>
-ショッピングサイト立ち上げ以降，順調に利用者数も増えていった．
-やはりメディアに取り上げられたのが大きかったのだろう．
-あのタイミングでサイトの認知度が一気に高まり，サイトの利用者数や利用頻度も加速度的に増えていった．
-それに伴い，サイト運営に関わるスタッフも増員した．
-<p>販売履歴の管理は，当初は山畑さんが一人で担当していたが，さすがに一人では対応しきれなくなった．
-そこで，ある時点から数名体制で販売履歴の記録を行うことになった．
-これまで販売履歴の管理に使ってきたExcelシートをクラウドストレージに置き，記録担当スタッフのPC間で同期を取る仕組みを導入．
-同じExcelファイルの上で，スタッフ全員で販売履歴を記録できるようにしたのである．</p>
-<p>2年後．サイト事業は軌道に乗った．
-十分な量の販売履歴データが蓄積されたと判断した山畑さんは，いよいよ大規模な販売履歴データの分析に取りかかることを決意した．
-立ち上げ当初は200〜300行しかなかったExcelシートであったが，シートを開きその行数を数えてみると…
-なんとその数90万行以上!
-データの量に小躍りした山畑さんは，Excelシートの扱いに詳しいスタッフと共に，意気揚々とデータ分析に取りかかったのであった．</p>
+ショッピングサイト立ち上げ以降，順調に利用者数も増えていきました．
+やはりメディアに取り上げられたのが大きかったのでしょう．
+あのタイミングでサイトの認知度が一気に高まり，サイトの利用者数や利用頻度も加速度的に増えていきました．
+それに伴い，サイト運営に関わるスタッフも増員しました．
+<p>販売履歴の管理は，当初は山畑さんが一人で担当していましたが，さすがに一人では対応しきれなくなりました．
+そこで，ある時点から数名体制で販売履歴の記録を行うことになりました．
+これまで販売履歴の管理に使ってきたExcelシートをクラウドストレージに置き，記録担当スタッフのPC間で同期を取る仕組みを導入しました．
+同じExcelファイルの上で，スタッフ全員で販売履歴を記録できるようにしたのです．</p>
+<p>2年後．サイト事業は軌道に乗りました．
+十分な量の販売履歴データが蓄積されたと判断した山畑さんは，いよいよ大規模な販売履歴データの分析に取りかかることを決意しました．
+立ち上げ当初は200〜300行しかなかったExcelシートでしたが，シートを開きその行数を数えてみると…
+なんとその数90万行以上！
+データの量に小躍りした山畑さんは，Excelシートの扱いに詳しいスタッフと共に，意気揚々とデータ分析に取りかかったのでした．</p>
 </blockquote>
 <section id="id9">
 <h3><span class="section-number">1.2.1. </span>演習2<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p><a class="reference download internal" download="" href="../../_downloads/5e173d8b61abfb1eee0a2e24080b4bfd/purchase_large.xlsx"><span class="xref download myst">コチラ</span></a>をクリックして，上のケース2で山畑さんが分析しようとしているExcelファイル<code class="docutils literal notranslate"><span class="pre">purchase_large.xlsx</span></code>をダウンロードしなさい．
 またダウンロードしたファイルを用いて下記課題（演習1と同じ）に取り組み，データ分析上の課題（困ったこと）を議論しなさい．
-以下，課題1の内容を再掲する．</p>
+以下，課題1の内容を再掲します．</p>
 <ul class="simple">
 <li><p>「岡田 真綾」という人物が何回買い物をしていたかを数えよ</p></li>
 <li><p>「ビタミン補助剤」を購入している人をリストアップせよ</p></li>
@@ -503,21 +489,21 @@ document.write(`
 <li><p>集計期間中に「最も購買回数が多かった商品」「最も売上金額の合計が大きかった商品」を求めよ</p></li>
 </ul>
 <p>もし，<code class="docutils literal notranslate"><span class="pre">purchase_large.xlsx</span></code>ファイルがうまく開けない場合は，<a class="reference download internal" download="" href="../../_downloads/3c9d29321e8179538801bdc39db7bd55/purchase_medium.xlsx"><span class="xref download myst">コチラ</span></a>からダウンロードできる<code class="docutils literal notranslate"><span class="pre">purchase_medium.xlsx</span></code>を用いなさい．
-なお，ダウンロードできるExcelシートの構造はケース1で用いた<code class="docutils literal notranslate"><span class="pre">purchase_small.xlsx</span></code>と同じである．</p>
+なお，ダウンロードできるExcelシートの構造はケース1で用いた<code class="docutils literal notranslate"><span class="pre">purchase_small.xlsx</span></code>と同じです．</p>
 </section>
 </section>
 <hr class="docutils" />
 <section id="id10">
 <h2><span class="section-number">1.3. </span>おわりに<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
-<p>ケース1および2で用いたExcelファイルは，販売履歴データの集まりであった．
-一般的な認識からすると，このようなデータの集まりは「データベース」ということになるだろう．</p>
-<p>ところで，上記演習，とりわけケース2に取り組んでみてイライラしなかっただろうか？
-数万件，数十万件ある表データをExcelで扱おうとすると，さまざまな不都合が生じる．
-これは，本来Excelは個人用の表計算アプリケーションであって，大規模データの管理や処理を前提として設計されていないためである．</p>
+<p>ケース1および2で用いたExcelファイルは，販売履歴データの集まりでした．
+一般的な認識からすると，このようなデータの集まりは「データベース」ということになるでしょう．</p>
+<p>ところで，上記演習，とりわけケース2に取り組んでみてイライラしなかったでしょうか？
+数万件，数十万件ある表データをExcelで扱おうとすると，さまざまな不都合が生じます．
+これは，本来Excelは個人用の表計算アプリケーションであって，大規模データの管理や処理を前提として設計されていないためです．</p>
 <p><img alt="" src="../../_images/excel-disaster.jpg" /></p>
-<p>では，大規模なデータを管理・処理するためにはどうすればよいだろうか？
-そのための技術こそが「データベース」である．
-以降，本講義では<strong>大規模データを効率よく管理・処理するための「データベース」技術</strong> について学習する．</p>
+<p>では，大規模なデータを管理・処理するためにはどうすればよいでしょうか？
+そのための技術こそが「データベース」です．
+以降，本講義では<strong>大規模データを効率よく管理・処理するための「データベース」技術</strong> について学習します．</p>
 </section>
 </section>
 
@@ -576,14 +562,16 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1. ケース1: 販売履歴の記録をはじめる</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.1.1. 演習</a><ul class="nav section-nav flex-column">
@@ -645,8 +633,8 @@ document.write(`
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

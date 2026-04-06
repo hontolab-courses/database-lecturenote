@@ -16,42 +16,45 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=aeeb188a" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-1GGP5ZEVQL"></script>
@@ -81,6 +84,7 @@
     <link rel="prev" title="2. データベースの概念" href="../concept-of-database/01.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -96,19 +100,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -116,7 +109,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -124,8 +116,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -141,7 +133,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -171,15 +164,11 @@
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">はじめに</span></p>
@@ -236,9 +225,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -321,7 +315,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -335,25 +329,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -413,169 +399,169 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">3. </span>関係データモデル<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p><strong>関係データベース（relational database）</strong> とは，関係データモデルにもとづき表現されたデータの集まりである．
-<a class="reference internal" href="../concept-of-database/01.html"><span class="std std-doc">前講</span></a>で述べたように，関係データモデルとは，表によってデータを表現するデータモデルである．
-一見すると単純な表にしか見えない関係データモデルは数学によって定式化されており，強固な理論的基盤を有している．
-関係データモデルを用いることで，データから冗長性を排除し，データを正しく管理することが可能となる．</p>
-<p>以下では，数学的な観点から関係データモデルについて述べる．
-少々堅い説明にはなるが，関係データベースという計算機科学技術が数学に支えられていることを知るためにも，眠気を我慢して読んでほしい．
-なお，本講では数学における「集合と写像」の知識を使う．
-最低限の知識を<a class="reference internal" href="../misc/math.html"><span class="std std-doc">コチラ</span></a>にまとめたので，不安がある方はそちらを参照されたい．</p>
+<p><strong>関係データベース（relational database）</strong> とは，関係データモデルにもとづき表現されたデータの集まりです．
+<a class="reference internal" href="../concept-of-database/01.html"><span class="std std-doc">前講</span></a>で述べたように，関係データモデルとは，表によってデータを表現するデータモデルです．
+一見すると単純な表にしか見えない関係データモデルは数学によって定式化されており，強固な理論的基盤を有しています．
+関係データモデルを用いることで，データから冗長性を排除し，データを正しく管理することが可能となります．</p>
+<p>以下では，数学的な観点から関係データモデルについて述べます．
+少々堅い説明にはなりますが，関係データベースという計算機科学技術が数学に支えられていることを知るためにも，眠気を我慢して読んでください．
+なお，本講では数学における「集合と写像」の知識を使います．
+最低限の知識を<a class="reference internal" href="../misc/math.html"><span class="std std-doc">コチラ</span></a>にまとめたので，不安がある方はそちらを参照してください．</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <h3 class="rubric" id="id2">計算機科学とは抽象化の学問</h3>
-<p>計算機科学（あるいは情報科学）というと「プログラミングでしょ」と考える学生は多いが，それは間違いである．
-計算機科学の本質は，<strong>物事を計算可能な状態にする（抽象化）し，計算機の上で処理・分析</strong>することにある．
-データベースもその一つである．
-計算機科学は抽象化の学問なのである．</p>
+<p>計算機科学（あるいは情報科学）というと「プログラミングでしょ」と考える学生は多いですが，それは間違いです．
+計算機科学の本質は，<strong>物事を計算可能な状態にする（抽象化）し，計算機の上で処理・分析</strong>することにあります．
+データベースもその一つです．
+計算機科学は抽象化の学問なのです．</p>
 </div>
 <section id="id3">
 <h2><span class="section-number">3.1. </span>関係データモデルのデータ構造<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p><img alt="ある小売店の商品テーブル" src="../../_images/correct-table.png" /></p>
-<p>上の表は，ある小売店で取り扱っている商品のデータを関係データモデルによって表現したものである．
-この表において，各行は小売店で取り扱っている商品に対応し，各列には各商品に関するデータが記述されている．</p>
-<p>表の左上にある「商品」はこの表の名前を示しており，<strong>関係名</strong>と呼ばれる．
-関係データモデル上では，各行は<strong>タプル（tuple）</strong> と呼ばれる．
-表の1行目には，「商品」がどのようなデータを持つかを示す見出しが付けられている．
-表における各見出しに対応するものを，関係データモデルでは<strong>属性（attribute）</strong> と呼ぶ．
-また，各タプルにおけるある属性の値を<strong>属性値</strong>と呼ぶ．
+<p>上の表は，ある小売店で取り扱っている商品のデータを関係データモデルによって表現したものです．
+この表において，各行は小売店で取り扱っている商品に対応し，各列には各商品に関するデータが記述されています．</p>
+<p>表の左上にある「商品」はこの表の名前を示しており，<strong>関係名</strong>と呼ばれます．
+関係データモデル上では，各行は<strong>タプル（tuple）</strong> と呼ばれます．
+表の1行目には，「商品」がどのようなデータを持つかを示す見出しが付けられています．
+表における各見出しに対応するものを，関係データモデルでは<strong>属性（attribute）</strong> と呼びます．
+また，各タプルにおけるある属性の値を<strong>属性値</strong>と呼びます．
 例えば，表中の2行目に対応するタプルは</p>
 <blockquote>
 <div><p>(“P1”, “はーいお茶”, 130, “2020/07/15”)</p>
 </div></blockquote>
-<p>であるが，このタプルの属性「単価」の属性値は<code class="docutils literal notranslate"><span class="pre">130</span></code>となる．</p>
+<p>ですが，このタプルの属性「単価」の属性値は<code class="docutils literal notranslate"><span class="pre">130</span></code>となります．</p>
 <section id="id4">
 <h3><span class="section-number">3.1.1. </span>数学における「関係」<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<p>ところで，関係データベースあるいは関係データモデルの「関係」とは一体何だろうか．
-<strong>関係（relation）</strong> とは数学上の概念である．
+<p>ところで，関係データベースあるいは関係データモデルの「関係」とは一体何でしょうか．
+<strong>関係（relation）</strong> とは数学上の概念です．
 集合<span class="math notranslate nohighlight">\(S_1, S_2, ..., S_n\)</span>が与えられたとき，それらの直積集合<span class="math notranslate nohighlight">\(S_1 \times ... \times S_n\)</span>とは</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(S_1 \times ... S_n = \{(x_1, ..., x_n) \ | \ x_1 \in S_1, ..., x_n \in S_n \}\)</span></p>
 </div></blockquote>
-<p>と表現されるものである（直積の概念を忘れた方は<a class="reference internal" href="../misc/math.html"><span class="std std-doc">コチラ</span></a>を確認すること）（<a class="reference internal" href="#rdm-q1">★Quiz1★</a>）．
-（数学上の概念である）関係とは，このような直積集合の部分集合を意味する．
-正確に書くと，集合<span class="math notranslate nohighlight">\(S_1, S_2, ..., S_n\)</span>が与えられたとき，直積集合<span class="math notranslate nohighlight">\(S_1 \times ... \times S_n\)</span>の部分集合を<span class="math notranslate nohighlight">\(S_1, S_2, ..., S_n\)</span>上の<strong>n項関係</strong>と呼ぶ．</p>
+<p>と表現されるものです（直積の概念を忘れた方は<a class="reference internal" href="../misc/math.html"><span class="std std-doc">コチラ</span></a>を確認してください）（<a class="reference internal" href="#rdm-q1">★Quiz1★</a>）．
+（数学上の概念である）関係とは，このような直積集合の部分集合を意味します．
+正確に書くと，集合<span class="math notranslate nohighlight">\(S_1, S_2, ..., S_n\)</span>が与えられたとき，直積集合<span class="math notranslate nohighlight">\(S_1 \times ... \times S_n\)</span>の部分集合を<span class="math notranslate nohighlight">\(S_1, S_2, ..., S_n\)</span>上の<strong>n項関係</strong>と呼びます．</p>
 <p>例えば，<span class="math notranslate nohighlight">\(A=\{2, 3\}\)</span>，<span class="math notranslate nohighlight">\(B=\{-2, -3\}\)</span>が与えられたとき，直積<span class="math notranslate nohighlight">\(A \times B\)</span>は集合AおよびBの要素のすべての組み合わせであるから</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(A \times B = \{(2, -2), (2, -3), (3, -2), (3, -3)\}\)</span></p>
 </div></blockquote>
-<p>となる．
+<p>となります．
 このとき，その部分集合の1つである</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(\{(2, -3), (3, -2)\}\)</span></p>
 </div></blockquote>
-<p>は集合AおよびB上の2項関係となる．
-このような（n項）関係の概念を使って，関係データモデルは理論構築されている（<a class="reference internal" href="#rdm-q2">★Quiz2★</a>）．</p>
+<p>は集合AおよびB上の2項関係となります．
+このような（n項）関係の概念を使って，関係データモデルは理論構築されています（<a class="reference internal" href="#rdm-q2">★Quiz2★</a>）．</p>
 </section>
 <section id="sec-relation-schema">
 <span id="id5"></span><h3><span class="section-number">3.1.2. </span>関係データモデルにおける「関係」<a class="headerlink" href="#sec-relation-schema" title="Link to this heading">#</a></h3>
-<p><strong>関係データモデルにおける関係</strong>は「数学におけるの関係」を拡張したものになっており，以下の2つから構成される．</p>
+<p><strong>関係データモデルにおける関係</strong>は「数学におけるの関係」を拡張したものになっており，以下の2つから構成されます．</p>
 <ul class="simple">
 <li><p>関係スキーマ</p></li>
 <li><p>インスタンス</p></li>
 </ul>
-<p><strong>関係スキーマ（relation schema）</strong> とは，関係の名前と属性の集合，および（後述する）一貫性制約の情報を示すものである．
+<p><strong>関係スキーマ（relation schema）</strong> とは，関係の名前と属性の集合，および（後述する）一貫性制約の情報を示すものです．
 関係スキーマは</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\((\boldsymbol{R}(A_1, ..., A_n), \{\sigma_1, \sigma_2, ..., \sigma_m\})\)</span></p>
 </div></blockquote>
-<p>の形式で記述される．
+<p>の形式で記述されます．
 ここで</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>は関係名</p></li>
 <li><p><span class="math notranslate nohighlight">\(A_1, ..., A_n\)</span>は属性</p></li>
 <li><p><span class="math notranslate nohighlight">\(\sigma_1, ..., \sigma_m\)</span>は一貫性制約</p></li>
 </ul>
-<p>に対応する．
+<p>に対応します．
 一貫性制約が自明な場合やそれを考慮しないときは，関係スキーマを</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(\boldsymbol{R}(A_1, ..., A_n)\)</span></p>
 </div></blockquote>
-<p>のように簡潔に表記することもある．
+<p>のように簡潔に表記することもあります．
 先の表「商品」の例の場合，関係スキーマは</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(商品（商品ID, 名称, 単価, 登録日）\)</span></p>
 </div></blockquote>
-<p>と記述する（<a class="reference internal" href="#rdm-q3">★Quiz3★</a>）．</p>
-<p>関係スキーマに記された各属性には，属性が取り得る値の集合を定義する．
-この集合は<strong>ドメイン（domain; 定義域）</strong> と呼ばれ，属性<span class="math notranslate nohighlight">\(A\)</span>のドメインは<span class="math notranslate nohighlight">\(Dom(A)\)</span>と記す．
-例えば，先の表「商品」の例では，属性「単価」は金額を表すので，そのドメイン<span class="math notranslate nohighlight">\(Dom(単価)\)</span>は0以上の整数値が想定される．
-これを数学的に記すと，以下のようになる:</p>
+<p>と記述します（<a class="reference internal" href="#rdm-q3">★Quiz3★</a>）．</p>
+<p>関係スキーマに記された各属性には，属性が取り得る値の集合を定義します．
+この集合は<strong>ドメイン（domain; 定義域）</strong> と呼ばれ，属性<span class="math notranslate nohighlight">\(A\)</span>のドメインは<span class="math notranslate nohighlight">\(Dom(A)\)</span>と記します．
+例えば，先の表「商品」の例では，属性「単価」は金額を表すので，そのドメイン<span class="math notranslate nohighlight">\(Dom(単価)\)</span>は0以上の整数値が想定されます．
+これを数学的に記すと，以下のようになります:</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(Dom(単価) = \{ x \ | \ x \in \mathbb{N} \}\)</span></p>
 </div></blockquote>
-<p>同様に，属性「商品ID」「名称」「登録日」についても，以下のようにドメインを定義できる．</p>
+<p>同様に，属性「商品ID」「名称」「登録日」についても，以下のようにドメインを定義できます．</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(Dom(商品ID) = \{ x \ | x \in Pから始まる文字列集合 \}\)</span> <br />
 <span class="math notranslate nohighlight">\(Dom(名称) = \{ x \ | \ x \in 文字列集合 \}\)</span> <br />
 <span class="math notranslate nohighlight">\(Dom(登録日) = \{ x \ | \ x \in 年月日集合（ただし西暦表記） \}\)</span></p>
 </div></blockquote>
-<p><strong>インスタンス（instance）</strong> は，関係スキーマ<span class="math notranslate nohighlight">\(\boldsymbol{R}(A_1, ..., A_n)\)</span>におけるドメイン<span class="math notranslate nohighlight">\(Dom(A_1), ..., Dom(A_n)\)</span>の直積の部分集合である．
+<p><strong>インスタンス（instance）</strong> は，関係スキーマ<span class="math notranslate nohighlight">\(\boldsymbol{R}(A_1, ..., A_n)\)</span>におけるドメイン<span class="math notranslate nohighlight">\(Dom(A_1), ..., Dom(A_n)\)</span>の直積の部分集合です．
 仮にインスタンスを<span class="math notranslate nohighlight">\(R\)</span>とすると，</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(R \subset{Dom(A_1) \times ... \times Dom(A_n)}\)</span></p>
 </div></blockquote>
-<p>である．
-インスタンスは，上で説明した数学上の関係に相当する（あらためて「数学における関係」の節を確認してみよう）．
-また，インスタンス<span class="math notranslate nohighlight">\(R\)</span>の要素がタプルとなる．</p>
-<p>例に戻って，定義と照らし合わせてみよう．
-先の表「商品」の関係スキーマは<span class="math notranslate nohighlight">\(商品(商品ID, 名称, 単価, 登録日)\)</span>であった．
-各属性のドメインの定義も与えたが，その定義から，例えば属性「単価」については</p>
+<p>です．
+インスタンスは，上で説明した数学上の関係に相当します（あらためて「数学における関係」の節を確認してみましょう）．
+また，インスタンス<span class="math notranslate nohighlight">\(R\)</span>の要素がタプルとなります．</p>
+<p>例に戻って，定義と照らし合わせてみましょう．
+先の表「商品」の関係スキーマは<span class="math notranslate nohighlight">\(商品(商品ID, 名称, 単価, 登録日)\)</span>でした．
+各属性のドメインの定義も与えましたが，その定義から，例えば属性「単価」については</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(Dom(単価) = \{1, 2, 3, .... 10000, .... \}\)</span></p>
 </div></blockquote>
-<p>のようにあらゆる自然数を取り得る．
+<p>のようにあらゆる自然数を取り得ます．
 また，属性「名称」については</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(Dom(名称) = \{&quot;あ&quot;, &quot;い&quot;, ..., &quot;はーいお茶&quot;, ... \}\)</span></p>
 </div></blockquote>
-<p>のようにあらゆる文字列を取り得る．</p>
+<p>のようにあらゆる文字列を取り得ます．</p>
 <p>各属性の直積<span class="math notranslate nohighlight">\(Dom(商品ID) \times Dom(名称) \times Dom(単価) \times Dom(登録日)\)</span>には，</p>
 <blockquote>
 <div><p>(“P001”, “こんな商品はありません”, 100兆, “2020/01/01”)</p>
 </div></blockquote>
-<p>のように，実際に商品情報としてありえないタプルも含めて，様々なタプルが要素として含まれる．
-なぜなら，直積とは集合（ドメイン）の要素のすべての組み合わせであるためである．
-ドメインの直積の部分集合をインスタンスとすることは，取り得るタプルの候補から実際にデータとして扱われるタプルの集合を選択することに相当する（<a class="reference internal" href="#rdm-q4">★Quiz4★</a>）．</p>
+<p>のように，実際に商品情報としてありえないタプルも含めて，様々なタプルが要素として含まれます．
+なぜなら，直積とは集合（ドメイン）の要素のすべての組み合わせであるためです．
+ドメインの直積の部分集合をインスタンスとすることは，取り得るタプルの候補から実際にデータとして扱われるタプルの集合を選択することに相当します（<a class="reference internal" href="#rdm-q4">★Quiz4★</a>）．</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <h3 class="rubric" id="id6">タプルは重複が許されない</h3>
-<p>一般的に使われる表では，同じ内容を表す行が複数あっても許される．
-一方，関係データモデルに基づく表は行，すなわちタプルの重複は許されない．
-なぜなら，関係データモデルのインスタンスは（数学的な）集合だからである．</p>
+<p>一般的に使われる表では，同じ内容を表す行が複数あっても許されます．
+一方，関係データモデルに基づく表は行，すなわちタプルの重複は許されません．
+なぜなら，関係データモデルのインスタンスは（数学的な）集合だからです．</p>
 </div>
 </section>
 </section>
 <section id="sec-1nf">
 <span id="id7"></span><h2><span class="section-number">3.2. </span>非正規関係と第1正規形<a class="headerlink" href="#sec-1nf" title="Link to this heading">#</a></h2>
-<p>関係データモデルにおけるドメインとは属性が取り得る値の集合を意味するが，ドメインの要素はそれ以上分解不可能な値を意味する<strong>原子値（atomic value）</strong> であることを想定している．
-原子値の例としては，文字列，整数，実数，真偽値，日付などが挙げられ，どれもデータの基本単位と呼べるものである．
-逆に原子値で「ない」例としては，タプルや集合，関係などが挙げられる．
-ドメインとして原子値以外の値をとることを許す関係データを<strong>非正規関係（unnormalized relation）</strong> と呼ぶ．
-逆に，ドメインとして原子値しかとらない関係は<strong>第1正規形（first normal form; 1NF）である</strong> という．</p>
-<p>例えば，以下の表(a)(b)はともに商品の購買履歴を表しているが，表(a)は属性「購入品目」に集合要素が入ってしまっている（例えば，<code class="docutils literal notranslate"><span class="pre">{&quot;はーいお茶&quot;,</span> <span class="pre">&quot;きのこの里&quot;,</span> <span class="pre">&quot;のど飴&quot;}</span></code>）．
-表(a)の属性「購入品目」のドメインが原子値以外の値（つまり文字列の集合）を許してしまっていることから，表(a)は非正規関係と見なせる．</p>
-<p>一方，表(b)は表(a)の購買品目の値が原子値（文字列の集合ではなく文字列）になるように設計されているため，第1正規形と見なせる．
-表(a)では1行で表現できていた1回分の購買データが，表(b)では複数行を使って表現されている．
-表(b)のほうがデータ構造が簡潔になるため，データが扱いやすい．</p>
+<p>関係データモデルにおけるドメインとは属性が取り得る値の集合を意味しますが，ドメインの要素はそれ以上分解不可能な値を意味する<strong>原子値（atomic value）</strong> であることを想定しています．
+原子値の例としては，文字列，整数，実数，真偽値，日付などが挙げられ，どれもデータの基本単位と呼べるものです．
+逆に原子値で「ない」例としては，タプルや集合，関係などが挙げられます．
+ドメインとして原子値以外の値をとることを許す関係データを<strong>非正規関係（unnormalized relation）</strong> と呼びます．
+逆に，ドメインとして原子値しかとらない関係は<strong>第1正規形（first normal form; 1NF）である</strong> といいます．</p>
+<p>例えば，以下の表(a)(b)はともに商品の購買履歴を表していますが，表(a)は属性「購入品目」に集合要素が入ってしまっています（例えば，<code class="docutils literal notranslate"><span class="pre">{&quot;はーいお茶&quot;,</span> <span class="pre">&quot;きのこの里&quot;,</span> <span class="pre">&quot;のど飴&quot;}</span></code>）．
+表(a)の属性「購入品目」のドメインが原子値以外の値（つまり文字列の集合）を許してしまっていることから，表(a)は非正規関係と見なせます．</p>
+<p>一方，表(b)は表(a)の購買品目の値が原子値（文字列の集合ではなく文字列）になるように設計されているため，第1正規形と見なせます．
+表(a)では1行で表現できていた1回分の購買データが，表(b)では複数行を使って表現されています．
+表(b)のほうがデータ構造が簡潔になるため，データが扱いやすいです．</p>
 <p><img alt="非正規関係" src="../../_images/unnormalized-relation.png" /></p>
 </section>
 <section id="id8">
 <h2><span class="section-number">3.3. </span>一貫性制約<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
-<p><strong>一貫性制約（integrity constraint）</strong> とは，データベースが対象とする実世界を反映するように設定された，データが満たすべき規則である．
-関係データモデルにおいては，代表的な一貫性制約として以下がある：</p>
+<p><strong>一貫性制約（integrity constraint）</strong> とは，データベースが対象とする実世界を反映するように設定された，データが満たすべき規則です．
+関係データモデルにおいては，代表的な一貫性制約として以下があります：</p>
 <ul class="simple">
 <li><p>ドメイン制約</p></li>
 <li><p>キー制約</p></li>
 <li><p>参照制約</p></li>
 <li><p>データ従属性</p></li>
 </ul>
-<p>関係データモデルを扱うデータベースを設計する際には，上記一貫性制約を踏まえて<strong>関係スキーマの定義や（複数の関係スキーマへの）分解</strong> を行う．</p>
+<p>関係データモデルを扱うデータベースを設計する際には，上記一貫性制約を踏まえて<strong>関係スキーマの定義や（複数の関係スキーマへの）分解</strong> を行います．</p>
 <section id="id9">
 <h3><span class="section-number">3.3.1. </span>ドメイン制約<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
-<p><strong>ドメイン制約（domain constraint）</strong> とは，関係<span class="math notranslate nohighlight">\(\boldsymbol{R}(A_1, ..., A_n)\)</span>に含まれるタプルの各成分は，対応する属性のドメインの要素でなければならならいという制約である．
-これは属性の定義ですでに触れたことである．
-ドメイン制約では，各属性のドメインのデータ型（例: 整数，実数，文字列，日付）に加えて，値が取り得る範囲を指定することもある．
+<p><strong>ドメイン制約（domain constraint）</strong> とは，関係<span class="math notranslate nohighlight">\(\boldsymbol{R}(A_1, ..., A_n)\)</span>に含まれるタプルの各成分は，対応する属性のドメインの要素でなければならならいという制約です．
+これは属性の定義ですでに触れたことです．
+ドメイン制約では，各属性のドメインのデータ型（例: 整数，実数，文字列，日付）に加えて，値が取り得る範囲を指定することもあります．
 例えば，</p>
 <p>先の例でとりあげた関係</p>
 <blockquote>
@@ -586,121 +572,121 @@ document.write(`
 <div><p><span class="math notranslate nohighlight">\(Dom(単価) = \{ x \ | \ x \in \mathbb{N} \}\)</span> <br />
 <span class="math notranslate nohighlight">\(Dom(登録日) = \{ x \ | \ x \in 年月日集合（ただし西暦表記） \}\)</span></p>
 </div></blockquote>
-<p>のように定義されていた．
-これらはドメイン制約である．
+<p>のように定義されていました．
+これらはドメイン制約です．
 これら制約にもとづき，</p>
 <ul class="simple">
 <li><p>「単価」属性の値は<strong>必ず</strong>自然数</p></li>
 <li><p>「登録日」属性の値は<strong>必ず</strong>西暦表記の年月日集合</p></li>
 </ul>
-<p>でなければならない．
-よって，以下の関係「商品(*)」は関係「商品（商品ID, 名称, 単価, 登録日）」のインスタンスには<strong>なれない</strong>．
+<p>でなければなりません．
+よって，以下の関係「商品(*)」は関係「商品（商品ID, 名称, 単価, 登録日）」のインスタンスには<strong>なれません</strong>．
 なぜなら，</p>
 <ul class="simple">
 <li><p>商品IDがP1の商品の登録日は年月はあるが日が抜けている</p></li>
 <li><p>商品IDがP3の商品の登録日は和暦で表現されている</p></li>
 <li><p>商品IDがP1000の商品の単価は漢数字（文字列）で表現されている</p></li>
 </ul>
-<p>からである（<a class="reference internal" href="#rdm-q5">★Quiz5★</a>）．</p>
+<p>からです（<a class="reference internal" href="#rdm-q5">★Quiz5★</a>）．</p>
 <p><img alt="ドメイン制約に違反する関係" src="../../_images/irregular-table.png" /></p>
 </section>
 <section id="sec-key-constraint">
 <span id="id10"></span><h3><span class="section-number">3.3.2. </span>キー制約<a class="headerlink" href="#sec-key-constraint" title="Link to this heading">#</a></h3>
-<p>まず，キー制約の前提となるキーの概念について説明する．
-関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>における<strong>超キー（super key）</strong> とは，関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>における属性の集合のうち，それらの属性値が決まればおのずと関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>のタプルが唯一ひとつに決まる（タプルを一意に特定できる）ものを指す．</p>
+<p>まず，キー制約の前提となるキーの概念について説明します．
+関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>における<strong>超キー（super key）</strong> とは，関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>における属性の集合のうち，それらの属性値が決まればおのずと関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>のタプルが唯一ひとつに決まる（タプルを一意に特定できる）ものを指します．</p>
 <p>例えば，以下の表は関係スキーマ</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(連絡先(学生ID, 名前, 学年, 大学email, 自宅住所)\)</span></p>
 </div></blockquote>
-<p>に従うデータを表形式で記したもので，各行（タプル）は学生の連絡先情報を示している．
-大学において学生情報を管理する場合，学生ID（の値）が決まれば唯一1つの学生連絡先情報（行; タプル）を照会できるよう，学生IDは重複がないように設定される．
-それゆえ，この関係「連絡先」において属性「学生ID」は超キーとなる．
-同様に，属性「大学email」も超キーとなる．</p>
-<p>なお，{ 学生ID, 名前 }，{ 学生ID, 名前, 学年 } のように学生IDを含む属性の集合も超キーになる．
-例えば，「学生ID」が<code class="docutils literal notranslate"><span class="pre">S1</span></code>，「名前」が<code class="docutils literal notranslate"><span class="pre">川澄桜</span></code>である行は唯一1行に決まるので，属性集合 { 学生ID, 名前 } も超キーになる．
-これは属性「学生ID」が超キーであるから，当たり前である．</p>
-<p>一方，属性「住所」は超キーにはなり得ない．
-学生IDが<code class="docutils literal notranslate"><span class="pre">S3</span></code>と<code class="docutils literal notranslate"><span class="pre">S4</span></code>の学生の住所が同じ（つまり同じところに住んでいる）であるから，住所を1つ指定しても連絡先タプルが一意に特定できないからである．</p>
+<p>に従うデータを表形式で記したもので，各行（タプル）は学生の連絡先情報を示しています．
+大学において学生情報を管理する場合，学生ID（の値）が決まれば唯一1つの学生連絡先情報（行; タプル）を照会できるよう，学生IDは重複がないように設定されます．
+それゆえ，この関係「連絡先」において属性「学生ID」は超キーとなります．
+同様に，属性「大学email」も超キーとなります．</p>
+<p>なお，{ 学生ID, 名前 }，{ 学生ID, 名前, 学年 } のように学生IDを含む属性の集合も超キーになります．
+例えば，「学生ID」が<code class="docutils literal notranslate"><span class="pre">S1</span></code>，「名前」が<code class="docutils literal notranslate"><span class="pre">川澄桜</span></code>である行は唯一1行に決まるので，属性集合 { 学生ID, 名前 } も超キーになります．
+これは属性「学生ID」が超キーであるから，当たり前です．</p>
+<p>一方，属性「住所」は超キーにはなり得ません．
+学生IDが<code class="docutils literal notranslate"><span class="pre">S3</span></code>と<code class="docutils literal notranslate"><span class="pre">S4</span></code>の学生の住所が同じ（つまり同じところに住んでいる）であるから，住所を1つ指定しても連絡先タプルが一意に特定できないからです．</p>
 <p><img alt="連絡先" src="../../_images/contact-table1.png" /></p>
-<p>超キーは複数ありえるが，上の例では属性「学生ID」のみでタプルを特定できるように，属性集合 { 学生ID, 名前 } を使ってタプルを特定しようとするのは無駄であろう．
-そこで，超キーのうち極小（つまり最も小さい部分集合）のものを<strong>候補キー（candiate key）</strong> と定義する．
-候補キーは単純に<strong>キー（key）</strong> と呼ばれることもある．
-例えば，上の関係「連絡先」では，属性「学生ID」や「大学email」が候補キーとなりえる（<a class="reference internal" href="#rdm-q6">★Quiz6★</a>）．</p>
-<p>最後に<strong>主キー（primary key）</strong> の概念を導入する．
-候補キーのうち，値として<strong>未定義や空の値（空値またはNULL値と呼ばれる）</strong> を取る可能性がなく，かつデータベース管理上都合のよいキーの1つを主キーと決める．
-主キー以外の候補キーは<strong>代替キー</strong>と呼ばれる．
-例えば，先の関係「連絡先」の場合，候補キーは「学生ID」と「大学email」であったが，大学emailは「氏名&#64;xxx.ac.jp」のようなものから「学籍番号&#64;xxx.ac.jp」のようなものに変更される可能性があったとしても，学生IDは一度決めたらほぼ変わらないと思われる．
-これらを鑑みると，関係「連絡先」においては属性「学生ID」を主キーとして選ぶのがよさそうである．</p>
-<p>なお，候補キーの定義から主キーは属性の集合をとることができる．
-このような主キーを<strong>複合主キー（composite primary key）</strong> と呼ぶ．</p>
+<p>超キーは複数ありえますが，上の例では属性「学生ID」のみでタプルを特定できるように，属性集合 { 学生ID, 名前 } を使ってタプルを特定しようとするのは無駄でしょう．
+そこで，超キーのうち極小（つまり最も小さい部分集合）のものを<strong>候補キー（candiate key）</strong> と定義します．
+候補キーは単純に<strong>キー（key）</strong> と呼ばれることもあります．
+例えば，上の関係「連絡先」では，属性「学生ID」や「大学email」が候補キーとなりえます（<a class="reference internal" href="#rdm-q6">★Quiz6★</a>）．</p>
+<p>最後に<strong>主キー（primary key）</strong> の概念を導入します．
+候補キーのうち，値として<strong>未定義や空の値（空値またはNULL値と呼ばれる）</strong> を取る可能性がなく，かつデータベース管理上都合のよいキーの1つを主キーと決めます．
+主キー以外の候補キーは<strong>代替キー</strong>と呼ばれます．
+例えば，先の関係「連絡先」の場合，候補キーは「学生ID」と「大学email」でしたが，大学emailは「氏名&#64;xxx.ac.jp」のようなものから「学籍番号&#64;xxx.ac.jp」のようなものに変更される可能性があったとしても，学生IDは一度決めたらほぼ変わらないと思われます．
+これらを鑑みると，関係「連絡先」においては属性「学生ID」を主キーとして選ぶのがよさそうです．</p>
+<p>なお，候補キーの定義から主キーは属性の集合をとることができます．
+このような主キーを<strong>複合主キー（composite primary key）</strong> と呼びます．</p>
 <p><img alt="履修テーブル" src="../../_images/credit-table.png" /></p>
-<p>例えば，上の表は，学生が履修した科目の成績をあらわす関係「履修」を表にしたものである．
-この表においては科目IDあるいは学生IDだけでは成績が特定できないが，科目IDと学生IDの両方が決まれば，ある学生のある科目の成績が特定される．
-それゆえ，関係「履修」においては { 科目ID, 学生ID } の属性ペアが主キーとなる（<a class="reference internal" href="#rdm-q7">★Quiz7★</a>）．</p>
-<p>関係表と主キー，候補キー，超キーの関係は，以下の図のようにまとめることができる．</p>
+<p>例えば，上の表は，学生が履修した科目の成績をあらわす関係「履修」を表にしたものです．
+この表においては科目IDあるいは学生IDだけでは成績が特定できませんが，科目IDと学生IDの両方が決まれば，ある学生のある科目の成績が特定されます．
+それゆえ，関係「履修」においては { 科目ID, 学生ID } の属性ペアが主キーとなります（<a class="reference internal" href="#rdm-q7">★Quiz7★</a>）．</p>
+<p>関係表と主キー，候補キー，超キーの関係は，以下の図のようにまとめることができます．</p>
 <p><img alt="キーの整理" src="../../_images/key-mapping.png" /></p>
-<p>ここまで，超キー，候補キー，主キーの説明を行ったが，最後に本節の主題であるキー制約について述べる．
+<p>ここまで，超キー，候補キー，主キーの説明を行いましたが，最後に本節の主題であるキー制約について述べます．
 <strong>キー制約（key constraint）</strong> は，関係<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>の関係スキーマに対して主キーが設定されたとき，<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span>のインスタンスにおいて</p>
 <ul class="simple">
 <li><p>主キーに設定された属性の値は重複があってはならない，かつ</p></li>
 <li><p>その要素（タプル）は主キーによって一意に特定されなければならない，かつ</p></li>
 <li><p>主キーとなる属性の値は<strong>NULL値</strong> であってはならない</p></li>
 </ul>
-<p>という制約である．
-定義は小難しく見えるかもしれないが，キー制約は「ある属性が主キーと設定されたら，それがきちんと主キーの役割を果たすようデータが作られなければならない」ということを意味している．
-主キーを定義できれば，キー制約を定義できたようなものである．</p>
-<p>さて，関係スキーマにおいてキー制約以外の一貫性制約には注目しない場合，関係スキーマでは主キーは以下のように下線を引いて表す．</p>
+<p>という制約です．
+定義は小難しく見えるかもしれませんが，キー制約は「ある属性が主キーと設定されたら，それがきちんと主キーの役割を果たすようデータが作られなければならない」ということを意味しています．
+主キーを定義できれば，キー制約を定義できたようなものです．</p>
+<p>さて，関係スキーマにおいてキー制約以外の一貫性制約には注目しない場合，関係スキーマでは主キーは以下のように下線を引いて表します．</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(\boldsymbol{R}(\underline{A_1, A_2}, ..., A_n)\)</span></p>
 </div></blockquote>
-<p>例えば，上の図の関係「連絡先」であれば，その関係スキーマは以下のように表す．</p>
+<p>例えば，上の図の関係「連絡先」であれば，その関係スキーマは以下のように表します．</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(連絡先(\underline{学生ID}, 名前, 学年, 大学email, 自宅住所)\)</span></p>
 </div></blockquote>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <h3 class="rubric" id="id11">キーは関係スキーマに対して設定される</h3>
-<p>キーは，関係データベース内にあるタプル（行）だけを見て決めてはいけない．
-例えば上の例の関係「連絡先」の場合，表の見えているところだけに注目すると，属性「名前」もキーに見える．
-しかし，現実的には同性同名の学生が存在しうる．
-そのため，「名前」をキーにすると，連絡先のタプルを一意に特定できない可能性が生じる（キーの性質を失う）．</p>
-<p>そもそも関係データモデルにおいては，どのようなデータをデータベースに格納する可能性があるかを事前に想定して関係スキーマを設定する（その中にキーの設定も含まれる）．
-その上で，設定した関係スキーマに従ってデータを生成し格納する．
-決してインスタンスを見てキーを決めるわけではない．
-キーは「<strong>関係スキーマに対して設定される</strong>」ことを意識しよう．</p>
+<p>キーは，関係データベース内にあるタプル（行）だけを見て決めてはいけません．
+例えば上の例の関係「連絡先」の場合，表の見えているところだけに注目すると，属性「名前」もキーに見えます．
+しかし，現実的には同性同名の学生が存在しうるでしょう．
+そのため，「名前」をキーにすると，連絡先のタプルを一意に特定できない可能性が生じます（キーの性質を失います）．</p>
+<p>そもそも関係データモデルにおいては，どのようなデータをデータベースに格納する可能性があるかを事前に想定して関係スキーマを設定します（その中にキーの設定も含まれます）．
+その上で，設定した関係スキーマに従ってデータを生成し格納します．
+決してインスタンスを見てキーを決めるわけではありません．
+キーは「<strong>関係スキーマに対して設定される</strong>」ことを意識しましょう．</p>
 </div>
 </section>
 <section id="sec-referential-constraint">
 <span id="id12"></span><h3><span class="section-number">3.3.3. </span>参照整合性制約<a class="headerlink" href="#sec-referential-constraint" title="Link to this heading">#</a></h3>
-<p>（関係データモデルにもとづく）関係データベースでは，対象となる事象のデータを正しく管理するために，<strong>データを複数の関係（表）で管理する</strong>ことがほとんどである．
-複合主キーの説明の例で使った関係「履修」には，その値だけ見ても具体的に何を意味しているのかが分からない属性「科目ID」「学生ID」がある．
+<p>（関係データモデルにもとづく）関係データベースでは，対象となる事象のデータを正しく管理するために，<strong>データを複数の関係（表）で管理する</strong>ことがほとんどです．
+複合主キーの説明の例で使った関係「履修」には，その値だけ見ても具体的に何を意味しているのかが分からない属性「科目ID」「学生ID」があります．
 これらの意味を読み解くためには</p>
 <ul class="simple">
 <li><p>「科目ID」がどのような科目のことを指しているのか</p></li>
 <li><p>「学生ID」がどの学生のことを指しているのか</p></li>
 </ul>
-<p>といった情報を管理する他の関係（表）が必要となる．
-以下の図は，学生の成績を管理するための関係データベースの例である．
-この中には関係「履修」も含まれている．</p>
+<p>といった情報を管理する他の関係（表）が必要となります．
+以下の図は，学生の成績を管理するための関係データベースの例です．
+この中には関係「履修」も含まれています．</p>
 <p><img alt="成績管理データベース" src="../../_images/score-db.png" /></p>
 <p>上記3つの関係（表）があれば，</p>
 <ul class="simple">
 <li><p>関係「学生」から「学生ID」が<code class="docutils literal notranslate"><span class="pre">s0001</span></code>のものを探し，</p></li>
 <li><p>関係「科目」から「科目ID」が<code class="docutils literal notranslate"><span class="pre">c0001</span></code>のものを探す</p></li>
 </ul>
-<p>ことで，関係「履修」において「学生ID」が<code class="docutils literal notranslate"><span class="pre">s0001</span></code>で「科目ID」が<code class="docutils literal notranslate"><span class="pre">c0001</span></code>の「成績」が<code class="docutils literal notranslate"><span class="pre">不可</span></code>だった件について，具体的にどんな学生が何の科目を落としてしまった（不可になってしまった）かを把握することができる．
-このとき，関係「履修」のタプルにある「科目ID」の<code class="docutils literal notranslate"><span class="pre">c0001</span></code>という値が，関係「科目」のインスタンスの属性「科目ID」に含まれていなければならない（関係「科目」の科目IDの列にその値が存在しなければならない），ということは自明であろう．
-関係「履修」の中にはあるが，関係「科目」には存在していなければ，データ管理として破綻していることになる．
-「学生ID」の<code class="docutils literal notranslate"><span class="pre">s0001</span></code>についても同様である．</p>
+<p>ことで，関係「履修」において「学生ID」が<code class="docutils literal notranslate"><span class="pre">s0001</span></code>で「科目ID」が<code class="docutils literal notranslate"><span class="pre">c0001</span></code>の「成績」が<code class="docutils literal notranslate"><span class="pre">不可</span></code>だった件について，具体的にどんな学生が何の科目を落としてしまった（不可になってしまった）かを把握することができます．
+このとき，関係「履修」のタプルにある「科目ID」の<code class="docutils literal notranslate"><span class="pre">c0001</span></code>という値が，関係「科目」のインスタンスの属性「科目ID」に含まれていなければなりません（関係「科目」の科目IDの列にその値が存在しなければなりません），ということは自明でしょう．
+関係「履修」の中にはあるが，関係「科目」には存在していなければ，データ管理として破綻していることになります．
+「学生ID」の<code class="docutils literal notranslate"><span class="pre">s0001</span></code>についても同様です．</p>
 <p>上記の例では，</p>
 <ul class="simple">
 <li><p>関係「履修」の属性「学生ID」は関係「学生」の主キーである「学生ID」と</p></li>
 <li><p>関係「履修」の属性「科目ID」は関係「科目」の主キーである「科目ID」と</p></li>
 </ul>
-<p>紐付いていることが分かる．
-言い方を変えると，関係「履修」は属性「学生ID」および「科目ID」の値を通して，関係「学生」および「科目」の情報を参照していることになる．</p>
-<p>このように，関係スキーマ<span class="math notranslate nohighlight">\(\boldsymbol{R_1}(..., FK, ...)\)</span>と<span class="math notranslate nohighlight">\(\boldsymbol{R_2}(\underline{PK}, ...)\)</span>が与えられ，<span class="math notranslate nohighlight">\(R_1\)</span>におけるタプルの属性<span class="math notranslate nohighlight">\(FK\)</span>の値は必ず<span class="math notranslate nohighlight">\(R_2\)</span>におけるいずれかのタプルの主キー<span class="math notranslate nohighlight">\(PK\)</span>の値と一致するように設計されているとき，<span class="math notranslate nohighlight">\(R_1\)</span>の属性<span class="math notranslate nohighlight">\(FK\)</span>を<span class="math notranslate nohighlight">\(R_2\)</span>の<span class="math notranslate nohighlight">\(PK\)</span>に対する<strong>外部キー（foreign key）</strong> と呼ぶ．
-関係スキーマ上では，関係<span class="math notranslate nohighlight">\(\boldsymbol{R_1}\)</span>の属性<span class="math notranslate nohighlight">\(FK\)</span>が関係<span class="math notranslate nohighlight">\(\boldsymbol{R_2}\)</span>の主キー<span class="math notranslate nohighlight">\(PK\)</span>に対する外部キーであることを以下のように記す．</p>
+<p>紐付いていることが分かります．
+言い方を変えると，関係「履修」は属性「学生ID」および「科目ID」の値を通して，関係「学生」および「科目」の情報を参照していることになります．</p>
+<p>このように，関係スキーマ<span class="math notranslate nohighlight">\(\boldsymbol{R_1}(..., FK, ...)\)</span>と<span class="math notranslate nohighlight">\(\boldsymbol{R_2}(\underline{PK}, ...)\)</span>が与えられ，<span class="math notranslate nohighlight">\(R_1\)</span>におけるタプルの属性<span class="math notranslate nohighlight">\(FK\)</span>の値は必ず<span class="math notranslate nohighlight">\(R_2\)</span>におけるいずれかのタプルの主キー<span class="math notranslate nohighlight">\(PK\)</span>の値と一致するように設計されているとき，<span class="math notranslate nohighlight">\(R_1\)</span>の属性<span class="math notranslate nohighlight">\(FK\)</span>を<span class="math notranslate nohighlight">\(R_2\)</span>の<span class="math notranslate nohighlight">\(PK\)</span>に対する<strong>外部キー（foreign key）</strong> と呼びます．
+関係スキーマ上では，関係<span class="math notranslate nohighlight">\(\boldsymbol{R_1}\)</span>の属性<span class="math notranslate nohighlight">\(FK\)</span>が関係<span class="math notranslate nohighlight">\(\boldsymbol{R_2}\)</span>の主キー<span class="math notranslate nohighlight">\(PK\)</span>に対する外部キーであることを以下のように記します．</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(\boldsymbol{R_1}.FK \subseteq \boldsymbol{R_1}.PK\)</span></p>
 </div></blockquote>
@@ -709,37 +695,37 @@ document.write(`
 <div><p><span class="math notranslate nohighlight">\(履修.学生ID \subseteq 学生.学生ID\)</span> <br />
 <span class="math notranslate nohighlight">\(履修.科目ID \subseteq 科目.科目ID\)</span></p>
 </div></blockquote>
-<p>と記す（<a class="reference internal" href="#rdm-q8">★Quiz8★</a>）．</p>
-<p>前置きが長くなったが，本節のテーマである<strong>参照制約（referential constraint）</strong> とは「関係スキーマにおいて外部キーが設定されたとき，そのいかなるインスタンスも設定された外部キーの条件を満たさなければいけない」という制約である．</p>
+<p>と記します（<a class="reference internal" href="#rdm-q8">★Quiz8★</a>）．</p>
+<p>前置きが長くなりましたが，本節のテーマである<strong>参照制約（referential constraint）</strong> とは「関係スキーマにおいて外部キーが設定されたとき，そのいかなるインスタンスも設定された外部キーの条件を満たさなければいけない」という制約です．</p>
 </section>
 <section id="id13">
 <h3><span class="section-number">3.3.4. </span>データ従属性<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
-<p>一貫性制約として，ドメイン制約，キー制約，参照制約を挙げてきた．
-関係データモデルにはこれら以外にも，データ間に成立する制約を数学的に記述する手段がある．
-これを<strong>データ従属性（data dependency）</strong> と呼ぶ．</p>
-<p>データ従属性としては，関数従属性，多値従属性，結合従属性など，様々なものが提案されている．
-<strong>関数従属性（functional dependency）</strong> は，データ従属性の中でも最も単純で，かつ実用的なものである．
-関数従属性は，「関係<span class="math notranslate nohighlight">\(\boldsymbol{R}(..., X, ..., Y, ...)\)</span>において，属性（あるいは属性集合）<span class="math notranslate nohighlight">\(X\)</span>の値が決まると属性<span class="math notranslate nohighlight">\(Y\)</span>の値も一意に決まる」という性質である．
+<p>一貫性制約として，ドメイン制約，キー制約，参照制約を挙げてきました．
+関係データモデルにはこれら以外にも，データ間に成立する制約を数学的に記述する手段があります．
+これを<strong>データ従属性（data dependency）</strong> と呼びます．</p>
+<p>データ従属性としては，関数従属性，多値従属性，結合従属性など，様々なものが提案されています．
+<strong>関数従属性（functional dependency）</strong> は，データ従属性の中でも最も単純で，かつ実用的なものです．
+関数従属性は，「関係<span class="math notranslate nohighlight">\(\boldsymbol{R}(..., X, ..., Y, ...)\)</span>において，属性（あるいは属性集合）<span class="math notranslate nohighlight">\(X\)</span>の値が決まると属性<span class="math notranslate nohighlight">\(Y\)</span>の値も一意に決まる」という性質です．
 このことを</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(X \to Y\)</span></p>
 </div></blockquote>
-<p>と記す．</p>
+<p>と記します．</p>
 <p>例えば，関係として</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(連絡先(\underline{学生ID}, 名前, 学年, 大学email, 郵便番号, 都道府県, 自宅住所)\)</span></p>
 </div></blockquote>
-<p>が与えられたとしよう．
-一般常識から，住所が決まればそれが存在する都道府県や郵便番号もひとつに決まる．
+<p>が与えられたとしましょう．
+一般常識から，住所が決まればそれが存在する都道府県や郵便番号もひとつに決まります．
 このことから，関係「連絡先」においては</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(自宅住所 \to 郵便番号\)</span> <br />
 <span class="math notranslate nohighlight">\(自宅住所 \to 都道府県\)</span></p>
 </div></blockquote>
-<p>という関数従属性が定義できる．
-関数従属性はキー制約を一般化したものと捉えることができる．</p>
-<p>データ従属性は，データの更新があったときにその影響が最小限になるように関係データベースを設計する上で，極めて重要である．
-それゆえ，特に関数従属性については<a class="reference internal" href="../db-design/02.html"><span class="std std-doc">別の講</span></a>で取り上げる．</p>
+<p>という関数従属性が定義できます．
+関数従属性はキー制約を一般化したものと捉えることができます．</p>
+<p>データ従属性は，データの更新があったときにその影響が最小限になるように関係データベースを設計する上で，極めて重要です．
+それゆえ，特に関数従属性については<a class="reference internal" href="../db-design/02.html"><span class="std std-doc">別の講</span></a>で取り上げます．</p>
 </section>
 </section>
 <hr class="docutils" />
@@ -747,18 +733,18 @@ document.write(`
 <h2><span class="section-number">3.4. </span>クイズ<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
 <section id="q1">
 <span id="rdm-q1"></span><h3><span class="section-number">3.4.1. </span>Q1. 直積<a class="headerlink" href="#q1" title="Link to this heading">#</a></h3>
-<p>集合<span class="math notranslate nohighlight">\(S_{lang}\)</span>，<span class="math notranslate nohighlight">\(S_{popularity}\)</span>，<span class="math notranslate nohighlight">\(S_{difficulty}\)</span>を以下のように定義する：</p>
+<p>集合<span class="math notranslate nohighlight">\(S_{lang}\)</span>，<span class="math notranslate nohighlight">\(S_{popularity}\)</span>，<span class="math notranslate nohighlight">\(S_{difficulty}\)</span>を以下のように定義します：</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(S_{lang} = \{Python, R, C^{++}\}\)</span> <br />
 <span class="math notranslate nohighlight">\(S_{popularity} = \{人気, 不人気\}\)</span> <br />
 <span class="math notranslate nohighlight">\(S_{difficulty} = \{難, 普通, 易\}\)</span></p>
 </div></blockquote>
-<p>このとき，直積集合<span class="math notranslate nohighlight">\(S_{lang} \times S_{popluarity} \times S_{difficulty}\)</span>の要素をすべて列挙せよ．</p>
+<p>このとき，直積集合<span class="math notranslate nohighlight">\(S_{lang} \times S_{popluarity} \times S_{difficulty}\)</span>の要素をすべて列挙してください．</p>
 </section>
 <section id="q2">
 <span id="rdm-q2"></span><h3><span class="section-number">3.4.2. </span>Q2. 関係<a class="headerlink" href="#q2" title="Link to this heading">#</a></h3>
-<p>Q1で定義した集合<span class="math notranslate nohighlight">\(S_{lang}\)</span>，<span class="math notranslate nohighlight">\(S_{popularity}\)</span>，<span class="math notranslate nohighlight">\(S_{difficulty}\)</span>上の3項関係を適当に考えよ．</p>
-<p>※ 正解は一意に決まらないので，深く悩まずクイズに取り組むこと．</p>
+<p>Q1で定義した集合<span class="math notranslate nohighlight">\(S_{lang}\)</span>，<span class="math notranslate nohighlight">\(S_{popularity}\)</span>，<span class="math notranslate nohighlight">\(S_{difficulty}\)</span>上の3項関係を適当に考えてください．</p>
+<p>※ 正解は一意に決まらないので，深く悩まずクイズに取り組んでください．</p>
 </section>
 <section id="q3">
 <span id="rdm-q3"></span><h3><span class="section-number">3.4.3. </span>Q3. 関係スキーマ<a class="headerlink" href="#q3" title="Link to this heading">#</a></h3>
@@ -766,20 +752,20 @@ document.write(`
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(学生(学籍番号, 氏名, 学部, 年齢, 出身都道府県)\)</span></p>
 </div></blockquote>
-<p>に従う表データの例を作成せよ．
-なお，表の行数は見出し行を含めて5-6行程度でよい．</p>
+<p>に従う表データの例を作成してください．
+なお，表の行数は見出し行を含めて5-6行程度でよいです．</p>
 </section>
 <section id="q4">
 <span id="rdm-q4"></span><h3><span class="section-number">3.4.4. </span>Q4. ドメイン<a class="headerlink" href="#q4" title="Link to this heading">#</a></h3>
-<p>Q3で定義した関係スキーマ「学生」の各属性について，そのドメインを定義せよ．</p>
+<p>Q3で定義した関係スキーマ「学生」の各属性について，そのドメインを定義してください．</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(Dom(学籍番号) = \{ ... \}\)</span></p>
 </div></blockquote>
-<p>の形式で頑張って書いてみること．</p>
+<p>の形式で頑張って書いてみてください．</p>
 </section>
 <section id="q5">
 <span id="rdm-q5"></span><h3><span class="section-number">3.4.5. </span>Q5. ドメイン制約<a class="headerlink" href="#q5" title="Link to this heading">#</a></h3>
-<p>Q4で定義した関係スキーマ（ドメイン定義を含む）に対して，ドメイン制約に違反しているタプルの例を2，3個列挙せよ．</p>
+<p>Q4で定義した関係スキーマ（ドメイン定義を含む）に対して，ドメイン制約に違反しているタプルの例を2，3個列挙してください．</p>
 </section>
 <section id="q6-4-it-65">
 <span id="rdm-q6"></span><h3><span class="section-number">3.4.6. </span>Q6. 候補キー（令和4年度 ITパスポート試験 問65改題）<a class="headerlink" href="#q6-4-it-65" title="Link to this heading">#</a></h3>
@@ -787,8 +773,8 @@ document.write(`
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(従業員(従業員番号, 従業員名, 部門コード, 生年月日, 住所)\)</span></p>
 </div></blockquote>
-<p>において，候補キーは何か．
-なお，関係「従業員」は以下のような制約条件をもつ：</p>
+<p>において，候補キーは何でしょうか．
+なお，関係「従業員」は以下のような制約条件をもちます：</p>
 <ul class="simple">
 <li><p>各従業員は重複のない従業員番号を1つだけもつ</p></li>
 <li><p>同姓同名の従業員がいてもよい</p></li>
@@ -799,12 +785,12 @@ document.write(`
 </section>
 <section id="q7">
 <span id="rdm-q7"></span><h3><span class="section-number">3.4.7. </span>Q7. 主キー<a class="headerlink" href="#q7" title="Link to this heading">#</a></h3>
-<p>以下の表「会員管理」において，想定される主キーは何か．</p>
+<p>以下の表「会員管理」において，想定される主キーは何でしょうか．</p>
 <p><img alt="会員管理テーブル" src="../../_images/q7.png" /></p>
 </section>
 <section id="q8">
 <span id="rdm-q8"></span><h3><span class="section-number">3.4.8. </span>Q8. 参照整合性制約<a class="headerlink" href="#q8" title="Link to this heading">#</a></h3>
-<p>以下の関係スキーマをもつ5つの関係からなるデータベースにおいて，定義すべき参照整合性制約をあげよ．</p>
+<p>以下の関係スキーマをもつ5つの関係からなるデータベースにおいて，定義すべき参照整合性制約をあげてください．</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(顧客(\underline{顧客ID}, 氏名, 性別)\)</span> <br />
 <span class="math notranslate nohighlight">\(店舗(\underline{店舗ID}, 店舗名, 住所)\)</span> <br />
@@ -871,14 +857,16 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.1. 関係データモデルのデータ構造</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.1.1. 数学における「関係」</a></li>
@@ -948,8 +936,8 @@ document.write(`
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

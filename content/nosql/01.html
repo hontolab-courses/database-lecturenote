@@ -16,42 +16,45 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=aeeb188a" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-1GGP5ZEVQL"></script>
@@ -79,6 +82,7 @@
     <link rel="prev" title="14. B+木 &amp; ハッシュ索引" href="../indexing/01.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -94,19 +98,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -114,7 +107,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -122,8 +114,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -139,7 +131,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -169,15 +162,11 @@
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">はじめに</span></p>
@@ -234,9 +223,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -319,7 +313,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -333,25 +327,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -395,123 +381,123 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="nosql">
 <h1><span class="section-number">15. </span>NoSQL<a class="headerlink" href="#nosql" title="Link to this heading">#</a></h1>
-<p>これまで計14回に渡って学んできた関係データベースは，データの重複や矛盾を排除し，データ間の整合性を保つことを重視したデータベース技術である．
+<p>これまで計14回に渡って学んできた関係データベースは，データの重複や矛盾を排除し，データ間の整合性を保つことを重視したデータベース技術です．
 関係データベースはその特性から，</p>
 <ul class="simple">
 <li><p>データの構造を（事前に）きっちりと定義できるケース</p></li>
 <li><p>データを正しく保つことが求められるケース</p></li>
 </ul>
-<p>において特に真価を発揮する．
-そのため，顧客管理，在庫管理，購買管理などのビジネス現場において重宝されている．</p>
-<p>関係データベースは1970年頃に生まれた技術であるが，今日においてもデータベースの中心的な存在である．
-しかしながらビッグデータ時代においては，従来の関係データベースでは扱いきれないデータ処理事例が発生している．
-<strong>NoSQL</strong> <a class="footnote-reference brackets" href="#id10" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>は，関係データベースがもつ特性を一部犠牲にすることで，関係データベースでは扱いきれないデータ処理事例に対応するためのデータベース技術の総称である．</p>
-<p>以下，NoSQLについてに簡単に解説する．
-なお，NoSQLは関係データベースを補完する技術であり，NoSQL（あるいは関係データベース）のほうが優れているというわけではない．
-ケースに応じて関係データベースとNoSQLを使い分けることが重要である．</p>
+<p>において特に真価を発揮します．
+そのため，顧客管理，在庫管理，購買管理などのビジネス現場において重宝されています．</p>
+<p>関係データベースは1970年頃に生まれた技術ですが，今日においてもデータベースの中心的な存在です．
+しかしながらビッグデータ時代においては，従来の関係データベースでは扱いきれないデータ処理事例が発生しています．
+<strong>NoSQL</strong> <a class="footnote-reference brackets" href="#id10" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>は，関係データベースがもつ特性を一部犠牲にすることで，関係データベースでは扱いきれないデータ処理事例に対応するためのデータベース技術の総称です．</p>
+<p>以下，NoSQLについて簡単に解説します．
+なお，NoSQLは関係データベースを補完する技術であり，NoSQL（あるいは関係データベース）のほうが優れているというわけではありません．
+ケースに応じて関係データベースとNoSQLを使い分けることが重要です．</p>
 <section id="id2">
 <h2><span class="section-number">15.1. </span>ビッグデータを扱うためにデータベースに求められること<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>一般に，ビッグデータは以下のような3つの性質を満たすデータの集合を指す：</p>
+<p>一般に，ビッグデータは以下のような3つの性質を満たすデータの集合を指します：</p>
 <ul class="simple">
 <li><p>High volume: 扱うデータの「量」が多い</p></li>
 <li><p>High variety: 扱うデータの「種類」が多い</p></li>
 <li><p>High velocity: 扱うデータが「生成される速度」が速い</p></li>
 </ul>
-<p>関係データベースシステムは計算機の上で動くソフトウェアである．
-そのため，CPUやメモリ，二次記憶装置といった計算機などのコンポーネントを強化することで，関係データベースのパフォーマンスを向上させることが可能である（このアプローチを<strong>スケールアップ</strong> あるいは<strong>垂直方向のスケーリング</strong> と呼ぶ）．
-しかしながら，関係データベースの「データを正しく管理することに特化した設計」が仇となり，データの量や種類，生成速度が「圧倒的に大きい」ビッグデータに対しては，スケールアップした関係データベースですら処理が間に合わないことがある．</p>
-<p>データベースへの膨大な問い合わせを処理する方法の一つは，データベースのコピーや分割したものを複数の計算サーバ上に配置することで，サーバの稼働状況や負荷状況に応じて問い合わせ処理を振り分ける（分散させる）といった方法である．
-このように，1つの計算機をパワーアップさせるのではなく，計算サーバを増やすことで総体としてサービスのパフォーマンスを高めるアプローチを<strong>スケールアウト</strong> あるいは<strong>水平方向のスケーリング</strong> と呼ぶ．</p>
-<p>ウェブ検索エンジンやソーシャルゲーム，SNSといったビッグデータを扱うサービスにおいては，「データの正しさを厳密に保つこと」よりも「膨大かつ多様な種類のデータを安定的・高速に処理できること」が優先される．
-NoSQLはデータの正しさ（特に，データが常に最新であること）の管理を一部妥協することで，（スケールアップではなく）スケールアウトによってビッグデータ処理を実現する．
-また，データ構造をガチガチに固定する関係データベースとは対照的に，NoSQLは複雑かつ多様なデータを柔軟に扱うための工夫を有している．</p>
+<p>関係データベースシステムは計算機の上で動くソフトウェアです．
+そのため，CPUやメモリ，二次記憶装置といった計算機などのコンポーネントを強化することで，関係データベースのパフォーマンスを向上させることが可能です（このアプローチを<strong>スケールアップ</strong> あるいは<strong>垂直方向のスケーリング</strong> と呼びます）．
+しかしながら，関係データベースの「データを正しく管理することに特化した設計」が仇となり，データの量や種類，生成速度が「圧倒的に大きい」ビッグデータに対しては，スケールアップした関係データベースですら処理が間に合わないことがあります．</p>
+<p>データベースへの膨大な問い合わせを処理する方法の一つは，データベースのコピーや分割したものを複数の計算サーバ上に配置することで，サーバの稼働状況や負荷状況に応じて問い合わせ処理を振り分ける（分散させる）といった方法です．
+このように，1つの計算機をパワーアップさせるのではなく，計算サーバを増やすことで総体としてサービスのパフォーマンスを高めるアプローチを<strong>スケールアウト</strong> あるいは<strong>水平方向のスケーリング</strong> と呼びます．</p>
+<p>ウェブ検索エンジンやソーシャルゲーム，SNSといったビッグデータを扱うサービスにおいては，「データの正しさを厳密に保つこと」よりも「膨大かつ多様な種類のデータを安定的・高速に処理できること」が優先されます．
+NoSQLはデータの正しさ（特に，データが常に最新であること）の管理を一部妥協することで，（スケールアップではなく）スケールアウトによってビッグデータ処理を実現します．
+また，データ構造をガチガチに固定する関係データベースとは対照的に，NoSQLは複雑かつ多様なデータを柔軟に扱うための工夫を有しています．</p>
 </section>
 <section id="id3">
 <h2><span class="section-number">15.2. </span>様々なNoSQL<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>NoSQLは単一のデータベース技術ではない．
-関係データベースの欠点を補うために，様々なタイプのNoSQLデータベースが開発されている．
-最も一般的なNoSQLデータベースは，以下の4つである．</p>
+<p>NoSQLは単一のデータベース技術ではありません．
+関係データベースの欠点を補うために，様々なタイプのNoSQLデータベースが開発されています．
+最も一般的なNoSQLデータベースは，以下の4つです．</p>
 <ul class="simple">
 <li><p>キー・バリュー型データベース</p></li>
 <li><p>列指向データベース</p></li>
 <li><p>ドキュメント指向データベース</p></li>
 <li><p>グラフデータベース</p></li>
 </ul>
-<p>重要なのは，それぞれのNoSQLデータベースの特徴を押さえて，ケースに応じてNoSQLデータベースと関係データベースを使い分けることである．</p>
+<p>重要なのは，それぞれのNoSQLデータベースの特徴を押さえて，ケースに応じてNoSQLデータベースと関係データベースを使い分けることです．</p>
 <p><img alt="様々なNoSQL" src="../../_images/nosql.png" /></p>
 <section id="id4">
 <h3><span class="section-number">15.2.1. </span>キー・ストア型データベース<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<p><strong>キー・バリュー型データベース（key-value store database; KVS database）</strong> は，以下の図のように重複のない（一意の）キーとデータの値（バリュー）のペアを格納する，非常にシンプルな構造のデータベースである．
-キー・バリュー型データベースはキーとバリューという2つの属性からなる関係データを扱っているように見えるが，関係データベースのようにデータに厳密な制約条件を設けない．
-また，問い合わせも<strong>キーの値を直接しそれに対応するバリューの値を受け取る</strong> ことに特化している．</p>
+<p><strong>キー・バリュー型データベース（key-value store database; KVS database）</strong> は，以下の図のように重複のない（一意の）キーとデータの値（バリュー）のペアを格納する，非常にシンプルな構造のデータベースです．
+キー・バリュー型データベースはキーとバリューという2つの属性からなる関係データを扱っているように見えますが，関係データベースのようにデータに厳密な制約条件を設けません．
+また，問い合わせも<strong>キーの値を直接指定し，それに対応するバリューの値を受け取る</strong> ことに特化しています．</p>
 <p><img alt="KVS" src="../../_images/KVS.png" /></p>
-<p>このように，キー・バリュー型データベースはデータ構造を単純化し，問い合わせ形式を限定することで，データ処理を超高速化している．
-一方，複数のテーブルにまたがるデータの結合が必要となるケースには適していない．
-代表的なキー・バリュー型データベースとしては，<a class="reference external" href="https://redis.io">Redis</a>や<a class="reference external" href="https://aws.amazon.com/jp/dynamodb/">Amazon DynamoDB</a>などがある．</p>
+<p>このように，キー・バリュー型データベースはデータ構造を単純化し，問い合わせ形式を限定することで，データ処理を超高速化しています．
+一方，複数のテーブルにまたがるデータの結合が必要となるケースには適していません．
+代表的なキー・バリュー型データベースとしては，<a class="reference external" href="https://redis.io">Redis</a>や<a class="reference external" href="https://aws.amazon.com/jp/dynamodb/">Amazon DynamoDB</a>などがあります．</p>
 </section>
 <section id="id5">
 <h3><span class="section-number">15.2.2. </span>列指向データベース<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
-<p><strong>列指向データベース（column-orieted database）</strong> は，キー・バリュー型データベースを拡張したようなNoSQLデータベースである．
-列指向データベースは<strong>ワイドカラムデータベース（wide-column database）</strong> あるいは<strong>カラムファミリーデータベース（column-family database）</strong> と呼ばれることもある．
-以下の図のように，列指向データベースではデータをキーとバリューからなるペアとして管理する．
-キー・バリュー型データベースとの違いは，バリューとしてカラムファミリーと呼ばれるキー・バリュー構造のデータを持つことができる点である．
-例えば，図中のキーが<code class="docutils literal notranslate"><span class="pre">cxxx0001</span></code>のデータの価格の値を取得したい場合は，キーの値とカラムファミリー名を指定すればよい．</p>
+<p><strong>列指向データベース（column-oriented database）</strong> は，キー・バリュー型データベースを拡張したようなNoSQLデータベースです．
+列指向データベースは<strong>ワイドカラムデータベース（wide-column database）</strong> あるいは<strong>カラムファミリーデータベース（column-family database）</strong> と呼ばれることもあります．
+以下の図のように，列指向データベースではデータをキーとバリューからなるペアとして管理します．
+キー・バリュー型データベースとの違いは，バリューとしてカラムファミリーと呼ばれるキー・バリュー構造のデータを持つことができる点です．
+例えば，図中のキーが<code class="docutils literal notranslate"><span class="pre">cxxx0001</span></code>のデータの価格の値を取得したい場合は，キーの値とカラムファミリー名を指定すればよいです．</p>
 <p><img alt="ワイドカラムデータベース" src="../../_images/wide-column-db.png" /></p>
-<p>なお，カラムファミリーの中には，同じくキー・バリュー構造のカラムを複数もつことができる．
-例えば，上図においてキー値が<code class="docutils literal notranslate"><span class="pre">cxxx0003</span></code>のデータは，<code class="docutils literal notranslate"><span class="pre">著者</span></code>カラムファミリーの中に<code class="docutils literal notranslate"><span class="pre">姓</span></code>というカラムと<code class="docutils literal notranslate"><span class="pre">名</span></code>というカラムを持っている．
-列指向データベースにどのようなカラムファミリーを持たせるかはデータベース設計時に決めておく必要があるが，カラムファミリーの中のカラムはデータに応じて柔軟に追加することができる．</p>
-<p>列指向データベースは，関係データベースのように複数のレコードを横断して集約するような問い合わせには向いていない．
-また，データの整合性の担保も難しい．
-しかし，キーとカラム名によって高速なデータ処理が可能，スケールアウトが可能といったメリットがある．
-代表的なワイドカラムデータベースとしては，<a class="reference external" href="https://cloud.google.com/bigtable">Google Bigtable</a>，<a class="reference external" href="https://cassandra.apache.org/">Apache Cassandra</a>などがある．</p>
+<p>なお，カラムファミリーの中には，同じくキー・バリュー構造のカラムを複数もつことができます．
+例えば，上図においてキー値が<code class="docutils literal notranslate"><span class="pre">cxxx0003</span></code>のデータは，<code class="docutils literal notranslate"><span class="pre">著者</span></code>カラムファミリーの中に<code class="docutils literal notranslate"><span class="pre">姓</span></code>というカラムと<code class="docutils literal notranslate"><span class="pre">名</span></code>というカラムを持っています．
+列指向データベースにどのようなカラムファミリーを持たせるかはデータベース設計時に決めておく必要がありますが，カラムファミリーの中のカラムはデータに応じて柔軟に追加することができます．</p>
+<p>列指向データベースは，関係データベースのように複数のレコードを横断して集約するような問い合わせには向いていません．
+また，データの整合性の担保も難しいです．
+しかし，キーとカラム名によって高速なデータ処理が可能，スケールアウトが可能といったメリットがあります．
+代表的なワイドカラムデータベースとしては，<a class="reference external" href="https://cloud.google.com/bigtable">Google Bigtable</a>，<a class="reference external" href="https://cassandra.apache.org/">Apache Cassandra</a>などがあります．</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <h3 class="rubric" id="id6">もう1つの列指向データベース</h3>
-<p>実は，ワイドカラムデータベースとは別に，<strong>カラムナーデータベース（columnar database）</strong> と呼ばれる列指向データベースがある．
-両者は区別せずに語られることがあり，注意が必要である．</p>
-<p>下図のように，カラムナーデータベースでは表形式のデータを列ごとに記憶装置に格納する．
-記憶装置の特性上，カラムナーデータベースは同じ列に格納された値の集計演算を高速に行うことができる．
-行か列かの些細な違いに思えるが，関係データベースのような行指向のデータベースで集約演算を行う際には，いったんは注目しない列（属性）の値も読み込むため効率が悪い．
-そのため，列ごとの集計演算を頻繁に行う場合は列指向データベースが適している．</p>
+<p>実は，ワイドカラムデータベースとは別に，<strong>カラムナーデータベース（columnar database）</strong> と呼ばれる列指向データベースがあります．
+両者は区別せずに語られることがあり，注意が必要です．</p>
+<p>下図のように，カラムナーデータベースでは表形式のデータを列ごとに記憶装置に格納します．
+記憶装置の特性上，カラムナーデータベースは同じ列に格納された値の集計演算を高速に行うことができます．
+行か列かの些細な違いに思えますが，関係データベースのような行指向のデータベースで集約演算を行う際には，いったんは注目しない列（属性）の値も読み込むため効率が悪いです．
+そのため，列ごとの集計演算を頻繁に行う場合は列指向データベースが適しています．</p>
 <p><img alt="列指向データベース" src="../../_images/columnar-db.png" /></p>
-<p>カラムナーデータベースはNoSQLとは位置づけられていないが，ビッグデータ時代において非常に強力なツールである<a class="footnote-reference brackets" href="#olap" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>．
-代表的なカラムナーデータベースとしては，<a class="reference external" href="https://cloud.google.com/bigquery">Google BigQuery</a>などがある．</p>
+<p>カラムナーデータベースはNoSQLとは位置づけられていませんが，ビッグデータ時代において非常に強力なツールです<a class="footnote-reference brackets" href="#olap" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>．
+代表的なカラムナーデータベースとしては，<a class="reference external" href="https://cloud.google.com/bigquery">Google BigQuery</a>などがあります．</p>
 </div>
 </section>
 <section id="id8">
 <h3><span class="section-number">15.2.3. </span>ドキュメント指向データベース<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
-<p>関係データベースでは，テーブルのスキーマは設計時に確定させ，それを使い続けることが前提となっている．
-ところが，実際にサービスを運用し始めると，スキーマを修正したくなることがある．
-また，データに応じて柔軟に補助的な属性を追加したいといったケースもしばしばある．
-このようなケースで有用なNoSQLがドキュメント指向データベースである．</p>
-<p><strong>ドキュメント指向データベース（document-oriented database）</strong> は関係データベースにおけるレコードにあたるものを，<a class="reference external" href="https://ja.wikipedia.org/wiki/Extensible_Markup_Language">XML</a>や<a class="reference external" href="https://ja.wikipedia.org/wiki/JavaScript_Object_Notation">JSON</a>形式のドキュメントとして表現する．
-XMLドキュメントもJSONドキュメントもデータを木構造で表現したものであるが，ドキュメント指向データベースはスキーマレスであり，どのような木構造でデータを表現するかはデータ投入時に柔軟に決められる．
-以下の図は，2名の学生情報をXMLとJSONのそれぞれで表現した例である．</p>
+<p>関係データベースでは，テーブルのスキーマは設計時に確定させ，それを使い続けることが前提となっています．
+ところが，実際にサービスを運用し始めると，スキーマを修正したくなることがあります．
+また，データに応じて柔軟に補助的な属性を追加したいといったケースもしばしばあります．
+このようなケースで有用なNoSQLがドキュメント指向データベースです．</p>
+<p><strong>ドキュメント指向データベース（document-oriented database）</strong> は関係データベースにおけるレコードにあたるものを，<a class="reference external" href="https://ja.wikipedia.org/wiki/Extensible_Markup_Language">XML</a>や<a class="reference external" href="https://ja.wikipedia.org/wiki/JavaScript_Object_Notation">JSON</a>形式のドキュメントとして表現します．
+XMLドキュメントもJSONドキュメントもデータを木構造で表現したものですが，ドキュメント指向データベースはスキーマレスであり，どのような木構造でデータを表現するかはデータ投入時に柔軟に決められます．
+以下の図は，2名の学生情報をXMLとJSONのそれぞれで表現した例です．</p>
 <p><img alt="ドキュメント指向データベース" src="../../_images/document-oriented-db.png" /></p>
-<p>図を見ると分かるように，<code class="docutils literal notranslate"><span class="pre">山畑滝子</span></code>さんの氏名情報は姓名の区別なしに保存されているのに対して，<code class="docutils literal notranslate"><span class="pre">川澄桜</span></code>さんの氏名情報は姓名を区別して保存している．
-また，<code class="docutils literal notranslate"><span class="pre">川澄桜</span></code>さんの情報には<code class="docutils literal notranslate"><span class="pre">scholarship</span></code>のフィールドを追加して奨学金に関する情報を記録している．</p>
-<p>このようにドキュメント指向データベースでは，臨機応変にデータの構造を定義してデータを格納することができる．
-代表的なドキュメント指向データベースとしては，<a class="reference external" href="https://www.mongodb.com/ja-jp">MongoDB</a>などがある．</p>
+<p>図を見ると分かるように，<code class="docutils literal notranslate"><span class="pre">山畑滝子</span></code>さんの氏名情報は姓名の区別なしに保存されているのに対して，<code class="docutils literal notranslate"><span class="pre">川澄桜</span></code>さんの氏名情報は姓名を区別して保存しています．
+また，<code class="docutils literal notranslate"><span class="pre">川澄桜</span></code>さんの情報には<code class="docutils literal notranslate"><span class="pre">scholarship</span></code>のフィールドを追加して奨学金に関する情報を記録しています．</p>
+<p>このようにドキュメント指向データベースでは，臨機応変にデータの構造を定義してデータを格納することができます．
+代表的なドキュメント指向データベースとしては，<a class="reference external" href="https://www.mongodb.com/ja-jp">MongoDB</a>などがあります．</p>
 </section>
 <section id="id9">
 <h3><span class="section-number">15.2.4. </span>グラフデータベース<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
-<p>以下の図のように，<strong>グラフデータベース（graph database）</strong> は様々なデータをノードとエッジの2種類の要素を使って管理する．
-ノードはエンティティ（実体）を表し，エッジはエンティティ間の関係を表す．
-ノードもエッジもそれに関する情報を内部に持つことができる．
-なお，グラフとはノートとエンティティから構成される数学的構造を意味する．</p>
+<p>以下の図のように，<strong>グラフデータベース（graph database）</strong> は様々なデータをノードとエッジの2種類の要素を使って管理します．
+ノードはエンティティ（実体）を表し，エッジはエンティティ間の関係を表します．
+ノードもエッジもそれに関する情報を内部に持つことができます．
+なお，グラフとはノードとエッジから構成される数学的構造を意味します．</p>
 <p><img alt="グラフデータベース" src="../../_images/graph-database.png" /></p>
-<p>グラフデータベースは，エンティティ間にある多数の関係を表現するのに適している．
-データ構造の特性と様々なグラフ探索アルゴリズムによって，グラフデータベースでは「トリノ出身で数学を専門とする人」といった複雑な問い合わせを高速に実現することができる．
-代表的なグラフデータベースとしては，<a class="reference external" href="https://neo4j.com/">Neo4j</a>などがある．</p>
+<p>グラフデータベースは，エンティティ間にある多数の関係を表現するのに適しています．
+データ構造の特性と様々なグラフ探索アルゴリズムによって，グラフデータベースでは「トリノ出身で数学を専門とする人」といった複雑な問い合わせを高速に実現することができます．
+代表的なグラフデータベースとしては，<a class="reference external" href="https://neo4j.com/">Neo4j</a>などがあります．</p>
 <hr class="footnotes docutils" />
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="id10" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>NoSQLは”Not only SQL (relational database)”と解釈しよう．「SQL（関係データベース）は不要である」という意味ではないことに注意．</p>
+<p>NoSQLは”Not only SQL (relational database)”と解釈しましょう．「SQL（関係データベース）は不要である」という意味ではないことに注意してください．</p>
 </aside>
 <aside class="footnote brackets" id="olap" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">2</a><span class="fn-bracket">]</span></span>
-<p>列指向データベースは列データに着目したデータ分析が主目的となるので，データベースというよりもむしろ<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%BC%E3%82%BF%E3%82%A6%E3%82%A7%E3%82%A2%E3%83%8F%E3%82%A6%E3%82%B9">データウェアハウス</a>と見なした方が自然かもしれない．</p>
+<p>列指向データベースは列データに着目したデータ分析が主目的となるので，データベースというよりもむしろ<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%BC%E3%82%BF%E3%82%A6%E3%82%A7%E3%82%A2%E3%83%8F%E3%82%A6%E3%82%B9">データウェアハウス</a>と見なした方が自然かもしれません．</p>
 </aside>
 </aside>
 </section>
@@ -573,14 +559,16 @@ XMLドキュメントもJSONドキュメントもデータを木構造で表現�
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">15.1. ビッグデータを扱うためにデータベースに求められること</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">15.2. 様々なNoSQL</a><ul class="nav section-nav flex-column">
@@ -634,8 +622,8 @@ XMLドキュメントもJSONドキュメントもデータを木構造で表現�
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

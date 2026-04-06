@@ -16,42 +16,45 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=aeeb188a" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-1GGP5ZEVQL"></script>
@@ -81,6 +84,7 @@
     <link rel="prev" title="13. データベース設計演習" href="../assignment/db-design.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -96,19 +100,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -116,7 +109,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -124,8 +116,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -141,7 +133,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -171,15 +164,11 @@
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">はじめに</span></p>
@@ -236,9 +225,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -321,7 +315,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -335,25 +329,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -400,69 +386,69 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="b">
 <h1><span class="section-number">14. </span>B+木 &amp; ハッシュ索引<a class="headerlink" href="#b" title="Link to this heading">#</a></h1>
-<p><a class="reference internal" href="../db-design/01.html"><span class="std std-doc">第11講</span></a>と<a class="reference internal" href="../db-design/02.html"><span class="std std-doc">第12講</span></a>で説明した正規化理論によって，データの正しさを担保する関係データベースを設計することが可能となる．
-しかし，データの正しさが保証されても，問い合わせにかかる待ち時間が長いようでは，データベースとしての利便性は低い．
-利便性が高いデータベースには，データの管理のしやすさに加え，データの処理速度も求められる．</p>
-<p>データベースの応答速度（クエリ実行時間）を改善する方法としては，<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%82%AF%E3%82%A8%E3%83%AA%E6%9C%80%E9%81%A9%E5%8C%96">クエリ最適化（query optimization）</a>や索引の利用が考えられる．
-本講では索引づけに焦点を当て，データベースの応答速度を改善する手法について述べる．</p>
+<p><a class="reference internal" href="../db-design/01.html"><span class="std std-doc">第11講</span></a>と<a class="reference internal" href="../db-design/02.html"><span class="std std-doc">第12講</span></a>で説明した正規化理論によって，データの正しさを担保する関係データベースを設計することが可能となります．
+しかし，データの正しさが保証されても，問い合わせにかかる待ち時間が長いようでは，データベースとしての利便性は低いです．
+利便性が高いデータベースには，データの管理のしやすさに加え，データの処理速度も求められます．</p>
+<p>データベースの応答速度（クエリ実行時間）を改善する方法としては，<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%82%AF%E3%82%A8%E3%83%AA%E6%9C%80%E9%81%A9%E5%8C%96">クエリ最適化（query optimization）</a>や索引の利用が考えられます．
+本講では索引づけに焦点を当て，データベースの応答速度を改善する手法について述べます．</p>
 <section id="id1">
 <h2><span class="section-number">14.1. </span>関係データの物理的な格納方法<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>計算機ではあらゆるデータはゼロイチの2進数で表現され，主記憶装置（メモリ）やハードディスクやSSDのような補助記憶装置のどこかに物理的に格納される．
-関係データベースにおいてもそれは同じである．
-関係データベースではすべてのデータは表形式で表現されるが，データを補助記憶装置に格納する際には，表データはタプル（レコード）をひとまとまりの単位として分割され，記憶装置のどこかに格納される．</p>
+<p>計算機ではあらゆるデータはゼロイチの2進数で表現され，主記憶装置（メモリ）やハードディスクやSSDのような補助記憶装置のどこかに物理的に格納されます．
+関係データベースにおいてもそれは同じです．
+関係データベースではすべてのデータは表形式で表現されますが，データを補助記憶装置に格納する際には，表データはタプル（レコード）をひとまとまりの単位として分割され，記憶装置のどこかに格納されます．</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>表データをタプル（レコード）単位で分割し格納するデータベースは<strong>行指向データベース（row-oriented database）</strong> と呼ばれる．
-それに対して，属性（列）単位で分割・格納するデータベースは<strong>列指向データベース（column-oriented database）</strong> と呼ばれる．</p>
-<p>関係データベースのようにレコードの追加や削除を頻繁に行うことが想定されるデータベースにおいては，行指向でデータを格納するほうが効率的である．
-一方，データの更新が頻繁でなく，属性（列）単位の集約演算を頻繁に行うような場合は，列指向データベースの方が効率的である．</p>
+<p>表データをタプル（レコード）単位で分割し格納するデータベースは<strong>行指向データベース（row-oriented database）</strong> と呼ばれます．
+それに対して，属性（列）単位で分割・格納するデータベースは<strong>列指向データベース（column-oriented database）</strong> と呼ばれます．</p>
+<p>関係データベースのようにレコードの追加や削除を頻繁に行うことが想定されるデータベースにおいては，行指向でデータを格納するほうが効率的です．
+一方，データの更新が頻繁でなく，属性（列）単位の集約演算を頻繁に行うような場合は，列指向データベースの方が効率的です．</p>
 </div>
-<p>以下は，関係「商品」を（物理的な）記憶媒体に格納する際のイメージ図である．
-図のように，「商品」の各レコードは記憶装置の特定の場所にばらばらに格納される．
-SQL文による問い合わせが行われると，関係データベースシステムは条件に合致するレコードが記憶装置のどこに保存されているかを調べ，該当する場所から具体的なデータを取得する．</p>
+<p>以下は，関係「商品」を（物理的な）記憶媒体に格納する際のイメージ図です．
+図のように，「商品」の各レコードは記憶装置の特定の場所にばらばらに格納されます．
+SQL文による問い合わせが行われると，関係データベースシステムは条件に合致するレコードが記憶装置のどこに保存されているかを調べ，該当する場所から具体的なデータを取得します．</p>
 <p><img alt="記憶装置へのデータ格納イメージ" src="../../_images/data-store.png" /></p>
 </section>
 <section id="id2">
 <h2><span class="section-number">14.2. </span>索引<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>データベースから条件に合致するレコードを探す方法として，該当するテーブルのレコードが格納されている場所を先頭から1つ1つ調べ上げる方法が考えられる．
-この方法では，レコードの数がN件ある場合，N回確認作業が必要となる．
-問い合わせへの応答時間は，確認回数に比例して長くなる．
-レコードの数が少ない，つまりNが小さい場合は問題とならないかもしれないが，
-関係データベースが対象とするデータ（レコード）の数は膨大である．
-計算が得意な計算機とはいえ，数百万，数千万のレコード数を逐次的にチェックするにはそれなりに時間がかかる．</p>
-<p><strong>索引づけ（indexing）</strong> は，レコードの探索時間を改善したいときに有効な方法の1つである．
-一般に索引といえば，特定の項目が書籍中のどのページに掲載されているかをまとめ，項目順に並べたものをイメージする．
-索引は書籍の末尾に掲載されていることが多い．
-下図のように索引を調べることで，全ページを見返さなくても自分が知りたい項目がどこのページに掲載されているかをカンタンに知ることができる．</p>
+<p>データベースから条件に合致するレコードを探す方法として，該当するテーブルのレコードが格納されている場所を先頭から1つ1つ調べ上げる方法が考えられます．
+この方法では，レコードの数がN件ある場合，N回確認作業が必要となります．
+問い合わせへの応答時間は，確認回数に比例して長くなります．
+レコードの数が少ない，つまりNが小さい場合は問題とならないかもしれませんが，
+関係データベースが対象とするデータ（レコード）の数は膨大です．
+計算が得意な計算機とはいえ，数百万，数千万のレコード数を逐次的にチェックするにはそれなりに時間がかかります．</p>
+<p><strong>索引づけ（indexing）</strong> は，レコードの探索時間を改善したいときに有効な方法の1つです．
+一般に索引といえば，特定の項目が書籍中のどのページに掲載されているかをまとめ，項目順に並べたものをイメージします．
+索引は書籍の末尾に掲載されていることが多いです．
+下図のように索引を調べることで，全ページを見返さなくても自分が知りたい項目がどこのページに掲載されているかをカンタンに知ることができます．</p>
 <p><img alt="書籍における索引" src="../../_images/book-index.png" /></p>
-<p>データベースにおける索引も書籍のそれと類似した役割をもつ．
-データベースにおける<strong>索引（インデックス; index）</strong> とは，データベース中のある属性に注目し，ある属性値を持つレコードを効率よく取得できるよう工夫された特殊なデータを意味する．
+<p>データベースにおける索引も書籍のそれと類似した役割を持ちます．
+データベースにおける<strong>索引（インデックス; index）</strong> とは，データベース中のある属性に注目し，ある属性値を持つレコードを効率よく取得できるよう工夫された特殊なデータを意味します．
 索引は</p>
 <ul class="simple">
 <li><p><strong>索引キー（index key）</strong> と呼ばれる検索対象となる属性の値，および</p></li>
 <li><p>その値をもつレコードの場所を特定する情報（記憶装置の中でレコードが格納されている場所）</p></li>
 </ul>
-<p>から構成される．
-下図は関係「商品」の属性「単価」に関する索引，およびそれを利用した問い合わせのイメージである．
-「単価」の索引には，単価の値（索引キー）とその値をもつレコードが格納された場所のペアが記載されている．
-例えば，単価の値が<code class="docutils literal notranslate"><span class="pre">230</span></code>のレコードを検索したい場合は，索引を上から調べる．
-値が<code class="docutils literal notranslate"><span class="pre">230</span></code>となるレコードが格納された場所が分かれれば，指定された記憶装置の場所を調べに行くことで所望のレコードの情報を得ることができる．</p>
+<p>から構成されます．
+下図は関係「商品」の属性「単価」に関する索引，およびそれを利用した問い合わせのイメージです．
+「単価」の索引には，単価の値（索引キー）とその値をもつレコードが格納された場所のペアが記載されています．
+例えば，単価の値が<code class="docutils literal notranslate"><span class="pre">230</span></code>のレコードを検索したい場合は，索引を上から調べます．
+値が<code class="docutils literal notranslate"><span class="pre">230</span></code>となるレコードが格納された場所が分かれれば，指定された記憶装置の場所を調べに行くことで所望のレコードの情報を得ることができます．</p>
 <p><img alt="データベースにおける索引" src="../../_images/db-index.png" /></p>
-<p>書籍における索引がそれのためにページが割かれているように，データベースの索引もそれ自体を作成するのに記憶装置の場所（空間）を消費する．
-索引は<strong>空間効率を犠牲にして時間効率を向上させる方法</strong>である．
-空間効率の劣化を抑えつつ時間効率を向上させるために，様々な種類の索引が提案されている．</p>
+<p>書籍における索引がそれのためにページが割かれているように，データベースの索引もそれ自体を作成するのに記憶装置の場所（空間）を消費します．
+索引は<strong>空間効率を犠牲にして時間効率を向上させる方法</strong>です．
+空間効率の劣化を抑えつつ時間効率を向上させるために，様々な種類の索引が提案されています．</p>
 </section>
 <section id="id3">
 <h2><span class="section-number">14.3. </span>二分探索<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>例えば，格納されたレコード数が10万の表に対して，ある属性に関する索引を構築したとしよう．
-索引のサイズ（索引キーの数）が索引付けの対処となる表の5分の1になった場合，索引の先頭から索引キーの値を調べていったとしても，合計2万回もの確認が必要となる（いわゆる線形探索）．
+<p>例えば，格納されたレコード数が10万の表に対して，ある属性に関する索引を構築したとしましょう．
+索引のサイズ（索引キーの数）が索引付けの対象となる表の5分の1になった場合，索引の先頭から索引キーの値を調べていったとしても，合計2万回もの確認が必要となります（いわゆる線形探索）．
 索引を使えば，特定の条件を満たすレコードが探しやすくなる ——
-直感的にはその通りなのだが，巨大な索引（キーのリスト）の中から条件に合致する箇所を探すには，効率の良い方法が必要となる．</p>
-<p>索引キーがソートされている場合，索引の探索効率を劇的に向上させる方法として二分探索がある．
-<strong>二分探索（binary search）</strong> は，ソート済みの配列から指定した値を高速に探索するアルゴリズムである．
-二分探索アルゴリズムの概要は以下の通りである：</p>
+直感的にはその通りなのですが，巨大な索引（キーのリスト）の中から条件に合致する箇所を探すには，効率の良い方法が必要となります．</p>
+<p>索引キーがソートされている場合，索引の探索効率を劇的に向上させる方法として二分探索があります．
+<strong>二分探索（binary search）</strong> は，ソート済みの配列から指定した値を高速に探索するアルゴリズムです．
+二分探索アルゴリズムの概要は以下の通りです：</p>
 <ol class="arabic simple">
-<li><p>配列のちょうど真ん中の位置の値をチェックする．チェックした値が探している値の場合，そこで終了</p></li>
+<li><p>配列のちょうど真ん中の位置の値をチェックします．チェックした値が探している値の場合，そこで終了</p></li>
 <li><p>チェックした値が探している値よりも</p>
 <ul class="simple">
 <li><p>「小さかった」場合，配列の「右半分」を新たな検索対象配列とする</p></li>
@@ -471,12 +457,12 @@ SQL文による問い合わせが行われると，関係データベースシ�
 </li>
 <li><p>値が見つかるまで，ステップ1-2を繰り返す．配列の長さが1になっても見つからなかったら，探している値は配列にはなかったことになる</p></li>
 </ol>
-<p>以下の図を使って，二分探索の振る舞いを確認してみよう．
-図の一番上には，ソートされた索引キーの配列が並んでいる．
-配列の位置は索引における行番号と考えてほしい．
-今，270という値（をもつレコード）の場所がどこかを知りたいとしよう．
-配列の先頭から愚直に調べると，270の値が入った場所を調べるには5回の確認作業が必要となる．
-一方，二分探索を適用すると，以下のような手順で値の場所が見つかる．</p>
+<p>以下の図を使って，二分探索の振る舞いを確認してみましょう．
+図の一番上には，ソートされた索引キーの配列が並んでいます．
+配列の位置は索引における行番号と考えてください．
+今，270という値（をもつレコード）の場所がどこかを知りたいとしましょう．
+配列の先頭から愚直に調べると，270の値が入った場所を調べるには5回の確認作業が必要となります．
+一方，二分探索を適用すると，以下のような手順で値の場所が見つかります．</p>
 <ol class="arabic simple">
 <li><p>まず配列の真ん中である4番目にアクセスし値を見る（値=230）</p></li>
 <li><p>所望の値である270は230より大きいので，右半分の配列の真ん中の位置（6番目）にアクセスする（値=300）</p></li>
@@ -484,22 +470,22 @@ SQL文による問い合わせが行われると，関係データベースシ�
 <li><p>値が270であったので，位置情報として5を返す（終了して，索引の5行目に記されている記憶装置の場所にあるレコードを調べに行く）</p></li>
 </ol>
 <p><img alt="二分探索" src="../../_images/binary-search.png" /></p>
-<p>270の値を見つけるのに要した配列へのアクセス回数は合計3回である．
-二分探索では，1ステップごとに調査対象となる配列のサイズが半分になっている．
-そのため，もとの配列のサイズが<span class="math notranslate nohighlight">\(N\)</span>のとき，所望の値を見つけるために必要となる配列へのアクセス回数は最悪のケースでも<span class="math notranslate nohighlight">\(log_2 N\)</span>となる．
-先の図の例では配列のサイズが小さいため二分探索の効果が感じにくかったかもしれないが，配列のサイズが巨大になると二分探索の効果が実感できる．
-例えば索引のサイズ（索引キーの種類数）が100万の場合，二分探索を使えば索引キーの配列に20回程度アクセスするだけで所望の値を見つけることができる．</p>
+<p>270の値を見つけるのに要した配列へのアクセス回数は合計3回です．
+二分探索では，1ステップごとに調査対象となる配列のサイズが半分になっています．
+そのため，もとの配列のサイズが<span class="math notranslate nohighlight">\(N\)</span>のとき，所望の値を見つけるために必要となる配列へのアクセス回数は最悪のケースでも<span class="math notranslate nohighlight">\(log_2 N\)</span>となります．
+先の図の例では配列のサイズが小さいため二分探索の効果が感じにくかったかもしれませんが，配列のサイズが巨大になると二分探索の効果が実感できます．
+例えば索引のサイズ（索引キーの種類数）が100万の場合，二分探索を使えば索引キーの配列に20回程度アクセスするだけで所望の値を見つけることができます．</p>
 </section>
 <section id="id4">
 <h2><span class="section-number">14.4. </span>B+木<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>二分探索はソート済み配列を探索する上で強力な方法であるが，データベースの索引キーの探索に使うには，以下のような欠点がある．</p>
+<p>二分探索はソート済み配列を探索する上で強力な方法ですが，データベースの索引キーの探索に使うには，以下のような欠点があります．</p>
 <ul class="simple">
 <li><p>データベースが超巨大になると索引のサイズも超巨大になるため，さすがの二分探索も少し遅くなる</p></li>
 <li><p>属性値がある範囲の値をもつレコードを探索したいというケースにおいて，単一の値の検索に特化した二分探索は分が悪い</p></li>
 <li><p>データベースではレコードの追加や更新が頻繁に発生するため，データベースの更新ごとに巨大な索引キーをソートするのは効率が悪い（クイックソートを使っても<span class="math notranslate nohighlight">\(O(n \log n)\)</span>の計算時間がかかる）</p></li>
 </ul>
-<p id="sec-btree-feature"><strong>B+木（B+ tree）</strong><a class="footnote-reference brackets" href="#b-tree" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> は，二分探索よりも高速かつ効率よくデータの探索を行え，かつ更新にかかるコストも小さい，索引用のデータ構造である．
-B+木は以下のような特徴を持つ木構造データである（<span class="math notranslate nohighlight">\(d\)</span>および<span class="math notranslate nohighlight">\(e\)</span>の値は事前に決めておく）．</p>
+<p id="sec-btree-feature"><strong>B+木（B+ tree）</strong><a class="footnote-reference brackets" href="#b-tree" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> は，二分探索よりも高速かつ効率よくデータの探索を行え，かつ更新にかかるコストも小さい，索引用のデータ構造です．
+B+木は以下のような特徴を持つ木構造データです（<span class="math notranslate nohighlight">\(d\)</span>および<span class="math notranslate nohighlight">\(e\)</span>の値は事前に決めておきます）．</p>
 <ol class="arabic simple">
 <li><p>根ノードから葉ノードへのパスの長さはすべて同じである</p></li>
 <li><p>葉ノードは索引キーの（順序付き）集合で構成される．各葉ノードは索引キーを収容するスペースをもつ．そのスペースには最小<span class="math notranslate nohighlight">\(\lceil \frac{e}{2} \rceil\)</span>個，最大<span class="math notranslate nohighlight">\(e\)</span>個の索引キーを収容できる．なお，葉ノード中の索引キーは昇順にソートされている</p></li>
@@ -509,149 +495,148 @@ B+木は以下のような特徴を持つ木構造データである（<span cla
 <li><p>根ノード，葉ノード以外の中間ノードは<span class="math notranslate nohighlight">\(d\)</span>個以上の探索キーを持つ</p></li>
 <li><p>葉ノードの各索引キーはその値を属性値としてもつレコード集合とリンクしている（記憶装置で該当レコードが記録されている位置にすぐ飛べる）</p></li>
 </ol>
-<p>なお<span class="math notranslate nohighlight">\(d\)</span>の値をB+木の<strong>次数</strong> と呼ぶ．</p>
-<p>上の定義だけでは分かりづらいので，図を見ながらB+木の特徴を確認しよう．
+<p>なお<span class="math notranslate nohighlight">\(d\)</span>の値をB+木の<strong>次数</strong> と呼びます．</p>
+<p>上の定義だけでは分かりづらいので，図を見ながらB+木の特徴を確認しましょう．
 ある属性<span class="math notranslate nohighlight">\(A\)</span>の索引キー（属性値）として</p>
 <blockquote>
 <div><p>1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144,169, 196, 225, 256</p>
 </div></blockquote>
-<p>のいずれかを取るレコードを格納したテーブルがあるとしよう．
-以下の図は，このテーブルの属性<span class="math notranslate nohighlight">\(A\)</span>に関するB+木である．
-なお，このB+木は<span class="math notranslate nohighlight">\(d=1，e=3\)</span>としている．</p>
-<p>図を見たら分かるように，すべての索引キーはいずれかの葉ノードに格納されている（特徴2）．
-索引キーが格納されたどの葉ノードについても，根ノードから2回枝をたどるだけで到達できる（特徴1）．
-また，根以外のどのノードも半数以上スペースが埋まっている（特徴2および4）．
-さらに，ある索引キーの次に小さい（大きい）索引キーは同じ葉ノード内で隣接している，もしくは隣接する葉ノード内に存在する（特徴3）．
-そのため，例えば索引キーの4の次に大きい索引キーを知りたければ，4が含まれる一番左の葉ノードから右隣にリンクされている葉ノードを見ることで，9が次に大きい索引キーであることが分かる．</p>
+<p>のいずれかを取るレコードを格納したテーブルがあるとしましょう．
+以下の図は，このテーブルの属性<span class="math notranslate nohighlight">\(A\)</span>に関するB+木です．
+なお，このB+木は<span class="math notranslate nohighlight">\(d=1，e=3\)</span>としています．</p>
+<p>図を見たら分かるように，すべての索引キーはいずれかの葉ノードに格納されています（特徴2）．
+索引キーが格納されたどの葉ノードについても，根ノードから2回枝をたどるだけで到達できます（特徴1）．
+また，根以外のどのノードも半数以上スペースが埋まっています（特徴2および4）．
+さらに，ある索引キーの次に小さい（大きい）索引キーは同じ葉ノード内で隣接している，もしくは隣接する葉ノード内に存在します（特徴3）．
+そのため，例えば索引キーの4の次に大きい索引キーを知りたければ，4が含まれる一番左の葉ノードから右隣にリンクされている葉ノードを見ることで，9が次に大きい索引キーであることが分かります．</p>
 <p id="fig-b-tree"><img alt="B+木" src="../../_images/b%2Btree.png" /></p>
-<p>B+木では，葉ノードは各レコードの格納場所情報を保持しているため，いわゆる索引と見なすことができる．
-一方，葉ノードの親ノードは葉ノードを振り分け，葉ノードの場所を管理しているという意味では，索引の索引になっていると見なせる．
-このように，B+木は索引を階層的に管理していると見なせる．</p>
-<p>B+木で重要なことは，どの葉ノードも<strong>根ノードからの距離が同じ</strong>であることである．
-これによって，どの索引キーも同じ計算時間で見つけることができる．
-一方，どのノードも常に<strong>半数以上</strong>スペースが埋まっているという特徴は，裏を返せば半分は空いていてもよいということになる．
-これは索引に割り当てる記憶領域が無駄になっていることを意味するが，空きがあれば木の構造を大きく変えずに新たな索引キーが挿入できるため，索引更新に柔軟性を持たせる工夫とも言える．
-このようなB+木を索引に使うことで，ある条件にマッチするレコードを高速に探索することができる．
-また，レコードが追加・更新・修正されても，コストを抑えて索引を更新することができる．</p>
-<p>以下では，B+木を用いたレコードの探索方法について見てみよう．</p>
+<p>B+木では，葉ノードは各レコードの格納場所情報を保持しているため，いわゆる索引と見なすことができます．
+一方，葉ノードの親ノードは葉ノードを振り分け，葉ノードの場所を管理しているという意味では，索引の索引になっていると見なせます．
+このように，B+木は索引を階層的に管理していると見なせます．</p>
+<p>B+木で重要なことは，どの葉ノードも<strong>根ノードからの距離が同じ</strong>であることです．
+これによって，どの索引キーも同じ計算時間で見つけることができます．
+一方，どのノードも常に<strong>半数以上</strong>スペースが埋まっているという特徴は，裏を返せば半分は空いていてもよいということになります．
+これは索引に割り当てる記憶領域が無駄になっていることを意味しますが，空きがあれば木の構造を大きく変えずに新たな索引キーが挿入できるため，索引更新に柔軟性を持たせる工夫とも言えます．
+このようなB+木を索引に使うことで，ある条件にマッチするレコードを高速に探索することができます．
+また，レコードが追加・更新・修正されても，コストを抑えて索引を更新することができます．</p>
+<p>以下では，B+木を用いたレコードの探索方法について見てみましょう．</p>
 <section id="id6">
 <h3><span class="section-number">14.4.1. </span>B+木による値の探索<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
-<p>ある属性値をもつレコードの探索は，ノードに含まれる探索キーをチェックしながらB+木の根ノードから葉ノードまでたどることで行う．
+<p>ある属性値をもつレコードの探索は，ノードに含まれる探索キーをチェックしながらB+木の根ノードから葉ノードまでたどることで行います．
 例えば，ある属性<span class="math notranslate nohighlight">\(A\)</span>の値として，</p>
 <blockquote>
 <div><p>1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144,169, 196, 225, 256</p>
 </div></blockquote>
-<p>のいずれかを取るレコードが格納された関係表に対して，B+木による索引を構築したとしよう（<a class="reference internal" href="#fig-b-tree">先の図</a>がそれである）．
-このB+木を使って，属性<span class="math notranslate nohighlight">\(A\)</span>の値が<code class="docutils literal notranslate"><span class="pre">121</span></code>となるレコードを探すことを考えよう．
-手順は以下の通りとなる（図も参照すること）．</p>
+<p>のいずれかを取るレコードが格納された関係表に対して，B+木による索引を構築したとしましょう（<a class="reference internal" href="#fig-b-tree">先の図</a>がそれです）．
+このB+木を使って，属性<span class="math notranslate nohighlight">\(A\)</span>の値が<code class="docutils literal notranslate"><span class="pre">121</span></code>となるレコードを探すことを考えましょう．
+手順は以下の通りとなります（図も参照してください）．</p>
 <p><img alt="B+木による直接探索" src="../../_images/b%2Btree-search.png" /></p>
-<p>まず，根ノードにアクセスし格納された探索キーを調べる．
-探索キーは<code class="docutils literal notranslate"><span class="pre">25</span></code>と<code class="docutils literal notranslate"><span class="pre">144</span></code>である．
-ターゲットとなる値は121であり，25よりも大きく144よりも小さい．
-よって，探索キー<code class="docutils literal notranslate"><span class="pre">25</span></code>と<code class="docutils literal notranslate"><span class="pre">144</span></code>の間にあるポインタをたどる．
-ポインタをたどった先にあるノードには，探索キーとして<code class="docutils literal notranslate"><span class="pre">64</span></code>と<code class="docutils literal notranslate"><span class="pre">100</span></code>が格納されている．
-先ほどと同様，ターゲットとなる値と探索キーの関係を調べると，ターゲット値である121は100より大きい．
-よって，探索キー<code class="docutils literal notranslate"><span class="pre">100</span></code>の右隣にあるポインタをたどる．
-その結果，葉ノードにたどり着く．
-葉ノードに格納された索引キーを左から探索すると，一番左端にターゲット値である索引キー<code class="docutils literal notranslate"><span class="pre">121</span></code>が見つかる．
-所望の索引キーが見つかったので，そこからリンクされたレコードを取得する．
-これにて探索完了である．</p>
-<p><a class="reference internal" href="#sec-btree-feature">B+木の特徴6</a>に記した条件により，B+木ではどの中間ノードも子ノードの数は<span class="math notranslate nohighlight">\(d+1\)</span>個以上となることが保証されている．
-これにより，索引キーの数が<span class="math notranslate nohighlight">\(N\)</span>の場合，B+木の根ノードから葉ノードへのパスの長さは<span class="math notranslate nohighlight">\(log_d(N)\)</span>となる．
-各ノードに含まれる探索キーの数は高々<span class="math notranslate nohighlight">\(2d\)</span>個である．
+<p>まず，根ノードにアクセスし格納された探索キーを調べます．
+探索キーは<code class="docutils literal notranslate"><span class="pre">25</span></code>と<code class="docutils literal notranslate"><span class="pre">144</span></code>です．
+ターゲットとなる値は121であり，25よりも大きく144よりも小さいです．
+よって，探索キー<code class="docutils literal notranslate"><span class="pre">25</span></code>と<code class="docutils literal notranslate"><span class="pre">144</span></code>の間にあるポインタをたどります．
+ポインタをたどった先にあるノードには，探索キーとして<code class="docutils literal notranslate"><span class="pre">64</span></code>と<code class="docutils literal notranslate"><span class="pre">100</span></code>が格納されています．
+先ほどと同様，ターゲットとなる値と探索キーの関係を調べると，ターゲット値である121は100より大きいです．
+よって，探索キー<code class="docutils literal notranslate"><span class="pre">100</span></code>の右隣にあるポインタをたどります．
+その結果，葉ノードにたどり着きます．
+葉ノードに格納された索引キーを左から探索すると，一番左端にターゲット値である索引キー<code class="docutils literal notranslate"><span class="pre">121</span></code>が見つかります．
+所望の索引キーが見つかったので，そこからリンクされたレコードを取得します．
+これにて探索完了です．</p>
+<p><a class="reference internal" href="#sec-btree-feature">B+木の特徴6</a>に記した条件により，B+木ではどの中間ノードも子ノードの数は<span class="math notranslate nohighlight">\(d+1\)</span>個以上となることが保証されています．
+これにより，索引キーの数が<span class="math notranslate nohighlight">\(N\)</span>の場合，B+木の根ノードから葉ノードへのパスの長さは<span class="math notranslate nohighlight">\(log_d(N)\)</span>となります．
+各ノードに含まれる探索キーの数は高々<span class="math notranslate nohighlight">\(2d\)</span>個です．
 各ノードを探索キーを線形に一通りチェックしたあとパスをたどるとしても，探索完了までにかかる計算量は<span class="math notranslate nohighlight">\(d\)</span>が<span class="math notranslate nohighlight">\(N\)</span>よりも十分小さいことも考慮すると，高々</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(O(2d \ log_d N) = O(log_d N )\)</span></p>
 </div></blockquote>
-<p>となる．
-二分探索を用いた場合の計算量は<span class="math notranslate nohighlight">\(O(log_2 N)\)</span>であるため，<span class="math notranslate nohighlight">\(d\)</span>を2より大きく取ればB+木は二分探索よりも高速に値を探索することができる．</p>
+<p>となります．
+二分探索を用いた場合の計算量は<span class="math notranslate nohighlight">\(O(log_2 N)\)</span>であるため，<span class="math notranslate nohighlight">\(d\)</span>を2より大きく取ればB+木は二分探索よりも高速に値を探索することができます．</p>
 </section>
 <section id="id7">
 <h3><span class="section-number">14.4.2. </span>範囲探索<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
-<p>B+木を使えば，範囲探索も容易に行える．
-先ほどの例で使ったB+木を使って，属性値がある範囲にあるレコードを探索する手順を示そう．
-今，属性値が<code class="docutils literal notranslate"><span class="pre">10</span></code>以上<code class="docutils literal notranslate"><span class="pre">40</span></code>未満であるレコードをすべて取得したいとしよう．
-手順は以下の通りである（図も参照すること）．</p>
+<p>B+木を使えば，範囲探索も容易に行えます．
+先ほどの例で使ったB+木を使って，属性値がある範囲にあるレコードを探索する手順を示しましょう．
+今，属性値が<code class="docutils literal notranslate"><span class="pre">10</span></code>以上<code class="docutils literal notranslate"><span class="pre">40</span></code>未満であるレコードをすべて取得したいとしましょう．
+手順は以下の通りです（図も参照してください）．</p>
 <p><img alt="B+木による範囲探索" src="../../_images/range-search.png" /></p>
-<p>探索条件の下限である<code class="docutils literal notranslate"><span class="pre">10</span></code>に着目する．
-根ノードにアクセスし格納された探索キーを調べる．
-探索キーは<code class="docutils literal notranslate"><span class="pre">25</span></code>と<code class="docutils literal notranslate"><span class="pre">144</span></code>である．
-ターゲットとなる値は10であり，25よりも小さい．
-よって，探索キー<code class="docutils literal notranslate"><span class="pre">25</span></code>の左にあるポインタをたどる．
-ポインタをたどった先にあるノードには，探索キーとして<code class="docutils literal notranslate"><span class="pre">9</span></code>が格納されている．
-ターゲット値は10であるため，探索キー<code class="docutils literal notranslate"><span class="pre">9</span></code>の右隣にあるポインタをたどる．
-その結果，葉ノードにたどり着く．
-葉ノードに格納された索引キーを左から探索すると，左から2番目にターゲット値である10より大きい索引キー<code class="docutils literal notranslate"><span class="pre">16</span></code>が見つかる．
-ところで，ターゲットとなる属性値の上限は40であった．
-そこで，先ほど見つけた索引キー<code class="docutils literal notranslate"><span class="pre">16</span></code>から右側にリンクをたどりながら索引キーが<code class="docutils literal notranslate"><span class="pre">40</span></code>未満のものをすべて拾い上げていく．
-すると，索引キーとして<code class="docutils literal notranslate"><span class="pre">16，25，36</span></code>が見つかる．
-条件を満たす
-所望の索引キーがすべて見つかったので，各索引キーからリンクされたレコードを取得する．
-これにて範囲探索完了である．</p>
+<p>探索条件の下限である<code class="docutils literal notranslate"><span class="pre">10</span></code>に着目します．
+根ノードにアクセスし格納された探索キーを調べます．
+探索キーは<code class="docutils literal notranslate"><span class="pre">25</span></code>と<code class="docutils literal notranslate"><span class="pre">144</span></code>です．
+ターゲットとなる値は10であり，25よりも小さいです．
+よって，探索キー<code class="docutils literal notranslate"><span class="pre">25</span></code>の左にあるポインタをたどります．
+ポインタをたどった先にあるノードには，探索キーとして<code class="docutils literal notranslate"><span class="pre">9</span></code>が格納されています．
+ターゲット値は10であるため，探索キー<code class="docutils literal notranslate"><span class="pre">9</span></code>の右隣にあるポインタをたどります．
+その結果，葉ノードにたどり着きます．
+葉ノードに格納された索引キーを左から探索すると，左から2番目にターゲット値である10より大きい索引キー<code class="docutils literal notranslate"><span class="pre">16</span></code>が見つかります．
+ところで，ターゲットとなる属性値の上限は40でした．
+そこで，先ほど見つけた索引キー<code class="docutils literal notranslate"><span class="pre">16</span></code>から右側にリンクをたどりながら索引キーが<code class="docutils literal notranslate"><span class="pre">40</span></code>未満のものをすべて拾い上げていきます．
+すると，索引キーとして<code class="docutils literal notranslate"><span class="pre">16，25，36</span></code>が見つかります．
+条件を満たす所望の索引キーがすべて見つかったので，各索引キーからリンクされたレコードを取得します．
+これにて範囲探索完了です．</p>
 </section>
 <section id="id8">
 <h3><span class="section-number">14.4.3. </span>B+木の構築・更新<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
-<p>すでに述べたように，データベースではレコードの追加や更新が度々行われる．
-そのため，データベースの更新に応じて索引の更新も必要となる．</p>
-<p>B+木は根ノードから葉ノードへのパスの長さが均一になるよう（木の高さのバランスを崩さない）よう，索引を更新するアルゴリズムが提案されている．
+<p>すでに述べたように，データベースではレコードの追加や更新が度々行われます．
+そのため，データベースの更新に応じて索引の更新も必要となります．</p>
+<p>B+木は根ノードから葉ノードへのパスの長さが均一になるよう（木の高さのバランスを崩さない）よう，索引を更新するアルゴリズムが提案されています．
 直感的には，</p>
 <ul class="simple">
 <li><p>新たな索引キーを挿入する場合には，木の構造を崩して木を上に向かって伸ばす</p></li>
 <li><p>索引キーを削除する場合には，キーの挿入操作の逆を行う</p></li>
 </ul>
-<p>といった戦略でB+木を更新する．
-B+木の更新アルゴリズムの詳細については「<a class="reference external" href="https://www.ohmsha.co.jp/book/9784274223730/">IT Text データベースの基礎</a>」「<a class="reference external" href="https://www.ohmsha.co.jp/book/9784274225161/">データベースシステム（改訂2版）</a>」「<a class="reference external" href="https://www.saiensu.co.jp/search/?isbn=978-4-7819-1390-2&amp;amp;y=2017">リレーショナルデータベース入門（第3版）</a>」などの書籍を参照されたい．</p>
+<p>といった戦略でB+木を更新します．
+B+木の更新アルゴリズムの詳細については「<a class="reference external" href="https://www.ohmsha.co.jp/book/9784274223730/">IT Text データベースの基礎</a>」「<a class="reference external" href="https://www.ohmsha.co.jp/book/9784274225161/">データベースシステム（改訂2版）</a>」「<a class="reference external" href="https://www.saiensu.co.jp/search/?isbn=978-4-7819-1390-2&amp;amp;y=2017">リレーショナルデータベース入門（第3版）</a>」などの書籍を参照してください．</p>
 </section>
 </section>
 <section id="id9">
 <h2><span class="section-number">14.5. </span>ハッシュ索引<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
-<p>B+木のような木構造の索引では，根ノードから葉ノードにまでたどることで，条件にマッチする属性値をもつレコードが格納されている場所を調べる．
-探索を容易にするためにB+木ではその索引木構造に工夫をこらしているが，<span class="math notranslate nohighlight">\(O(log_m{N})\)</span>の計算時間をかけて根から葉に向かって木をたどらなければならない．</p>
-<p>仮に，ある値が指定されたときにそれを属性値としてもつレコードの格納位置を「直接」知ることができれば，B+木よりももっとカンタンに求めるレコードを取得することができる．
-これを実現するのが，<strong>ハッシュ索引（hash index）</strong> である．
-B+木と同様，ハッシュ索引も探索範囲となる属性を指定して索引を構築する．</p>
-<p>B+木と異なるのは，ハッシュ索引では索引キーの値とレコード（の格納場所）との対応付けを行うために<strong>ハッシュ関数（hash function）</strong> を用いる．
-<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%83%8F%E3%83%83%E3%82%B7%E3%83%A5%E9%96%A2%E6%95%B0">ハッシュ関数</a>とは，任意の値を別の都合の良い値（ハッシュ値）に変換するための関数である．
-良いハッシュ関数は値の変換にかかる計算コストが低くなるよう設計されている．</p>
-<p>以下の<span class="math notranslate nohighlight">\(mod_d(x)\)</span>は整数<span class="math notranslate nohighlight">\(x\)</span>を整数<span class="math notranslate nohighlight">\(d\)</span>で割ったときの剰余（いわゆる余り）を計算する関数である．
-ただし<span class="math notranslate nohighlight">\(q\)</span>は整数とする．</p>
+<p>B+木のような木構造の索引では，根ノードから葉ノードにまでたどることで，条件にマッチする属性値をもつレコードが格納されている場所を調べます．
+探索を容易にするためにB+木ではその索引木構造に工夫をこらしていますが，<span class="math notranslate nohighlight">\(O(log_m{N})\)</span>の計算時間をかけて根から葉に向かって木をたどらなければなりません．</p>
+<p>仮に，ある値が指定されたときにそれを属性値としてもつレコードの格納位置を「直接」知ることができれば，B+木よりももっとカンタンに求めるレコードを取得することができます．
+これを実現するのが，<strong>ハッシュ索引（hash index）</strong> です．
+B+木と同様，ハッシュ索引も探索範囲となる属性を指定して索引を構築します．</p>
+<p>B+木と異なるのは，ハッシュ索引では索引キーの値とレコード（の格納場所）との対応付けを行うために<strong>ハッシュ関数（hash function）</strong> を用います．
+<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%83%8F%E3%83%83%E3%82%B7%E3%83%A5%E9%96%A2%E6%95%B0">ハッシュ関数</a>とは，任意の値を別の都合の良い値（ハッシュ値）に変換するための関数です．
+良いハッシュ関数は値の変換にかかる計算コストが低くなるよう設計されています．</p>
+<p>以下の<span class="math notranslate nohighlight">\(mod_d(x)\)</span>は整数<span class="math notranslate nohighlight">\(x\)</span>を整数<span class="math notranslate nohighlight">\(d\)</span>で割ったときの剰余（いわゆる余り）を計算する関数です．
+ただし<span class="math notranslate nohighlight">\(q\)</span>は整数とします．</p>
 <div class="math notranslate nohighlight">
 \[
 mod_d(x) = r  \quad \text{where} \,\, x = q \cdot d + r
 \]</div>
-<p>剰余演算は高速に実行できることが知られており，ハッシュ索引を構築するためのハッシュ関数としてしばしば使われる．
-例えば，学生情報を格納するテーブル<code class="docutils literal notranslate"><span class="pre">学生</span></code>に対して，属性<code class="docutils literal notranslate"><span class="pre">学籍番号</span></code>の値を探索キーとするハッシュ索引を構築するとしよう．
-一般に学籍番号は数字以外の文字も含まれる文字列であるが，計算機の中では文字列も整数値で表現されているので，剰余を計算することは可能である．
-そこで，以下の図のように<code class="docutils literal notranslate"><span class="pre">学生</span></code>テーブルの各レコードの<code class="docutils literal notranslate"><span class="pre">学籍番号</span></code>の値に剰余を計算する関数を適用し，得られた剰余値が示す記憶装置の場所にレコードを格納する．
-このようにハッシュ索引を構築しておけば，レコードを取得したい学生の学籍番号から剰余値を1回計算するだけで，必要となる学生情報が格納されている場所を特定し，レコードを取得することができる．</p>
+<p>剰余演算は高速に実行できることが知られており，ハッシュ索引を構築するためのハッシュ関数としてしばしば使われます．
+例えば，学生情報を格納するテーブル<code class="docutils literal notranslate"><span class="pre">学生</span></code>に対して，属性<code class="docutils literal notranslate"><span class="pre">学籍番号</span></code>の値を探索キーとするハッシュ索引を構築するとしましょう．
+一般に学籍番号は数字以外の文字も含まれる文字列ですが，計算機の中では文字列も整数値で表現されているので，剰余を計算することは可能です．
+そこで，以下の図のように<code class="docutils literal notranslate"><span class="pre">学生</span></code>テーブルの各レコードの<code class="docutils literal notranslate"><span class="pre">学籍番号</span></code>の値に剰余を計算する関数を適用し，得られた剰余値が示す記憶装置の場所にレコードを格納します．
+このようにハッシュ索引を構築しておけば，レコードを取得したい学生の学籍番号から剰余値を1回計算するだけで，必要となる学生情報が格納されている場所を特定し，レコードを取得することができます．</p>
 <p><img alt="ハッシュ索引" src="../../_images/hash-index.jpg" /></p>
-<p>高速にレコードを取得できるハッシュ索引であるが，致命的な弱点がある．
-ハッシュ索引は属性値がある範囲にあるレコードを見つける<strong>範囲探索にはまったく有効に機能しない</strong>．
-ハッシュ索引は各レコードの属性値のハッシュ値とレコードの格納場所を一対一対応させているにすぎず，探索キーの値が完全一致するものしか見つけられない．
-そのため，範囲探索が必要な属性に対しては，B+木のような索引を用いる必要がある．</p>
+<p>高速にレコードを取得できるハッシュ索引ですが，致命的な弱点があります．
+ハッシュ索引は属性値がある範囲にあるレコードを見つける<strong>範囲探索にはまったく有効に機能しません</strong>．
+ハッシュ索引は各レコードの属性値のハッシュ値とレコードの格納場所を一対一対応させているにすぎず，探索キーの値が完全一致するものしか見つけられません．
+そのため，範囲探索が必要な属性に対しては，B+木のような索引を用いる必要があります．</p>
 </section>
 <section id="sql">
 <h2><span class="section-number">14.6. </span>SQLによる索引の構築<a class="headerlink" href="#sql" title="Link to this heading">#</a></h2>
-<p>大抵の関係データベース管理システムでは，以下のようなSQL文でテーブルの特定の属性に対して索引を構築することができる（「インデックスを張る」ともいう）．</p>
+<p>大抵の関係データベース管理システムでは，以下のようなSQL文でテーブルの特定の属性に対して索引を構築することができます（「インデックスを張る」ともいいます）．</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="err">インデックス名</span>
 <span class="w">	</span><span class="k">ON</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="p">(</span><span class="err">索引の対象となる属性名</span><span class="p">)</span>
 <span class="w">	</span><span class="k">USING</span><span class="w"> </span><span class="err">索引種別</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>例えば<code class="docutils literal notranslate"><span class="pre">product</span></code>テーブルの属性<code class="docutils literal notranslate"><span class="pre">price</span></code>に関してB+木を使った索引を構築したい場合は，以下のようなSQL文を使う．</p>
+<p>例えば<code class="docutils literal notranslate"><span class="pre">product</span></code>テーブルの属性<code class="docutils literal notranslate"><span class="pre">price</span></code>に関してB+木を使った索引を構築したい場合は，以下のようなSQL文を使います．</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">product_price_idx</span>
 <span class="w">   </span><span class="k">ON</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
 <span class="w">   </span><span class="k">USING</span><span class="w"> </span><span class="n">btree</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>一般に，主キーや外部キーとして指定された属性には自動的に索引が構築されるが，それ以外の属性に索引を構築したい場合は上記のようなSQL文を発行する必要がある．
-問い合わせに対する応答速度が遅い場合，索引の構築は非常に効果的である．
-一方，索引は記憶領域を余分に消費するので，無闇に索引を構築するのは避けるべきである．</p>
+<p>一般に，主キーや外部キーとして指定された属性には自動的に索引が構築されますが，それ以外の属性に索引を構築したい場合は上記のようなSQL文を発行する必要があります．
+問い合わせに対する応答速度が遅い場合，索引の構築は非常に効果的です．
+一方，索引は記憶領域を余分に消費するので，無闇に索引を構築するのは避けるべきです．</p>
 <hr class="footnotes docutils" />
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="b-tree" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">1</a><span class="fn-bracket">]</span></span>
-<p>諸説あるが，データベースの教科書として著名な”Principles of Database Systems (Jeffrey Ullman著)”によると，B+木の”B”はbalancedの頭文字に由来している．</p>
+<p>諸説ありますが，データベースの教科書として著名な”Principles of Database Systems (Jeffrey Ullman著)”によると，B+木の”B”はbalancedの頭文字に由来しています．</p>
 </aside>
 </aside>
 </section>
@@ -712,14 +697,16 @@ mod_d(x) = r  \quad \text{where} \,\, x = q \cdot d + r
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">14.1. 関係データの物理的な格納方法</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">14.2. 索引</a></li>
@@ -776,8 +763,8 @@ mod_d(x) = r  \quad \text{where} \,\, x = q \cdot d + r
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
