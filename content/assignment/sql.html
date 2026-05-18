@@ -447,7 +447,7 @@
 ノックの数は合計<strong>25</strong>である．
 どのノックも前章までに解説した内容に即したものになっている．
 適宜過去資料を振り返りながら，各ノックに取り組むこと．</p>
-<p>演習用のデータセットは<a class="reference external" href="https://github.com/hontolab-courses/database-lecturenote/blob/main/content/assignment/data/virtual_store.db">コチラ</a>のURLからダウンロードできる．
+<p>演習用のデータセットは<a class="reference external" href="https://github.com/hontolab-courses/database-lecturenote/raw/refs/heads/main/content/assignment/data/virtual_store.db">コチラ</a>のURLからダウンロードできる．
 ダウンロードの上，<a class="reference external" href="https://sqlitebrowser.org">DB Browser for SQLite</a>などのデータベースクライアントを使ってデータにアクセスすること．</p>
 <p>なお，Jupyter Notebookもしくは<a class="reference internal" href="../misc/how-to-execute-sql.html"><span class="std std-doc">Google Colaboratory</span></a>上で演習に取り組みたい学生は，以下のコードを実行すること．
 演習で用いるSQLiteデータ（<code class="docutils literal notranslate"><span class="pre">virtual_store.db</span></code>）のダウンロード，およびSQLiteの実行環境設定を自動で済ませることができる．</p>
@@ -458,7 +458,7 @@
 <span class="c1"># 演習で用いるデータのダウンロード</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;data/virtual_store.db&#39;</span><span class="p">):</span>
     <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="o">!</span>wget<span class="w"> </span>-P<span class="w"> </span>data<span class="w"> </span>https://github.com/hontolab-courses/database-lecturenote/blob/main/content/assignment/data/virtual_store.db
+    <span class="o">!</span>wget<span class="w"> </span>-P<span class="w"> </span>data<span class="w"> </span>https://github.com/hontolab-courses/database-lecturenote/raw/refs/heads/main/content/assignment/data/virtual_store.db
 
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>jupysql
 
